@@ -1,0 +1,73 @@
+body {
+    background-color: #001953;
+    background-image: radial-gradient(circle at 50% 0%, #002277 0%, #001953 40%, #000b2e 100%);
+    background-attachment: fixed;
+    color: #FFFFFF;
+}
+
+/* Glassmorphism Classes */
+.glass-panel {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-header {
+    background: rgba(0, 25, 83, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.text-secondary {
+    color: #D1D5DB;
+}
+
+/* Glow effects */
+.glow-hover:hover {
+    box-shadow: 0 0 15px rgba(0, 192, 255, 0.5);
+}
+
+.glow-text {
+    text-shadow: 0 0 10px rgba(0, 192, 255, 0.3);
+}
+
+/* Fade-up animation */
+.fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Interactive KAI Tabs */
+.tab-content {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease-in;
+}
+.tab-content.active {
+    display: block;
+    opacity: 1;
+}
+
+.tab-btn.active {
+    background-color: rgba(0, 192, 255, 0.15);
+    border-color: #00c0ff;
+    color: #ffffff;
+}
+
+/* Float animation */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
+}
+.animate-float {
+    animation: float 6s ease-in-out infinite;
+}
