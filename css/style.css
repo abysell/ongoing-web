@@ -24,14 +24,7 @@ body {
     color: #D1D5DB;
 }
 
-/* Glow effects */
-.glow-hover:hover {
-    box-shadow: 0 0 15px rgba(0, 192, 255, 0.5);
-}
 
-.glow-text {
-    text-shadow: 0 0 10px rgba(0, 192, 255, 0.3);
-}
 
 /* Fade-up animation */
 .fade-up {

@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ongoing - La evolución del ERP en México</title>
-    
+
     <!-- Google Fonts: Plus Jakarta Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;800&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;800&display=swap"
+        rel="stylesheet">
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -29,82 +31,130 @@
             }
         }
     </script>
-    
+
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body class="antialiased overflow-x-hidden">
 
     <!-- A. Sticky Header (Navegación) -->
     <header id="main-header" class="fixed top-0 w-full z-50 transition-all duration-300 py-4">
         <div class="container mx-auto px-6 max-w-7xl flex items-center justify-between">
             <!-- Logo -->
-            <div class="flex items-center gap-2">
-                <div class="w-8 h-8 rounded bg-action flex items-center justify-center text-primary font-bold text-xl">
-                    O
-                </div>
-                <span class="text-2xl font-extrabold tracking-tight">Ongoing</span>
-            </div>
+            <a href="#" class="flex items-center transition-opacity hover:opacity-80 outline-none">
+                <img src="img/ongoing-logo.png" alt="Ongoing Logo" class="h-8 md:h-[38px] w-auto">
+            </a>
 
             <!-- Menú central (Desktop) -->
-            <nav class="hidden md:flex gap-8 text-sm font-medium">
-                <a href="#" class="hover:text-action transition-colors">Soluciones</a>
-                <a href="#" class="hover:text-action transition-colors">Por Perfil</a>
-                <a href="#" class="hover:text-action transition-colors">Recursos</a>
+            <nav class="hidden lg:flex gap-6 xl:gap-8 items-center justify-center text-center">
+                <a href="#" class="flex flex-col hover:text-action transition-colors mt-1 group">
+                    <span
+                        class="font-bold text-[15px] leading-tight text-white mb-0.5 group-hover:text-action transition-colors">Comercial</span>
+                    <span class="text-[13px] font-medium text-white/90 group-hover:text-action/90 transition-colors">CRM
+                        & Clientes</span>
+                </a>
+                <a href="#" class="flex flex-col hover:text-action transition-colors mt-1 group">
+                    <span
+                        class="font-bold text-[15px] leading-tight text-white mb-0.5 group-hover:text-action transition-colors">Financiero</span>
+                    <span
+                        class="text-[13px] font-medium text-white/90 group-hover:text-action/90 transition-colors">Facturación
+                        & Finanzas</span>
+                </a>
+                <a href="#" class="flex flex-col hover:text-action transition-colors mt-1 group">
+                    <span
+                        class="font-bold text-[15px] leading-tight text-white mb-0.5 group-hover:text-action transition-colors">Operativo</span>
+                    <span
+                        class="text-[13px] font-medium text-white/90 group-hover:text-action/90 transition-colors">Tareas
+                        & Proyectos</span>
+                </a>
+                <a href="#" class="flex flex-col hover:text-action transition-colors mt-1 group">
+                    <span
+                        class="font-bold text-[15px] leading-tight text-white mb-0.5 group-hover:text-action transition-colors">A
+                        la medida</span>
+                    <span class="text-[13px] font-medium text-white/90 group-hover:text-action/90 transition-colors">&
+                        App Móvil</span>
+                </a>
             </nav>
 
             <!-- Derecha CTAs -->
-            <div class="hidden md:flex items-center gap-4">
+            <div class="hidden lg:flex items-center gap-4">
                 <a href="#" class="text-sm font-medium hover:text-action transition-colors">Ingresar</a>
-                <a href="#" class="bg-action text-primary font-bold py-2 px-5 rounded-full hover:bg-opacity-90 transition-all glow-hover shadow-[0_0_15px_rgba(0,192,255,0.3)]">Empieza Gratis</a>
+                <a href="#"
+                    class="bg-action text-primary font-bold py-2 px-5 rounded-full hover:bg-opacity-90 transition-all">Empieza
+                    Gratis</a>
             </div>
 
             <!-- Mobile Menu Togle -->
-            <button class="md:hidden text-white" id="mobile-menu-btn">
+            <button class="lg:hidden text-white mt-1" id="mobile-menu-btn">
                 <i data-lucide="menu" class="w-6 h-6"></i>
             </button>
         </div>
         <!-- Mobile Nav -->
-        <div id="mobile-menu" class="hidden md:hidden glass-panel absolute top-full left-0 w-full flex-col px-6 py-4 gap-4">
-            <a href="#" class="block hover:text-action transition-colors">Soluciones</a>
-            <a href="#" class="block hover:text-action transition-colors">Por Perfil</a>
-            <a href="#" class="block hover:text-action transition-colors">Recursos</a>
-            <hr class="border-gray-700">
-            <a href="#" class="block hover:text-action transition-colors">Ingresar</a>
-            <a href="#" class="block bg-action text-primary font-bold py-2 px-4 rounded-full text-center mt-2">Empieza Gratis</a>
+        <div id="mobile-menu"
+            class="hidden lg:hidden glass-panel absolute top-full left-0 w-full flex-col px-6 py-4 gap-4 overflow-y-auto max-h-[85vh]">
+            <a href="#" class="flex flex-col hover:text-action transition-colors group px-2">
+                <span class="font-bold text-base text-white group-hover:text-action">Comercial</span>
+                <span class="text-sm font-medium text-white/80 group-hover:text-action/90">CRM & Clientes</span>
+            </a>
+            <a href="#" class="flex flex-col hover:text-action transition-colors group px-2">
+                <span class="font-bold text-base text-white group-hover:text-action">Financiero</span>
+                <span class="text-sm font-medium text-white/80 group-hover:text-action/90">Facturación & Finanzas</span>
+            </a>
+            <a href="#" class="flex flex-col hover:text-action transition-colors group px-2">
+                <span class="font-bold text-base text-white group-hover:text-action">Operativo</span>
+                <span class="text-sm font-medium text-white/80 group-hover:text-action/90">Tareas & Proyectos</span>
+            </a>
+            <a href="#" class="flex flex-col hover:text-action transition-colors group px-2">
+                <span class="font-bold text-base text-white group-hover:text-action">A la medida</span>
+                <span class="text-sm font-medium text-white/80 group-hover:text-action/90">& App Móvil</span>
+            </a>
+            <hr class="border-white/10">
+            <a href="#" class="block hover:text-action transition-colors font-medium text-center">Ingresar</a>
+            <a href="#"
+                class="block bg-action text-primary font-bold py-3 px-4 rounded-full text-center mt-2 text-sm">Empieza
+                Gratis</a>
         </div>
     </header>
 
     <!-- B. Hero Section -->
     <section class="min-h-screen flex items-center pt-24 pb-12 relative overflow-hidden">
-        <div class="container mx-auto px-6 max-w-7xl grid lg:grid-cols-2 gap-12 items-center">
-            
+        <div class="w-full px-6 md:px-10 lg:px-20 grid lg:grid-cols-2 gap-12 items-center">
+
             <!-- Texto Izquierda -->
             <div class="flex flex-col gap-6 z-10 fade-up">
-                <div class="inline-flex items-center gap-2 text-action font-medium text-sm bg-action/10 px-3 py-1.5 rounded-full w-fit border border-action/20 shadow-[0_0_10px_rgba(0,192,255,0.1)]">
+                <div
+                    class="inline-flex items-center gap-2 text-action font-medium text-sm bg-action/10 px-3 py-1.5 rounded-full w-fit border border-action/20">
                     <span class="text-lg">🚀</span> La evolución del ERP en México
                 </div>
-                
+
                 <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.1] tracking-tight">
-                    El control total de tu empresa, <span class="text-transparent bg-clip-text bg-gradient-to-r from-action to-blue-400">sin la complejidad</span> de siempre.
+                    El control total de tu empresa, <span
+                        class="text-transparent bg-clip-text bg-gradient-to-r from-action to-blue-400">sin la
+                        complejidad</span> de siempre.
                 </h1>
-                
+
                 <p class="text-lg md:text-xl text-secondary max-w-lg leading-relaxed font-medium">
-                    Centraliza tus Finanzas, CRM y Operaciones en una sola plataforma. Potenciado por KAI, el asistente de IA que te da respuestas exactas sobre tu negocio al instante.
+                    Centraliza tus Finanzas, CRM y Operaciones en una sola plataforma. Potenciado por KAI, el asistente
+                    de IA que te da respuestas exactas sobre tu negocio al instante.
                 </p>
-                
-                <div class="flex flex-col sm:flex-row gap-4 mt-4 items-center sm:items-start max-w-md sm:max-w-none w-full">
+
+                <div
+                    class="flex flex-col sm:flex-row gap-4 mt-4 items-center sm:items-start max-w-md sm:max-w-none w-full">
                     <div class="flex flex-col gap-2 w-full sm:w-auto">
-                        <a href="#" class="bg-action text-primary font-bold py-3 px-8 rounded-full text-center hover:bg-opacity-90 transition-all glow-hover shadow-[0_0_20px_rgba(0,192,255,0.4)] block w-full">
+                        <a href="#"
+                            class="bg-action text-primary font-bold py-3 px-8 rounded-full text-center hover:bg-opacity-90 transition-all block w-full">
                             Empieza Gratis
                         </a>
-                        <span class="text-[11px] text-gray-400 text-center">Sin tarjeta de crédito. Listo en 2 minutos.</span>
+                        <span class="text-[11px] text-gray-400 text-center">Sin tarjeta de crédito. Listo en 2
+                            minutos.</span>
                     </div>
                     <div class="w-full sm:w-auto mt-2 sm:mt-0">
-                        <a href="#" class="glass-panel text-white font-bold py-3 px-8 rounded-full text-center block hover:bg-white/10 transition-colors border border-white/30 w-full">
+                        <a href="#"
+                            class="glass-panel text-white font-bold py-3 px-8 rounded-full text-center block hover:bg-white/10 transition-colors border border-white/30 w-full">
                             Cotizar a la medida
                         </a>
                     </div>
@@ -112,230 +162,514 @@
             </div>
 
             <!-- Visual Derecha -->
-            <div class="relative z-10 fade-up h-[400px] md:h-[500px] flex justify-center items-center">
-                <!-- Abstract Dashboard Representation -->
-                <div class="w-full max-w-lg aspect-video glass-panel rounded-2xl relative shadow-2xl overflow-hidden border border-white/20">
-                    <!-- Fake UI Header -->
-                    <div class="h-10 border-b border-white/10 flex items-center px-4 gap-2 bg-black/20">
-                        <div class="w-3 h-3 rounded-full bg-red-400"></div>
-                        <div class="w-3 h-3 rounded-full bg-yellow-400"></div>
-                        <div class="w-3 h-3 rounded-full bg-green-400"></div>
-                    </div>
-                    <!-- Fake UI Body -->
-                    <div class="p-6 grid grid-cols-3 gap-4 h-full">
-                        <div class="col-span-2 space-y-4">
-                            <div class="h-8 bg-white/10 rounded-md w-1/3"></div>
-                            <div class="h-32 bg-white/5 rounded-xl border border-white/10 relative overflow-hidden">
-                                <!-- Chart lines -->
-                                <svg class="absolute bottom-0 w-full h-full" preserveAspectRatio="none" viewBox="0 0 100 100">
-                                    <path d="M0,100 L0,50 Q25,30 50,60 T100,20 L100,100 Z" fill="rgba(0, 192, 255, 0.2)"></path>
-                                    <path d="M0,50 Q25,30 50,60 T100,20" fill="none" stroke="#00c0ff" stroke-width="2"></path>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="col-span-1 space-y-4">
-                            <div class="h-16 bg-white/5 rounded-xl border border-white/10"></div>
-                            <div class="h-16 bg-white/5 rounded-xl border border-white/10"></div>
-                        </div>
-                    </div>
-                </div>
+            <div
+                class="relative z-10 fade-up flex justify-center items-center w-full lg:w-[120%] lg:-ml-12 mt-12 lg:mt-0">
+                <!-- Hero Image -->
+                <img src="img/hero.png" alt="Ongoing ERP Dashboard"
+                    class="w-[90%] rounded-2xl relative shadow-[0_30px_60px_rgba(0,0,0,0.6)] border border-white/20 object-cover z-10 transform hover:scale-[1.02] transition-transform duration-500">
 
                 <!-- Floating Notifcard -->
-                <div class="absolute -bottom-6 -left-6 md:-left-12 glass-panel p-4 rounded-xl flex items-center gap-4 animate-float border border-action/30 shadow-[0_10px_30px_rgba(0,0,0,0.5)] z-20 max-w-[280px]">
+                <div
+                    class="absolute -bottom-6 -left-6 md:-left-12 glass-panel p-4 rounded-xl flex items-center gap-4 animate-float border border-action/30 shadow-[0_10px_30px_rgba(0,0,0,0.5)] z-20 max-w-[280px]">
                     <div class="w-10 h-10 rounded-full bg-action/20 flex items-center justify-center shrink-0">
                         <i data-lucide="sparkles" class="text-action w-5 h-5"></i>
                     </div>
                     <div>
                         <p class="text-xs font-bold text-action mb-0.5 glow-text">Notificación</p>
-                        <p class="text-xs text-white leading-tight font-medium">Factura F-402 aprobada y validada ante el SAT.</p>
+                        <p class="text-xs text-white leading-tight font-medium">Factura F-402 aprobada y validada ante
+                            el SAT.</p>
                     </div>
                 </div>
 
                 <!-- Floating Mobile representation -->
-                <div class="absolute -right-4 md:-right-8 top-12 w-[120px] h-[240px] glass-panel rounded-2xl border flex flex-col items-center pt-2 animate-float shadow-[0_10px_30px_rgba(0,0,0,0.5)]" style="animation-delay: 2s;">
+                <div class="absolute -right-4 md:-right-8 top-12 w-[120px] h-[240px] glass-panel rounded-2xl border flex flex-col items-center pt-2 animate-float shadow-[0_10px_30px_rgba(0,0,0,0.5)]"
+                    style="animation-delay: 2s;">
                     <div class="w-10 h-1 bg-white/20 rounded-full mb-4"></div>
                     <div class="w-10/12 h-12 bg-white/10 rounded-lg mb-2"></div>
                     <div class="w-10/12 h-12 bg-white/10 rounded-lg mb-2"></div>
                 </div>
             </div>
-            
+
         </div>
-        
+
         <!-- Background Blur Orbs -->
-        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-action/20 rounded-full blur-[120px] -z-10 pointer-events-none"></div>
-        <div class="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-blue-600/20 rounded-full blur-[150px] -z-10 pointer-events-none"></div>
+        <div
+            class="absolute top-1/4 left-1/4 w-96 h-96 bg-action/20 rounded-full blur-[120px] -z-10 pointer-events-none">
+        </div>
+        <div
+            class="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-blue-600/20 rounded-full blur-[150px] -z-10 pointer-events-none">
+        </div>
     </section>
 
-    <!-- C. Sección KAI (El Poder de KAI) -->
-    <section class="py-24 relative z-10 fade-up" style="background-color: rgba(0, 11, 46, 0.4);">
-        <div class="container mx-auto px-6 max-w-5xl">
+    <!-- Separador Estético -->
+    <div class="w-full h-px bg-gradient-to-r from-transparent via-blue-500/80 to-transparent shadow-[0_0_20px_rgba(59,130,246,0.5)]"></div>
+
+    <!-- C2. Bento Grid KAI -->
+    <section class="py-24 relative z-20 fade-up overflow-hidden bg-light">
+        <!-- Imagen de Fondo General de la Sección -->
+        <div class="absolute inset-0 bg-[url('img/bg_section2.webp')] bg-cover bg-center opacity-[0.05] pointer-events-none mix-blend-multiply"></div>
+        
+        <div class="container mx-auto px-6 max-w-7xl relative z-10">
+            <!-- Header -->
             <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-extrabold mb-6">No busques entre menús. <br><span class="text-action glow-text">Solo pregúntale a KAI.</span></h2>
-                <p class="text-lg text-secondary max-w-2xl mx-auto font-medium">
-                    KAI no es un bot de soporte, es tu analista 24/7. Interpreta tu lenguaje natural y cruza los datos de toda tu empresa en segundos.
-                </p>
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-primary tracking-tight">
+                    Pregúntale a Kai y transforma tu empresa. <br class="hidden md:block">
+                    <span class="inline-block mt-3 md:mt-4 text-transparent bg-clip-text bg-gradient-to-r from-action to-blue-400">AI Power Solution</span>
+                </h2>
             </div>
 
-            <div class="grid md:grid-cols-12 gap-8 items-start">
+            <!-- Bento Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 
-                <!-- Píldoras Izquierda -->
-                <div class="md:col-span-4 flex flex-col gap-4">
-                    <button class="tab-btn w-full text-left px-6 py-4 glass-panel rounded-xl font-bold flex items-center gap-3 active border-action text-white transition-all hover:bg-white/5" data-tab="tab-finanzas">
-                        <span class="text-2xl">📊</span> 
-                        <span>Finanzas</span>
-                    </button>
-                    <button class="tab-btn w-full text-left px-6 py-4 glass-panel rounded-xl font-bold flex items-center gap-3 text-secondary border-transparent transition-all border hover:bg-white/5" data-tab="tab-operativo">
-                        <span class="text-2xl">⚙️</span> 
-                        <span>Operativo</span>
-                    </button>
-                    <button class="tab-btn w-full text-left px-6 py-4 glass-panel rounded-xl font-bold flex items-center gap-3 text-secondary border-transparent transition-all border hover:bg-white/5" data-tab="tab-crm">
-                        <span class="text-2xl">🤝</span> 
-                        <span>CRM</span>
-                    </button>
-                </div>
-
-                <!-- Chat UI Derecha -->
-                <div class="md:col-span-8 glass-panel rounded-2xl p-6 relative border border-white/10 shadow-2xl overflow-hidden">
-                    <div class="flex items-center gap-3 mb-6 pb-4 border-b border-white/10">
-                        <div class="w-10 h-10 rounded-full bg-action/20 flex items-center justify-center shrink-0 border border-action/30">
-                            <i data-lucide="bot" class="text-action w-5 h-5"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-white">KAI Assistant</h3>
-                            <div class="flex items-center gap-1.5 text-xs text-secondary">
-                                <span class="w-2 h-2 rounded-full bg-green-500"></span> Online
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Tabs Content -->
-                    <div class="min-h-[260px]">
+                <!-- Col 1 (2 cards stacked) -->
+                <div class="flex flex-col gap-6">
+                    <!-- Card 1: Intelligent Automation -->
+                    <div class="bg-gradient-to-br from-blue-900 via-primary to-blue-950 rounded-[2rem] p-8 relative overflow-hidden group h-[340px] flex flex-col justify-between border border-white/10 hover:border-action/40 transition-all duration-500 shadow-2xl">
+                        <!-- Background Image -->
+                        <div class="absolute inset-0 bg-[url('img/cara.webp')] bg-cover bg-[95%_50%] opacity-50 mix-blend-overlay group-hover:opacity-70 group-hover:scale-105 transition-all duration-700 pointer-events-none"></div>
                         
-                        <!-- TAB: FINANZAS -->
-                        <div id="tab-finanzas" class="tab-content active space-y-6">
-                            <!-- User Message -->
-                            <div class="flex justify-end">
-                                <div class="bg-white/10 px-5 py-3 rounded-2xl rounded-tr-sm max-w-[80%] text-sm font-medium border border-white/5 shadow-sm">
-                                    "¿Cuánto facturamos la semana pasada?"
-                                </div>
+                        <div class="absolute -right-20 -top-20 w-80 h-80 bg-blue-500/30 rounded-full blur-[80px] group-hover:bg-blue-400/40 transition-colors duration-700 pointer-events-none"></div>
+                        <div class="absolute -left-10 bottom-0 w-40 h-40 bg-action/20 rounded-full blur-[50px] pointer-events-none"></div>
+                        
+                        <div class="relative z-10 w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center backdrop-blur-sm border border-white/20">
+                            <i data-lucide="cpu" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <div class="relative z-10 mt-auto flex flex-col justify-end">
+                            <h3 class="text-2xl font-bold text-white max-w-[150px] leading-tight mb-2">Automatización Inteligente</h3>
+                            <p class="text-sm text-white/80 font-medium leading-relaxed max-w-[200px] pb-4">KAI no es un bot de soporte, es tu analista 24/7. Interpreta tu lenguaje natural y cruza los datos de toda tu empresa en segundos.</p>
+                            <div class="absolute bottom-8 right-8 w-12 h-12 rounded-full bg-white/5 backdrop-blur-md flex items-center justify-center border border-white/10 group-hover:bg-white/20 transition-all text-white">
+                                <i data-lucide="arrow-up-right" class="w-5 h-5"></i>
                             </div>
-                            <!-- KAI Message -->
-                            <div class="flex justify-start gap-3">
-                                <div class="w-8 h-8 rounded-full bg-action flex flex-shrink-0 items-center justify-center mt-1">
-                                    <i data-lucide="sparkles" class="text-primary w-4 h-4"></i>
+                        </div>
+                    </div>
+                    
+                    <!-- Card 2: OpenAI Powered by -->
+                    <div class="bg-[#0b1121] rounded-[2rem] p-8 relative overflow-hidden group flex-grow min-h-[160px] flex justify-center items-center border border-white/10 hover:border-action/40 transition-all duration-500">
+                        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                        
+                        <div class="relative z-10 flex flex-col items-center justify-center w-full text-center px-4">
+                            <i data-lucide="zap" class="w-6 h-6 text-action mb-2"></i>
+                            <h3 class="text-white font-bold text-[1.1rem] tracking-wide leading-snug">
+                                Potencia tus oportunidades de negocio con <span class="text-action">Kai</span>
+                            </h3>
+                        </div>
+                        <div class="absolute bottom-6 right-6 w-10 h-10 rounded-full bg-white/5 flex items-center justify-center border border-white/10 group-hover:bg-white/20 transition-all text-white">
+                            <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Row 2 -->
+                <!-- Bottom Span Card (span 2) - Slider -->
+                <div class="md:col-span-2 rounded-[2rem] relative overflow-hidden min-h-[450px] md:h-[524px] w-full flex flex-col">
+
+                    <!-- Slider Wrapper -->
+                    <div id="ai-slider" class="flex transition-transform duration-700 ease-[cubic-bezier(0.87, 0, 0.13, 1)] h-full w-full">
+                        
+                        <!-- Slide 1 -->
+                        <div class="min-w-full min-h-[300px] relative p-6 md:p-8 flex items-center justify-center">
+                            <div class="absolute inset-0 pointer-events-none">
+                                <div class="absolute -left-10 top-0 w-80 h-[200%] bg-gradient-to-b from-blue-400/20 to-transparent skew-x-[-20deg] rounded-[100px] blur-xl"></div>
+                                <div class="absolute left-[30%] top-0 w-80 h-[200%] bg-gradient-to-b from-action/20 to-transparent skew-x-[-20deg] rounded-[100px] blur-lg"></div>
+                                <div class="absolute left-[70%] top-[20%] w-60 h-[150%] bg-gradient-to-b from-cyan-400/20 to-transparent skew-x-[-30deg] rounded-full blur-2xl"></div>
+                            </div>
+                            
+                            <!-- Chat Mockup Widget (Full Width) -->
+                            <div class="relative w-full max-w-4xl bg-[#0b1329] rounded-[24px] p-6 md:p-8 border border-blue-900/40 shadow-2xl z-20 transform transition-transform group-hover:scale-[1.02] duration-700 flex flex-col justify-center mb-8 md:mb-0">
+                                <!-- Header -->
+                                <div class="flex items-center gap-4 mb-6 pb-4 border-b border-white/5">
+                                    <div class="w-12 h-12 rounded-full bg-blue-900/50 flex flex-shrink-0 items-center justify-center border border-blue-500/20">
+                                        <i data-lucide="bot" class="text-blue-400 w-6 h-6"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-extrabold text-white text-lg leading-tight mb-1">KAI Assistant</h3>
+                                        <div class="flex items-center gap-2 text-[11px] font-medium text-white/50 uppercase tracking-widest">
+                                            <span class="w-2 h-2 rounded-full bg-green-500"></span> Online
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="bg-action/10 border border-action/20 px-5 py-4 rounded-2xl rounded-tl-sm max-w-[85%] text-sm">
-                                    <p class="mb-4 text-white font-medium">Facturamos <strong class="text-action font-extrabold text-lg">$145,000 MXN</strong> (12% más que la semana anterior). Aquí tienes la gráfica del flujo:</p>
-                                    <div class="h-28 bg-black/30 rounded-lg flex items-end p-3 gap-3 border border-white/5">
-                                        <div class="w-1/5 bg-action/30 hover:bg-action/50 transition-colors h-[40%] rounded-t-sm"></div>
-                                        <div class="w-1/5 bg-action/50 hover:bg-action/70 transition-colors h-[50%] rounded-t-sm"></div>
-                                        <div class="w-1/5 bg-action/70 hover:bg-action/90 transition-colors h-[100%] rounded-t-sm relative"><div class="absolute -top-6 w-full text-center text-[10px] text-action font-bold">145k</div></div>
-                                        <div class="w-1/5 bg-action/50 hover:bg-action/70 transition-colors h-[80%] rounded-t-sm"></div>
-                                        <div class="w-1/5 bg-action/80 hover:bg-action transition-colors h-[90%] rounded-t-sm"></div>
+                                
+                                <!-- User Message -->
+                                <div class="flex justify-end mb-6">
+                                    <div class="bg-[#2c3e66]/40 px-6 py-4 rounded-3xl rounded-tr-sm text-[15px] text-white/90 font-medium shadow-sm max-w-[85%] md:max-w-[70%] border border-white/5">
+                                        "¿Cuánto facturamos la semana pasada?"
+                                    </div>
+                                </div>
+                                
+                                <!-- KAI Message -->
+                                <div class="flex justify-start gap-4">
+                                    <div class="w-12 h-12 rounded-full bg-[#00c0ff] flex flex-shrink-0 items-center justify-center mt-1 shadow-[0_0_15px_rgba(0,192,255,0.4)]">
+                                        <i data-lucide="sparkles" class="text-[#001953] w-6 h-6"></i>
+                                    </div>
+                                    <div class="bg-blue-900/20 border border-blue-500/20 px-6 py-5 rounded-3xl rounded-tl-sm w-full text-[15px] shadow-sm relative overflow-hidden">
+                                        <p class="mb-6 text-white/90 font-medium leading-relaxed">Facturamos <strong class="text-[#00c0ff] font-extrabold text-lg">$145,000 MXN</strong> (12% más que la semana anterior).<br>Aquí tienes la gráfica del flujo:</p>
+                                        
+                                        <!-- Chart -->
+                                        <div class="bg-[#080d1e] rounded-xl p-4 pt-6 border border-white/5 h-[120px] flex items-end justify-between gap-3 relative">
+                                            <div class="w-full bg-[#2a68a6] hover:bg-[#3480cc] transition-colors rounded-t-md" style="height: 30%"></div>
+                                            <div class="w-full bg-[#2a68a6] hover:bg-[#3480cc] transition-colors rounded-t-md" style="height: 40%"></div>
+                                            
+                                            <!-- Highlighted Bar -->
+                                            <div class="w-full bg-[#369cf5] rounded-t-md relative" style="height: 90%">
+                                                <div class="absolute -top-7 left-1/2 -translate-x-1/2 text-xs text-[#369cf5] font-bold">145k</div>
+                                            </div>
+                                            
+                                            <div class="w-full bg-[#2a68a6] hover:bg-[#3480cc] transition-colors rounded-t-md" style="height: 60%"></div>
+                                            <div class="w-full bg-[#2a68a6] hover:bg-[#3480cc] transition-colors rounded-t-md" style="height: 75%"></div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- TAB: OPERATIVO -->
-                        <div id="tab-operativo" class="tab-content space-y-6">
-                            <!-- User Message -->
-                            <div class="flex justify-end">
-                                <div class="bg-white/10 px-5 py-3 rounded-2xl rounded-tr-sm max-w-[80%] text-sm font-medium border border-white/5 shadow-sm">
-                                    "¿Qué se acordó en la junta de Villahermosa?"
-                                </div>
+                        <!-- Slide 2 -->
+                        <div class="min-w-full min-h-[300px] relative p-6 md:p-8 flex items-center justify-center">
+                            <div class="absolute inset-0 pointer-events-none">
+                                <div class="absolute right-[10%] top-[-20%] w-80 h-[200%] bg-gradient-to-b from-purple-500/20 to-transparent skew-x-[20deg] rounded-[100px] blur-xl"></div>
                             </div>
-                            <!-- KAI Message -->
-                            <div class="flex justify-start gap-3">
-                                <div class="w-8 h-8 rounded-full bg-action flex flex-shrink-0 items-center justify-center mt-1">
-                                    <i data-lucide="sparkles" class="text-primary w-4 h-4"></i>
-                                </div>
-                                <div class="bg-action/10 border border-action/20 px-5 py-4 rounded-2xl rounded-tl-sm max-w-[85%] text-sm">
-                                    <p class="text-white font-medium">Renovar el inventario el día 15.</p>
-                                    <div class="mt-4 p-3 bg-black/30 rounded-xl border border-white/5 flex items-center gap-4">
-                                        <div class="w-8 h-8 rounded-full bg-green-500/20 flex items-center justify-center shrink-0">
-                                            <i data-lucide="check" class="text-green-400 w-4 h-4"></i>
+                            
+                            <!-- Chat Mockup Widget (Full Width) -->
+                            <div class="relative w-full max-w-4xl bg-[#0b1329] rounded-[24px] p-6 md:p-8 border border-blue-900/40 shadow-2xl z-20 transform transition-transform group-hover:scale-[1.02] duration-700 flex flex-col justify-center mb-8 md:mb-0">
+                                <!-- Header -->
+                                <div class="flex items-center gap-4 mb-6 pb-4 border-b border-white/5">
+                                    <div class="w-12 h-12 rounded-full bg-blue-900/50 flex flex-shrink-0 items-center justify-center border border-blue-500/20">
+                                        <i data-lucide="bot" class="text-blue-400 w-6 h-6"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-extrabold text-white text-lg leading-tight mb-1">KAI Assistant Operativo</h3>
+                                        <div class="flex items-center gap-2 text-[11px] font-medium text-white/50 uppercase tracking-widest">
+                                            <span class="w-2 h-2 rounded-full bg-green-500"></span> Online
                                         </div>
-                                        <div>
-                                            <p class="font-bold text-sm text-white">Tarea asignada a Roberto</p>
-                                            <p class="text-xs text-secondary mt-0.5"><i data-lucide="calendar" class="w-3 h-3 inline pb-0.5"></i> Vence: 15 de Octubre</p>
+                                    </div>
+                                </div>
+                                
+                                <!-- User Message -->
+                                <div class="flex justify-end mb-6">
+                                    <div class="bg-[#2c3e66]/40 px-6 py-4 rounded-3xl rounded-tr-sm text-[15px] text-white/90 font-medium shadow-sm max-w-[85%] border border-white/5">
+                                        "¿Qué se acordó en la junta de Villahermosa?"
+                                    </div>
+                                </div>
+                                
+                                <!-- KAI Message -->
+                                <div class="flex justify-start gap-4">
+                                    <div class="w-12 h-12 rounded-full bg-[#00c0ff] flex flex-shrink-0 items-center justify-center mt-1 shadow-[0_0_15px_rgba(0,192,255,0.4)]">
+                                        <i data-lucide="sparkles" class="text-[#001953] w-6 h-6"></i>
+                                    </div>
+                                    <div class="bg-blue-900/20 border border-blue-500/20 px-6 py-5 rounded-3xl rounded-tl-sm w-full md:max-w-[75%] shadow-sm relative overflow-hidden flex flex-col gap-4">
+                                        <p class="text-white/90 font-medium text-[15px] leading-relaxed">Renovar el inventario el día 15.</p>
+                                        
+                                        <!-- Tarea Asignada Card -->
+                                        <div class="bg-[#081023]/80 rounded-2xl p-4 md:p-5 border border-white/5 flex items-center gap-4 w-fit pr-10">
+                                            <div class="w-12 h-12 rounded-full bg-[#1b4334] flex flex-shrink-0 items-center justify-center border border-[#36c280]/20">
+                                                <i data-lucide="check" class="text-[#36c280] w-6 h-6"></i>
+                                            </div>
+                                            <div class="flex flex-col">
+                                                <h4 class="text-white font-bold text-[15px] leading-tight mb-1">Tarea asignada a Roberto</h4>
+                                                <div class="flex items-center gap-1.5 text-white/60 text-[13px] font-medium">
+                                                    <i data-lucide="calendar" class="w-4 h-4 text-white/40"></i> Vence: 15 de Octubre
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- TAB: CRM -->
-                        <div id="tab-crm" class="tab-content space-y-6">
-                            <!-- User Message -->
-                            <div class="flex justify-end">
-                                <div class="bg-white/10 px-5 py-3 rounded-2xl rounded-tr-sm max-w-[80%] text-sm font-medium border border-white/5 shadow-sm">
-                                    "¿Cuándo fue la última llamada con la sucursal Centro?"
+                        <!-- Slide 3 -->
+                        <div class="min-w-full min-h-[300px] relative p-6 md:p-8 flex items-center justify-center">
+                            <div class="absolute inset-0 pointer-events-none">
+                                <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-60 h-60 bg-gradient-to-b from-green-400/20 to-transparent rounded-full blur-2xl"></div>
+                            </div>
+                            
+                            <!-- Chat Mockup Widget (Full Width) -->
+                            <div class="relative w-full max-w-4xl bg-[#0b1329] rounded-[24px] p-6 md:p-8 border border-green-900/30 shadow-2xl z-20 transform transition-transform group-hover:scale-[1.02] duration-700 flex flex-col justify-center mb-8 md:mb-0">
+                                <!-- Header -->
+                                <div class="flex items-center gap-4 mb-6 pb-4 border-b border-white/5">
+                                    <div class="w-12 h-12 rounded-full bg-blue-900/50 flex flex-shrink-0 items-center justify-center border border-blue-500/20">
+                                        <i data-lucide="bot" class="text-blue-400 w-6 h-6"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-extrabold text-white text-lg leading-tight mb-1">KAI Assistant CRM</h3>
+                                        <div class="flex items-center gap-2 text-[11px] font-medium text-white/50 uppercase tracking-widest">
+                                            <span class="w-2 h-2 rounded-full bg-green-500"></span> Online
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- User Message -->
+                                <div class="flex justify-end mb-6">
+                                    <div class="bg-[#2c3e66]/40 px-6 py-4 rounded-3xl rounded-tr-sm text-[15px] text-white/90 font-medium shadow-sm max-w-[85%] border border-white/5">
+                                        "¿Cuándo fue la última llamada con la sucursal Centro?"
+                                    </div>
+                                </div>
+                                
+                                <!-- KAI Message -->
+                                <div class="flex justify-start gap-4">
+                                    <div class="w-12 h-12 rounded-full bg-[#00c0ff] flex flex-shrink-0 items-center justify-center mt-1 shadow-[0_0_15px_rgba(0,192,255,0.4)]">
+                                        <i data-lucide="sparkles" class="text-[#001953] w-6 h-6"></i>
+                                    </div>
+                                    <div class="bg-blue-900/20 border border-blue-500/20 px-6 py-5 rounded-3xl rounded-tl-sm w-full md:max-w-[85%] shadow-sm relative overflow-hidden flex flex-col gap-5">
+                                        <p class="text-white/90 font-medium text-[15px] leading-relaxed">Ayer a las <strong>4:00 PM</strong> con Roberto. Minuta guardada automáticamente.</p>
+                                        
+                                        <!-- Actions -->
+                                        <div class="flex flex-wrap items-center gap-3">
+                                            <button class="bg-[#2c3e66]/50 hover:bg-[#3b5185] transition-colors border border-white/10 text-white/90 text-[14px] font-semibold py-2.5 px-5 rounded-xl flex items-center gap-2">
+                                                <i data-lucide="file-text" class="w-4 h-4"></i> Leer Minuta
+                                            </button>
+                                            <button class="bg-[#369cf5] hover:bg-[#47a8ff] transition-colors text-[#001953] text-[14px] font-bold py-2.5 px-5 rounded-xl flex items-center gap-2 shadow-lg">
+                                                <i data-lucide="phone" class="w-4 h-4"></i> Llamar ahora
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <!-- KAI Message -->
-                            <div class="flex justify-start gap-3">
-                                <div class="w-8 h-8 rounded-full bg-action flex flex-shrink-0 items-center justify-center mt-1">
-                                    <i data-lucide="sparkles" class="text-primary w-4 h-4"></i>
+                        </div>
+
+                        <!-- Slide 4 -->
+                        <div class="min-w-full min-h-[300px] relative p-6 md:p-8 flex items-center justify-center">
+                            <div class="absolute inset-0 pointer-events-none">
+                                <div class="absolute left-[80%] bottom-0 w-96 h-96 bg-gradient-to-t from-action/30 to-transparent rounded-full blur-3xl"></div>
+                            </div>
+                            
+                            <!-- Chat Mockup Widget (Full Width) -->
+                            <div class="relative w-full max-w-4xl bg-[#0b1329] rounded-[24px] p-6 md:p-8 border border-blue-900/40 shadow-2xl z-20 transform transition-transform group-hover:scale-[1.02] duration-700 flex flex-col justify-center mb-8 md:mb-0">
+                                <!-- Header -->
+                                <div class="flex items-center gap-4 mb-6 pb-4 border-b border-white/5">
+                                    <div class="w-12 h-12 rounded-full bg-blue-900/50 flex flex-shrink-0 items-center justify-center border border-blue-500/20">
+                                        <i data-lucide="bot" class="text-blue-400 w-6 h-6"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-extrabold text-white text-lg leading-tight mb-1">KAI Assistant</h3>
+                                        <div class="flex items-center gap-2 text-[11px] font-medium text-white/50 uppercase tracking-widest">
+                                            <span class="w-2 h-2 rounded-full bg-green-500"></span> Online
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="bg-action/10 border border-action/20 px-5 py-4 rounded-2xl rounded-tl-sm max-w-[85%] text-sm">
-                                    <p class="text-white font-medium">Ayer a las <strong>4:00 PM</strong> con Roberto. Minuta guardada automáticamente.</p>
-                                    <div class="mt-4 flex gap-3">
-                                        <button class="bg-white/10 hover:bg-white/20 transition-colors px-4 py-2 rounded-lg text-xs font-bold flex items-center gap-2 border border-white/5">
-                                            <i data-lucide="file-text" class="w-4 h-4"></i> Leer Minuta
-                                        </button>
-                                        <button class="bg-action text-primary hover:bg-action/90 shadow-[0_0_10px_rgba(0,192,255,0.3)] transition-all px-4 py-2 rounded-lg text-xs font-bold flex items-center gap-2">
-                                            <i data-lucide="phone" class="w-4 h-4"></i> Llamar ahora
-                                        </button>
+                                
+                                <!-- User Message -->
+                                <div class="flex justify-end mb-6">
+                                    <div class="bg-[#2c3e66]/40 px-6 py-4 rounded-3xl rounded-tr-sm text-[15px] text-white/90 font-medium shadow-sm max-w-[85%] border border-white/5">
+                                        "Quiero un reporte de las personas que han tomado vacaciones el último mes"
+                                    </div>
+                                </div>
+                                
+                                <!-- KAI Message -->
+                                <div class="flex justify-start gap-4">
+                                    <div class="w-12 h-12 rounded-full bg-[#00c0ff] flex flex-shrink-0 items-center justify-center mt-1 shadow-[0_0_15px_rgba(0,192,255,0.4)]">
+                                        <i data-lucide="sparkles" class="text-[#001953] w-6 h-6"></i>
+                                    </div>
+                                    <div class="bg-blue-900/20 border border-blue-500/20 px-6 py-5 rounded-3xl rounded-tl-sm w-full md:max-w-[75%] shadow-sm relative overflow-hidden flex flex-col gap-5">
+                                        <p class="text-white/90 font-medium text-[15px] leading-relaxed">Han sido 10 personas, descarga el reporte para que puedas ver la información completa.</p>
+                                        
+                                        <!-- Actions -->
+                                        <div class="flex flex-wrap items-center gap-3">
+                                            <button class="bg-[#369cf5] hover:bg-[#47a8ff] transition-colors text-[#001953] text-[14px] font-bold py-2.5 px-5 rounded-xl flex items-center gap-2 shadow-lg">
+                                                <i data-lucide="download" class="w-4 h-4"></i> Descargar Reporte
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
                     </div>
+
+                    <!-- Slider Controls -->
+                    <div class="absolute bottom-8 left-8 md:left-10 flex gap-2 z-30">
+                        <button aria-label="Slide 1" class="ai-slider-dot w-6 h-1.5 rounded-full bg-white transition-all duration-300" data-slide="0"></button>
+                        <button aria-label="Slide 2" class="ai-slider-dot w-2 h-1.5 rounded-full bg-white/30 hover:bg-white/60 transition-all duration-300" data-slide="1"></button>
+                        <button aria-label="Slide 3" class="ai-slider-dot w-2 h-1.5 rounded-full bg-white/30 hover:bg-white/60 transition-all duration-300" data-slide="2"></button>
+                        <button aria-label="Slide 4" class="ai-slider-dot w-2 h-1.5 rounded-full bg-white/30 hover:bg-white/60 transition-all duration-300" data-slide="3"></button>
+                    </div>
+
                 </div>
+
+                <!-- Col 2 (1 tall card con dashboard de finanzas) -->
+                <div class="bg-gradient-to-br from-blue-500/20 to-blue-900/40 rounded-[2rem] p-8 md:p-10 relative overflow-hidden group md:h-[524px] flex flex-col justify-end border border-white/10 hover:border-action/40 transition-all duration-500 backdrop-blur-lg shadow-2xl">
+                    <div class="absolute inset-x-0 bottom-0 h-[150%] origin-bottom transform translate-y-1/4 rotate-12 bg-gradient-to-t from-blue-600/30 to-transparent w-full skew-y-12 pointer-events-none"></div>
+                    <div class="absolute inset-x-0 bottom-0 h-[120%] origin-bottom transform translate-y-1/4 -rotate-6 bg-gradient-to-t from-action/20 to-transparent w-full -skew-x-12 pointer-events-none"></div>
+                    
+                    <!-- Background Image con mezcla suave azul -->
+                    <div class="absolute inset-0 bg-[url('img/mockup-direccion-general.png')] bg-cover bg-top opacity-40 mix-blend-overlay scale-[1.2] group-hover:opacity-60 group-hover:scale-[1.3] transition-all duration-700 pointer-events-none"></div>
+
+                    <div class="relative z-10 mb-20 md:mb-32">
+                        <h3 class="text-[2rem] font-bold text-white mb-4 leading-tight">Procesamiento de Datos en Tiempo Real</h3>
+                        <p class="text-white/80 text-sm font-medium leading-relaxed max-w-[250px]">Extraemos información valiosa desde el centro de tu negocio de forma inmediata.</p>
+                    </div>
+                    
+                    <div class="absolute bottom-10 right-10 w-12 h-12 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/10 group-hover:bg-white/20 transition-all text-white">
+                        <i data-lucide="arrow-up-right" class="w-5 h-5"></i>
+                    </div>
+                </div>
+
+                <!-- Col 3 (1 tall card con lineas abstractas y mockup) -->
+                <div class="bg-[#111827] rounded-[2rem] p-8 md:p-10 relative overflow-hidden group md:h-[524px] flex flex-col border border-white/10 hover:border-action/40 transition-all duration-500 shadow-2xl">
+                    <!-- Background Image -->
+                    <div class="absolute inset-0 bg-[url('img/balance_ventas.webp')] bg-cover bg-center opacity-80 scale-[1.2] group-hover:opacity-100 group-hover:scale-[1.3] transition-all duration-700 pointer-events-none"></div>
+                    
+                    <!-- Dark Overlay for Text Readability -->
+                    <div class="absolute inset-0 bg-gradient-to-b from-[#0f172a]/90 via-[#0f172a]/50 to-[#0f172a]/80 pointer-events-none"></div>
+                    
+                    <div class="absolute w-[200%] h-[200%] -right-[50%] -bottom-[50%] opacity-20 group-hover:opacity-40 transition-opacity duration-1000 rotate-12 pointer-events-none" style="background: repeating-radial-gradient(circle at center, transparent, transparent 15px, rgba(0, 192, 255, 0.5) 16px, transparent 17px);"></div>
+
+                    <div class="relative z-10">
+                        <h3 class="text-[2rem] font-bold text-white mb-4 leading-tight">Sistemas de Recomendación</h3>
+                        <p class="text-white/70 text-sm font-medium leading-relaxed max-w-[240px]">Desarrollamos e implementamos modelos a la medida para predecir escenarios y guiar la toma de decisiones basada en datos históricos.</p>
+                    </div>
+                    
+                    <div class="absolute bottom-10 right-10 w-12 h-12 rounded-full bg-white/5 backdrop-blur-md flex items-center justify-center border border-white/10 group-hover:bg-white/20 transition-all text-white">
+                        <i data-lucide="arrow-up-right" class="w-5 h-5"></i>
+                    </div>
+                </div>
+
+                <!-- Bottom Right Card -->
+                <div class="bg-gray-100 rounded-[2rem] p-8 md:p-10 relative overflow-hidden group min-h-[300px] md:h-[524px] flex flex-col justify-between border border-transparent hover:border-gray-300 transition-all duration-500 shadow-xl">
+                    <div class="absolute inset-0 opacity-70 mix-blend-multiply bg-[url('img/kai_bento_light.png')] bg-cover bg-center group-hover:scale-105 transition-transform duration-700"></div>
+                    
+                    <div class="relative z-10">
+                        <h3 class="text-[1.1rem] font-bold text-gray-800 leading-tight max-w-[90%]">Con Kai y Conversia AI Chatbot Brinda un mejor soporte para tus clientes de manera personalizada</h3>
+                    </div>
+                    
+                    <div class="relative z-10 mt-auto flex items-end justify-between">
+                        <div>
+                            <div class="text-[4rem] font-extrabold pb-0 text-blue-500 tracking-tighter leading-none mb-1 flex items-baseline z-10 relative">
+                                10K<span class="text-blue-600 text-[5rem]">+</span>
+                            </div>
+                            <p class="text-[10px] text-gray-500 font-bold uppercase tracking-widest mt-2 z-10 relative">Active users every day</p>
+                        </div>
+                    </div>
+                    
+                    <div class="absolute bottom-10 right-10 w-12 h-12 rounded-full bg-black flex items-center justify-center group-hover:scale-110 transition-transform text-white shadow-2xl z-20">
+                        <i data-lucide="arrow-up-right" class="w-5 h-5"></i>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
+
 
     <!-- D. Selector de Necesidades (Grid 2x2) -->
-    <section class="py-24 bg-light text-primary fade-up relative z-20">
+    <section class="py-24 bg-white text-primary fade-up relative z-20">
         <div class="container mx-auto px-6 max-w-6xl">
             <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-center mb-16 tracking-tight">¿Qué necesitas resolver hoy?</h2>
-            
-            <div class="grid md:grid-cols-2 gap-8">
-                <!-- Card 1 -->
-                <div class="bg-white p-8 md:p-10 rounded-3xl shadow-sm border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group">
-                    <div class="w-16 h-16 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mb-8 border border-blue-100 group-hover:bg-primary group-hover:text-action group-hover:border-primary transition-colors">
-                        <i data-lucide="filter" class="w-8 h-8"></i>
+
+            <!-- TABS BAR -->
+            <!-- Usamos un div horizontal que en móvil hace scroll, y en escritorio de centra y oculta el scrollbar -->
+            <div class="flex flex-nowrap md:justify-center items-end gap-x-12 md:gap-x-32 px-6 md:px-0 overflow-x-auto border-b border-gray-200 mb-16 pb-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']" role="tablist">
+                <!-- Tab 1 -->
+                <button class="s3-tab-btn active flex flex-col items-center gap-3 pb-4 border-b-[3px] border-blue-600 text-blue-600 transition-colors shrink-0 outline-none" data-tab="tab-vender" role="tab">
+                    <i data-lucide="gem" class="w-8 h-8 md:w-10 md:h-10"></i>
+                    <span class="font-bold text-[15px] md:text-[17px] tracking-tight">Vender Más</span>
+                </button>
+                <!-- Tab 2 -->
+                <button class="s3-tab-btn flex flex-col items-center gap-3 pb-4 border-b-[3px] border-transparent text-gray-500 hover:text-blue-600 transition-colors shrink-0 outline-none" data-tab="tab-finanzas" role="tab">
+                    <i data-lucide="presentation" class="w-8 h-8 md:w-10 md:h-10"></i>
+                    <span class="font-bold text-[15px] md:text-[17px] tracking-tight">Finanzas Claras</span>
+                </button>
+                <!-- Tab 3 -->
+                <button class="s3-tab-btn flex flex-col items-center gap-3 pb-4 border-b-[3px] border-transparent text-gray-500 hover:text-blue-600 transition-colors shrink-0 outline-none" data-tab="tab-operativo" role="tab">
+                    <i data-lucide="clipboard-check" class="w-8 h-8 md:w-10 md:h-10"></i>
+                    <span class="font-bold text-[15px] md:text-[17px] tracking-tight text-center leading-tight">Orden Operativo</span>
+                </button>
+                <!-- Tab 4 -->
+                <button class="s3-tab-btn flex flex-col items-center gap-3 pb-4 border-b-[3px] border-transparent text-gray-500 hover:text-blue-600 transition-colors shrink-0 outline-none" data-tab="tab-desarrollo" role="tab">
+                    <i data-lucide="lightbulb" class="w-8 h-8 md:w-10 md:h-10"></i>
+                    <span class="font-bold text-[15px] md:text-[17px] tracking-tight text-center leading-tight">Desarrollo Único</span>
+                </button>
+            </div>
+
+            <!-- TABS CONTENT AREA -->
+            <div class="relative w-full min-h-[400px]" id="s3-tab-container">
+                
+                <!-- Tab Panel 1: Vender Más -->
+                <div id="tab-vender" class="s3-tab-content active transition-opacity duration-500 opacity-100">
+                    <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+                        <div class="rounded-[2rem] overflow-hidden shadow-2xl relative bg-blue-50/50">
+                            <img src="img/balance_ventas.webp" alt="Vender Más" class="w-full h-auto object-cover aspect-[4/3] md:aspect-[5/4]">
+                        </div>
+                        <div class="flex flex-col">
+                            <div class="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center mb-6 shadow-lg shadow-blue-600/30">
+                                <i data-lucide="gem" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="text-3xl md:text-[2.5rem] font-extrabold text-primary mb-6 leading-[1.15] tracking-tight">Convierte prospectos en clientes leales.</h3>
+                            <p class="text-gray-600 text-lg md:text-xl font-medium leading-relaxed mb-8">Mantén todas tus ventas visibles y estructuradas con nuestro CRM Básico incluido desde el día 1, sin pagar un centavo extra por licencias.</p>
+                            <div class="flex items-center gap-3 text-gray-800 font-bold text-[15px] md:text-base">
+                                <div class="w-6 h-6 rounded-full bg-blue-600 text-white flex items-center justify-center shrink-0">
+                                    <i data-lucide="check" class="w-3.5 h-3.5"></i>
+                                </div>
+                                Monitorea cada interacción automáticamente
+                            </div>
+                        </div>
                     </div>
-                    <h3 class="text-2xl font-extrabold mb-3 group-hover:text-action transition-colors">Vender Más</h3>
-                    <p class="text-gray-600 font-medium text-lg tracking-wide">CRM Básico incluido desde el día 1.</p>
                 </div>
-                <!-- Card 2 -->
-                <div class="bg-white p-8 md:p-10 rounded-3xl shadow-sm border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group">
-                    <div class="w-16 h-16 bg-green-50 text-green-600 rounded-2xl flex items-center justify-center mb-8 border border-green-100 group-hover:bg-primary group-hover:text-action group-hover:border-primary transition-colors">
-                        <i data-lucide="bar-chart-3" class="w-8 h-8"></i>
+
+                <!-- Tab Panel 2: Finanzas Claras -->
+                <div id="tab-finanzas" class="s3-tab-content hidden transition-opacity duration-500 opacity-0 absolute top-0 left-0 w-full">
+                    <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+                        <div class="rounded-[2rem] overflow-hidden shadow-2xl relative group bg-blue-50/50">
+                            <img src="img/mockup-finanzas.png" alt="Finanzas Claras" class="w-full h-auto object-cover aspect-[4/3] md:aspect-[5/4] transition-transform duration-700 group-hover:scale-105">
+                        </div>
+                        <div class="flex flex-col">
+                            <div class="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center mb-6 shadow-lg shadow-blue-600/30">
+                                <i data-lucide="presentation" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="text-3xl md:text-[2.5rem] font-extrabold text-primary mb-6 leading-[1.15] tracking-tight">Números exactos, cuando los necesitas.</h3>
+                            <p class="text-gray-600 text-lg md:text-xl font-medium leading-relaxed mb-8">Construimos tableros que muestran la materialidad financiera y el flujo de efectivo real en tiempo real. Adiós a las hojas de cálculo rotas.</p>
+                            <div class="flex items-center gap-3 text-gray-800 font-bold text-[15px] md:text-base">
+                                <div class="w-6 h-6 rounded-full bg-blue-600 text-white flex items-center justify-center shrink-0">
+                                    <i data-lucide="check" class="w-3.5 h-3.5"></i>
+                                </div>
+                                Reportes en tiempo real y conciliación fiscal
+                            </div>
+                        </div>
                     </div>
-                    <h3 class="text-2xl font-extrabold mb-3 group-hover:text-action transition-colors">Finanzas Claras</h3>
-                    <p class="text-gray-600 font-medium text-lg tracking-wide">Materialidad y Flujo de efectivo.</p>
                 </div>
-                <!-- Card 3 -->
-                <div class="bg-white p-8 md:p-10 rounded-3xl shadow-sm border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group">
-                    <div class="w-16 h-16 bg-yellow-50 text-yellow-600 rounded-2xl flex items-center justify-center mb-8 border border-yellow-100 group-hover:bg-primary group-hover:text-action group-hover:border-primary transition-colors">
-                        <i data-lucide="check-circle-2" class="w-8 h-8"></i>
+
+                <!-- Tab Panel 3: Orden Operativo -->
+                <div id="tab-operativo" class="s3-tab-content hidden transition-opacity duration-500 opacity-0 absolute top-0 left-0 w-full">
+                    <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+                        <div class="rounded-[2rem] overflow-hidden shadow-2xl relative group bg-blue-50/50">
+                            <img src="img/mockup-operaciones.png" alt="Orden Operativo" class="w-full h-auto object-cover aspect-[4/3] md:aspect-[5/4] object-left-top transition-transform duration-700 group-hover:scale-105">
+                        </div>
+                        <div class="flex flex-col">
+                            <div class="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center mb-6 shadow-lg shadow-blue-600/30">
+                                <i data-lucide="clipboard-check" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="text-3xl md:text-[2.5rem] font-extrabold text-primary mb-6 leading-[1.15] tracking-tight">Equipos sincronizados, objetivos logrados.</h3>
+                            <p class="text-gray-600 text-lg md:text-xl font-medium leading-relaxed mb-8">Administra tus recursos, distribuye eficazmente las tareas y gestiona tus proyectos sin perder el control de quién hace qué.</p>
+                            <div class="flex items-center gap-3 text-gray-800 font-bold text-[15px] md:text-base">
+                                <div class="w-6 h-6 rounded-full bg-blue-600 text-white flex items-center justify-center shrink-0">
+                                    <i data-lucide="check" class="w-3.5 h-3.5"></i>
+                                </div>
+                                Gestión eficiente de procesos y entregables
+                            </div>
+                        </div>
                     </div>
-                    <h3 class="text-2xl font-extrabold mb-3 group-hover:text-action transition-colors">Orden Operativo</h3>
-                    <p class="text-gray-600 font-medium text-lg tracking-wide">Gestión de proyectos y tareas.</p>
                 </div>
-                <!-- Card 4 -->
-                <div class="bg-white p-8 md:p-10 rounded-3xl shadow-sm border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group">
-                    <div class="w-16 h-16 bg-purple-50 text-purple-600 rounded-2xl flex items-center justify-center mb-8 border border-purple-100 group-hover:bg-primary group-hover:text-action group-hover:border-primary transition-colors">
-                        <i data-lucide="code-2" class="w-8 h-8"></i>
+
+                <!-- Tab Panel 4: Desarrollo Único -->
+                <div id="tab-desarrollo" class="s3-tab-content hidden transition-opacity duration-500 opacity-0 absolute top-0 left-0 w-full">
+                    <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+                        <div class="rounded-[2rem] overflow-hidden shadow-2xl relative group bg-blue-50/50">
+                            <img src="img/mockup-direccion-general.png" alt="Desarrollo Único" class="w-full h-auto object-cover aspect-[4/3] md:aspect-[5/4] object-top transition-transform duration-700 group-hover:scale-105">
+                        </div>
+                        <div class="flex flex-col">
+                            <div class="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center mb-6 shadow-lg shadow-blue-600/30">
+                                <i data-lucide="lightbulb" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="text-3xl md:text-[2.5rem] font-extrabold text-primary mb-6 leading-[1.15] tracking-tight">Software que se adapta a ti, no al revés.</h3>
+                            <p class="text-gray-600 text-lg md:text-xl font-medium leading-relaxed mb-8">Si los sistemas prefabricados se quedan cortos, nosotros construimos la tecnología exacta que resuelve el cuello de botella más grande de tu empresa.</p>
+                            <div class="flex items-center gap-3 text-gray-800 font-bold text-[15px] md:text-base">
+                                <div class="w-6 h-6 rounded-full bg-blue-600 text-white flex items-center justify-center shrink-0">
+                                    <i data-lucide="check" class="w-3.5 h-3.5"></i>
+                                </div>
+                                Soluciones que escalan orgánicamente a tu ritmo
+                            </div>
+                        </div>
                     </div>
-                    <h3 class="text-2xl font-extrabold mb-3 group-hover:text-action transition-colors">Desarrollo Único</h3>
-                    <p class="text-gray-600 font-medium text-lg tracking-wide">Software que se adapta a ti, no al revés.</p>
                 </div>
+
             </div>
         </div>
     </section>
@@ -346,31 +680,39 @@
             <div class="grid md:grid-cols-2 gap-16 items-center">
                 <!-- Text Content -->
                 <div>
-                    <div class="text-action font-extrabold uppercase tracking-widest text-sm mb-4 flex items-center gap-2">
+                    <div
+                        class="text-action font-extrabold uppercase tracking-widest text-sm mb-4 flex items-center gap-2">
                         <i data-lucide="zap" class="w-4 h-4"></i> El ADN Ongoing
                     </div>
                     <h2 class="text-4xl md:text-5xl font-extrabold mb-6 leading-[1.15] tracking-tight text-white">
                         Otros te venden una licencia y desaparecen. <br>
-                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-action to-blue-400">Nosotros somos tu brazo tecnológico.</span>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-action to-blue-400">Nosotros
+                            somos tu brazo tecnológico.</span>
                     </h2>
-                    
+
                     <div class="space-y-8 mt-12 bg-black/10 p-6 rounded-3xl border border-white/5">
                         <div class="flex gap-5 items-start">
-                            <div class="w-12 h-12 rounded-2xl glass-panel flex items-center justify-center shrink-0 border-action/30">
+                            <div
+                                class="w-12 h-12 rounded-2xl glass-panel flex items-center justify-center shrink-0 border-action/30">
                                 <i data-lucide="users" class="text-action w-6 h-6"></i>
                             </div>
                             <div>
                                 <h4 class="text-lg font-bold mb-1 text-white">Soporte Humano</h4>
-                                <p class="text-secondary text-sm font-medium leading-relaxed">No hables con bots programados para esquivarte. Habla con expertos reales de nuestro equipo dispuestos a involucrarse.</p>
+                                <p class="text-secondary text-sm font-medium leading-relaxed">No hables con bots
+                                    programados para esquivarte. Habla con expertos reales de nuestro equipo dispuestos
+                                    a involucrarse.</p>
                             </div>
                         </div>
                         <div class="flex gap-5 items-start">
-                            <div class="w-12 h-12 rounded-2xl glass-panel flex items-center justify-center shrink-0 border-action/30">
+                            <div
+                                class="w-12 h-12 rounded-2xl glass-panel flex items-center justify-center shrink-0 border-action/30">
                                 <i data-lucide="cpu" class="text-action w-6 h-6"></i>
                             </div>
                             <div>
                                 <h4 class="text-lg font-bold mb-1 text-white">IA Estratégica</h4>
-                                <p class="text-secondary text-sm font-medium leading-relaxed">Automatización inteligente de procesos aburridos mediante agentes IA para que tu equipo se concentre en escalar.</p>
+                                <p class="text-secondary text-sm font-medium leading-relaxed">Automatización inteligente
+                                    de procesos aburridos mediante agentes IA para que tu equipo se concentre en
+                                    escalar.</p>
                             </div>
                         </div>
                     </div>
@@ -378,34 +720,38 @@
 
                 <!-- Visual Nodes Diagram -->
                 <div class="relative h-[400px] flex justify-center items-center">
-                    <svg class="absolute w-[120%] h-[120%] animate-float" viewBox="0 0 500 500" style="animation-duration: 8s;">
-                        <circle cx="250" cy="250" r="100" fill="none" stroke="rgba(0,192,255,0.2)" stroke-width="2" stroke-dasharray="5,5"/>
-                        <circle cx="250" cy="250" r="180" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
-                        
+                    <svg class="absolute w-[120%] h-[120%] animate-float" viewBox="0 0 500 500"
+                        style="animation-duration: 8s;">
+                        <circle cx="250" cy="250" r="100" fill="none" stroke="rgba(0,192,255,0.2)" stroke-width="2"
+                            stroke-dasharray="5,5" />
+                        <circle cx="250" cy="250" r="180" fill="none" stroke="rgba(255,255,255,0.05)"
+                            stroke-width="1" />
+
                         <!-- Center Node -->
-                        <circle cx="250" cy="250" r="40" fill="rgba(0,192,255,0.1)" stroke="#00c0ff" stroke-width="2"/>
+                        <circle cx="250" cy="250" r="40" fill="rgba(0,192,255,0.1)" stroke="#00c0ff" stroke-width="2" />
                         <circle cx="250" cy="250" r="20" fill="#00c0ff">
                             <animate attributeName="r" values="20;25;20" dur="2s" repeatCount="indefinite" />
                         </circle>
-                        
+
                         <!-- Peripheral Nodes -->
                         <!-- Top -->
-                        <line x1="250" y1="250" x2="250" y2="100" stroke="rgba(0,192,255,0.5)" stroke-width="2"/>
-                        <circle cx="250" cy="100" r="20" fill="#fff"/>
-                        <circle cx="250" cy="100" r="8" fill="#001953"/>
-                        
+                        <line x1="250" y1="250" x2="250" y2="100" stroke="rgba(0,192,255,0.5)" stroke-width="2" />
+                        <circle cx="250" cy="100" r="20" fill="#fff" />
+                        <circle cx="250" cy="100" r="8" fill="#001953" />
+
                         <!-- Bottom Right -->
-                        <line x1="250" y1="250" x2="380" y2="320" stroke="rgba(0,192,255,0.5)" stroke-width="2"/>
-                        <circle cx="380" cy="320" r="20" fill="#fff"/>
-                        <circle cx="380" cy="320" r="8" fill="#001953"/>
-                        
+                        <line x1="250" y1="250" x2="380" y2="320" stroke="rgba(0,192,255,0.5)" stroke-width="2" />
+                        <circle cx="380" cy="320" r="20" fill="#fff" />
+                        <circle cx="380" cy="320" r="8" fill="#001953" />
+
                         <!-- Bottom Left -->
-                        <line x1="250" y1="250" x2="120" y2="320" stroke="rgba(0,192,255,0.5)" stroke-width="2"/>
-                        <circle cx="120" cy="320" r="20" fill="#fff"/>
-                        <circle cx="120" cy="320" r="8" fill="#001953"/>
+                        <line x1="250" y1="250" x2="120" y2="320" stroke="rgba(0,192,255,0.5)" stroke-width="2" />
+                        <circle cx="120" cy="320" r="20" fill="#fff" />
+                        <circle cx="120" cy="320" r="8" fill="#001953" />
                     </svg>
-                    
-                    <div class="glass-panel absolute bg-primary/80 border-action/50 px-8 py-4 rounded-full text-base font-extrabold shadow-[0_0_30px_rgba(0,192,255,0.2)] flex items-center gap-3">
+
+                    <div
+                        class="glass-panel absolute bg-primary/80 border-action/50 px-8 py-4 rounded-full text-base font-extrabold shadow-[0_0_30px_rgba(0,192,255,0.2)] flex items-center gap-3">
                         <i data-lucide="network" class="text-action"></i> Cluster Tecnológico + Humano
                     </div>
                 </div>
@@ -416,53 +762,70 @@
     <!-- F. Sección "Silos" (SEO & Diagnóstico) -->
     <section class="py-24 fade-up">
         <div class="container mx-auto px-6 max-w-6xl">
-            <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-center mb-16 tracking-tight">Diagnóstico y Soluciones</h2>
-            
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-center mb-16 tracking-tight">Diagnóstico y
+                Soluciones</h2>
+
             <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 <!-- Comercial -->
-                <div class="glass-panel p-8 rounded-3xl flex flex-col h-full hover:bg-white/10 transition-colors group border-white/5">
-                    <div class="w-12 h-12 rounded-xl bg-orange-500/10 flex items-center justify-center mb-6 border border-orange-500/20 text-orange-400 group-hover:bg-orange-500 group-hover:text-white transition-all">
+                <div
+                    class="glass-panel p-8 rounded-3xl flex flex-col h-full hover:bg-white/10 transition-colors group border-white/5">
+                    <div
+                        class="w-12 h-12 rounded-xl bg-orange-500/10 flex items-center justify-center mb-6 border border-orange-500/20 text-orange-400 group-hover:bg-orange-500 group-hover:text-white transition-all">
                         <i data-lucide="trending-up" class="w-6 h-6"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-3 text-white">Comercial</h3>
-                    <p class="text-secondary text-sm mb-8 flex-grow font-medium leading-relaxed">Deja de perder ventas en post-its y hojas de cálculo desactualizadas.</p>
-                    <a href="#" class="text-action text-sm font-bold flex items-center gap-2 hover:gap-3 transition-all mt-auto border-t border-white/10 pt-4">
+                    <p class="text-secondary text-sm mb-8 flex-grow font-medium leading-relaxed">Deja de perder ventas
+                        en post-its y hojas de cálculo desactualizadas.</p>
+                    <a href="#"
+                        class="text-action text-sm font-bold flex items-center gap-2 hover:gap-3 transition-all mt-auto border-t border-white/10 pt-4">
                         Ver CRM <i data-lucide="arrow-right" class="w-4 h-4"></i>
                     </a>
                 </div>
-                
+
                 <!-- Financiero -->
-                <div class="glass-panel p-8 rounded-3xl flex flex-col h-full hover:bg-white/10 transition-colors group border-white/5">
-                    <div class="w-12 h-12 rounded-xl bg-green-500/10 flex items-center justify-center mb-6 border border-green-500/20 text-green-400 group-hover:bg-green-500 group-hover:text-white transition-all">
+                <div
+                    class="glass-panel p-8 rounded-3xl flex flex-col h-full hover:bg-white/10 transition-colors group border-white/5">
+                    <div
+                        class="w-12 h-12 rounded-xl bg-green-500/10 flex items-center justify-center mb-6 border border-green-500/20 text-green-400 group-hover:bg-green-500 group-hover:text-white transition-all">
                         <i data-lucide="pie-chart" class="w-6 h-6"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-3 text-white">Financiero</h3>
-                    <p class="text-secondary text-sm mb-8 flex-grow font-medium leading-relaxed">Cumple con el SAT y visualiza tu dinero real en tiempo real sin retrasos.</p>
-                    <a href="#" class="text-action text-sm font-bold flex items-center gap-2 hover:gap-3 transition-all mt-auto border-t border-white/10 pt-4">
+                    <p class="text-secondary text-sm mb-8 flex-grow font-medium leading-relaxed">Cumple con el SAT y
+                        visualiza tu dinero real en tiempo real sin retrasos.</p>
+                    <a href="#"
+                        class="text-action text-sm font-bold flex items-center gap-2 hover:gap-3 transition-all mt-auto border-t border-white/10 pt-4">
                         Ver Finanzas <i data-lucide="arrow-right" class="w-4 h-4"></i>
                     </a>
                 </div>
 
                 <!-- Operativo -->
-                <div class="glass-panel p-8 rounded-3xl flex flex-col h-full hover:bg-white/10 transition-colors group border-white/5">
-                    <div class="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center mb-6 border border-blue-500/20 text-blue-400 group-hover:bg-blue-500 group-hover:text-white transition-all">
+                <div
+                    class="glass-panel p-8 rounded-3xl flex flex-col h-full hover:bg-white/10 transition-colors group border-white/5">
+                    <div
+                        class="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center mb-6 border border-blue-500/20 text-blue-400 group-hover:bg-blue-500 group-hover:text-white transition-all">
                         <i data-lucide="layers" class="w-6 h-6"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-3 text-white">Operativo</h3>
-                    <p class="text-secondary text-sm mb-8 flex-grow font-medium leading-relaxed">Del caos a la ejecución. Asigna, mide y mejora sin fricción entre áreas.</p>
-                    <a href="#" class="text-action text-sm font-bold flex items-center gap-2 hover:gap-3 transition-all mt-auto border-t border-white/10 pt-4">
+                    <p class="text-secondary text-sm mb-8 flex-grow font-medium leading-relaxed">Del caos a la
+                        ejecución. Asigna, mide y mejora sin fricción entre áreas.</p>
+                    <a href="#"
+                        class="text-action text-sm font-bold flex items-center gap-2 hover:gap-3 transition-all mt-auto border-t border-white/10 pt-4">
                         Ver Proyectos <i data-lucide="arrow-right" class="w-4 h-4"></i>
                     </a>
                 </div>
 
                 <!-- Custom -->
-                <div class="glass-panel p-8 rounded-3xl flex flex-col h-full hover:bg-white/10 transition-colors group border-white/5">
-                    <div class="w-12 h-12 rounded-xl bg-purple-500/10 flex items-center justify-center mb-6 border border-purple-500/20 text-purple-400 group-hover:bg-purple-500 group-hover:text-white transition-all">
+                <div
+                    class="glass-panel p-8 rounded-3xl flex flex-col h-full hover:bg-white/10 transition-colors group border-white/5">
+                    <div
+                        class="w-12 h-12 rounded-xl bg-purple-500/10 flex items-center justify-center mb-6 border border-purple-500/20 text-purple-400 group-hover:bg-purple-500 group-hover:text-white transition-all">
                         <i data-lucide="smartphone" class="w-6 h-6"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-3 text-white">Custom</h3>
-                    <p class="text-secondary text-sm mb-8 flex-grow font-medium leading-relaxed">Tu negocio en tu bolsillo. Desarrollo de App nativa y software a la medida.</p>
-                    <a href="#" class="text-action text-sm font-bold flex items-center gap-2 hover:gap-3 transition-all mt-auto border-t border-white/10 pt-4">
+                    <p class="text-secondary text-sm mb-8 flex-grow font-medium leading-relaxed">Tu negocio en tu
+                        bolsillo. Desarrollo de App nativa y software a la medida.</p>
+                    <a href="#"
+                        class="text-action text-sm font-bold flex items-center gap-2 hover:gap-3 transition-all mt-auto border-t border-white/10 pt-4">
                         Ver Desarrollo <i data-lucide="arrow-right" class="w-4 h-4"></i>
                     </a>
                 </div>
@@ -473,30 +836,35 @@
     <!-- G. Footer de Confianza -->
     <footer class="border-t border-white/10 pt-20 pb-8 bg-black/40 fade-up mt-12 relative overflow-hidden">
         <!-- Footer Gradient glow -->
-        <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-action/5 rounded-t-full blur-[100px] -z-10 pointer-events-none"></div>
-        
+        <div
+            class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-action/5 rounded-t-full blur-[100px] -z-10 pointer-events-none">
+        </div>
+
         <div class="container mx-auto px-6 max-w-6xl relative z-10">
             <!-- Logos Confianza -->
             <div class="mb-20">
-                <p class="text-center text-secondary text-xs font-bold mb-8 uppercase tracking-[0.2em]">Empresas que confían en nosotros</p>
-                <div class="flex flex-wrap justify-center items-center gap-12 sm:gap-16 opacity-40 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-700">
+                <p class="text-center text-secondary text-xs font-bold mb-8 uppercase tracking-[0.2em]">Empresas que
+                    confían en nosotros</p>
+                <div
+                    class="flex flex-wrap justify-center items-center gap-12 sm:gap-16 opacity-40 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-700">
                     <span class="text-2xl font-extrabold text-white tracking-widest">UNIVA</span>
-                    <span class="text-xl font-extrabold text-white tracking-widest italic flex items-center gap-1"><i data-lucide="activity" class="w-6 h-6 text-action"></i> SPORTS WORLD</span>
+                    <span class="text-xl font-extrabold text-white tracking-widest italic flex items-center gap-1"><i
+                            data-lucide="activity" class="w-6 h-6 text-action"></i> SPORTS WORLD</span>
                 </div>
             </div>
-            
+
             <hr class="border-white/10 mb-16">
 
             <!-- Footer Links -->
             <div class="grid grid-cols-2 md:grid-cols-12 gap-10 md:gap-8 mb-16 text-sm">
                 <div class="col-span-2 md:col-span-4 pr-0 md:pr-12">
-                    <div class="flex items-center gap-2 mb-6">
-                        <div class="w-8 h-8 rounded bg-action flex items-center justify-center text-primary font-bold text-xl">O</div>
-                        <span class="text-2xl font-extrabold tracking-tight text-white">Ongoing</span>
-                    </div>
-                    <p class="text-secondary leading-relaxed font-medium">Tu brazo tecnológico para escalar sin límites. Integra finanzas, operaciones y CRM en un solo lugar impulsado por IA.</p>
+                    <a href="#" class="inline-block mb-6 transition-opacity hover:opacity-80 outline-none">
+                        <img src="img/ongoing-logo.png" alt="Ongoing Logo" class="h-9 md:h-10 w-auto">
+                    </a>
+                    <p class="text-secondary leading-relaxed font-medium">Tu brazo tecnológico para escalar sin límites.
+                        Integra finanzas, operaciones y CRM en un solo lugar impulsado por IA.</p>
                 </div>
-                
+
                 <div class="col-span-1 md:col-span-2 md:col-start-6">
                     <h4 class="font-extrabold mb-5 text-white uppercase tracking-wider text-xs">Soluciones</h4>
                     <ul class="space-y-4 text-secondary font-medium">
@@ -506,23 +874,29 @@
                         <li><a href="#" class="hover:text-action transition-colors">Software Custom</a></li>
                     </ul>
                 </div>
-                
+
                 <div class="col-span-1 md:col-span-2">
                     <h4 class="font-extrabold mb-5 text-white uppercase tracking-wider text-xs">Recursos</h4>
                     <ul class="space-y-4 text-secondary font-medium">
                         <li><a href="#" class="hover:text-action transition-colors">Blog</a></li>
                         <li><a href="#" class="hover:text-action transition-colors">Casos de Éxito</a></li>
-                        <li><a href="#" class="hover:text-action transition-colors flex items-center gap-2">KAI AI <span class="bg-action/20 text-action text-[10px] px-2 py-0.5 rounded border border-action/30">Nuevo</span></a></li>
+                        <li><a href="#" class="hover:text-action transition-colors flex items-center gap-2">KAI AI <span
+                                    class="bg-action/20 text-action text-[10px] px-2 py-0.5 rounded border border-action/30">Nuevo</span></a>
+                        </li>
                         <li><a href="#" class="hover:text-action transition-colors">Centro de Ayuda</a></li>
                     </ul>
                 </div>
-                
+
                 <div class="col-span-2 md:col-span-3">
                     <h4 class="font-extrabold mb-5 text-white uppercase tracking-wider text-xs">Contacto & Legal</h4>
                     <ul class="space-y-4 text-secondary font-medium">
-                        <li><a href="#" class="hover:text-action transition-colors flex items-center gap-2"><i data-lucide="shield" class="w-4 h-4"></i> Aviso de Privacidad</a></li>
-                        <li><a href="#" class="hover:text-action transition-colors flex items-center gap-2"><i data-lucide="file-text" class="w-4 h-4"></i> Términos y Condiciones</a></li>
-                        <li><a href="mailto:hola@ongoing.mx" class="hover:text-action transition-colors flex items-center gap-2 mt-6"><i data-lucide="mail" class="w-4 h-4"></i> hola@ongoing.mx</a></li>
+                        <li><a href="#" class="hover:text-action transition-colors flex items-center gap-2"><i
+                                    data-lucide="shield" class="w-4 h-4"></i> Aviso de Privacidad</a></li>
+                        <li><a href="#" class="hover:text-action transition-colors flex items-center gap-2"><i
+                                    data-lucide="file-text" class="w-4 h-4"></i> Términos y Condiciones</a></li>
+                        <li><a href="mailto:hola@ongoing.mx"
+                                class="hover:text-action transition-colors flex items-center gap-2 mt-6"><i
+                                    data-lucide="mail" class="w-4 h-4"></i> hola@ongoing.mx</a></li>
                     </ul>
                 </div>
             </div>
@@ -537,4 +911,5 @@
     <!-- Scripts -->
     <script src="js/main.js"></script>
 </body>
+
 </html>
