@@ -36,6 +36,9 @@
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -52,41 +55,41 @@
 
             <!-- Menú central (Desktop) -->
             <nav class="hidden lg:flex gap-6 xl:gap-8 items-center justify-center text-center">
-                <a href="#" class="flex flex-col hover:text-action transition-colors mt-1 group">
+                <div class="flex flex-col hover:text-action transition-colors mt-1 group cursor-default">
                     <span
                         class="font-bold text-[15px] leading-tight text-white mb-0.5 group-hover:text-action transition-colors">Comercial</span>
                     <span class="text-[13px] font-medium text-white/90 group-hover:text-action/90 transition-colors">CRM
                         & Clientes</span>
-                </a>
-                <a href="#" class="flex flex-col hover:text-action transition-colors mt-1 group">
+                </div>
+                <div class="flex flex-col hover:text-action transition-colors mt-1 group cursor-default">
                     <span
                         class="font-bold text-[15px] leading-tight text-white mb-0.5 group-hover:text-action transition-colors">Financiero</span>
                     <span
                         class="text-[13px] font-medium text-white/90 group-hover:text-action/90 transition-colors">Facturación
                         & Finanzas</span>
-                </a>
-                <a href="#" class="flex flex-col hover:text-action transition-colors mt-1 group">
+                </div>
+                <div class="flex flex-col hover:text-action transition-colors mt-1 group cursor-default">
                     <span
                         class="font-bold text-[15px] leading-tight text-white mb-0.5 group-hover:text-action transition-colors">Operativo</span>
                     <span
                         class="text-[13px] font-medium text-white/90 group-hover:text-action/90 transition-colors">Tareas
                         & Proyectos</span>
-                </a>
-                <a href="#" class="flex flex-col hover:text-action transition-colors mt-1 group">
+                </div>
+                <div class="flex flex-col hover:text-action transition-colors mt-1 group cursor-default">
                     <span
                         class="font-bold text-[15px] leading-tight text-white mb-0.5 group-hover:text-action transition-colors">A
                         la medida</span>
                     <span class="text-[13px] font-medium text-white/90 group-hover:text-action/90 transition-colors">&
                         App Móvil</span>
-                </a>
+                </div>
             </nav>
 
             <!-- Derecha CTAs -->
             <div class="hidden lg:flex items-center gap-4">
-                <a href="#" class="text-sm font-medium hover:text-action transition-colors">Ingresar</a>
-                <a href="#"
+                <!-- <a href="#" class="text-sm font-medium hover:text-action transition-colors">Ingresar</a> -->
+                <!-- <a href="#"
                     class="bg-action text-primary font-bold py-2 px-5 rounded-full hover:bg-opacity-90 transition-all">Empieza
-                    Gratis</a>
+                    Gratis</a> -->
             </div>
 
             <!-- Mobile Menu Togle -->
@@ -97,27 +100,27 @@
         <!-- Mobile Nav -->
         <div id="mobile-menu"
             class="hidden lg:hidden glass-panel absolute top-full left-0 w-full flex-col px-6 py-4 gap-4 overflow-y-auto max-h-[85vh]">
-            <a href="#" class="flex flex-col hover:text-action transition-colors group px-2">
+            <div class="flex flex-col hover:text-action transition-colors group px-2 cursor-default">
                 <span class="font-bold text-base text-white group-hover:text-action">Comercial</span>
                 <span class="text-sm font-medium text-white/80 group-hover:text-action/90">CRM & Clientes</span>
-            </a>
-            <a href="#" class="flex flex-col hover:text-action transition-colors group px-2">
+            </div>
+            <div class="flex flex-col hover:text-action transition-colors group px-2 cursor-default">
                 <span class="font-bold text-base text-white group-hover:text-action">Financiero</span>
                 <span class="text-sm font-medium text-white/80 group-hover:text-action/90">Facturación & Finanzas</span>
-            </a>
-            <a href="#" class="flex flex-col hover:text-action transition-colors group px-2">
+            </div>
+            <div class="flex flex-col hover:text-action transition-colors group px-2 cursor-default">
                 <span class="font-bold text-base text-white group-hover:text-action">Operativo</span>
                 <span class="text-sm font-medium text-white/80 group-hover:text-action/90">Tareas & Proyectos</span>
-            </a>
-            <a href="#" class="flex flex-col hover:text-action transition-colors group px-2">
+            </div>
+            <div class="flex flex-col hover:text-action transition-colors group px-2 cursor-default">
                 <span class="font-bold text-base text-white group-hover:text-action">A la medida</span>
                 <span class="text-sm font-medium text-white/80 group-hover:text-action/90">& App Móvil</span>
-            </a>
+            </div>
             <hr class="border-white/10">
-            <a href="#" class="block hover:text-action transition-colors font-medium text-center">Ingresar</a>
-            <a href="#"
+            <!-- <a href="#" class="block hover:text-action transition-colors font-medium text-center">Ingresar</a> -->
+            <!-- <a href="#"
                 class="block bg-action text-primary font-bold py-3 px-4 rounded-full text-center mt-2 text-sm">Empieza
-                Gratis</a>
+                Gratis</a> -->
         </div>
     </header>
 
@@ -143,6 +146,7 @@
                     de IA que te da respuestas exactas sobre tu negocio al instante.
                 </p>
 
+                <!-- Botones Hero Ocultos
                 <div
                     class="flex flex-col sm:flex-row gap-4 mt-4 items-center sm:items-start max-w-md sm:max-w-none w-full">
                     <div class="flex flex-col gap-2 w-full sm:w-auto">
@@ -159,6 +163,7 @@
                         </a>
                     </div>
                 </div>
+                -->
             </div>
 
             <!-- Visual Derecha -->
@@ -565,7 +570,7 @@
                 </button>
                 <!-- Tab 2 -->
                 <button class="s3-tab-btn flex flex-col items-center gap-3 pb-4 border-b-[3px] border-transparent text-gray-500 hover:text-blue-600 transition-colors shrink-0 outline-none" data-tab="tab-finanzas" role="tab">
-                    <i data-lucide="coins" class="w-8 h-8 md:w-10 md:h-10"></i>
+                    <i class="fa-solid fa-money-bill-trend-up text-[32px] md:text-[40px]"></i>
                     <span class="font-bold text-[15px] md:text-[17px] tracking-tight">Finanzas Claras</span>
                 </button>
                 <!-- Tab 3 -->
@@ -586,8 +591,8 @@
                 <!-- Tab Panel 1: Vender Más -->
                 <div id="tab-vender" class="s3-tab-content active transition-opacity duration-500 opacity-100">
                     <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
-                        <div class="rounded-[2rem] overflow-hidden shadow-2xl relative bg-blue-50/50">
-                            <img src="img/balance_ventas.webp" alt="Vender Más" class="w-full h-auto object-cover aspect-[4/3] md:aspect-[5/4]">
+                        <div class="rounded-[2rem] overflow-hidden shadow-2xl relative group bg-blue-50/50">
+                            <img src="img/img_section3_crm.png" alt="Vender Más" class="w-full h-auto object-cover aspect-[4/3] md:aspect-[5/4] transition-transform duration-700 group-hover:scale-105">
                         </div>
                         <div class="flex flex-col">
                             <div class="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center mb-6 shadow-lg shadow-blue-600/30">
@@ -609,11 +614,11 @@
                 <div id="tab-finanzas" class="s3-tab-content hidden transition-opacity duration-500 opacity-0 absolute top-0 left-0 w-full">
                     <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
                         <div class="rounded-[2rem] overflow-hidden shadow-2xl relative group bg-blue-50/50">
-                            <img src="img/mockup-finanzas.png" alt="Finanzas Claras" class="w-full h-auto object-cover aspect-[4/3] md:aspect-[5/4] transition-transform duration-700 group-hover:scale-105">
+                            <img src="img/img_section3_finanzas.png" alt="Finanzas Claras" class="w-full h-auto object-cover aspect-[4/3] md:aspect-[5/4] transition-transform duration-700 group-hover:scale-105">
                         </div>
                         <div class="flex flex-col">
                             <div class="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center mb-6 shadow-lg shadow-blue-600/30">
-                                <i data-lucide="coins" class="w-6 h-6"></i>
+                                <i class="fa-solid fa-money-bill-trend-up text-2xl"></i>
                             </div>
                             <h3 class="text-3xl md:text-[2.5rem] font-extrabold text-primary mb-6 leading-[1.15] tracking-tight">Números exactos, cuando los necesitas.</h3>
                             <p class="text-gray-600 text-lg md:text-xl font-medium leading-relaxed mb-8">Construimos tableros que muestran la materialidad financiera y el flujo de efectivo real en tiempo real. Adiós a las hojas de cálculo rotas.</p>
@@ -653,7 +658,7 @@
                 <div id="tab-desarrollo" class="s3-tab-content hidden transition-opacity duration-500 opacity-0 absolute top-0 left-0 w-full">
                     <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
                         <div class="rounded-[2rem] overflow-hidden shadow-2xl relative group bg-blue-50/50">
-                            <img src="img/mockup-direccion-general.png" alt="Desarrollo Único" class="w-full h-auto object-cover aspect-[4/3] md:aspect-[5/4] object-top transition-transform duration-700 group-hover:scale-105">
+                            <img src="img/imgDesarrollo_unico.png" alt="Desarrollo Único" class="w-full h-auto object-cover aspect-[4/3] md:aspect-[5/4] object-top transition-transform duration-700 group-hover:scale-105">
                         </div>
                         <div class="flex flex-col">
                             <div class="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center mb-6 shadow-lg shadow-blue-600/30">
@@ -778,7 +783,7 @@
                     <p class="text-secondary text-sm mb-8 flex-grow font-medium leading-relaxed">Deja de perder ventas
                         en post-its y hojas de cálculo desactualizadas.</p>
                     <a href="#"
-                        class="text-action text-sm font-bold flex items-center gap-2 hover:gap-3 transition-all mt-auto border-t border-white/10 pt-4">
+                        class="hidden text-action text-sm font-bold flex items-center gap-2 hover:gap-3 transition-all mt-auto border-t border-white/10 pt-4">
                         Ver CRM <i data-lucide="arrow-right" class="w-4 h-4"></i>
                     </a>
                 </div>
@@ -794,7 +799,7 @@
                     <p class="text-secondary text-sm mb-8 flex-grow font-medium leading-relaxed">Cumple con el SAT y
                         visualiza tu dinero real en tiempo real sin retrasos.</p>
                     <a href="#"
-                        class="text-action text-sm font-bold flex items-center gap-2 hover:gap-3 transition-all mt-auto border-t border-white/10 pt-4">
+                        class="hidden text-action text-sm font-bold flex items-center gap-2 hover:gap-3 transition-all mt-auto border-t border-white/10 pt-4">
                         Ver Finanzas <i data-lucide="arrow-right" class="w-4 h-4"></i>
                     </a>
                 </div>
@@ -810,7 +815,7 @@
                     <p class="text-secondary text-sm mb-8 flex-grow font-medium leading-relaxed">Del caos a la
                         ejecución. Asigna, mide y mejora sin fricción entre áreas.</p>
                     <a href="#"
-                        class="text-action text-sm font-bold flex items-center gap-2 hover:gap-3 transition-all mt-auto border-t border-white/10 pt-4">
+                        class="hidden text-action text-sm font-bold flex items-center gap-2 hover:gap-3 transition-all mt-auto border-t border-white/10 pt-4">
                         Ver Proyectos <i data-lucide="arrow-right" class="w-4 h-4"></i>
                     </a>
                 </div>
@@ -826,7 +831,7 @@
                     <p class="text-secondary text-sm mb-8 flex-grow font-medium leading-relaxed">Tu negocio en tu
                         bolsillo. Desarrollo de App nativa y software a la medida.</p>
                     <a href="#"
-                        class="text-action text-sm font-bold flex items-center gap-2 hover:gap-3 transition-all mt-auto border-t border-white/10 pt-4">
+                        class="hidden text-action text-sm font-bold flex items-center gap-2 hover:gap-3 transition-all mt-auto border-t border-white/10 pt-4">
                         Ver Desarrollo <i data-lucide="arrow-right" class="w-4 h-4"></i>
                     </a>
                 </div>
@@ -872,42 +877,41 @@
                 <div class="col-span-1 md:col-span-2 md:col-start-6">
                     <h4 class="font-extrabold mb-5 text-white uppercase tracking-wider text-xs">Soluciones</h4>
                     <ul class="space-y-4 text-secondary font-medium">
-                        <li><a href="#" class="hover:text-action transition-colors">CRM Básico</a></li>
-                        <li><a href="#" class="hover:text-action transition-colors">Finanzas y SAT</a></li>
-                        <li><a href="#" class="hover:text-action transition-colors">Gestión Operativa</a></li>
-                        <li><a href="#" class="hover:text-action transition-colors">Software Custom</a></li>
+                        <li><span class="hover:text-action transition-colors">CRM Básico</span></li>
+                        <li><span class="hover:text-action transition-colors">Finanzas y SAT</span></li>
+                        <li><span class="hover:text-action transition-colors">Gestión Operativa</span></li>
+                        <li><span class="hover:text-action transition-colors">Software Custom</span></li>
                     </ul>
                 </div>
 
                 <div class="col-span-1 md:col-span-2">
                     <h4 class="font-extrabold mb-5 text-white uppercase tracking-wider text-xs">Recursos</h4>
                     <ul class="space-y-4 text-secondary font-medium">
-                        <li><a href="#" class="hover:text-action transition-colors">Blog</a></li>
-                        <li><a href="#" class="hover:text-action transition-colors">Casos de Éxito</a></li>
-                        <li><a href="#" class="hover:text-action transition-colors flex items-center gap-2">KAI AI <span
-                                    class="bg-action/20 text-action text-[10px] px-2 py-0.5 rounded border border-action/30">Nuevo</span></a>
+                        <li><span class="hover:text-action transition-colors">Blog</span></li>
+                        <li><span class="hover:text-action transition-colors">Casos de Éxito</span></li>
+                        <li><span class="hover:text-action transition-colors flex items-center gap-2">KAI AI <span
+                                    class="bg-action/20 text-action text-[10px] px-2 py-0.5 rounded border border-action/30">Nuevo</span></span>
                         </li>
-                        <li><a href="#" class="hover:text-action transition-colors">Centro de Ayuda</a></li>
+                        <li><span class="hover:text-action transition-colors">Centro de Ayuda</span></li>
                     </ul>
                 </div>
 
                 <div class="col-span-2 md:col-span-3">
                     <h4 class="font-extrabold mb-5 text-white uppercase tracking-wider text-xs">Contacto & Legal</h4>
                     <ul class="space-y-4 text-secondary font-medium">
-                        <li><a href="#" class="hover:text-action transition-colors flex items-center gap-2"><i
-                                    data-lucide="shield" class="w-4 h-4"></i> Aviso de Privacidad</a></li>
-                        <li><a href="#" class="hover:text-action transition-colors flex items-center gap-2"><i
-                                    data-lucide="file-text" class="w-4 h-4"></i> Términos y Condiciones</a></li>
-                        <li><a href="mailto:hola@ongoing.mx"
-                                class="hover:text-action transition-colors flex items-center gap-2 mt-6"><i
-                                    data-lucide="mail" class="w-4 h-4"></i> hola@ongoing.mx</a></li>
+                        <li><span class="hover:text-action transition-colors flex items-center gap-2"><i
+                                    data-lucide="shield" class="w-4 h-4"></i> Aviso de Privacidad</span></li>
+                        <li><span class="hover:text-action transition-colors flex items-center gap-2"><i
+                                    data-lucide="file-text" class="w-4 h-4"></i> Términos y Condiciones</span></li>
+                        <li><span class="hover:text-action transition-colors flex items-center gap-2 mt-6"><i
+                                    data-lucide="mail" class="w-4 h-4"></i> hola@ongoing.mx</span></li>
                     </ul>
                 </div>
             </div>
 
             <!-- Copyright -->
             <div class="text-center text-xs text-gray-500 pt-8 border-t border-white/10 font-medium">
-                © 2026 Ongoing. Realizado con IA, diseñado para humanos.
+                © 2026 Ongoing
             </div>
         </div>
     </footer>
