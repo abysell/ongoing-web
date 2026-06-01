@@ -64,3 +64,40 @@ body {
 .animate-float {
     animation: float 6s ease-in-out infinite;
 }
+
+/* Hero Interactive App Panels */
+.hero-panel {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+}
+.hero-panel.active {
+    display: flex;
+    opacity: 1;
+}
+
+.hero-tab-btn {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.hero-tab-btn.active {
+    background-color: rgba(0, 192, 255, 0.2);
+    border-color: rgba(0, 192, 255, 0.4);
+    color: #ffffff;
+    box-shadow: 0 0 15px rgba(0, 192, 255, 0.2);
+}
+
+/* Drag and Drop simulation styles */
+.drag-over {
+    border-color: rgba(0, 192, 255, 0.6) !important;
+    background-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* CTA pulse & glow effects */
+.glow-cta {
+    box-shadow: 0 0 20px rgba(0, 192, 255, 0.4);
+    transition: all 0.3s ease;
+}
+.glow-cta:hover {
+    box-shadow: 0 0 30px rgba(0, 192, 255, 0.7);
+    transform: translateY(-2px);
+}

@@ -210,3 +210,92 @@ if (contactForm) {
         }, 4000);
     });
 }
+
+// 6. Hero Interactive App Logic
+const heroBtnCrm = document.getElementById('hero-btn-crm');
+const heroBtnProyectos = document.getElementById('hero-btn-proyectos');
+const heroPanelCrm = document.getElementById('hero-panel-crm');
+const heroPanelProyectos = document.getElementById('hero-panel-proyectos');
+
+if (heroBtnCrm && heroBtnProyectos && heroPanelCrm && heroPanelProyectos) {
+    heroBtnCrm.addEventListener('click', () => {
+        // Toggle Buttons
+        heroBtnCrm.classList.add('active', 'text-white', 'bg-action/20', 'border-action/30');
+        heroBtnCrm.classList.remove('text-secondary', 'border-transparent');
+        
+        heroBtnProyectos.classList.remove('active', 'text-white', 'bg-action/20', 'border-action/30');
+        heroBtnProyectos.classList.add('text-secondary', 'border-transparent');
+        
+        // Toggle Panels
+        heroPanelProyectos.classList.add('hidden');
+        heroPanelProyectos.classList.remove('active');
+        heroPanelProyectos.style.opacity = '0';
+        
+        heroPanelCrm.classList.remove('hidden');
+        heroPanelCrm.classList.add('active');
+        setTimeout(() => {
+            heroPanelCrm.style.opacity = '1';
+        }, 30);
+    });
+
+    heroBtnProyectos.addEventListener('click', () => {
+        // Toggle Buttons
+        heroBtnProyectos.classList.add('active', 'text-white', 'bg-action/20', 'border-action/30');
+        heroBtnProyectos.classList.remove('text-secondary', 'border-transparent');
+        
+        heroBtnCrm.classList.remove('active', 'text-white', 'bg-action/20', 'border-action/30');
+        heroBtnCrm.classList.add('text-secondary', 'border-transparent');
+        
+        // Toggle Panels
+        heroPanelCrm.classList.add('hidden');
+        heroPanelCrm.classList.remove('active');
+        heroPanelCrm.style.opacity = '0';
+        
+        heroPanelProyectos.classList.remove('hidden');
+        heroPanelProyectos.classList.add('active');
+        setTimeout(() => {
+            heroPanelProyectos.style.opacity = '1';
+        }, 30);
+    });
+}
+
+// 7. Drag & Drop Simulation handlers (Global scope)
+window.allowDrop = function(ev) {
+    ev.preventDefault();
+    const col = ev.target.closest('.bg-white\\/5');
+    if (col) {
+        col.classList.add('drag-over');
+    }
+};
+
+window.dragCard = function(ev) {
+    ev.dataTransfer.setData("text", ev.target.id);
+};
+
+window.dragLeave = function(ev) {
+    const col = ev.target.closest('.bg-white\\/5');
+    if (col) {
+        col.classList.remove('drag-over');
+    }
+};
+
+window.dropCard = function(ev, colId) {
+    ev.preventDefault();
+    const data = ev.dataTransfer.getData("text");
+    const card = document.getElementById(data);
+    const col = ev.currentTarget;
+    if (col && card) {
+        col.classList.remove('drag-over');
+        col.appendChild(card);
+    }
+};
+
+// Bind dragleave programmatically to clean up styling robustly
+document.addEventListener('DOMContentLoaded', () => {
+    const columns = document.querySelectorAll('[ondrop]');
+    columns.forEach(col => {
+        col.addEventListener('dragleave', (ev) => {
+            col.classList.remove('drag-over');
+        });
+    });
+});
