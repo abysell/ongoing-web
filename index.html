@@ -53,74 +53,12 @@
                 <img src="img/ongoing-logo.png" alt="Ongoing Logo" class="h-8 md:h-[38px] w-auto">
             </a>
 
-            <!-- Menú central (Desktop) -->
-            <nav class="hidden lg:flex gap-6 xl:gap-8 items-center justify-center text-center">
-                <div class="flex flex-col hover:text-action transition-colors mt-1 group cursor-default">
-                    <span
-                        class="font-bold text-[15px] leading-tight text-white mb-0.5 group-hover:text-action transition-colors">Comercial</span>
-                    <span class="text-[13px] font-medium text-white/90 group-hover:text-action/90 transition-colors">CRM
-                        & Clientes</span>
-                </div>
-                <div class="flex flex-col hover:text-action transition-colors mt-1 group cursor-default">
-                    <span
-                        class="font-bold text-[15px] leading-tight text-white mb-0.5 group-hover:text-action transition-colors">Financiero</span>
-                    <span
-                        class="text-[13px] font-medium text-white/90 group-hover:text-action/90 transition-colors">Facturación
-                        & Finanzas</span>
-                </div>
-                <div class="flex flex-col hover:text-action transition-colors mt-1 group cursor-default">
-                    <span
-                        class="font-bold text-[15px] leading-tight text-white mb-0.5 group-hover:text-action transition-colors">Operativo</span>
-                    <span
-                        class="text-[13px] font-medium text-white/90 group-hover:text-action/90 transition-colors">Tareas
-                        & Proyectos</span>
-                </div>
-                <div class="flex flex-col hover:text-action transition-colors mt-1 group cursor-default">
-                    <span
-                        class="font-bold text-[15px] leading-tight text-white mb-0.5 group-hover:text-action transition-colors">A
-                        la medida</span>
-                    <span class="text-[13px] font-medium text-white/90 group-hover:text-action/90 transition-colors">&
-                        App Móvil</span>
-                </div>
-            </nav>
-
-            <!-- Derecha CTAs -->
-            <div class="hidden lg:flex items-center gap-4">
-                <!-- <a href="#" class="text-sm font-medium hover:text-action transition-colors">Ingresar</a> -->
-                <!-- <a href="#"
-                    class="bg-action text-primary font-bold py-2 px-5 rounded-full hover:bg-opacity-90 transition-all">Empieza
-                    Gratis</a> -->
+            <!-- Derecha / Botón de Contacto -->
+            <div class="flex items-center">
+                <a href="#contacto" class="bg-action text-primary font-bold py-2 md:py-2.5 px-6 md:px-8 rounded-full hover:bg-opacity-90 transition-all text-sm md:text-[15px] shadow-[0_0_15px_rgba(0,192,255,0.3)]">
+                    Contacto
+                </a>
             </div>
-
-            <!-- Mobile Menu Togle -->
-            <button class="lg:hidden text-white mt-1" id="mobile-menu-btn">
-                <i data-lucide="menu" class="w-6 h-6"></i>
-            </button>
-        </div>
-        <!-- Mobile Nav -->
-        <div id="mobile-menu"
-            class="hidden lg:hidden glass-panel absolute top-full left-0 w-full flex-col px-6 py-4 gap-4 overflow-y-auto max-h-[85vh]">
-            <div class="flex flex-col hover:text-action transition-colors group px-2 cursor-default">
-                <span class="font-bold text-base text-white group-hover:text-action">Comercial</span>
-                <span class="text-sm font-medium text-white/80 group-hover:text-action/90">CRM & Clientes</span>
-            </div>
-            <div class="flex flex-col hover:text-action transition-colors group px-2 cursor-default">
-                <span class="font-bold text-base text-white group-hover:text-action">Financiero</span>
-                <span class="text-sm font-medium text-white/80 group-hover:text-action/90">Facturación & Finanzas</span>
-            </div>
-            <div class="flex flex-col hover:text-action transition-colors group px-2 cursor-default">
-                <span class="font-bold text-base text-white group-hover:text-action">Operativo</span>
-                <span class="text-sm font-medium text-white/80 group-hover:text-action/90">Tareas & Proyectos</span>
-            </div>
-            <div class="flex flex-col hover:text-action transition-colors group px-2 cursor-default">
-                <span class="font-bold text-base text-white group-hover:text-action">A la medida</span>
-                <span class="text-sm font-medium text-white/80 group-hover:text-action/90">& App Móvil</span>
-            </div>
-            <hr class="border-white/10">
-            <!-- <a href="#" class="block hover:text-action transition-colors font-medium text-center">Ingresar</a> -->
-            <!-- <a href="#"
-                class="block bg-action text-primary font-bold py-3 px-4 rounded-full text-center mt-2 text-sm">Empieza
-                Gratis</a> -->
         </div>
     </header>
 
@@ -1001,8 +939,46 @@
         </div>
     </section>
 
+    <!-- Contact Form Section -->
+    <section id="contacto" class="py-24 bg-[#0a1128] border-t border-white/5 fade-up relative z-20">
+        <div class="container mx-auto px-6 max-w-4xl relative">
+            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-80 h-80 bg-action/10 blur-[100px] rounded-full pointer-events-none"></div>
+            
+            <div class="text-center mb-16 relative z-10">
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-4 tracking-tight">Contáctanos</h2>
+                <p class="text-secondary text-lg md:text-xl font-medium max-w-2xl mx-auto">Déjanos tus datos y te contactaremos lo antes posible.</p>
+            </div>
+            
+            <div class="glass-panel bg-[#0b1329] p-8 md:p-12 rounded-[2rem] shadow-2xl border border-white/10 relative z-10">
+                <form id="contact-form" action="#" method="POST" class="flex flex-col gap-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="flex flex-col gap-2">
+                            <label for="nombre" class="font-bold text-[13px] uppercase tracking-wider text-action">Nombre</label>
+                            <input type="text" id="nombre" name="nombre" required class="bg-white/5 px-5 py-3.5 rounded-xl border border-white/10 focus:outline-none focus:border-action focus:ring-2 focus:ring-action/20 transition-all text-white placeholder-white/30" placeholder="Tu nombre completo">
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <label for="telefono" class="font-bold text-[13px] uppercase tracking-wider text-action">Teléfono</label>
+                            <input type="tel" id="telefono" name="telefono" required class="bg-white/5 px-5 py-3.5 rounded-xl border border-white/10 focus:outline-none focus:border-action focus:ring-2 focus:ring-action/20 transition-all text-white placeholder-white/30" placeholder="Tu número de teléfono">
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <label for="correo" class="font-bold text-[13px] uppercase tracking-wider text-action">Correo Electrónico</label>
+                        <input type="email" id="correo" name="correo" required class="bg-white/5 px-5 py-3.5 rounded-xl border border-white/10 focus:outline-none focus:border-action focus:ring-2 focus:ring-action/20 transition-all text-white placeholder-white/30" placeholder="tucorreo@ejemplo.com">
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <label for="mensaje" class="font-bold text-[13px] uppercase tracking-wider text-action">Mensaje</label>
+                        <textarea id="mensaje" name="mensaje" rows="4" required class="bg-white/5 px-5 py-3.5 rounded-xl border border-white/10 focus:outline-none focus:border-action focus:ring-2 focus:ring-action/20 transition-all text-white placeholder-white/30 resize-none" placeholder="¿En qué podemos ayudarte?"></textarea>
+                    </div>
+                    <button type="submit" class="bg-action text-primary font-extrabold text-lg py-4 px-8 rounded-xl hover:bg-opacity-90 transition-all shadow-[0_10px_20px_rgba(0,192,255,0.2)] active:scale-[0.98] mt-4 w-full md:w-auto md:self-end flex items-center justify-center gap-2">
+                        Enviar Mensaje <i data-lucide="send" class="w-5 h-5"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
     <!-- G. Footer de Confianza -->
-    <footer class="border-t border-white/10 pt-20 pb-8 bg-black/40 fade-up mt-12 relative overflow-hidden">
+    <footer class="border-t border-white/10 pt-10 pb-8 bg-black/40 fade-up mt-12 relative overflow-hidden">
         <!-- Footer Gradient glow -->
         <div
             class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-action/5 rounded-t-full blur-[100px] -z-10 pointer-events-none">
@@ -1011,7 +987,7 @@
         <div class="container mx-auto px-6 max-w-6xl relative z-10">
             <!-- Logos Confianza -->
             <div class="mb-20">
-                <p class="text-center text-secondary text-xs font-bold mb-8 uppercase tracking-[0.2em]">Empresas que
+                <p class="text-center text-secondary text-xs font-bold mt-3 md:mt-6 mb-10 uppercase tracking-[0.2em]">Empresas que
                     confían en nosotros</p>
                 <div class="flex flex-wrap justify-center items-center gap-12 sm:gap-16">
                     <img src="img/logo_alimentro.png" alt="Alimentro"

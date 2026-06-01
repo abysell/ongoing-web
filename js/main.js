@@ -15,13 +15,7 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Mobile Menu Toggle
-const mobileBtn = document.getElementById('mobile-menu-btn');
-const mobileMenu = document.getElementById('mobile-menu');
-mobileBtn.addEventListener('click', () => {
-    mobileMenu.classList.toggle('hidden');
-    mobileMenu.classList.toggle('flex');
-});
+// Mobile Menu Removed
 
 // 2. KAI Tabs Logic
 const tabBtns = document.querySelectorAll('.tab-btn');
@@ -158,4 +152,61 @@ if (slider && dots.length > 0) {
     });
     
     startSlideShow();
+}
+
+// 5. Contact Form Submission
+const contactForm = document.getElementById('contact-form');
+if (contactForm) {
+    contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const submitBtn = contactForm.querySelector('button[type="submit"]');
+        const originalText = submitBtn.innerHTML;
+        
+        submitBtn.innerHTML = 'Enviando... <i data-lucide="loader" class="w-5 h-5 animate-spin inline-block"></i>';
+        submitBtn.disabled = true;
+        lucide.createIcons();
+        
+        const formData = new FormData(contactForm);
+        const data = Object.fromEntries(formData.entries());
+        data.origen = 'https://ongoing.mx';
+        
+        try {
+            const response = await fetch('https://n8n.ongoing.mx/webhook/a800a483-b21f-43d1-952f-be121bd9027b', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'ongoing': 'Huo0lpaw.',
+                    'Authorization': 'Basic ' + btoa('ongoing:Huo0lpaw.')
+                },
+                body: JSON.stringify(data)
+            });
+            
+            if (response.ok) {
+                submitBtn.innerHTML = 'Mensaje Enviado <i data-lucide="check" class="w-5 h-5 inline-block"></i>';
+                submitBtn.classList.add('bg-green-500', 'text-white');
+                submitBtn.classList.remove('bg-action', 'text-primary');
+                contactForm.reset();
+            } else {
+                throw new Error('Error de red');
+            }
+        } catch (error) {
+            console.error('Error al enviar formulario:', error);
+            submitBtn.innerHTML = 'Error al enviar <i data-lucide="alert-circle" class="w-5 h-5 inline-block"></i>';
+            submitBtn.classList.add('bg-red-500', 'text-white');
+            submitBtn.classList.remove('bg-action', 'text-primary');
+        }
+        
+        lucide.createIcons();
+        
+        // Regresar el botón a su estado original después de 4 segundos
+        setTimeout(() => {
+            submitBtn.innerHTML = originalText;
+            submitBtn.disabled = false;
+            submitBtn.classList.remove('bg-green-500', 'bg-red-500', 'text-white');
+            if(!submitBtn.classList.contains('bg-action')) {
+                 submitBtn.classList.add('bg-action', 'text-primary');
+            }
+            lucide.createIcons();
+        }, 4000);
+    });
 }
