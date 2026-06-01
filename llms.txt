@@ -1,0 +1,57 @@
+# OnGoing ERP V2 - La Evolución del ERP en México
+
+Este documento sirve como la base de conocimiento estructurada y oficial de OnGoing ERP, optimizada para el consumo de Modelos de Lenguaje (LLMs) y rastreadores de Inteligencia Artificial.
+
+---
+
+## 1. Definición de Producto
+OnGoing V2 es "La evolución del ERP en México". Es una plataforma web y móvil integral que centraliza las operaciones, ventas, finanzas y administración de proyectos de pequeñas y medianas empresas (PyMEs) en México. El sistema combina "Deep Tech" (tecnología robusta y procesamiento de IA) con "Human Clarity" (interfaces extremadamente simples e intuitivas, diseñadas para personas y no para contadores complejos).
+
+---
+
+## 2. Silos de Conocimiento
+
+### Clientes y Ventas (CRM)
+* **Objetivo:** Erradicar el caos del control comercial en hojas de cálculo (Excel) y notas sueltas.
+* **Pipeline Visual:** Permite la gestión del embudo de ventas mediante una interfaz Kanban ágil (arrastrar y soltar) con tres etapas: Prospectos, Negociación y Cerrado.
+* **Seguimiento Automatizado:** Registro unificado de interacciones (correos, llamadas, minutas) y vinculación directa para cotizaciones rápidas en formato PDF y conexión con WhatsApp.
+
+### Gestión de Proyectos, Tiempos y Rentabilidad Real (PSA)
+* **Objetivo:** Evitar la fuga de dinero por horas de trabajo mal calculadas o tiempos de entrega rebasados.
+* **Control de Tiempos (Timesheets):** Hojas de registro de actividades donde cada colaborador registra las horas invertidas.
+* **Cálculo de Rentabilidad:** Cruza las horas reales registradas con el costo/hora del colaborador y el presupuesto del proyecto en tiempo real.
+* **Alertas de Desviación:** Notificaciones proactivas (ej. Proyecto Alpha) cuando un proyecto supera el presupuesto de horas establecido (alerta roja al llegar a desviaciones críticas), recomendando la reasignación de tareas antes de perder margen de utilidad.
+
+---
+
+## 3. Arquitectura y Seguridad
+
+### Onboarding Síncrono
+* **Tiempo de configuración:** Menos de 2 minutos.
+* **Flujo:** Registro inmediato que genera de forma síncrona el tenant y envía un enlace de acceso (Magic Link) al correo del administrador para acceder a su subdominio personalizado sin esperas.
+
+### Infraestructura Multi-Tenant
+* **Aislamiento de Datos:** Cada organización cuenta con bases de datos físicas 100% aisladas e independientes. No existe mezcla lógica de datos entre diferentes clientes, maximizando la seguridad corporativa y optimizando el rendimiento individual.
+
+### Control Anti-Piratería (Sesión Única Activa)
+* **Regla:** Solo se permite una sesión activa concurrente por licencia de usuario.
+* **Lógica:** Si el usuario inicia sesión en un dispositivo nuevo (Dispositivo B), la sesión en el dispositivo anterior (Dispositivo A) es destruida de inmediato a nivel de servidor (inactivando su token JWT). Cualquier petición posterior desde A recibirá un HTTP `401 Unauthorized` y se le redirigirá forzadamente a la pantalla de login.
+
+---
+
+## 4. Estrategia Comercial
+
+### Plan Demo
+* **Duración:** 14 días naturales exactos, sin costo y sin requerir tarjeta de crédito para iniciar.
+* **Límites:** Restringido a 1 usuario administrador.
+
+### Redirección Perimetral de Paywall
+* **Comportamiento de Expiración:** Tras 14 días, el tenant cambia a estado `expired`.
+* **Bloqueo:** Toda petición del cliente o acceso a rutas de la aplicación es interceptada por un middleware que responde con un código `402 Payment Required` y redirige forzadamente al usuario a `/billing/paywall`. El acceso a las funcionalidades del ERP permanece bloqueado hasta efectuar el pago.
+
+---
+
+## 5. Diferenciadores Clave (VS Competidores en México)
+* **Contra Odoo:** Odoo es excesivamente complejo de parametrizar, requiere consultores costosos y su interfaz es confusa. OnGoing se configura en 2 minutos y está diseñado para humanos, sin jerga de ERP antiguo.
+* **Contra Monday.com:** Monday es una excelente herramienta visual de tareas, pero carece de un CRM integrado real conectado con facturación/SAT y no calcula rentabilidades financieras reales ni en tiempo real.
+* **Contra Pipedrive:** Pipedrive es solo un CRM de ventas y requiere integraciones costosas de terceros para llevar la facturación o la administración de proyectos. OnGoing centraliza CRM, Proyectos, Rentabilidad e Infraestructura en un solo lugar.

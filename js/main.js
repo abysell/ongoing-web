@@ -299,3 +299,148 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+// 8. Chatbot KAI Floating Widget Logic
+const kaiTrigger = document.getElementById('kai-chat-trigger');
+const kaiContainer = document.getElementById('kai-chat-container');
+const kaiClose = document.getElementById('kai-chat-close');
+const kaiMessages = document.getElementById('kai-chat-messages');
+const kaiForm = document.getElementById('kai-chat-form');
+const kaiInput = document.getElementById('kai-chat-input');
+
+if (kaiTrigger && kaiContainer && kaiClose && kaiMessages && kaiForm && kaiInput) {
+    // Helper to scroll messages to bottom
+    const scrollToBottom = () => {
+        kaiMessages.scrollTop = kaiMessages.scrollHeight;
+    };
+
+    // Toggle Chat visibility
+    kaiTrigger.addEventListener('click', () => {
+        const isHidden = kaiContainer.classList.contains('hidden');
+        if (isHidden) {
+            kaiContainer.classList.remove('hidden');
+            kaiContainer.classList.add('active');
+            scrollToBottom();
+            kaiInput.focus();
+        } else {
+            kaiContainer.classList.add('hidden');
+            kaiContainer.classList.remove('active');
+        }
+    });
+
+    // Close Chat
+    kaiClose.addEventListener('click', (e) => {
+        e.stopPropagation();
+        kaiContainer.classList.add('hidden');
+        kaiContainer.classList.remove('active');
+    });
+
+    // Handle Form Submit
+    kaiForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const userMessage = kaiInput.value.trim();
+        if (!userMessage) return;
+
+        // 1. Render User Message
+        const userBubble = document.createElement('div');
+        userBubble.className = 'chat-bubble-user px-4 py-3 max-w-[85%] leading-relaxed break-words';
+        userBubble.textContent = userMessage;
+        kaiMessages.appendChild(userBubble);
+        
+        // Clear input and scroll
+        kaiInput.value = '';
+        scrollToBottom();
+
+        // 2. Render KAI Loading State
+        const loadingBubble = document.createElement('div');
+        loadingBubble.id = 'kai-loading-bubble';
+        loadingBubble.className = 'flex gap-2';
+        loadingBubble.innerHTML = `
+            <div class="w-8 h-8 rounded-full bg-action flex items-center justify-center shadow-lg shrink-0">
+                <i data-lucide="sparkles" class="text-primary w-4.5 h-4.5"></i>
+            </div>
+            <div class="chat-bubble-kai px-4 py-3 max-w-[85%] leading-relaxed flex items-center gap-1.5">
+                <span class="text-white/80">KAI está analizando</span>
+                <span class="flex gap-0.5 mt-1.5">
+                    <span class="w-1.5 h-1.5 rounded-full bg-white/70 animate-bounce" style="animation-delay: 0.1s"></span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-white/70 animate-bounce" style="animation-delay: 0.2s"></span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-white/70 animate-bounce" style="animation-delay: 0.3s"></span>
+                </span>
+            </div>
+        `;
+        kaiMessages.appendChild(loadingBubble);
+        lucide.createIcons();
+        scrollToBottom();
+
+        // 3. Make fetch request to serverless endpoint
+        try {
+            const response = await fetch('/api/chat', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ message: userMessage })
+            });
+
+            // Remove loading bubble
+            const loader = document.getElementById('kai-loading-bubble');
+            if (loader) loader.remove();
+
+            if (!response.ok) throw new Error('Error in API response');
+
+            const data = await response.json();
+            const reply = data.response;
+
+            // 4. Render KAI Reply
+            const kaiBubble = document.createElement('div');
+            kaiBubble.className = 'flex gap-2';
+            kaiBubble.innerHTML = `
+                <div class="w-8 h-8 rounded-full bg-action flex items-center justify-center shadow-lg shrink-0">
+                    <i data-lucide="sparkles" class="text-primary w-4.5 h-4.5"></i>
+                </div>
+                <div class="chat-bubble-kai px-4 py-3 max-w-[85%] leading-relaxed text-white">
+                    ${formatMarkdown(reply)}
+                </div>
+            `;
+            kaiMessages.appendChild(kaiBubble);
+            lucide.createIcons();
+            scrollToBottom();
+        } catch (error) {
+            console.error('KAI Chat Error:', error);
+            
+            // Remove loading bubble
+            const loader = document.getElementById('kai-loading-bubble');
+            if (loader) loader.remove();
+
+            // Render Error Bubble
+            const errorBubble = document.createElement('div');
+            errorBubble.className = 'flex gap-2 text-red-400';
+            errorBubble.innerHTML = `
+                <div class="w-8 h-8 rounded-full bg-red-950 flex items-center justify-center shadow-lg shrink-0 border border-red-500/30">
+                    <i data-lucide="alert-circle" class="w-4.5 h-4.5 text-red-400"></i>
+                </div>
+                <div class="chat-bubble-kai px-4 py-3 max-w-[85%] border-red-500/20 leading-relaxed text-red-400 font-medium">
+                    Lo siento, ocurrió un error al procesar tu solicitud. Por favor intenta de nuevo o inicia tu prueba de 14 días gratis en <a href="https://ongoing2.mx" class="text-action underline">ongoing2.mx</a>.
+                </div>
+            `;
+            kaiMessages.appendChild(errorBubble);
+            lucide.createIcons();
+            scrollToBottom();
+        }
+    });
+}
+
+// Simple helper to format basic bold and links from markdown
+function formatMarkdown(text) {
+    if (!text) return '';
+    // Format bold: **text** -> <strong>text</strong>
+    let formatted = text.replace(/\*\*(.*?)\*\*/g, '<strong class="text-action font-extrabold">$1</strong>');
+    // Format links: [label](url) -> <a href="$2" target="_blank" class="text-action underline font-bold">$1</a>
+    formatted = formatted.replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" target="_blank" class="text-action underline font-bold">$1</a>');
+    // Format bullet points
+    formatted = formatted.replace(/^\*\s(.*)$/gm, '• $1');
+    // Replace newlines with <br>
+    formatted = formatted.replace(/\n/g, '<br>');
+    return formatted;
+}
+

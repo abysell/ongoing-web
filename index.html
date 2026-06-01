@@ -1018,8 +1018,59 @@
         </div>
     </footer>
 
+    <!-- KAI Chatbot Floating Widget -->
+    <div class="fixed bottom-6 right-6 z-50 flex flex-col items-end">
+        <!-- Chat Trigger Button -->
+        <button id="kai-chat-trigger" class="w-14 h-14 rounded-full bg-action text-primary flex items-center justify-center shadow-[0_0_20px_rgba(0,192,255,0.4)] hover:shadow-[0_0_30px_rgba(0,192,255,0.7)] transition-all duration-300 outline-none transform active:scale-95 group relative animate-pulse-glow">
+            <i data-lucide="message-square" class="w-6 h-6 text-primary transition-transform duration-300 group-hover:scale-110"></i>
+            <span class="absolute -top-10 right-0 bg-[#001953] border border-action/30 text-white text-xs font-bold py-1.5 px-3 rounded-lg shadow-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap">
+                Pregúntale a KAI
+            </span>
+        </button>
+
+        <!-- Chat Container -->
+        <div id="kai-chat-container" class="hidden w-[350px] sm:w-[400px] h-[500px] bg-[#001953]/95 backdrop-blur-md border border-white/10 rounded-2xl flex flex-col shadow-[0_20px_50px_rgba(0,0,0,0.5)] overflow-hidden transition-all duration-300 mt-4 origin-bottom-right">
+            <!-- Header -->
+            <div class="flex items-center justify-between px-5 py-4 border-b border-white/10 bg-[#001442]">
+                <div class="flex items-center gap-3">
+                    <img src="img/ongoing-logo.png" alt="Ongoing Logo" class="h-5 w-auto">
+                    <div class="h-4 w-px bg-white/20"></div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-white font-extrabold text-sm tracking-wider">KAI</span>
+                        <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                    </div>
+                </div>
+                <button id="kai-chat-close" class="text-white/60 hover:text-white transition-colors">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+
+            <!-- Body (Messages Scroll Area) -->
+            <div id="kai-chat-messages" class="flex-grow p-4 overflow-y-auto flex flex-col gap-4 text-sm font-medium">
+                <!-- Welcome Message from KAI -->
+                <div class="flex gap-2">
+                    <div class="w-8 h-8 rounded-full bg-action flex items-center justify-center shadow-lg shrink-0">
+                        <i data-lucide="sparkles" class="text-primary w-4 h-4"></i>
+                    </div>
+                    <div class="bg-blue-900/40 border border-blue-500/20 px-4 py-3 rounded-2xl rounded-tl-sm text-white max-w-[85%] leading-relaxed">
+                        ¡Hola! Soy **KAI**, tu analista de negocios inteligente 24/7. Pregúntame sobre cómo erradicar el caos de Excel, medir rentabilidad real o sobre nuestra infraestructura multi-tenant.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Input area (Footer) -->
+            <form id="kai-chat-form" class="p-4 border-t border-white/10 bg-[#001442] flex gap-2">
+                <input id="kai-chat-input" type="text" autocomplete="off" placeholder="Escribe tu duda aquí..." class="flex-grow bg-white/5 px-4 py-3 rounded-xl border border-white/10 focus:outline-none focus:border-action focus:ring-2 focus:ring-action/20 transition-all text-white placeholder-white/30 text-sm">
+                <button type="submit" class="bg-action text-primary font-bold px-4 rounded-xl hover:bg-opacity-90 transition-all shadow-md active:scale-95 flex items-center justify-center shrink-0">
+                    <i data-lucide="send" class="w-4 h-4"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+
     <!-- Scripts -->
     <script src="js/main.js"></script>
 </body>
+
 
 </html>
