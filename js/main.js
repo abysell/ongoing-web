@@ -1,3 +1,10 @@
+// Load local configuration script dynamically only in local environments to prevent 404 console errors in production
+if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.protocol === 'file:') {
+    const script = document.createElement('script');
+    script.src = 'js/config.local.js';
+    document.head.appendChild(script);
+}
+
 // Initialize Lucide Icons
 lucide.createIcons();
 
