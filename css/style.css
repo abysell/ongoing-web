@@ -129,6 +129,10 @@ body {
     border-radius: 1rem 1rem 1rem 0.1rem;
 }
 
+    #kai-chat-container.active {
+        display: flex !important;
+    }
+
 /* Mobile responsive full screen chat */
 @media (max-w: 767px) {
     #kai-chat-container.active {

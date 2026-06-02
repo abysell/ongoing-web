@@ -321,19 +321,25 @@ if (kaiTrigger && kaiContainer && kaiClose && kaiMessages && kaiForm && kaiInput
         kaiMessages.scrollTop = kaiMessages.scrollHeight;
     };
 
-    // Toggle Chat visibility
-    kaiTrigger.addEventListener('click', () => {
+    const openChat = () => {
+        kaiContainer.classList.remove('hidden');
+        kaiContainer.classList.add('active');
+        scrollToBottom();
+        kaiInput.focus();
+    };
+
+    const toggleChat = () => {
         const isHidden = kaiContainer.classList.contains('hidden');
         if (isHidden) {
-            kaiContainer.classList.remove('hidden');
-            kaiContainer.classList.add('active');
-            scrollToBottom();
-            kaiInput.focus();
+            openChat();
         } else {
             kaiContainer.classList.add('hidden');
             kaiContainer.classList.remove('active');
         }
-    });
+    };
+
+    // Toggle Chat visibility
+    kaiTrigger.addEventListener('click', toggleChat);
 
     // Close Chat
     kaiClose.addEventListener('click', (e) => {
@@ -341,6 +347,31 @@ if (kaiTrigger && kaiContainer && kaiClose && kaiMessages && kaiForm && kaiInput
         kaiContainer.classList.add('hidden');
         kaiContainer.classList.remove('active');
     });
+
+    // Bind other KAI triggers (Footer and Bento Grid cards)
+    const footerKaiTrigger = document.getElementById('footer-kai-trigger');
+    if (footerKaiTrigger) {
+        footerKaiTrigger.addEventListener('click', (e) => {
+            e.preventDefault();
+            openChat();
+        });
+    }
+
+    const bentoKaiTrigger1 = document.getElementById('bento-kai-trigger-1');
+    if (bentoKaiTrigger1) {
+        bentoKaiTrigger1.addEventListener('click', (e) => {
+            e.preventDefault();
+            openChat();
+        });
+    }
+
+    const bentoKaiTrigger2 = document.getElementById('bento-kai-trigger-2');
+    if (bentoKaiTrigger2) {
+        bentoKaiTrigger2.addEventListener('click', (e) => {
+            e.preventDefault();
+            openChat();
+        });
+    }
 
     // Handle Form Submit
     kaiForm.addEventListener('submit', async (e) => {

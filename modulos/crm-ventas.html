@@ -563,7 +563,7 @@
                 <div class="col-span-1 md:col-span-2">
                     <h4 class="font-extrabold mb-5 text-white uppercase tracking-wider text-xs">Recursos</h4>
                     <ul class="space-y-4 text-secondary font-medium">
-                        <li><span class="hover:text-action transition-colors flex items-center gap-2">KAI AI <span class="bg-action/20 text-action text-[10px] px-2 py-0.5 rounded border border-action/30">Nuevo</span></span></li>
+                        <li><span id="footer-kai-trigger" class="hover:text-action transition-colors flex items-center gap-2 cursor-pointer">KAI AI <span class="bg-action/20 text-action text-[10px] px-2 py-0.5 rounded border border-action/30">Nuevo</span></span></li>
                         <li><a href="../docs/" class="hover:text-action transition-colors">Centro de Ayuda</a></li>
                     </ul>
                 </div>
@@ -665,20 +665,26 @@
                 const scrollToBottom = () => {
                     kaiMessages.scrollTop = kaiMessages.scrollHeight;
                 };
-            
-                // Toggle Chat visibility
-                kaiTrigger.addEventListener('click', () => {
+
+                const openChat = () => {
+                    kaiContainer.classList.remove('hidden');
+                    kaiContainer.classList.add('active');
+                    scrollToBottom();
+                    kaiInput.focus();
+                };
+
+                const toggleChat = () => {
                     const isHidden = kaiContainer.classList.contains('hidden');
                     if (isHidden) {
-                        kaiContainer.classList.remove('hidden');
-                        kaiContainer.classList.add('active');
-                        scrollToBottom();
-                        kaiInput.focus();
+                        openChat();
                     } else {
                         kaiContainer.classList.add('hidden');
                         kaiContainer.classList.remove('active');
                     }
-                });
+                };
+
+                // Toggle Chat visibility
+                kaiTrigger.addEventListener('click', toggleChat);
             
                 // Close Chat
                 kaiClose.addEventListener('click', (e) => {
@@ -686,6 +692,15 @@
                     kaiContainer.classList.add('hidden');
                     kaiContainer.classList.remove('active');
                 });
+
+                // Bind footer KAI trigger
+                const footerKaiTrigger = document.getElementById('footer-kai-trigger');
+                if (footerKaiTrigger) {
+                    footerKaiTrigger.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        openChat();
+                    });
+                }
             
                 // Handle Form Submit
                 kaiForm.addEventListener('submit', async (e) => {
@@ -863,7 +878,7 @@
             function formatMarkdown(text) {
                 if (!text) return '';
                 // Format bold: **text** -> <strong>text</strong>
-                let formatted = text.replace(/\*\*(.*?)\*\/g, '<strong class="text-action font-extrabold">$1</strong>');
+                let formatted = text.replace(/\*\*(.*?)\*\*/g, '<strong class="text-action font-extrabold">$1</strong>');
                 // Format links: [label](url) -> <a href="$2" target="_blank" class="text-action underline font-bold">$1</a>
                 formatted = formatted.replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" target="_blank" class="text-action underline font-bold">$1</a>');
                 // Format bullet points
