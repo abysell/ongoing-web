@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: ongoing-php-dev-server
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/var/www/html
+    # Automatically injects variables from .env to container environment (e.g. OPENAI_API_KEY)
+    env_file:
+      - .env

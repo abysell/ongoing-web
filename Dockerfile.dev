@@ -1,0 +1,11 @@
+FROM php:8.2-apache
+
+# Suppress Apache FQDN warning in logs
+RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
+
+# Enable Apache mod_rewrite for custom route rewrites
+RUN a2enmod rewrite
+
+# Enable .htaccess AllowOverride overrides in Apache configuration
+RUN sed -i '/<Directory \/var\/www\/>/,/<\/Directory>/ s/AllowOverride None/AllowOverride All/' /etc/apache2/apache2.conf
+

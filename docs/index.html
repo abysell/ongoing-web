@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centro de Conocimiento | OnGoing ERP</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        display: ['"Space Grotesk"', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#001953',
+                        action: '#00c0ff',
+                        dark: '#000b2e',
+                        light: '#F5F7FA',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Marked.js for Markdown parsing -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <!-- Custom styling & Typography -->
+    <style>
+        body {
+            background: radial-gradient(circle at 50% 0%, #001953 0%, #00071a 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+        }
+
+        /* Glassmorphism utility classes */
+        .glass-panel {
+            background: rgba(0, 20, 66, 0.4);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px border rgba(255, 255, 255, 0.05);
+        }
+
+        .glass-sidebar {
+            background: rgba(0, 11, 46, 0.65);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-right: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.02);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(0, 192, 255, 0.2);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(0, 192, 255, 0.4);
+        }
+
+        /* Active navigation states */
+        .nav-item.active {
+            background: rgba(0, 192, 255, 0.1);
+            color: #00c0ff;
+            border-left: 3px solid #00c0ff;
+            padding-left: calc(1rem - 3px);
+        }
+
+        /* Markdown rendered content styles */
+        .doc-content h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.875rem; /* 30px */
+            font-weight: 700;
+            color: #ffffff;
+            margin-top: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .doc-content h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            border-left: 3px solid #00c0ff;
+            padding-left: 0.75rem;
+        }
+
+        .doc-content h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.95);
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .doc-content p {
+            color: #d1d5db;
+            line-height: 1.75;
+            margin-bottom: 1.25rem;
+            font-size: 0.925rem;
+        }
+
+        .doc-content ul {
+            list-style-type: none;
+            padding-left: 1.5rem;
+            margin-bottom: 1.25rem;
+            position: relative;
+        }
+
+        .doc-content ul li {
+            position: relative;
+            color: #d1d5db;
+            line-height: 1.75;
+            margin-bottom: 0.5rem;
+            font-size: 0.925rem;
+        }
+
+        .doc-content ul li::before {
+            content: "•";
+            color: #00c0ff;
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+            position: absolute;
+        }
+
+        .doc-content ol {
+            list-style-type: decimal;
+            padding-left: 1.5rem;
+            margin-bottom: 1.25rem;
+            color: #d1d5db;
+            font-size: 0.925rem;
+        }
+
+        .doc-content ol li {
+            line-height: 1.75;
+            margin-bottom: 0.5rem;
+            padding-left: 0.25rem;
+        }
+
+        .doc-content code {
+            font-family: monospace;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 0.125rem 0.35rem;
+            border-radius: 0.25rem;
+            color: #00c0ff;
+            font-size: 0.85em;
+        }
+
+        .doc-content pre {
+            background: rgba(0, 5, 20, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 1.25rem;
+            border-radius: 0.75rem;
+            overflow-x: auto;
+            margin-bottom: 1.5rem;
+            box-shadow: inset 0 2px 8px rgba(0,0,0,0.8);
+        }
+
+        .doc-content pre code {
+            background: transparent;
+            border: none;
+            padding: 0;
+            color: #e5e7eb;
+            font-size: 0.85rem;
+        }
+
+        .doc-content a {
+            color: #00c0ff;
+            font-weight: 600;
+            text-decoration: none;
+            border-bottom: 1px dotted rgba(0, 192, 255, 0.4);
+            transition: all 0.2s ease;
+        }
+
+        .doc-content a:hover {
+            color: #8ce1ff;
+            border-bottom: 1px solid #8ce1ff;
+        }
+
+        .doc-content hr {
+            border: 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin: 2.5rem 0;
+        }
+
+        /* KAI Chatbot Floating Widget Styles */
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 15px rgba(0, 192, 255, 0.4); }
+            50% { box-shadow: 0 0 25px rgba(0, 192, 255, 0.8); }
+            100% { box-shadow: 0 0 15px rgba(0, 192, 255, 0.4); }
+        }
+        .animate-pulse-glow {
+            animation: pulseGlow 2.5s infinite ease-in-out;
+        }
+
+        .chat-bubble-user {
+            background-color: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            align-self: flex-end;
+            border-radius: 1rem 1rem 0.1rem 1rem;
+        }
+
+        .chat-bubble-kai {
+            background-color: rgba(0, 20, 66, 0.4);
+            border: 1px solid rgba(0, 192, 255, 0.3);
+            color: #ffffff;
+            align-self: flex-start;
+            border-radius: 1rem 1rem 1rem 0.1rem;
+        }
+
+        #kai-chat-container.active {
+            display: flex !important;
+        }
+
+        @media (max-w: 767px) {
+            #kai-chat-container.active {
+                display: flex !important;
+                position: fixed;
+                bottom: 0;
+                right: 0;
+                width: 100vw !important;
+                height: 100vh !important;
+                max-width: 100vw !important;
+                max-height: 100vh !important;
+                margin: 0 !important;
+                border-radius: 0 !important;
+                z-index: 9999;
+            }
+        }
+    </style>
+</head>
+<body class="text-gray-100 flex flex-col font-sans overflow-x-hidden">
+
+    <!-- Top Navbar (Help Center Branding) -->
+    <header class="w-full py-4 px-6 border-b border-white/5 glass-panel sticky top-0 z-40 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+            <a href="../" class="flex flex-col outline-none">
+                <img src="../img/ongoing-logo.png" alt="Ongoing Logo" class="h-8 md:h-[34px] w-auto">
+                <p class="text-[10px] text-white/40 font-medium mt-1">Centro de Conocimiento</p>
+            </a>
+        </div>
+        
+        <div class="flex items-center gap-4">
+            <a href="../" class="hidden sm:flex items-center gap-1.5 text-xs text-gray-400 hover:text-white transition-colors bg-white/5 px-3 py-1.5 rounded-lg border border-white/5">
+                <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i> Regresar
+            </a>
+            <a href="https://ongoing2.mx" target="_blank" class="bg-action text-primary font-bold text-xs px-4 py-2 rounded-lg hover:bg-opacity-90 active:scale-95 transition-all shadow-lg shadow-action/10 flex items-center gap-1">
+                Iniciar Sesión <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+            </a>
+            <button id="mobile-menu-toggle" class="md:hidden p-2 text-gray-400 hover:text-white">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="flex-grow flex w-full relative">
+        
+        <!-- Sidebar Navigation -->
+        <aside id="sidebar" class="w-76 md:w-80 glass-sidebar flex-shrink-0 h-[calc(100vh-73px)] sticky top-[73px] overflow-y-auto px-4 py-6 z-30 transition-transform duration-300 transform -translate-x-full md:translate-x-0 absolute md:relative">
+            <div class="mb-6 px-2">
+                <h5 class="text-xs uppercase tracking-widest text-action font-semibold mb-2">Módulos del Sistema</h5>
+                <p class="text-xs text-white/40">Manuales técnicos y guías operativas oficiales de OnGoing ERP.</p>
+            </div>
+            
+            <nav class="space-y-1.5">
+                <button data-doc="onboarding-seguridad.md" class="nav-item w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-gray-300 hover:bg-white/5 hover:text-white transition-all text-left">
+                    <i data-lucide="shield-check" class="w-4.5 h-4.5 text-action shrink-0"></i>
+                    <span>Onboarding y Seguridad</span>
+                </button>
+                
+                <button data-doc="control-comercial.md" class="nav-item w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-gray-300 hover:bg-white/5 hover:text-white transition-all text-left">
+                    <i data-lucide="credit-card" class="w-4.5 h-4.5 text-action shrink-0"></i>
+                    <span>Control Comercial y Pagos</span>
+                </button>
+                
+                <button data-doc="crm-ventas.md" class="nav-item w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-gray-300 hover:bg-white/5 hover:text-white transition-all text-left">
+                    <i data-lucide="users" class="w-4.5 h-4.5 text-action shrink-0"></i>
+                    <span>Clientes y Ventas (CRM)</span>
+                </button>
+                
+                <button data-doc="gestion-proyectos.md" class="nav-item w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-gray-300 hover:bg-white/5 hover:text-white transition-all text-left">
+                    <i data-lucide="bar-chart-3" class="w-4.5 h-4.5 text-action shrink-0"></i>
+                    <span>Proyectos y Rentabilidad</span>
+                </button>
+                
+                <button data-doc="asistente-kai.md" class="nav-item w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-gray-300 hover:bg-white/5 hover:text-white transition-all text-left">
+                    <i data-lucide="sparkles" class="w-4.5 h-4.5 text-action shrink-0"></i>
+                    <span>Asistente Inteligente KAI</span>
+                </button>
+            </nav>
+            
+            <div class="mt-8 pt-6 border-t border-white/5 px-2">
+                <div class="bg-gradient-to-br from-blue-950/40 to-dark p-4 rounded-2xl border border-blue-500/20 shadow-lg relative overflow-hidden group">
+                    <div class="absolute -right-6 -bottom-6 w-20 h-20 bg-action/10 rounded-full blur-xl group-hover:bg-action/20 transition-all duration-300"></div>
+                    <div class="flex items-center gap-2 mb-2">
+                        <i data-lucide="help-circle" class="w-4 h-4 text-action"></i>
+                        <span class="text-xs font-bold uppercase tracking-wider text-white">¿Soporte Técnico?</span>
+                    </div>
+                    <p class="text-[11px] text-gray-400 leading-relaxed mb-3">¿Tienes dudas adicionales o necesitas asistencia personalizada?</p>
+                    <a href="mailto:hola@ongoing.mx" class="inline-block w-full text-center text-xs bg-white/5 hover:bg-white/10 text-white font-semibold py-2 rounded-lg border border-white/10 transition-colors">
+                        hola@ongoing.mx
+                    </a>
+                </div>
+            </div>
+        </aside>
+        
+        <!-- Sidebar Backdrop for Mobile -->
+        <div id="sidebar-backdrop" class="fixed inset-0 bg-black/60 z-20 hidden md:hidden"></div>
+        
+        <!-- Main Content Area -->
+        <main class="flex-grow min-w-0 p-6 md:p-12 max-w-4xl mx-auto overflow-y-auto">
+            
+            <!-- Breadcrumbs -->
+            <nav class="flex items-center gap-2 text-xs text-white/40 mb-6 font-medium">
+                <span>Docs</span>
+                <i data-lucide="chevron-right" class="w-3 h-3"></i>
+                <span id="breadcrumb-current" class="text-action">Cargando...</span>
+            </nav>
+            
+            <!-- Content Wrapper -->
+            <article class="relative min-h-[400px]">
+                
+                <!-- Loading State Overlay -->
+                <div id="doc-loading" class="absolute inset-0 flex items-center justify-center bg-transparent z-10 transition-opacity duration-300">
+                    <div class="flex flex-col items-center gap-3">
+                        <div class="w-10 h-10 border-2 border-action/20 border-t-action rounded-full animate-spin"></div>
+                        <span class="text-xs text-white/50 tracking-wider">Compilando documento...</span>
+                    </div>
+                </div>
+                
+                <!-- Rendered Markdown Container -->
+                <div id="doc-view" class="doc-content transition-all duration-300 opacity-0 transform translate-y-2">
+                    <!-- Dynamic HTML goes here -->
+                </div>
+            </article>
+            
+            <!-- Footer -->
+            <footer class="mt-16 pt-6 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/30">
+                <p>&copy; 2026 OnGoing ERP. Todos los derechos reservados.</p>
+                <div class="flex gap-4">
+                    <a href="../llms.txt" target="_blank" class="hover:text-action transition-colors">llms.txt</a>
+                    <span>&bull;</span>
+                    <a href="https://ongoing2.mx/privacy" target="_blank" class="hover:text-action transition-colors">Privacidad</a>
+                </div>
+            </footer>
+        </main>
+    </div>
+
+    <!-- KAI Chatbot Floating Widget -->
+    <div class="fixed bottom-6 right-6 z-50 flex flex-col items-end">
+        <!-- Chat Trigger Button -->
+        <button id="kai-chat-trigger" class="w-14 h-14 rounded-full bg-action text-primary flex items-center justify-center shadow-[0_0_20px_rgba(0,192,255,0.4)] hover:shadow-[0_0_30px_rgba(0,192,255,0.7)] transition-all duration-300 outline-none transform active:scale-95 group relative animate-pulse-glow">
+            <i data-lucide="message-square" class="w-6 h-6 text-primary transition-transform duration-300 group-hover:scale-110"></i>
+            <span class="absolute -top-10 right-0 bg-[#001953] border border-action/30 text-white text-xs font-bold py-1.5 px-3 rounded-lg shadow-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap">
+                Pregúntale a KAI
+            </span>
+        </button>
+
+        <!-- Chat Container -->
+        <div id="kai-chat-container" class="hidden w-[350px] sm:w-[400px] h-[500px] bg-[#001953]/95 backdrop-blur-md border border-white/10 rounded-2xl flex flex-col shadow-[0_20px_50px_rgba(0,0,0,0.5)] overflow-hidden transition-all duration-300 mt-4 origin-bottom-right">
+            <!-- Header -->
+            <div class="flex items-center justify-between px-5 py-4 border-b border-white/10 bg-[#001442]">
+                <div class="flex items-center gap-3">
+                    <img src="../img/ongoing-logo.png" alt="Ongoing Logo" class="h-5 w-auto">
+                    <div class="h-4 w-px bg-white/20"></div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-white font-extrabold text-sm tracking-wider">KAI</span>
+                        <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                    </div>
+                </div>
+                <button id="kai-chat-close" class="text-white/60 hover:text-white transition-colors">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+
+            <!-- Body (Messages Scroll Area) -->
+            <div id="kai-chat-messages" class="flex-grow p-4 overflow-y-auto flex flex-col gap-4 text-sm font-medium">
+                <!-- Welcome Message from KAI -->
+                <div class="flex gap-2">
+                    <div class="w-8 h-8 rounded-full bg-action flex items-center justify-center shadow-lg shrink-0">
+                        <i data-lucide="sparkles" class="text-primary w-4 h-4"></i>
+                    </div>
+                    <div class="bg-blue-900/40 border border-blue-500/20 px-4 py-3 rounded-2xl rounded-tl-sm text-white max-w-[85%] leading-relaxed">
+                        ¡Hola! Soy **KAI**, tu analista de negocios inteligente 24/7. Pregúntame sobre cómo erradicar el caos de Excel, medir rentabilidad real o sobre nuestra infraestructura multi-tenant.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Input area (Footer) -->
+            <form id="kai-chat-form" class="p-4 border-t border-white/10 bg-[#001442] flex gap-2">
+                <input id="kai-chat-input" type="text" autocomplete="off" placeholder="Escribe tu duda aquí..." class="flex-grow bg-white/5 px-4 py-3 rounded-xl border border-white/10 focus:outline-none focus:border-action focus:ring-2 focus:ring-action/20 transition-all text-white placeholder-white/30 text-sm">
+                <button type="submit" class="bg-action text-primary font-bold px-4 rounded-xl hover:bg-opacity-90 transition-all shadow-md active:scale-95 flex items-center justify-center shrink-0">
+                    <i data-lucide="send" class="w-4 h-4"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Controller Logic Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+            
+            const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+            const sidebar = document.getElementById('sidebar');
+            const backdrop = document.getElementById('sidebar-backdrop');
+            
+            // Toggle sidebar on mobile
+            const toggleSidebar = () => {
+                const isOpen = sidebar.classList.contains('translate-x-0');
+                if (isOpen) {
+                    sidebar.classList.remove('translate-x-0');
+                    sidebar.classList.add('-translate-x-full');
+                    backdrop.classList.add('hidden');
+                } else {
+                    sidebar.classList.add('translate-x-0');
+                    sidebar.classList.remove('-translate-x-full');
+                    backdrop.classList.remove('hidden');
+                }
+            };
+            
+            if (mobileMenuToggle && sidebar && backdrop) {
+                mobileMenuToggle.addEventListener('click', toggleSidebar);
+                backdrop.addEventListener('click', toggleSidebar);
+            }
+            
+            // Set up marked options
+            marked.setOptions({
+                headerIds: false,
+                mangle: false,
+                breaks: true
+            });
+            
+            // Dynamic Alert parsing function
+            function parseAlerts(html) {
+                const alertTypes = {
+                    'WARNING': {
+                        borderClass: 'border-red-500/30',
+                        bgClass: 'bg-red-950/20',
+                        icon: 'alert-triangle',
+                        iconColor: 'text-red-400',
+                        title: 'Advertencia'
+                    },
+                    'IMPORTANT': {
+                        borderClass: 'border-blue-500/30',
+                        bgClass: 'bg-blue-950/20',
+                        icon: 'info',
+                        iconColor: 'text-blue-400',
+                        title: 'Importante'
+                    },
+                    'NOTE': {
+                        borderClass: 'border-slate-500/30',
+                        bgClass: 'bg-slate-900/40',
+                        icon: 'sticky-note',
+                        iconColor: 'text-slate-400',
+                        title: 'Nota'
+                    },
+                    'TIP': {
+                        borderClass: 'border-green-500/30',
+                        bgClass: 'bg-green-950/20',
+                        icon: 'lightbulb',
+                        iconColor: 'text-green-400',
+                        title: 'Sugerencia'
+                    },
+                    'CAUTION': {
+                        borderClass: 'border-orange-500/30',
+                        bgClass: 'bg-orange-950/20',
+                        icon: 'alert-octagon',
+                        iconColor: 'text-orange-400',
+                        title: 'Precaución'
+                    }
+                };
+
+                // Match blockquotes that start with [!TYPE] (marked generates blockquotes for `> [!TYPE]`)
+                return html.replace(/<blockquote>\s*<p>\s*\[!(WARNING|IMPORTANT|NOTE|TIP|CAUTION)\]([\s\S]*?)<\/p>\s*<\/blockquote>/gi, (match, type, content) => {
+                    const config = alertTypes[type.toUpperCase()] || alertTypes['NOTE'];
+                    return `
+                        <div class="alert-box my-6 border ${config.borderClass} ${config.bgClass} p-4 rounded-2xl flex gap-3 shadow-md relative overflow-hidden group transition-all duration-300">
+                            <div class="absolute -inset-px bg-gradient-to-r from-action/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl pointer-events-none"></div>
+                            <div class="${config.iconColor} shrink-0 mt-0.5">
+                                <i data-lucide="${config.icon}" class="w-5 h-5"></i>
+                            </div>
+                            <div class="flex-grow">
+                                <span class="block text-[10px] font-bold uppercase tracking-widest ${config.iconColor} mb-1.5">${config.title}</span>
+                                <div class="text-[13px] leading-relaxed text-gray-300">${content.trim()}</div>
+                            </div>
+                        </div>
+                    `;
+                });
+            }
+            
+            const docLoader = document.getElementById('doc-loading');
+            const docView = document.getElementById('doc-view');
+            const breadcrumbCurrent = document.getElementById('breadcrumb-current');
+            const navItems = document.querySelectorAll('.nav-item');
+            
+            // Function to load and render Markdown document
+            const loadDocument = async (fileName) => {
+                try {
+                    // Show loader, hide view
+                    docLoader.classList.remove('opacity-0', 'pointer-events-none');
+                    docLoader.classList.add('opacity-100');
+                    docView.classList.add('opacity-0', 'translate-y-2');
+                    
+                    // Fetch doc file
+                    const response = await fetch(fileName);
+                    if (!response.ok) {
+                        throw new Error(`Error ${response.status}: Archivo no encontrado.`);
+                    }
+                    
+                    const markdownText = await response.text();
+                    
+                    // Parse markdown to HTML
+                    let htmlContent = marked.parse(markdownText);
+                    
+                    // Post-process alerts
+                    htmlContent = parseAlerts(htmlContent);
+                    
+                    // Clean container and inject HTML
+                    docView.innerHTML = htmlContent;
+                    
+                    // Initialize lucide icons in dynamic content
+                    lucide.createIcons();
+                    
+                    // Update breadcrumb from Document Title
+                    const firstHeader = docView.querySelector('h1');
+                    if (firstHeader) {
+                        breadcrumbCurrent.textContent = firstHeader.textContent;
+                    } else {
+                        breadcrumbCurrent.textContent = fileName.replace('.md', '');
+                    }
+                    
+                    // Hide loader and show view
+                    docLoader.classList.add('opacity-0', 'pointer-events-none');
+                    docLoader.classList.remove('opacity-100');
+                    
+                    setTimeout(() => {
+                        docView.classList.remove('opacity-0', 'translate-y-2');
+                        docView.classList.add('opacity-100');
+                    }, 50);
+                    
+                } catch (error) {
+                    console.error('Error loading documentation file:', error);
+                    docView.innerHTML = `
+                        <div class="text-center py-16 flex flex-col items-center gap-4">
+                            <div class="w-12 h-12 rounded-full bg-red-950/30 flex items-center justify-center border border-red-500/20 text-red-400">
+                                <i data-lucide="alert-octagon" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-white mb-1">Error al cargar el documento</h3>
+                                <p class="text-sm text-gray-400 max-w-md mx-auto">No se pudo cargar el archivo "${fileName}". Verifique que se encuentra en el servidor o intente de nuevo.</p>
+                            </div>
+                        </div>
+                    `;
+                    lucide.createIcons();
+                    breadcrumbCurrent.textContent = "Error";
+                    docLoader.classList.add('opacity-0', 'pointer-events-none');
+                    docLoader.classList.remove('opacity-100');
+                    docView.classList.remove('opacity-0', 'translate-y-2');
+                    docView.classList.add('opacity-100');
+                }
+            };
+            
+            // Set up click listeners for nav items
+            navItems.forEach(item => {
+                item.addEventListener('click', (e) => {
+                    const targetDoc = item.getAttribute('data-doc');
+                    if (!targetDoc) return;
+                    
+                    // Update active state
+                    navItems.forEach(i => i.classList.remove('active'));
+                    item.classList.add('active');
+                    
+                    // Load document
+                    loadDocument(targetDoc);
+                    
+                    // Close sidebar on mobile
+                    if (window.innerWidth < 768) {
+                        toggleSidebar();
+                    }
+                });
+            });
+            
+            // Load default document (first item) on start
+            const defaultItem = navItems[0];
+            if (defaultItem) {
+                defaultItem.classList.add('active');
+                loadDocument(defaultItem.getAttribute('data-doc'));
+            }
+
+            // --- KAI Chatbot Floating Widget Controller ---
+            const kaiTrigger = document.getElementById('kai-chat-trigger');
+            const kaiContainer = document.getElementById('kai-chat-container');
+            const kaiClose = document.getElementById('kai-chat-close');
+            const kaiMessages = document.getElementById('kai-chat-messages');
+            const kaiForm = document.getElementById('kai-chat-form');
+            const kaiInput = document.getElementById('kai-chat-input');
+            
+            if (kaiTrigger && kaiContainer && kaiClose && kaiMessages && kaiForm && kaiInput) {
+                const scrollToBottom = () => {
+                    kaiMessages.scrollTop = kaiMessages.scrollHeight;
+                };
+            
+                // Toggle Chat visibility
+                kaiTrigger.addEventListener('click', () => {
+                    const isHidden = kaiContainer.classList.contains('hidden');
+                    if (isHidden) {
+                        kaiContainer.classList.remove('hidden');
+                        kaiContainer.classList.add('active');
+                        scrollToBottom();
+                        kaiInput.focus();
+                    } else {
+                        kaiContainer.classList.add('hidden');
+                        kaiContainer.classList.remove('active');
+                    }
+                });
+            
+                // Close Chat
+                kaiClose.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    kaiContainer.classList.add('hidden');
+                    kaiContainer.classList.remove('active');
+                });
+            
+                // Handle Form Submit
+                kaiForm.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    const userMessage = kaiInput.value.trim();
+                    if (!userMessage) return;
+            
+                    // 1. Render User Message
+                    const userBubble = document.createElement('div');
+                    userBubble.className = 'chat-bubble-user px-4 py-3 max-w-[85%] leading-relaxed break-words';
+                    userBubble.textContent = userMessage;
+                    kaiMessages.appendChild(userBubble);
+                    
+                    // Clear input and scroll
+                    kaiInput.value = '';
+                    scrollToBottom();
+            
+                    // 2. Render KAI Loading State
+                    const loadingBubble = document.createElement('div');
+                    loadingBubble.id = 'kai-loading-bubble';
+                    loadingBubble.className = 'flex gap-2';
+                    loadingBubble.innerHTML = `
+                        <div class="w-8 h-8 rounded-full bg-action flex items-center justify-center shadow-lg shrink-0">
+                            <i data-lucide="sparkles" class="text-primary w-4.5 h-4.5"></i>
+                        </div>
+                        <div class="chat-bubble-kai px-4 py-3 max-w-[85%] leading-relaxed flex items-center gap-1.5">
+                            <span class="text-white/80">KAI está analizando</span>
+                            <span class="flex gap-0.5 mt-1.5">
+                                <span class="w-1.5 h-1.5 rounded-full bg-white/70 animate-bounce" style="animation-delay: 0.1s"></span>
+                                <span class="w-1.5 h-1.5 rounded-full bg-white/70 animate-bounce" style="animation-delay: 0.2s"></span>
+                                <span class="w-1.5 h-1.5 rounded-full bg-white/70 animate-bounce" style="animation-delay: 0.3s"></span>
+                            </span>
+                        </div>
+                    `;
+                    kaiMessages.appendChild(loadingBubble);
+                    lucide.createIcons();
+                    scrollToBottom();
+            
+                    const renderKaiReply = (reply) => {
+                        const kaiBubble = document.createElement('div');
+                        kaiBubble.className = 'flex gap-2';
+                        kaiBubble.innerHTML = `
+                            <div class="w-8 h-8 rounded-full bg-action flex items-center justify-center shadow-lg shrink-0">
+                                <i data-lucide="sparkles" class="text-primary w-4.5 h-4.5"></i>
+                            </div>
+                            <div class="chat-bubble-kai px-4 py-3 max-w-[85%] leading-relaxed text-white">
+                                ${formatMarkdown(reply)}
+                            </div>
+                        `;
+                        kaiMessages.appendChild(kaiBubble);
+                        lucide.createIcons();
+                        scrollToBottom();
+                    };
+            
+                    const renderError = () => {
+                        const errorBubble = document.createElement('div');
+                        errorBubble.className = 'flex gap-2 text-red-400';
+                        errorBubble.innerHTML = `
+                            <div class="w-8 h-8 rounded-full bg-red-950 flex items-center justify-center shadow-lg shrink-0 border border-red-500/30">
+                                <i data-lucide="alert-circle" class="w-4.5 h-4.5 text-red-400"></i>
+                            </div>
+                            <div class="chat-bubble-kai px-4 py-3 max-w-[85%] border-red-500/20 leading-relaxed text-red-400 font-medium">
+                                Lo siento, ocurrió un error al procesar tu solicitud. Por favor intenta de nuevo o inicia tu prueba de 14 días gratis en <a href="https://ongoing2.mx" class="text-action underline">ongoing2.mx</a>.
+                            </div>
+                        `;
+                        kaiMessages.appendChild(errorBubble);
+                        lucide.createIcons();
+                        scrollToBottom();
+                    };
+            
+                    // 3. Make fetch request to serverless endpoint
+                    try {
+                        const response = await fetch('../api/chat', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({ message: userMessage })
+                        });
+            
+                        // Remove loading bubble
+                        const loader = document.getElementById('kai-loading-bubble');
+                        if (loader) loader.remove();
+            
+                        if (!response.ok) {
+                            throw new Error(`Serverless endpoint returned status ${response.status}`);
+                        }
+            
+                        const data = await response.json();
+                        const reply = data.response;
+                        renderKaiReply(reply);
+            
+                    } catch (error) {
+                        console.warn('Serverless API failed, attempting local static fallback:', error);
+                        try {
+                            let localApiKey = window.OPENAI_API_KEY;
+                            
+                            if (!localApiKey) {
+                                // Local static fallback: Try to load the .env file from the local server
+                                let envResponse = await fetch('../.env');
+                                if (!envResponse.ok) {
+                                    envResponse = await fetch('.env');
+                                    if (!envResponse.ok) throw new Error('Could not fetch .env file');
+                                }
+                                
+                                const envText = await envResponse.text();
+                                // Parse key
+                                const match = envText.match(/OPENAI_API_KEY\s*=\s*([^\s#]+)/);
+                                if (!match || !match[1]) throw new Error('No API key found in local .env');
+                                localApiKey = match[1].trim();
+                            }
+            
+                            // Load llms.txt context locally
+                            let localContext = '';
+                            try {
+                                let llmRes = await fetch('../llms.txt');
+                                if (!llmRes.ok) {
+                                    llmRes = await fetch('llms.txt');
+                                }
+                                if (llmRes.ok) localContext = await llmRes.text();
+                            } catch(e) {
+                                console.warn('Could not load llms.txt locally, running without context:', e);
+                            }
+            
+                            // Call OpenAI direct from client
+                            const aiResponse = await fetch('https://api.openai.com/v1/chat/completions', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                    'Authorization': `Bearer ${localApiKey}`
+                                },
+                                body: JSON.stringify({
+                                    model: 'gpt-4o-mini',
+                                    messages: [
+                                        { 
+                                            role: 'system', 
+                                            content: `Eres KAI, el asistente de inteligencia artificial de OnGoing ERP ("La evolución del ERP en México"). Tu estilo de comunicación sigue el ADN "Deep Tech & Human Clarity": debes ser profesional, directo, claro y con español de México.
+                                            
+                                            Contexto:
+                                            ${localContext}
+            
+                                            REGLAS:
+                                            1. Responde basándote únicamente en el contexto. Si no está en el contexto, indícalo y sugiere contactar a hola@ongoing.mx o iniciar la prueba gratis en https://ongoing2.mx.
+                                            2. Jailbreak Guard: Si preguntan sobre temas ajenos (recetas, poemas, chistes, etc.), debes negarte a responder de forma elegante y breve, sugiriendo iniciar la prueba de 14 días gratis en https://ongoing2.mx.`
+                                        },
+                                        { role: 'user', content: userMessage }
+                                    ],
+                                    temperature: 0.3
+                                })
+                            });
+            
+                            // Remove loading bubble
+                            const loader = document.getElementById('kai-loading-bubble');
+                            if (loader) loader.remove();
+            
+                            if (!aiResponse.ok) throw new Error('Direct OpenAI call failed');
+                            const aiData = await aiResponse.json();
+                            const reply = aiData.choices[0].message.content;
+                            renderKaiReply(reply);
+            
+                        } catch (fallbackError) {
+                            console.error('Local fallback failed:', fallbackError);
+                            
+                            // Remove loading bubble
+                            const loader = document.getElementById('kai-loading-bubble');
+                            if (loader) loader.remove();
+            
+                            renderError();
+                        }
+                    }
+                });
+            }
+            
+            // Simple helper to format basic bold and links from markdown
+            function formatMarkdown(text) {
+                if (!text) return '';
+                // Format bold: **text** -> <strong>text</strong>
+                let formatted = text.replace(/\*\*(.*?)\*\*/g, '<strong class="text-action font-extrabold">$1</strong>');
+                // Format links: [label](url) -> <a href="$2" target="_blank" class="text-action underline font-bold">$1</a>
+                formatted = formatted.replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" target="_blank" class="text-action underline font-bold">$1</a>');
+                // Format bullet points
+                formatted = formatted.replace(/^\*\s(.*)$/gm, '• $1');
+                // Replace newlines with <br>
+                formatted = formatted.replace(/\n/g, '<br>');
+                return formatted;
+            }
+        });
+    </script>
+</body>
+</html>

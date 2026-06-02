@@ -372,6 +372,38 @@ if (kaiTrigger && kaiContainer && kaiClose && kaiMessages && kaiForm && kaiInput
         lucide.createIcons();
         scrollToBottom();
 
+        const renderKaiReply = (reply) => {
+            const kaiBubble = document.createElement('div');
+            kaiBubble.className = 'flex gap-2';
+            kaiBubble.innerHTML = `
+                <div class="w-8 h-8 rounded-full bg-action flex items-center justify-center shadow-lg shrink-0">
+                    <i data-lucide="sparkles" class="text-primary w-4.5 h-4.5"></i>
+                </div>
+                <div class="chat-bubble-kai px-4 py-3 max-w-[85%] leading-relaxed text-white">
+                    ${formatMarkdown(reply)}
+                </div>
+            `;
+            kaiMessages.appendChild(kaiBubble);
+            lucide.createIcons();
+            scrollToBottom();
+        };
+
+        const renderError = () => {
+            const errorBubble = document.createElement('div');
+            errorBubble.className = 'flex gap-2 text-red-400';
+            errorBubble.innerHTML = `
+                <div class="w-8 h-8 rounded-full bg-red-950 flex items-center justify-center shadow-lg shrink-0 border border-red-500/30">
+                    <i data-lucide="alert-circle" class="w-4.5 h-4.5 text-red-400"></i>
+                </div>
+                <div class="chat-bubble-kai px-4 py-3 max-w-[85%] border-red-500/20 leading-relaxed text-red-400 font-medium">
+                    Lo siento, ocurrió un error al procesar tu solicitud. Por favor intenta de nuevo o inicia tu prueba de 14 días gratis en <a href="https://ongoing2.mx" class="text-action underline">ongoing2.mx</a>.
+                </div>
+            `;
+            kaiMessages.appendChild(errorBubble);
+            lucide.createIcons();
+            scrollToBottom();
+        };
+
         // 3. Make fetch request to serverless endpoint
         try {
             const response = await fetch('/api/chat', {
@@ -386,46 +418,92 @@ if (kaiTrigger && kaiContainer && kaiClose && kaiMessages && kaiForm && kaiInput
             const loader = document.getElementById('kai-loading-bubble');
             if (loader) loader.remove();
 
-            if (!response.ok) throw new Error('Error in API response');
+            if (!response.ok) {
+                throw new Error(`Serverless endpoint returned status ${response.status}`);
+            }
 
             const data = await response.json();
             const reply = data.response;
+            renderKaiReply(reply);
 
-            // 4. Render KAI Reply
-            const kaiBubble = document.createElement('div');
-            kaiBubble.className = 'flex gap-2';
-            kaiBubble.innerHTML = `
-                <div class="w-8 h-8 rounded-full bg-action flex items-center justify-center shadow-lg shrink-0">
-                    <i data-lucide="sparkles" class="text-primary w-4.5 h-4.5"></i>
-                </div>
-                <div class="chat-bubble-kai px-4 py-3 max-w-[85%] leading-relaxed text-white">
-                    ${formatMarkdown(reply)}
-                </div>
-            `;
-            kaiMessages.appendChild(kaiBubble);
-            lucide.createIcons();
-            scrollToBottom();
         } catch (error) {
-            console.error('KAI Chat Error:', error);
-            
-            // Remove loading bubble
-            const loader = document.getElementById('kai-loading-bubble');
-            if (loader) loader.remove();
+            console.warn('Serverless API failed, attempting local static fallback:', error);
+            try {
+                let localApiKey = window.OPENAI_API_KEY;
+                
+                if (!localApiKey) {
+                    // Local static fallback: Try to load the .env file from the local server
+                    let envResponse = await fetch('/.env');
+                    if (!envResponse.ok) {
+                        // Try relative path
+                        envResponse = await fetch('.env');
+                        if (!envResponse.ok) throw new Error('Could not fetch .env file');
+                    }
+                    
+                    const envText = await envResponse.text();
+                    // Parse key
+                    const match = envText.match(/OPENAI_API_KEY\s*=\s*([^\s#]+)/);
+                    if (!match || !match[1]) throw new Error('No API key found in local .env');
+                    localApiKey = match[1].trim();
+                }
 
-            // Render Error Bubble
-            const errorBubble = document.createElement('div');
-            errorBubble.className = 'flex gap-2 text-red-400';
-            errorBubble.innerHTML = `
-                <div class="w-8 h-8 rounded-full bg-red-950 flex items-center justify-center shadow-lg shrink-0 border border-red-500/30">
-                    <i data-lucide="alert-circle" class="w-4.5 h-4.5 text-red-400"></i>
-                </div>
-                <div class="chat-bubble-kai px-4 py-3 max-w-[85%] border-red-500/20 leading-relaxed text-red-400 font-medium">
-                    Lo siento, ocurrió un error al procesar tu solicitud. Por favor intenta de nuevo o inicia tu prueba de 14 días gratis en <a href="https://ongoing2.mx" class="text-action underline">ongoing2.mx</a>.
-                </div>
-            `;
-            kaiMessages.appendChild(errorBubble);
-            lucide.createIcons();
-            scrollToBottom();
+                // Load llms.txt context locally
+                let localContext = '';
+                try {
+                    let llmRes = await fetch('/llms.txt');
+                    if (!llmRes.ok) {
+                        llmRes = await fetch('llms.txt');
+                    }
+                    if (llmRes.ok) localContext = await llmRes.text();
+                } catch(e) {
+                    console.warn('Could not load llms.txt locally, running without context:', e);
+                }
+
+                // Call OpenAI direct from client
+                const aiResponse = await fetch('https://api.openai.com/v1/chat/completions', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${localApiKey}`
+                    },
+                    body: JSON.stringify({
+                        model: 'gpt-4o-mini',
+                        messages: [
+                            { 
+                                role: 'system', 
+                                content: `Eres KAI, el asistente de inteligencia artificial de OnGoing ERP ("La evolución del ERP en México"). Tu estilo de comunicación sigue el ADN "Deep Tech & Human Clarity": debes ser profesional, directo, claro y con español de México.
+                                
+                                Contexto:
+                                ${localContext}
+
+                                REGLAS:
+                                1. Responde basándote únicamente en el contexto. Si no está en el contexto, indícalo y sugiere contactar a hola@ongoing.mx o iniciar la prueba gratis en https://ongoing2.mx.
+                                2. Jailbreak Guard: Si preguntan sobre temas ajenos (recetas, poemas, chistes, etc.), debes negarte a responder de forma elegante y breve, sugiriendo iniciar la prueba de 14 días gratis en https://ongoing2.mx.`
+                            },
+                            { role: 'user', content: userMessage }
+                        ],
+                        temperature: 0.3
+                    })
+                });
+
+                // Remove loading bubble if it is still there
+                const loader = document.getElementById('kai-loading-bubble');
+                if (loader) loader.remove();
+
+                if (!aiResponse.ok) throw new Error('Direct OpenAI call failed');
+                const aiData = await aiResponse.json();
+                const reply = aiData.choices[0].message.content;
+                renderKaiReply(reply);
+
+            } catch (fallbackError) {
+                console.error('Local fallback failed:', fallbackError);
+                
+                // Remove loading bubble
+                const loader = document.getElementById('kai-loading-bubble');
+                if (loader) loader.remove();
+
+                renderError();
+            }
         }
     });
 }

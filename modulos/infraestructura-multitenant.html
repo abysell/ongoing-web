@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seguridad Corporativa y Arquitectura Multi-Tenant | OnGoing ERP</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        display: ['"Space Grotesk"', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#001953',
+                        action: '#00c0ff',
+                        dark: '#000b2e',
+                        light: '#F5F7FA',
+                        secondary: '#d1d5db'
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Custom CSS Styles -->
+    <style>
+        body {
+            background: radial-gradient(circle at 50% 0%, #001953 0%, #00071a 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+        }
+
+        .glass-header {
+            background: rgba(0, 25, 83, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .glass-panel {
+            background: rgba(0, 20, 66, 0.4);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .glow-cta {
+            box-shadow: 0 0 20px rgba(0, 192, 255, 0.4);
+            transition: all 0.3s ease;
+        }
+        .glow-cta:hover {
+            box-shadow: 0 0 30px rgba(0, 192, 255, 0.7);
+            transform: translateY(-2px);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.02);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(0, 192, 255, 0.2);
+            border-radius: 4px;
+        }
+
+        /* Chatbot KAI Float Widget Styles */
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 15px rgba(0, 192, 255, 0.4); }
+            50% { box-shadow: 0 0 25px rgba(0, 192, 255, 0.8); }
+            100% { box-shadow: 0 0 15px rgba(0, 192, 255, 0.4); }
+        }
+        .animate-pulse-glow {
+            animation: pulseGlow 2.5s infinite ease-in-out;
+        }
+        
+        .chat-bubble-user {
+            background-color: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            align-self: flex-end;
+            border-radius: 1rem 1rem 0.1rem 1rem;
+        }
+
+        .chat-bubble-kai {
+            background-color: rgba(0, 20, 66, 0.4);
+            border: 1px solid rgba(0, 192, 255, 0.3);
+            color: #ffffff;
+            align-self: flex-start;
+            border-radius: 1rem 1rem 1rem 0.1rem;
+        }
+
+        #kai-chat-container.active {
+            display: flex !important;
+        }
+
+        @media (max-w: 767px) {
+            #kai-chat-container.active {
+                display: flex !important;
+                position: fixed;
+                bottom: 0;
+                right: 0;
+                width: 100vw !important;
+                height: 100vh !important;
+                max-width: 100vw !important;
+                max-height: 100vh !important;
+                margin: 0 !important;
+                border-radius: 0 !important;
+                z-index: 9999;
+            }
+        }
+    </style>
+</head>
+<body class="text-gray-100 flex flex-col font-sans overflow-x-hidden antialiased">
+
+    <!-- Header (Navegación) -->
+    <header id="main-header" class="fixed top-0 w-full z-50 transition-all duration-300 py-4 glass-header">
+        <div class="container mx-auto px-6 max-w-7xl flex items-center justify-between">
+            <!-- Logo -->
+            <a href="../" class="flex items-center transition-opacity hover:opacity-80 outline-none">
+                <img src="../img/ongoing-logo.png" alt="Ongoing Logo" class="h-8 md:h-[38px] w-auto">
+            </a>
+
+            <!-- Derecha / Botones -->
+            <div class="flex items-center gap-4">
+                <a href="../docs/" class="text-white/85 hover:text-action font-semibold text-sm md:text-[15px] transition-colors mr-2">
+                    Documentación
+                </a>
+                <a href="https://ongoing2.mx/login" class="text-white hover:text-action font-semibold text-sm md:text-[15px] transition-colors">
+                    Ingresar
+                </a>
+                <a href="https://ongoing2.mx" class="bg-action text-primary font-bold py-2 md:py-2.5 px-5 md:px-7 rounded-full hover:bg-opacity-90 transition-all text-sm md:text-[15px] shadow-[0_0_15px_rgba(0,192,255,0.3)]">
+                    Empieza Gratis
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 1. Hero Section Comercial -->
+    <section class="min-h-[95vh] flex items-center pt-32 pb-16 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-action/5 via-transparent to-transparent opacity-40 pointer-events-none"></div>
+        <div class="container mx-auto px-6 max-w-7xl grid lg:grid-cols-12 gap-12 items-center relative z-10">
+            <!-- Columna Izquierda (Copys y Conversión) -->
+            <div class="lg:col-span-6 flex flex-col gap-6 text-left">
+                <div class="inline-flex items-center gap-2 text-action font-bold text-xs uppercase tracking-widest bg-action/10 px-4 py-2 rounded-full w-fit border border-action/20">
+                    Infraestructura Multi-Tenant y Seguridad Activa
+                </div>
+                <h1 class="font-display text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight text-white">
+                    Seguridad de Nivel Corporativo para tu PyME
+                </h1>
+                <p class="text-lg md:text-xl text-secondary max-w-xl leading-relaxed font-medium">
+                    Tus datos protegidos al máximo nivel. Bases de datos físicas dedicadas e independientes por cliente y controles activos contra el robo de sesiones y piratería.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 mt-2">
+                    <a href="https://ongoing2.mx" class="bg-action text-primary font-extrabold py-3.5 px-8 rounded-full hover:bg-opacity-90 transition-all text-center text-[15px] shadow-lg shadow-action/25 glow-cta">
+                        Empieza tu prueba gratis
+                    </a>
+                    <a href="#fundamentos" class="bg-white/5 hover:bg-white/10 text-white font-semibold py-3.5 px-8 rounded-full border border-white/10 transition-colors text-center text-[15px]">
+                        Ver Fundamentos
+                    </a>
+                </div>
+                <p class="text-xs text-gray-500 font-medium">Arquitectura de nube aislada &bull; Cero riesgos de fugas cruzadas</p>
+            </div>
+
+            <!-- Columna Derecha (Consola Interactiva Multi-Tenant & Sesión Única) -->
+            <div class="lg:col-span-6 w-full flex justify-center">
+                <div class="w-full max-w-lg glass-panel p-6 rounded-3xl border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] flex flex-col gap-5">
+                    <!-- Tab Selector del Widget -->
+                    <div class="flex items-center justify-between border-b border-white/10 pb-3">
+                        <span class="text-xs font-bold text-white uppercase tracking-wider">Simulador de Seguridad</span>
+                        <div class="flex gap-2">
+                            <button id="sim-btn-db" class="active-sim-tab px-3 py-1 rounded bg-action/20 text-action border border-action/30 text-[10px] font-bold transition-all">
+                                Bases Aisladas
+                            </button>
+                            <button id="sim-btn-session" class="px-3 py-1 rounded text-gray-400 hover:text-white text-[10px] font-bold transition-all">
+                                Sesión Única
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Panel 1: Bases Aisladas (Multi-Tenant) -->
+                    <div id="sim-panel-db" class="space-y-4">
+                        <div class="flex justify-between items-center text-xs text-gray-400">
+                            <span>Esquema de Datos Ongoing</span>
+                            <span class="text-[9px] bg-green-500/20 text-green-400 font-bold px-2 py-0.5 rounded-full border border-green-500/20">Aislamiento Físico</span>
+                        </div>
+                        
+                        <div class="grid grid-cols-3 gap-3">
+                            <!-- Tenant A -->
+                            <div class="bg-dark/80 p-3 rounded-2xl border border-white/10 flex flex-col items-center text-center gap-2">
+                                <div class="w-8 h-8 rounded-full bg-blue-500/10 flex items-center justify-center text-blue-400">
+                                    <i data-lucide="database" class="w-4 h-4"></i>
+                                </div>
+                                <span class="text-[10px] font-bold text-white">db_tenant_A</span>
+                                <div class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></div>
+                                <span class="text-[8px] text-gray-500">Alimentro S.A.</span>
+                            </div>
+                            <!-- Tenant B -->
+                            <div class="bg-dark/80 p-3 rounded-2xl border border-white/10 flex flex-col items-center text-center gap-2">
+                                <div class="w-8 h-8 rounded-full bg-purple-500/10 flex items-center justify-center text-purple-400">
+                                    <i data-lucide="database" class="w-4 h-4"></i>
+                                </div>
+                                <span class="text-[10px] font-bold text-white">db_tenant_B</span>
+                                <div class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></div>
+                                <span class="text-[8px] text-gray-500">Macero Corp</span>
+                            </div>
+                            <!-- Tenant C -->
+                            <div class="bg-dark/80 p-3 rounded-2xl border border-white/10 flex flex-col items-center text-center gap-2">
+                                <div class="w-8 h-8 rounded-full bg-orange-500/10 flex items-center justify-center text-orange-400">
+                                    <i data-lucide="database" class="w-4 h-4"></i>
+                                </div>
+                                <span class="text-[10px] font-bold text-white">db_tenant_C</span>
+                                <div class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></div>
+                                <span class="text-[8px] text-gray-500">Apetit México</span>
+                            </div>
+                        </div>
+
+                        <div class="bg-white/5 p-3 rounded-xl border border-white/5 text-[10px] text-gray-400 leading-relaxed">
+                            💡 **Aislamiento Total**: A diferencia de los sistemas tradicionales donde los datos de todos los clientes conviven en una misma base de datos (y un error de programación puede filtrar datos ajenos), OnGoing aprovisiona un espacio físico aislado y encriptado por cliente.
+                        </div>
+                    </div>
+
+                    <!-- Panel 2: Sesión Única (Concurrencia) -->
+                    <div id="sim-panel-session" class="hidden space-y-4">
+                        <div class="flex justify-between items-center text-xs text-gray-400">
+                            <span>Prueba el Flujo Anti-Piratería</span>
+                            <button id="btn-trigger-login" class="bg-action text-primary font-bold px-2.5 py-1 rounded text-[10px] hover:bg-opacity-90 active:scale-95 transition-all">
+                                Simular Login Duplicado
+                            </button>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-4">
+                            <!-- Dispositivo A (Activo) -->
+                            <div id="dev-a" class="bg-dark/80 p-4 rounded-2xl border border-green-500/30 flex flex-col items-center gap-2 transition-all duration-300">
+                                <i data-lucide="laptop" class="w-8 h-8 text-green-400"></i>
+                                <span class="text-[10px] font-bold text-white">Dispositivo A (Dueño)</span>
+                                <div id="dev-a-status" class="bg-green-500/10 text-green-400 font-extrabold text-[9px] px-2 py-0.5 rounded border border-green-500/20 uppercase">
+                                    Sesión Activa
+                                </div>
+                            </div>
+                            <!-- Dispositivo B (Intruso / Duplicado) -->
+                            <div id="dev-b" class="bg-dark/80 p-4 rounded-2xl border border-white/5 flex flex-col items-center gap-2 transition-all duration-300">
+                                <i data-lucide="smartphone" class="w-8 h-8 text-gray-500"></i>
+                                <span class="text-[10px] font-bold text-white">Dispositivo B (Nuevo)</span>
+                                <div id="dev-b-status" class="bg-white/5 text-gray-500 font-bold text-[9px] px-2 py-0.5 rounded border border-white/10 uppercase">
+                                    Apagado
+                                </div>
+                            </div>
+                        </div>
+
+                        <p id="sim-session-info" class="text-[10px] text-gray-400 text-center italic bg-white/5 p-2 rounded-lg">
+                            Presiona "Simular Login Duplicado" para ver cómo OnGoing responde al instante ante una sesión concurrente.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. Fundamentos Teóricos: El Riesgo de las Bases de Datos Compartidas -->
+    <section id="fundamentos" class="py-20 border-t border-white/5">
+        <div class="container mx-auto px-6 max-w-5xl text-center">
+            <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-6">
+                Fundamentos Teóricos: El Riesgo del Shared-Database
+            </h2>
+            <div class="text-left max-w-4xl mx-auto space-y-6 text-gray-300 leading-relaxed text-base md:text-lg">
+                <p>
+                    La mayoría de los sistemas ERP tradicionales operan bajo un esquema de base de datos compartida (*Shared Database / Single Tenant Shared Schema*). En esta arquitectura, la información financiera, de nómina y de ventas de miles de empresas distintas reside física e internamente dentro de la misma tabla de base de datos, separadas únicamente por un identificador de cliente (`cliente_id`).
+                </p>
+                <p>
+                    Esto representa una **falla crítica latente**. Si un desarrollador comete un error menor en una consulta SQL o en un filtro de la API, un cliente podría ver o descargar información de otra empresa de manera accidental. Además, si un cliente ejecuta consultas sumamente pesadas o reportes masivos, degrada el rendimiento de la base de datos completa afectando a los demás (*Noisy Neighbor Effect*).
+                </p>
+                <p>
+                    La arquitectura **Multi-Tenant de OnGoing** resuelve esto aislando físicamente los datos. Al aprovisionar un contenedor y una base de datos exclusiva para cada PyME, se garantiza el aislamiento criptográfico completo. Tus consultas son 100% tuyas, imposibilitando cualquier error de filtrado y optimizando los tiempos de procesamiento.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Flujo e Infraestructura Técnica -->
+    <section class="py-20 bg-black/20 border-t border-b border-white/5">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <div class="text-center mb-16">
+                <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-4">
+                    Componentes de Seguridad Activa
+                </h2>
+                <p class="text-gray-400 max-w-xl mx-auto">
+                    Medidas activas de protección cibernética e infraestructura robusta integradas nativamente en la plataforma.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Tarjeta 1 -->
+                <div class="glass-panel p-8 rounded-3xl border border-white/5">
+                    <div class="w-10 h-10 rounded-xl bg-action/10 border border-action/20 flex items-center justify-center text-action mb-6">
+                        <i data-lucide="lock" class="w-5 h-5"></i>
+                    </div>
+                    <h4 class="font-bold text-white text-lg mb-3">Sesión Única Activa (JWT)</h4>
+                    <p class="text-sm text-gray-400 leading-relaxed">
+                        Protección estricta contra el robo y la compartición de licencias. Al firmar un nuevo dispositivo, el token anterior se invalida síncronamente en nuestro servidor Redis, denegando accesos concurrentes (HTTP 401).
+                    </p>
+                </div>
+
+                <!-- Tarjeta 2 -->
+                <div class="glass-panel p-8 rounded-3xl border border-white/5">
+                    <div class="w-10 h-10 rounded-xl bg-action/10 border border-action/20 flex items-center justify-center text-action mb-6">
+                        <i data-lucide="shield" class="w-5 h-5"></i>
+                    </div>
+                    <h4 class="font-bold text-white text-lg mb-3">Aprovisionamiento Síncrono</h4>
+                    <p class="text-sm text-gray-400 leading-relaxed">
+                        Durante el proceso de Onboarding de 2 minutos, nuestro orquestador crea de forma automática la estructura y tablas independientes. Tu información jamás se mezcla con la de otras organizaciones.
+                    </p>
+                </div>
+
+                <!-- Tarjeta 3 -->
+                <div class="glass-panel p-8 rounded-3xl border border-white/5">
+                    <div class="w-10 h-10 rounded-xl bg-action/10 border border-action/20 flex items-center justify-center text-action mb-6">
+                        <i data-lucide="refresh-cw" class="w-5 h-5"></i>
+                    </div>
+                    <h4 class="font-bold text-white text-lg mb-3">Respaldos Diarios Automatizados</h4>
+                    <p class="text-sm text-gray-400 leading-relaxed">
+                        Generamos copias de seguridad cada 24 horas y encriptamos las imágenes resultantes con AES-256 en repositorios externos y redundantes. Tu información está a salvo de fallas de hardware y ransomware.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. CTA Banner Intermedio -->
+    <section class="py-12">
+        <div class="container mx-auto px-6 max-w-5xl">
+            <div class="bg-gradient-to-br from-[#001953] to-[#000d2b] p-10 rounded-3xl border border-blue-500/25 relative overflow-hidden group shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-8">
+                <div class="absolute -right-16 -bottom-16 w-56 h-56 bg-action/10 rounded-full blur-[80px] -z-10"></div>
+                <div class="max-w-xl">
+                    <h3 class="font-display text-2xl font-bold text-white mb-2">Tu información resguardada al máximo nivel</h3>
+                    <p class="text-sm text-gray-400 leading-relaxed">
+                        Disfruta de la robustez de un sistema corporativo a la medida de tu presupuesto PyME. Configuración inmediata.
+                    </p>
+                </div>
+                <a href="https://ongoing2.mx" class="inline-block bg-action text-primary font-bold text-sm px-8 py-4 rounded-full hover:bg-opacity-90 active:scale-95 transition-all shrink-0 text-center shadow-lg shadow-action/25 glow-cta">
+                    Comenzar Prueba Gratis
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Roles y Permisos de Seguridad -->
+    <section class="py-20 border-t border-white/5">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <div class="text-center mb-16">
+                <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-4">
+                    Esquema de Privacidad Interno
+                </h2>
+                <p class="text-gray-400 max-w-xl mx-auto">
+                    El aislamiento de datos no es solo externo. OnGoing protege la información financiera limitando el acceso por roles específicos.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Admin -->
+                <div class="glass-panel p-8 rounded-3xl border border-white/5 flex flex-col justify-between">
+                    <div>
+                        <span class="text-[10px] font-bold uppercase tracking-wider text-action block mb-2">Rol Operativo</span>
+                        <h4 class="font-bold text-white text-xl mb-4">Administrador</h4>
+                        <ul class="text-sm text-gray-400 space-y-2 mb-6">
+                            <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-action mt-0.5 shrink-0"></i> Control de llaves API e integraciones</li>
+                            <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-action mt-0.5 shrink-0"></i> Descarga de bitácoras de auditoría de accesos</li>
+                            <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-action mt-0.5 shrink-0"></i> Configuración de presupuestos y facturas</li>
+                        </ul>
+                    </div>
+                    <span class="text-xs text-white/40 font-medium">Socios, Director Financiero</span>
+                </div>
+
+                <!-- Líder -->
+                <div class="glass-panel p-8 rounded-3xl border border-white/5 flex flex-col justify-between">
+                    <div>
+                        <span class="text-[10px] font-bold uppercase tracking-wider text-action block mb-2">Rol Operativo</span>
+                        <h4 class="font-bold text-white text-xl mb-4">Líder</h4>
+                        <ul class="text-sm text-gray-400 space-y-2 mb-6">
+                            <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-action mt-0.5 shrink-0"></i> Gestión de asignación de su equipo</li>
+                            <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-action mt-0.5 shrink-0"></i> Visualización de reportes de rentabilidad</li>
+                            <li class="flex items-start gap-2"><i data-lucide="lock" class="w-4 h-4 text-red-400 mt-0.5 shrink-0"></i> Bloqueado modificar credenciales y APIs del ERP</li>
+                        </ul>
+                    </div>
+                    <span class="text-xs text-white/40 font-medium">Project Managers, Coordinadores</span>
+                </div>
+
+                <!-- Colaborador -->
+                <div class="glass-panel p-8 rounded-3xl border border-white/5 flex flex-col justify-between">
+                    <div>
+                        <span class="text-[10px] font-bold uppercase tracking-wider text-action block mb-2">Rol Operativo</span>
+                        <h4 class="font-bold text-white text-xl mb-4">Colaborador</h4>
+                        <ul class="text-sm text-gray-400 space-y-2 mb-6">
+                            <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-action mt-0.5 shrink-0"></i> Registro de hojas de tiempo propio</li>
+                            <li class="flex items-start gap-2"><i data-lucide="lock" class="w-4 h-4 text-red-400 mt-0.5 shrink-0"></i> Bloqueado ver márgenes de ganancia</li>
+                            <li class="flex items-start gap-2"><i data-lucide="lock" class="w-4 h-4 text-red-400 mt-0.5 shrink-0"></i> Bloqueado ver bases de datos e integraciones</li>
+                        </ul>
+                    </div>
+                    <span class="text-xs text-white/40 font-medium">Consultores, Ingenieros, Diseñadores</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Casos de Uso Prácticos -->
+    <section class="py-20 bg-black/20 border-t border-white/5">
+        <div class="container mx-auto px-6 max-w-5xl">
+            <div class="text-center mb-16">
+                <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-4">
+                    Casos de Uso: Arquitectura Compartida vs Aislada
+                </h2>
+                <p class="text-gray-400 max-w-xl mx-auto">
+                    Comparación de respuesta ante escenarios reales de vulnerabilidades informáticas.
+                </p>
+            </div>
+
+            <!-- Caso A -->
+            <div class="grid md:grid-cols-2 gap-8 mb-12 items-stretch">
+                <div class="bg-red-950/15 border border-red-500/20 p-8 rounded-3xl flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-xs font-bold text-red-400 uppercase tracking-widest">Caso A: Arquitectura Compartida</span>
+                            <span class="text-[10px] text-red-400 bg-red-950/40 px-2 py-0.5 rounded">El Error del Desarrollador</span>
+                        </div>
+                        <p class="text-sm text-gray-300 leading-relaxed">
+                            Un bug menor en una actualización de la API del ERP tradicional elimina la validación del identificador de cliente en un reporte. Al exportar su información financiera, una PyME descarga de forma accidental archivos contables e información bancaria de otros clientes ajenos.
+                        </p>
+                    </div>
+                    <span class="text-xs text-red-400 font-semibold mt-6 block">Resultado: Brecha masiva de datos y pérdidas de reputación graves.</span>
+                </div>
+
+                <div class="bg-green-950/15 border border-green-500/20 p-8 rounded-3xl flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-xs font-bold text-green-400 uppercase tracking-widest">Caso A: OnGoing ERP</span>
+                            <span class="text-[10px] text-green-400 bg-green-950/40 px-2 py-0.5 rounded">Aislamiento Físico</span>
+                        </div>
+                        <p class="text-sm text-gray-300 leading-relaxed">
+                            Aún en el hipotético caso de que un bug intente extraer registros globales, OnGoing realiza la conexión de base de datos a nivel de contenedor aislado (*Sandbox*). Es físicamente imposible acceder a registros de otro cliente porque las credenciales de conexión del contenedor no tienen acceso a otra base de datos.
+                        </p>
+                    </div>
+                    <span class="text-xs text-green-400 font-semibold mt-6 block">Resultado: Información protegida por barreras de hardware virtuales.</span>
+                </div>
+            </div>
+
+            <!-- Caso B -->
+            <div class="grid md:grid-cols-2 gap-8 items-stretch">
+                <div class="bg-red-950/15 border border-red-500/20 p-8 rounded-3xl flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-xs font-bold text-red-400 uppercase tracking-widest">Caso B: El Tradicional</span>
+                            <span class="text-[10px] text-red-400 bg-red-950/40 px-2 py-0.5 rounded">El Ex-empleado Rencoroso</span>
+                        </div>
+                        <p class="text-sm text-gray-300 leading-relaxed">
+                            Un colaborador que dejó la empresa conserva una sesión iniciada en su dispositivo móvil. El sistema no invalida sesiones anteriores de forma síncrona. El ex-empleado accede a la información de los clientes y la cartera de ventas durante semanas sin que la dirección lo detecte.
+                        </p>
+                    </div>
+                    <span class="text-xs text-red-400 font-semibold mt-6 block">Resultado: Fuga silenciosa de información de clientes confidenciales.</span>
+                </div>
+
+                <div class="bg-green-950/15 border border-green-500/20 p-8 rounded-3xl flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-xs font-bold text-green-400 uppercase tracking-widest">Caso B: OnGoing ERP</span>
+                            <span class="text-[10px] text-green-400 bg-green-950/40 px-2 py-0.5 rounded">Desconexión síncrona</span>
+                        </div>
+                        <p class="text-sm text-gray-300 leading-relaxed">
+                            OnGoing fuerza la sesión única activa. Al dar de baja al ex-empleado o restablecer credenciales, el servidor invalida el JWT al instante en Redis. Cualquier sesión en curso en el dispositivo antiguo se cierra síncronamente al intentar realizar la siguiente acción, bloqueando el acceso en segundos.
+                        </p>
+                    </div>
+                    <span class="text-xs text-green-400 font-semibold mt-6 block">Resultado: Control de acceso absoluto y corte inmediato de credenciales.</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Final CTA Conversión -->
+    <section class="py-16 border-t border-white/5">
+        <div class="container mx-auto px-6 max-w-5xl text-center">
+            <div class="bg-gradient-to-tr from-primary via-[#001442] to-dark p-12 rounded-3xl border border-action/25 relative overflow-hidden group shadow-2xl space-y-6">
+                <div class="absolute -left-20 -bottom-20 w-60 h-60 bg-action/10 rounded-full blur-[100px]"></div>
+                <div class="absolute -right-20 -top-20 w-60 h-60 bg-blue-500/10 rounded-full blur-[100px]"></div>
+                
+                <span class="text-action text-xs font-bold uppercase tracking-widest block">Prueba OnGoing ERP</span>
+                <h3 class="font-display text-3xl md:text-4xl font-extrabold text-white leading-tight max-w-xl mx-auto">
+                    Infraestructura Segura para Escalar tu Negocio
+                </h3>
+                <p class="text-sm text-gray-300 max-w-lg mx-auto leading-relaxed">
+                    Protege tu propiedad intelectual y tus bases de datos financieras en un entorno diseñado por profesionales.
+                </p>
+                <div class="pt-4">
+                    <a href="https://ongoing2.mx" class="inline-block bg-action text-primary font-extrabold text-[15px] px-8 py-4 rounded-full hover:bg-opacity-90 active:scale-95 transition-all shadow-lg shadow-action/30 glow-cta">
+                        Empieza Gratis Ahora &bull; 14 Días
+                    </a>
+                </div>
+                <span class="block text-[10px] text-gray-500 font-medium">Configuración síncrona en 2 minutos. No requiere tarjeta.</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/10 pt-10 pb-8 bg-black/40 relative overflow-hidden">
+        <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-action/5 rounded-t-full blur-[100px] -z-10 pointer-events-none"></div>
+
+        <div class="container mx-auto px-6 max-w-6xl relative z-10">
+            <div class="grid grid-cols-2 md:grid-cols-12 gap-10 md:gap-8 mb-16 text-sm">
+                <div class="col-span-2 md:col-span-4 pr-0 md:pr-12">
+                    <a href="../" class="inline-block mb-6 transition-opacity hover:opacity-80 outline-none">
+                        <img src="../img/ongoing-logo.png" alt="Ongoing Logo" class="h-9 md:h-10 w-auto">
+                    </a>
+                    <p class="text-secondary leading-relaxed font-medium">Tu brazo tecnológico para escalar sin límites. Integra finanzas, operaciones y CRM en un solo lugar impulsado por IA.</p>
+                </div>
+
+                <div class="col-span-1 md:col-span-2 md:col-start-6">
+                    <h4 class="font-extrabold mb-5 text-white uppercase tracking-wider text-xs">Soluciones</h4>
+                    <ul class="space-y-4 text-secondary font-medium">
+                        <li><a href="crm-ventas.html" class="hover:text-action transition-colors">CRM</a></li>
+                        <!-- <li><span class="hover:text-action transition-colors">Finanzas y SAT</span></li> -->
+                        <li><a href="gestion-operativa.html" class="hover:text-action transition-colors">Gestión Operativa</a></li>
+                        <li><a href="infraestructura-multitenant.html" class="hover:text-action transition-colors">Seguridad</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-span-1 md:col-span-2">
+                    <h4 class="font-extrabold mb-5 text-white uppercase tracking-wider text-xs">Recursos</h4>
+                    <ul class="space-y-4 text-secondary font-medium">
+                        <li><span class="hover:text-action transition-colors flex items-center gap-2">KAI AI <span class="bg-action/20 text-action text-[10px] px-2 py-0.5 rounded border border-action/30">Nuevo</span></span></li>
+                        <li><a href="../docs/" class="hover:text-action transition-colors">Centro de Ayuda</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-span-2 md:col-span-3">
+                    <h4 class="font-extrabold mb-5 text-white uppercase tracking-wider text-xs">Contacto & Legal</h4>
+                    <ul class="space-y-4 text-secondary font-medium">
+                        <li><span class="hover:text-action transition-colors flex items-center gap-2"><i data-lucide="shield" class="w-4 h-4"></i> Aviso de Privacidad</span></li>
+                        <li><span class="hover:text-action transition-colors flex items-center gap-2"><i data-lucide="file-text" class="w-4 h-4"></i> Términos y Condiciones</span></li>
+                        <li><span class="hover:text-action transition-colors flex items-center gap-2 mt-6"><i data-lucide="mail" class="w-4 h-4"></i> hola@ongoing.mx</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Copyright -->
+            <div class="text-center text-xs text-gray-500 pt-8 border-t border-white/10 font-medium">
+                © 2026 Ongoing
+            </div>
+        </div>
+    </footer>
+
+    <!-- KAI Chatbot Floating Widget -->
+    <div class="fixed bottom-6 right-6 z-50 flex flex-col items-end">
+        <!-- Chat Trigger Button -->
+        <button id="kai-chat-trigger" class="w-14 h-14 rounded-full bg-action text-primary flex items-center justify-center shadow-[0_0_20px_rgba(0,192,255,0.4)] hover:shadow-[0_0_30px_rgba(0,192,255,0.7)] transition-all duration-300 outline-none transform active:scale-95 group relative animate-pulse-glow">
+            <i data-lucide="message-square" class="w-6 h-6 text-primary transition-transform duration-300 group-hover:scale-110"></i>
+            <span class="absolute -top-10 right-0 bg-[#001953] border border-action/30 text-white text-xs font-bold py-1.5 px-3 rounded-lg shadow-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap">
+                Pregúntale a KAI
+            </span>
+        </button>
+
+        <!-- Chat Container -->
+        <div id="kai-chat-container" class="hidden w-[350px] sm:w-[400px] h-[500px] bg-[#001953]/95 backdrop-blur-md border border-white/10 rounded-2xl flex flex-col shadow-[0_20px_50px_rgba(0,0,0,0.5)] overflow-hidden transition-all duration-300 mt-4 origin-bottom-right">
+            <!-- Header -->
+            <div class="flex items-center justify-between px-5 py-4 border-b border-white/10 bg-[#001442]">
+                <div class="flex items-center gap-3">
+                    <img src="../img/ongoing-logo.png" alt="Ongoing Logo" class="h-5 w-auto">
+                    <div class="h-4 w-px bg-white/20"></div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-white font-extrabold text-sm tracking-wider">KAI</span>
+                        <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                    </div>
+                </div>
+                <button id="kai-chat-close" class="text-white/60 hover:text-white transition-colors">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+
+            <!-- Body (Messages Scroll Area) -->
+            <div id="kai-chat-messages" class="flex-grow p-4 overflow-y-auto flex flex-col gap-4 text-sm font-medium">
+                <!-- Welcome Message from KAI -->
+                <div class="flex gap-2">
+                    <div class="w-8 h-8 rounded-full bg-action flex items-center justify-center shadow-lg shrink-0">
+                        <i data-lucide="sparkles" class="text-primary w-4 h-4"></i>
+                    </div>
+                    <div class="bg-blue-900/40 border border-blue-500/20 px-4 py-3 rounded-2xl rounded-tl-sm text-white max-w-[85%] leading-relaxed">
+                        ¡Hola! Soy **KAI**, tu analista de negocios inteligente 24/7. Pregúntame sobre cómo erradicar el caos de Excel, medir rentabilidad real o sobre nuestra infraestructura multi-tenant.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Input area (Footer) -->
+            <form id="kai-chat-form" class="p-4 border-t border-white/10 bg-[#001442] flex gap-2">
+                <input id="kai-chat-input" type="text" autocomplete="off" placeholder="Escribe tu duda aquí..." class="flex-grow bg-white/5 px-4 py-3 rounded-xl border border-white/10 focus:outline-none focus:border-action focus:ring-2 focus:ring-action/20 transition-all text-white placeholder-white/30 text-sm">
+                <button type="submit" class="bg-action text-primary font-bold px-4 rounded-xl hover:bg-opacity-90 transition-all shadow-md active:scale-95 flex items-center justify-center shrink-0">
+                    <i data-lucide="send" class="w-4 h-4"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize Lucide Icons
+            lucide.createIcons();
+            
+            // --- Sticky Header Scroll Logic ---
+            const header = document.getElementById('main-header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('py-3');
+                    header.classList.remove('py-4');
+                } else {
+                    header.classList.add('py-4');
+                    header.classList.remove('py-3');
+                }
+            });
+
+            // --- Interactive Simulator Tabs ---
+            const simBtnDb = document.getElementById('sim-btn-db');
+            const simBtnSession = document.getElementById('sim-btn-session');
+            const simPanelDb = document.getElementById('sim-panel-db');
+            const simPanelSession = document.getElementById('sim-panel-session');
+
+            if (simBtnDb && simBtnSession && simPanelDb && simPanelSession) {
+                simBtnDb.addEventListener('click', () => {
+                    simBtnDb.classList.add('active-sim-tab', 'bg-action/20', 'text-action', 'border-action/30');
+                    simBtnDb.classList.remove('text-gray-400', 'border-transparent');
+                    simBtnSession.classList.remove('active-sim-tab', 'bg-action/20', 'text-action', 'border-action/30');
+                    simBtnSession.classList.add('text-gray-400', 'border-transparent');
+                    
+                    simPanelDb.classList.remove('hidden');
+                    simPanelSession.classList.add('hidden');
+                });
+
+                simBtnSession.addEventListener('click', () => {
+                    simBtnSession.classList.add('active-sim-tab', 'bg-action/20', 'text-action', 'border-action/30');
+                    simBtnSession.classList.remove('text-gray-400', 'border-transparent');
+                    simBtnDb.classList.remove('active-sim-tab', 'bg-action/20', 'text-action', 'border-action/30');
+                    simBtnDb.classList.add('text-gray-400', 'border-transparent');
+                    
+                    simPanelSession.classList.remove('hidden');
+                    simPanelDb.classList.add('hidden');
+                });
+            }
+
+            // --- Single Active Session Live Animation ---
+            const btnTriggerLogin = document.getElementById('btn-trigger-login');
+            const devA = document.getElementById('dev-a');
+            const devB = document.getElementById('dev-b');
+            const devAStatus = document.getElementById('dev-a-status');
+            const devBStatus = document.getElementById('dev-b-status');
+            const simSessionInfo = document.getElementById('sim-session-info');
+
+            if (btnTriggerLogin && devA && devB && devAStatus && devBStatus && simSessionInfo) {
+                let simState = 'idle'; // idle, running, reset
+
+                btnTriggerLogin.addEventListener('click', () => {
+                    if (simState === 'idle') {
+                        simState = 'running';
+                        btnTriggerLogin.textContent = 'Restablecer Simulación';
+                        btnTriggerLogin.classList.remove('bg-action');
+                        btnTriggerLogin.classList.add('bg-white/10', 'text-white');
+                        
+                        // Device B Logs in
+                        devB.classList.remove('border-white/5');
+                        devB.classList.add('border-green-500/30');
+                        devB.querySelector('i').classList.remove('text-gray-500');
+                        devB.querySelector('i').classList.add('text-green-400');
+                        devBStatus.textContent = 'Sesión Activa';
+                        devBStatus.classList.remove('bg-white/5', 'text-gray-500', 'border-white/10');
+                        devBStatus.classList.add('bg-green-500/10', 'text-green-400', 'border-green-500/20');
+                        
+                        // Device A is kicked out (HTTP 401)
+                        devA.classList.remove('border-green-500/30');
+                        devA.classList.add('border-red-500/40', 'bg-red-950/10');
+                        devA.querySelector('i').classList.remove('text-green-400');
+                        devA.querySelector('i').classList.add('text-red-500');
+                        devAStatus.textContent = 'HTTP 401 - Desconectado';
+                        devAStatus.classList.remove('bg-green-500/10', 'text-green-400', 'border-green-500/20');
+                        devAStatus.classList.add('bg-red-500/10', 'text-red-400', 'border-red-500/20');
+
+                        simSessionInfo.innerHTML = '🛑 **Sesión Bloqueada**: Al detectar actividad en el dispositivo B, la sesión del dispositivo A se invalidó inmediatamente en el backend Redis. Retorno de API: **401 Unauthorized**.';
+                        simSessionInfo.classList.remove('text-gray-400');
+                        simSessionInfo.classList.add('text-red-400', 'font-bold');
+                    } else {
+                        simState = 'idle';
+                        btnTriggerLogin.textContent = 'Simular Login Duplicado';
+                        btnTriggerLogin.classList.add('bg-action');
+                        btnTriggerLogin.classList.remove('bg-white/10', 'text-white');
+
+                        // Reset Device A
+                        devA.classList.add('border-green-500/30');
+                        devA.classList.remove('border-red-500/40', 'bg-red-950/10');
+                        devA.querySelector('i').classList.add('text-green-400');
+                        devA.querySelector('i').classList.remove('text-red-500');
+                        devAStatus.textContent = 'Sesión Activa';
+                        devAStatus.classList.add('bg-green-500/10', 'text-green-400', 'border-green-500/20');
+                        devAStatus.classList.remove('bg-red-500/10', 'text-red-400', 'border-red-500/20');
+
+                        // Reset Device B
+                        devB.classList.add('border-white/5');
+                        devB.classList.remove('border-green-500/30');
+                        devB.querySelector('i').classList.add('text-gray-500');
+                        devB.querySelector('i').classList.remove('text-green-400');
+                        devBStatus.textContent = 'Apagado';
+                        devBStatus.classList.add('bg-white/5', 'text-gray-500', 'border-white/10');
+                        devBStatus.classList.remove('bg-green-500/10', 'text-green-400', 'border-green-500/20');
+
+                        simSessionInfo.textContent = 'Presiona "Simular Login Duplicado" para ver cómo OnGoing responde al instante ante una sesión concurrente.';
+                        simSessionInfo.classList.add('text-gray-400');
+                        simSessionInfo.classList.remove('text-red-400', 'font-bold');
+                    }
+                });
+            }
+
+            // --- KAI Chatbot Controller ---
+            const kaiTrigger = document.getElementById('kai-chat-trigger');
+            const kaiContainer = document.getElementById('kai-chat-container');
+            const kaiClose = document.getElementById('kai-chat-close');
+            const kaiMessages = document.getElementById('kai-chat-messages');
+            const kaiForm = document.getElementById('kai-chat-form');
+            const kaiInput = document.getElementById('kai-chat-input');
+            
+            if (kaiTrigger && kaiContainer && kaiClose && kaiMessages && kaiForm && kaiInput) {
+                const scrollToBottom = () => {
+                    kaiMessages.scrollTop = kaiMessages.scrollHeight;
+                };
+            
+                // Toggle Chat visibility
+                kaiTrigger.addEventListener('click', () => {
+                    const isHidden = kaiContainer.classList.contains('hidden');
+                    if (isHidden) {
+                        kaiContainer.classList.remove('hidden');
+                        kaiContainer.classList.add('active');
+                        scrollToBottom();
+                        kaiInput.focus();
+                    } else {
+                        kaiContainer.classList.add('hidden');
+                        kaiContainer.classList.remove('active');
+                    }
+                });
+            
+                // Close Chat
+                kaiClose.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    kaiContainer.classList.add('hidden');
+                    kaiContainer.classList.remove('active');
+                });
+            
+                // Handle Form Submit
+                kaiForm.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    const userMessage = kaiInput.value.trim();
+                    if (!userMessage) return;
+            
+                    // 1. Render User Message
+                    const userBubble = document.createElement('div');
+                    userBubble.className = 'chat-bubble-user px-4 py-3 max-w-[85%] leading-relaxed break-words';
+                    userBubble.textContent = userMessage;
+                    kaiMessages.appendChild(userBubble);
+                    
+                    // Clear input and scroll
+                    kaiInput.value = '';
+                    scrollToBottom();
+            
+                    // 2. Render KAI Loading State
+                    const loadingBubble = document.createElement('div');
+                    loadingBubble.id = 'kai-loading-bubble';
+                    loadingBubble.className = 'flex gap-2';
+                    loadingBubble.innerHTML = `
+                        <div class="w-8 h-8 rounded-full bg-action flex items-center justify-center shadow-lg shrink-0">
+                            <i data-lucide="sparkles" class="text-primary w-4.5 h-4.5"></i>
+                        </div>
+                        <div class="chat-bubble-kai px-4 py-3 max-w-[85%] leading-relaxed flex items-center gap-1.5">
+                            <span class="text-white/80">KAI está analizando</span>
+                            <span class="flex gap-0.5 mt-1.5">
+                                <span class="w-1.5 h-1.5 rounded-full bg-white/70 animate-bounce" style="animation-delay: 0.1s"></span>
+                                <span class="w-1.5 h-1.5 rounded-full bg-white/70 animate-bounce" style="animation-delay: 0.2s"></span>
+                                <span class="w-1.5 h-1.5 rounded-full bg-white/70 animate-bounce" style="animation-delay: 0.3s"></span>
+                            </span>
+                        </div>
+                    `;
+                    kaiMessages.appendChild(loadingBubble);
+                    lucide.createIcons();
+                    scrollToBottom();
+            
+                    const renderKaiReply = (reply) => {
+                        const kaiBubble = document.createElement('div');
+                        kaiBubble.className = 'flex gap-2';
+                        kaiBubble.innerHTML = `
+                            <div class="w-8 h-8 rounded-full bg-action flex items-center justify-center shadow-lg shrink-0">
+                                <i data-lucide="sparkles" class="text-primary w-4.5 h-4.5"></i>
+                            </div>
+                            <div class="chat-bubble-kai px-4 py-3 max-w-[85%] leading-relaxed text-white">
+                                ${formatMarkdown(reply)}
+                            </div>
+                        `;
+                        kaiMessages.appendChild(kaiBubble);
+                        lucide.createIcons();
+                        scrollToBottom();
+                    };
+            
+                    const renderError = () => {
+                        const errorBubble = document.createElement('div');
+                        errorBubble.className = 'flex gap-2 text-red-400';
+                        errorBubble.innerHTML = `
+                            <div class="w-8 h-8 rounded-full bg-red-950 flex items-center justify-center shadow-lg shrink-0 border border-red-500/30">
+                                <i data-lucide="alert-circle" class="w-4.5 h-4.5 text-red-400"></i>
+                            </div>
+                            <div class="chat-bubble-kai px-4 py-3 max-w-[85%] border-red-500/20 leading-relaxed text-red-400 font-medium">
+                                Lo siento, ocurrió un error al procesar tu solicitud. Por favor intenta de nuevo o inicia tu prueba de 14 días gratis en <a href="https://ongoing2.mx" class="text-action underline">ongoing2.mx</a>.
+                            </div>
+                        `;
+                        kaiMessages.appendChild(errorBubble);
+                        lucide.createIcons();
+                        scrollToBottom();
+                    };
+            
+                    // 3. Make fetch request to serverless endpoint
+                    try {
+                        const response = await fetch('../api/chat', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({ message: userMessage })
+                        });
+            
+                        // Remove loading bubble
+                        const loader = document.getElementById('kai-loading-bubble');
+                        if (loader) loader.remove();
+            
+                        if (!response.ok) {
+                            throw new Error(`Serverless endpoint returned status ${response.status}`);
+                        }
+            
+                        const data = await response.json();
+                        const reply = data.response;
+                        renderKaiReply(reply);
+            
+                    } catch (error) {
+                        console.warn('Serverless API failed, attempting local static fallback:', error);
+                        try {
+                            let localApiKey = window.OPENAI_API_KEY;
+                            
+                            if (!localApiKey) {
+                                // Local static fallback: Try to load the .env file from the local server
+                                let envResponse = await fetch('../.env');
+                                if (!envResponse.ok) {
+                                    envResponse = await fetch('.env');
+                                    if (!envResponse.ok) throw new Error('Could not fetch .env file');
+                                }
+                                
+                                const envText = await envResponse.text();
+                                // Parse key
+                                const match = envText.match(/OPENAI_API_KEY\s*=\s*([^\s#]+)/);
+                                if (!match || !match[1]) throw new Error('No API key found in local .env');
+                                localApiKey = match[1].trim();
+                            }
+            
+                            // Load llms.txt context locally
+                            let localContext = '';
+                            try {
+                                let llmRes = await fetch('../llms.txt');
+                                if (!llmRes.ok) {
+                                    llmRes = await fetch('llms.txt');
+                                }
+                                if (llmRes.ok) localContext = await llmRes.text();
+                            } catch(e) {
+                                console.warn('Could not load llms.txt locally, running without context:', e);
+                            }
+            
+                            // Call OpenAI direct from client
+                            const aiResponse = await fetch('https://api.openai.com/v1/chat/completions', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                    'Authorization': `Bearer ${localApiKey}`
+                                },
+                                body: JSON.stringify({
+                                    model: 'gpt-4o-mini',
+                                    messages: [
+                                        { 
+                                            role: 'system', 
+                                            content: `Eres KAI, el asistente de inteligencia artificial de OnGoing ERP ("La evolución del ERP en México"). Tu estilo de comunicación sigue el ADN "Deep Tech & Human Clarity": debes ser profesional, directo, claro y con español de México.
+                                            
+                                            Contexto:
+                                            ${localContext}
+            
+                                            REGLAS:
+                                            1. Responde basándote únicamente en el contexto. Si no está en el contexto, indícalo y sugiere contactar a hola@ongoing.mx o iniciar la prueba gratis en https://ongoing2.mx.
+                                            2. Jailbreak Guard: Si preguntan sobre temas ajenos (recetas, poemas, chistes, etc.), debes negarte a responder de forma elegante y breve, sugiriendo iniciar la prueba de 14 días gratis en https://ongoing2.mx.`
+                                        },
+                                        { role: 'user', content: userMessage }
+                                    ],
+                                    temperature: 0.3
+                                })
+                            });
+            
+                            // Remove loading bubble
+                            const loader = document.getElementById('kai-loading-bubble');
+                            if (loader) loader.remove();
+            
+                            if (!aiResponse.ok) throw new Error('Direct OpenAI call failed');
+                            const aiData = await aiResponse.json();
+                            const reply = aiData.choices[0].message.content;
+                            renderKaiReply(reply);
+            
+                        } catch (fallbackError) {
+                            console.error('Local fallback failed:', fallbackError);
+                            
+                            // Remove loading bubble
+                            const loader = document.getElementById('kai-loading-bubble');
+                            if (loader) loader.remove();
+            
+                            renderError();
+                        }
+                    }
+                });
+            }
+            
+            // Simple helper to format basic bold and links from markdown
+            function formatMarkdown(text) {
+                if (!text) return '';
+                // Format bold: **text** -> <strong>text</strong>
+                let formatted = text.replace(/\*\*(.*?)\*\*/g, '<strong class="text-action font-extrabold">$1</strong>');
+                // Format links: [label](url) -> <a href="$2" target="_blank" class="text-action underline font-bold">$1</a>
+                formatted = formatted.replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" target="_blank" class="text-action underline font-bold">$1</a>');
+                // Format bullet points
+                formatted = formatted.replace(/^\*\s(.*)$/gm, '• $1');
+                // Replace newlines with <br>
+                formatted = formatted.replace(/\n/g, '<br>');
+                return formatted;
+            }
+        });
+    </script>
+</body>
+</html>

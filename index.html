@@ -55,6 +55,9 @@
 
             <!-- Derecha / Botones -->
             <div class="flex items-center gap-4">
+                <a href="docs/" class="text-white/85 hover:text-action font-semibold text-sm md:text-[15px] transition-colors mr-2">
+                    Documentación
+                </a>
                 <a href="https://ongoing2.mx/login" class="text-white hover:text-action font-semibold text-sm md:text-[15px] transition-colors">
                     Ingresar
                 </a>
@@ -640,6 +643,11 @@
                                 </div>
                                 Control absoluto del embudo de ventas en tiempo real
                             </div>
+                            <div class="mt-8">
+                                <a href="modulos/crm-ventas.html" class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3.5 px-8 rounded-full transition-all text-sm md:text-base shadow-lg shadow-blue-600/20 hover:-translate-y-0.5 active:translate-y-0">
+                                    Ver Detalle de CRM <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -694,6 +702,11 @@
                                 </div>
                                 Alertas automáticas de desviaciones de tiempos y costos
                             </div>
+                            <div class="mt-8">
+                                <a href="modulos/gestion-operativa.html" class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3.5 px-8 rounded-full transition-all text-sm md:text-base shadow-lg shadow-blue-600/20 hover:-translate-y-0.5 active:translate-y-0">
+                                    Ver Detalle de Gestión Operativa <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -734,6 +747,11 @@
                                     <i data-lucide="check" class="w-3.5 h-3.5"></i>
                                 </div>
                                 Aislamiento físico de bases de datos por cada tenant
+                            </div>
+                            <div class="mt-8">
+                                <a href="modulos/infraestructura-multitenant.html" class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3.5 px-8 rounded-full transition-all text-sm md:text-base shadow-lg shadow-blue-600/20 hover:-translate-y-0.5 active:translate-y-0">
+                                    Ver Detalle de Seguridad <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -844,9 +862,9 @@
                     </div>
                     <h3 class="text-xl font-bold mb-3 text-white">Clientes y Ventas</h3>
                     <p class="text-secondary text-sm mb-8 flex-grow font-medium leading-relaxed">Deja de perder ventas en post-its y hojas de cálculo desactualizadas.</p>
-                    <a href="https://ongoing2.mx/registro"
+                    <a href="modulos/crm-ventas.html"
                         class="text-action text-sm font-bold flex items-center gap-2 hover:gap-3 transition-all mt-auto border-t border-white/10 pt-4">
-                        Probar CRM <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        Ver Módulo CRM <i data-lucide="arrow-right" class="w-4 h-4"></i>
                     </a>
                 </div>
 
@@ -859,10 +877,10 @@
                     </div>
                     <h3 class="text-xl font-bold mb-3 text-white">Financiero</h3>
                     <p class="text-secondary text-sm mb-8 flex-grow font-medium leading-relaxed">Cumple con el SAT y visualiza tu dinero real en tiempo real sin retrasos.</p>
-                    <a href="https://ongoing2.mx/registro"
-                        class="text-action text-sm font-bold flex items-center gap-2 hover:gap-3 transition-all mt-auto border-t border-white/10 pt-4">
-                        Probar Finanzas <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                    </a>
+                    <span
+                        class="text-white/40 text-sm font-bold flex items-center gap-2 mt-auto border-t border-white/10 pt-4">
+                        Probar Finanzas
+                    </span>
                 </div>
 
                 <!-- Operativo / PSA -->
@@ -874,9 +892,9 @@
                     </div>
                     <h3 class="text-xl font-bold mb-3 text-white">Proyectos y Rentabilidad</h3>
                     <p class="text-secondary text-sm mb-8 flex-grow font-medium leading-relaxed">Del caos a la ejecución. Asigna, mide y evita pérdidas por horas mal estimadas.</p>
-                    <a href="https://ongoing2.mx/registro"
+                    <a href="modulos/gestion-operativa.html"
                         class="text-action text-sm font-bold flex items-center gap-2 hover:gap-3 transition-all mt-auto border-t border-white/10 pt-4">
-                        Medir Rentabilidad <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        Ver Gestión Operativa <i data-lucide="arrow-right" class="w-4 h-4"></i>
                     </a>
                 </div>
 
@@ -889,7 +907,7 @@
                     </div>
                     <h3 class="text-xl font-bold mb-3 text-white">Infraestructura Multi-Tenant</h3>
                     <p class="text-secondary text-sm mb-8 flex-grow font-medium leading-relaxed">Bases de datos independientes y seguridad activa con sesión única activa.</p>
-                    <a href="https://ongoing2.mx/registro"
+                    <a href="modulos/infraestructura-multitenant.html"
                         class="text-action text-sm font-bold flex items-center gap-2 hover:gap-3 transition-all mt-auto border-t border-white/10 pt-4">
                         Ver Seguridad <i data-lucide="arrow-right" class="w-4 h-4"></i>
                     </a>
@@ -979,22 +997,20 @@
                 <div class="col-span-1 md:col-span-2 md:col-start-6">
                     <h4 class="font-extrabold mb-5 text-white uppercase tracking-wider text-xs">Soluciones</h4>
                     <ul class="space-y-4 text-secondary font-medium">
-                        <li><span class="hover:text-action transition-colors">CRM Básico</span></li>
-                        <li><span class="hover:text-action transition-colors">Finanzas y SAT</span></li>
-                        <li><span class="hover:text-action transition-colors">Gestión Operativa</span></li>
-                        <li><span class="hover:text-action transition-colors">Software Custom</span></li>
+                        <li><a href="modulos/crm-ventas.html" class="hover:text-action transition-colors">CRM</a></li>
+                        <!-- <li><span class="hover:text-action transition-colors">Finanzas y SAT</span></li> -->
+                        <li><a href="modulos/gestion-operativa.html" class="hover:text-action transition-colors">Gestión Operativa</a></li>
+                        <li><a href="modulos/infraestructura-multitenant.html" class="hover:text-action transition-colors">Seguridad</a></li>
                     </ul>
                 </div>
 
                 <div class="col-span-1 md:col-span-2">
                     <h4 class="font-extrabold mb-5 text-white uppercase tracking-wider text-xs">Recursos</h4>
                     <ul class="space-y-4 text-secondary font-medium">
-                        <li><span class="hover:text-action transition-colors">Blog</span></li>
-                        <li><span class="hover:text-action transition-colors">Casos de Éxito</span></li>
                         <li><span class="hover:text-action transition-colors flex items-center gap-2">KAI AI <span
                                     class="bg-action/20 text-action text-[10px] px-2 py-0.5 rounded border border-action/30">Nuevo</span></span>
                         </li>
-                        <li><span class="hover:text-action transition-colors">Centro de Ayuda</span></li>
+                        <li><a href="docs/" class="hover:text-action transition-colors">Centro de Ayuda</a></li>
                     </ul>
                 </div>
 
@@ -1069,6 +1085,7 @@
     </div>
 
     <!-- Scripts -->
+    <script src="js/config.local.js"></script>
     <script src="js/main.js"></script>
 </body>
 

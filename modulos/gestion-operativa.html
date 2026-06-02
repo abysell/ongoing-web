@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión Operativa y Rentabilidad de Proyectos | OnGoing ERP</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        display: ['"Space Grotesk"', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#001953',
+                        action: '#00c0ff',
+                        dark: '#000b2e',
+                        light: '#F5F7FA',
+                        secondary: '#d1d5db'
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Custom CSS Styles -->
+    <style>
+        body {
+            background: radial-gradient(circle at 50% 0%, #001953 0%, #00071a 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+        }
+
+        .glass-header {
+            background: rgba(0, 25, 83, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .glass-panel {
+            background: rgba(0, 20, 66, 0.4);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .glow-cta {
+            box-shadow: 0 0 20px rgba(0, 192, 255, 0.4);
+            transition: all 0.3s ease;
+        }
+        .glow-cta:hover {
+            box-shadow: 0 0 30px rgba(0, 192, 255, 0.7);
+            transform: translateY(-2px);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.02);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(0, 192, 255, 0.2);
+            border-radius: 4px;
+        }
+
+        /* Chatbot KAI Float Widget Styles */
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 15px rgba(0, 192, 255, 0.4); }
+            50% { box-shadow: 0 0 25px rgba(0, 192, 255, 0.8); }
+            100% { box-shadow: 0 0 15px rgba(0, 192, 255, 0.4); }
+        }
+        .animate-pulse-glow {
+            animation: pulseGlow 2.5s infinite ease-in-out;
+        }
+        
+        .chat-bubble-user {
+            background-color: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            align-self: flex-end;
+            border-radius: 1rem 1rem 0.1rem 1rem;
+        }
+
+        .chat-bubble-kai {
+            background-color: rgba(0, 20, 66, 0.4);
+            border: 1px solid rgba(0, 192, 255, 0.3);
+            color: #ffffff;
+            align-self: flex-start;
+            border-radius: 1rem 1rem 1rem 0.1rem;
+        }
+
+        #kai-chat-container.active {
+            display: flex !important;
+        }
+
+        @media (max-w: 767px) {
+            #kai-chat-container.active {
+                display: flex !important;
+                position: fixed;
+                bottom: 0;
+                right: 0;
+                width: 100vw !important;
+                height: 100vh !important;
+                max-width: 100vw !important;
+                max-height: 100vh !important;
+                margin: 0 !important;
+                border-radius: 0 !important;
+                z-index: 9999;
+            }
+        }
+    </style>
+</head>
+<body class="text-gray-100 flex flex-col font-sans overflow-x-hidden antialiased">
+
+    <!-- Header (Navegación) -->
+    <header id="main-header" class="fixed top-0 w-full z-50 transition-all duration-300 py-4 glass-header">
+        <div class="container mx-auto px-6 max-w-7xl flex items-center justify-between">
+            <!-- Logo -->
+            <a href="../" class="flex items-center transition-opacity hover:opacity-80 outline-none">
+                <img src="../img/ongoing-logo.png" alt="Ongoing Logo" class="h-8 md:h-[38px] w-auto">
+            </a>
+
+            <!-- Derecha / Botones -->
+            <div class="flex items-center gap-4">
+                <a href="../docs/" class="text-white/85 hover:text-action font-semibold text-sm md:text-[15px] transition-colors mr-2">
+                    Documentación
+                </a>
+                <a href="https://ongoing2.mx/login" class="text-white hover:text-action font-semibold text-sm md:text-[15px] transition-colors">
+                    Ingresar
+                </a>
+                <a href="https://ongoing2.mx" class="bg-action text-primary font-bold py-2 md:py-2.5 px-5 md:px-7 rounded-full hover:bg-opacity-90 transition-all text-sm md:text-[15px] shadow-[0_0_15px_rgba(0,192,255,0.3)]">
+                    Empieza Gratis
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 1. Hero Section Comercial -->
+    <section class="min-h-[90vh] flex items-center pt-32 pb-16 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-action/5 via-transparent to-transparent opacity-40 pointer-events-none"></div>
+        <div class="container mx-auto px-6 max-w-7xl grid lg:grid-cols-12 gap-12 items-center relative z-10">
+            <!-- Columna Izquierda (Copys y Conversión) -->
+            <div class="lg:col-span-7 flex flex-col gap-6 text-left">
+                <div class="inline-flex items-center gap-2 text-action font-bold text-xs uppercase tracking-widest bg-action/10 px-4 py-2 rounded-full w-fit border border-action/20">
+                    Módulo de Gestión Operativa (PSA)
+                </div>
+                <h1 class="font-display text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight text-white">
+                    Guía Definitiva de Gestión Operativa y Rentabilidad
+                </h1>
+                <p class="text-lg md:text-xl text-secondary max-w-xl leading-relaxed font-medium">
+                    Evita fugas de dinero silenciosas. Controla las horas de tu personal en tiempo real y mide el margen de utilidad neto de cada proyecto y cliente.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 mt-2">
+                    <a href="https://ongoing2.mx" class="bg-action text-primary font-extrabold py-3.5 px-8 rounded-full hover:bg-opacity-90 transition-all text-center text-[15px] shadow-lg shadow-action/25 glow-cta">
+                        Empieza tu prueba gratis
+                    </a>
+                    <a href="#fundamentos" class="bg-white/5 hover:bg-white/10 text-white font-semibold py-3.5 px-8 rounded-full border border-white/10 transition-colors text-center text-[15px]">
+                        Ver Fundamentos
+                    </a>
+                </div>
+                <p class="text-xs text-gray-500 font-medium">14 días de prueba sin compromiso &bull; No requiere tarjeta de crédito</p>
+            </div>
+
+            <!-- Columna Derecha (Simulación del Dashboard de Desviación) -->
+            <div class="lg:col-span-5 w-full flex justify-center">
+                <div class="w-full max-w-md glass-panel p-6 rounded-3xl border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+                    <div class="flex justify-between items-center mb-6">
+                        <div class="flex items-center gap-2">
+                            <span class="w-2.5 h-2.5 rounded-full bg-red-500 animate-pulse"></span>
+                            <span class="text-xs font-bold text-red-400 uppercase tracking-wider">Métricas de Alerta</span>
+                        </div>
+                        <span class="text-[11px] text-gray-400 bg-white/5 px-2 py-1 rounded">Costo / Hora Real</span>
+                    </div>
+
+                    <!-- Proyecto Alpha Alerta -->
+                    <div class="space-y-5">
+                        <div class="border border-red-500/30 bg-red-950/20 p-4 rounded-2xl">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-bold text-white text-sm">Proyecto Alpha</span>
+                                <span class="text-[10px] text-red-400 font-bold bg-red-950/60 px-2.5 py-0.5 rounded-full border border-red-500/20">Desviación: +15%</span>
+                            </div>
+                            <!-- Barra de progreso -->
+                            <div class="w-full bg-white/10 h-2.5 rounded-full overflow-hidden mb-2">
+                                <div class="bg-red-500 h-full rounded-full" style="width: 115%"></div>
+                            </div>
+                            <div class="flex justify-between text-[11px] text-gray-400">
+                                <span>Estimado: 100 hrs</span>
+                                <span class="text-red-400 font-semibold">Real: 115 hrs</span>
+                            </div>
+                        </div>
+
+                        <!-- Proyecto Beta Normal -->
+                        <div class="border border-white/5 bg-white/2 p-4 rounded-2xl">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-bold text-white text-sm">Proyecto Delta</span>
+                                <span class="text-[10px] text-green-400 font-bold bg-green-950/40 px-2.5 py-0.5 rounded-full border border-green-500/20">Estable: 60%</span>
+                            </div>
+                            <!-- Barra de progreso -->
+                            <div class="w-full bg-white/10 h-2.5 rounded-full overflow-hidden mb-2">
+                                <div class="bg-green-500 h-full rounded-full" style="width: 60%"></div>
+                            </div>
+                            <div class="flex justify-between text-[11px] text-gray-400">
+                                <span>Estimado: 80 hrs</span>
+                                <span class="text-green-400 font-semibold">Real: 48 hrs</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. Fundamentos Teóricos: La Fuga Silenciosa de Utilidad -->
+    <section id="fundamentos" class="py-20 border-t border-white/5">
+        <div class="container mx-auto px-6 max-w-5xl text-center">
+            <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-6">
+                Fundamentos Teóricos: La Fuga Silenciosa de Utilidad
+            </h2>
+            <div class="text-left max-w-4xl mx-auto space-y-6 text-gray-300 leading-relaxed text-base md:text-lg">
+                <p>
+                    En las empresas de servicios profesionales y consultoría, el activo más valioso y a la vez el más costoso es el tiempo de su talento humano. Sin embargo, en el día a día operativo en México, la fuga silenciosa de utilidad es una constante por la falta de un control sistemático.
+                </p>
+                <p>
+                    Esta pérdida de margen se origina principalmente por tres factores: **estimaciones subjetivas del esfuerzo**, **reuniones de soporte no facturables** y la **ausencia de cruce entre costos de personal y presupuestos pactados**.
+                </p>
+                <p>
+                    OnGoing PSA integra una infraestructura que convierte la medición de tiempos en información financiera directa, permitiéndote calcular costos reales por colaborador, identificar desviaciones operativas y saber qué proyectos y clientes están subsidiando a otros.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Registro de Tiempos y Aprobaciones -->
+    <section id="tiempos" class="py-20 bg-black/20 border-t border-b border-white/5">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <div class="text-center mb-16">
+                <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-4">
+                    Hojas de Tiempo Dinámicas (Timesheets)
+                </h2>
+                <p class="text-gray-400 max-w-xl mx-auto">
+                    Una interfaz limpia y orientada a humanos para que tu equipo registre sus actividades sin fricciones administrativas.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="space-y-6">
+                    <div class="flex gap-4">
+                        <div class="w-10 h-10 rounded-xl bg-action/10 border border-action/20 flex items-center justify-center text-action shrink-0 mt-1">
+                            <i data-lucide="clock" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-white text-lg mb-2">Registro de Actividades Simplificado</h4>
+                            <p class="text-sm text-gray-400 leading-relaxed">
+                                Los colaboradores registran las horas invertidas en tareas específicas mediante formularios rápidos. Sin jerga compleja, cargando los datos al instante en su cuenta personal.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4">
+                        <div class="w-10 h-10 rounded-xl bg-action/10 border border-action/20 flex items-center justify-center text-action shrink-0 mt-1">
+                            <i data-lucide="user-check" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-white text-lg mb-2">Flujo de Aprobación Jerárquica</h4>
+                            <p class="text-sm text-gray-400 leading-relaxed">
+                                Los directores o líderes de proyectos tienen un panel de aprobación donde revisan y autorizan los registros antes de ser calculados para reportes o cobros, asegurando la veracidad y calidad de la información.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-panel p-8 rounded-3xl border border-white/5 flex flex-col gap-4">
+                    <span class="text-xs font-bold text-action uppercase tracking-widest">&bull; Flujo de Registro</span>
+                    <div class="bg-dark p-4 rounded-2xl border border-white/5 flex justify-between items-center text-xs">
+                        <div>
+                            <span class="text-white font-bold block mb-1">Diseño de Interfaz UX</span>
+                            <span class="text-gray-500">Colaborador: Ing. Alejandro Torres</span>
+                        </div>
+                        <span class="text-action font-extrabold font-mono text-sm">4.5 hrs</span>
+                    </div>
+                    <div class="flex justify-end gap-3">
+                        <button class="bg-red-500/10 border border-red-500/30 text-red-400 font-bold px-4 py-2 rounded-xl text-xs">Rechazar</button>
+                        <button class="bg-green-500/20 border border-green-500/30 text-green-400 font-bold px-4 py-2 rounded-xl text-xs">Aprobar Horas</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. CTA Banner Intermedio -->
+    <section class="py-12">
+        <div class="container mx-auto px-6 max-w-5xl">
+            <div class="bg-gradient-to-br from-[#001953] to-[#000d2b] p-10 rounded-3xl border border-blue-500/25 relative overflow-hidden group shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-8">
+                <div class="absolute -right-16 -bottom-16 w-56 h-56 bg-action/10 rounded-full blur-[80px] -z-10"></div>
+                <div class="max-w-xl">
+                    <h3 class="font-display text-2xl font-bold text-white mb-2">Monitorea la desviación antes de perder el margen</h3>
+                    <p class="text-sm text-gray-400 leading-relaxed">
+                        Controla el presupuesto financiero de tus servicios calculando en tiempo real horas ejecutadas contra estimaciones de contrato.
+                    </p>
+                </div>
+                <a href="https://ongoing2.mx" class="inline-block bg-action text-primary font-bold text-sm px-8 py-4 rounded-full hover:bg-opacity-90 active:scale-95 transition-all shrink-0 text-center shadow-lg shadow-action/25 glow-cta">
+                    Comenzar Prueba Gratis
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Control de Desviación Presupuestal por Costo de Hora -->
+    <section class="py-20 border-t border-white/5">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <div class="text-center mb-16">
+                <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-4">
+                    Control de Desviación Presupuestal
+                </h2>
+                <p class="text-gray-400 max-w-xl mx-auto">
+                    OnGoing PSA calcula de forma síncrona el costo de cada hora ingresada según el colaborador asignado.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Componente 1 -->
+                <div class="glass-panel p-8 rounded-3xl border border-white/5">
+                    <div class="w-10 h-10 rounded-xl bg-action/10 border border-action/20 flex items-center justify-center text-action mb-6">
+                        <i data-lucide="dollar-sign" class="w-5 h-5"></i>
+                    </div>
+                    <h4 class="font-bold text-white text-lg mb-3">Costo de Hora Interno</h4>
+                    <p class="text-sm text-gray-400 leading-relaxed">
+                        Asigna a cada integrante de tu equipo un costo operativo por hora derivado de sus sueldos y prestaciones reales. El ERP traducirá de inmediato el esfuerzo de horas en consumo financiero neto.
+                    </p>
+                </div>
+
+                <!-- Componente 2 -->
+                <div class="glass-panel p-8 rounded-3xl border border-white/5">
+                    <div class="w-10 h-10 rounded-xl bg-action/10 border border-action/20 flex items-center justify-center text-action mb-6">
+                        <i data-lucide="alert-triangle" class="w-5 h-5"></i>
+                    </div>
+                    <h4 class="font-bold text-white text-lg mb-3">Alerta Crítica del 15%</h4>
+                    <p class="text-sm text-gray-400 leading-relaxed">
+                        Si las horas del proyecto superan el 15% del presupuesto estimado (caso Proyecto Alpha), el sistema genera una alerta visual de atención inmediata para ajustar el alcance antes de sufrir pérdidas.
+                    </p>
+                </div>
+
+                <!-- Componente 3 -->
+                <div class="glass-panel p-8 rounded-3xl border border-white/5">
+                    <div class="w-10 h-10 rounded-xl bg-action/10 border border-action/20 flex items-center justify-center text-action mb-6">
+                        <i data-lucide="trending-up" class="w-5 h-5"></i>
+                    </div>
+                    <h4 class="font-bold text-white text-lg mb-3">Rentabilidad Real de Clientes</h4>
+                    <p class="text-sm text-gray-400 leading-relaxed">
+                        Al comparar la facturación emitida al cliente contra el costo real de horas invertidas en su soporte, el ERP te muestra el margen neto real, detectando clientes con pérdidas ocultas.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Perfiles de Usuario y Permisos -->
+    <section class="py-20 bg-black/20 border-t border-white/5">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <div class="text-center mb-16">
+                <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-4">
+                    Roles y Seguridad en Proyectos
+                </h2>
+                <p class="text-gray-400 max-w-xl mx-auto">
+                    El sistema protege los datos financieros y restringe las visualizaciones de costos según el rol de tu personal.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Perfil Admin -->
+                <div class="glass-panel p-8 rounded-3xl border border-white/5 flex flex-col justify-between">
+                    <div>
+                        <span class="text-[10px] font-bold uppercase tracking-wider text-action block mb-2">Rol Operativo</span>
+                        <h4 class="font-bold text-white text-xl mb-4">Administrador</h4>
+                        <ul class="text-sm text-gray-400 space-y-2 mb-6">
+                            <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-action mt-0.5 shrink-0"></i> Configuración total de proyectos y tarifas</li>
+                            <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-action mt-0.5 shrink-0"></i> Control total de márgenes e ingresos</li>
+                            <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-action mt-0.5 shrink-0"></i> Aprobación y asignación de costos/hora</li>
+                        </ul>
+                    </div>
+                    <span class="text-xs text-white/40 font-medium">Socios, Directores Generales, Finanzas</span>
+                </div>
+
+                <!-- Perfil PM -->
+                <div class="glass-panel p-8 rounded-3xl border border-white/5 flex flex-col justify-between">
+                    <div>
+                        <span class="text-[10px] font-bold uppercase tracking-wider text-action block mb-2">Rol Operativo</span>
+                        <h4 class="font-bold text-white text-xl mb-4">Líder de Proyecto</h4>
+                        <ul class="text-sm text-gray-400 space-y-2 mb-6">
+                            <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-action mt-0.5 shrink-0"></i> Edición de cronogramas y tareas</li>
+                            <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-action mt-0.5 shrink-0"></i> Aprobación de hojas de tiempo (Timesheets)</li>
+                            <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-action mt-0.5 shrink-0"></i> Visualización de márgenes de su proyecto</li>
+                        </ul>
+                    </div>
+                    <span class="text-xs text-white/40 font-medium">Gerentes, Jefes de Operaciones, PMs</span>
+                </div>
+
+                <!-- Perfil Colaborador -->
+                <div class="glass-panel p-8 rounded-3xl border border-white/5 flex flex-col justify-between">
+                    <div>
+                        <span class="text-[10px] font-bold uppercase tracking-wider text-action block mb-2">Rol Operativo</span>
+                        <h4 class="font-bold text-white text-xl mb-4">Colaborador</h4>
+                        <ul class="text-sm text-gray-400 space-y-2 mb-6">
+                            <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-action mt-0.5 shrink-0"></i> Registro de hojas de tiempo propio</li>
+                            <li class="flex items-start gap-2"><i data-lucide="lock" class="w-4 h-4 text-red-400 mt-0.5 shrink-0"></i> Bloqueado ver márgenes de proyectos</li>
+                            <li class="flex items-start gap-2"><i data-lucide="lock" class="w-4 h-4 text-red-400 mt-0.5 shrink-0"></i> Bloqueado ver costos/hora de otros</li>
+                        </ul>
+                    </div>
+                    <span class="text-xs text-white/40 font-medium">Ingenieros, Diseñadores, Consultores</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Casos de Uso Prácticos -->
+    <section class="py-20 border-t border-white/5">
+        <div class="container mx-auto px-6 max-w-5xl">
+            <div class="text-center mb-16">
+                <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-4">
+                    Casos de Uso: Operación Tradicional vs OnGoing
+                </h2>
+                <p class="text-gray-400 max-w-xl mx-auto">
+                    Ejemplos reales de cómo un control operativo sistemático detiene la pérdida inconsciente de capital en empresas mexicanas.
+                </p>
+            </div>
+
+            <!-- Caso A -->
+            <div class="grid md:grid-cols-2 gap-8 mb-12 items-stretch">
+                <div class="bg-red-950/15 border border-red-500/20 p-8 rounded-3xl flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-xs font-bold text-red-400 uppercase tracking-widest">Caso A: El Tradicional</span>
+                            <span class="text-[10px] text-red-400 bg-red-950/40 px-2 py-0.5 rounded">El Proyecto Fugitivo</span>
+                        </div>
+                        <p class="text-sm text-gray-300 leading-relaxed">
+                            Un proyecto de consultoría se estima en 100 horas de trabajo. Debido al desorden, el personal invierte 130 horas. El director de finanzas solo se entera a fin de mes cuando la utilidad del proyecto ya se consumió y se perdió dinero.
+                        </p>
+                    </div>
+                    <span class="text-xs text-red-400 font-semibold mt-6 block">Resultado: Proyecto entregado con margen de ganancia negativo.</span>
+                </div>
+
+                <div class="bg-green-950/15 border border-green-500/20 p-8 rounded-3xl flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-xs font-bold text-green-400 uppercase tracking-widest">Caso A: OnGoing</span>
+                            <span class="text-[10px] text-green-400 bg-green-950/40 px-2 py-0.5 rounded">Alerta Inmediata</span>
+                        </div>
+                        <p class="text-sm text-gray-300 leading-relaxed">
+                            Al registrar la hora número 115 en las Timesheets, el sistema detecta que se superó el 15% de desviación. El líder de proyecto recibe una alerta en rojo de inmediato, permitiendo ajustar los entregables y salvar el margen de utilidad.
+                        </p>
+                    </div>
+                    <span class="text-xs text-green-400 font-semibold mt-6 block">Resultado: Margen neto protegido y renegociación a tiempo.</span>
+                </div>
+            </div>
+
+            <!-- Caso B -->
+            <div class="grid md:grid-cols-2 gap-8 items-stretch">
+                <div class="bg-red-950/15 border border-red-500/20 p-8 rounded-3xl flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-xs font-bold text-red-400 uppercase tracking-widest">Caso B: El Tradicional</span>
+                            <span class="text-[10px] text-red-400 bg-red-950/40 px-2 py-0.5 rounded">El Cliente Sanguijuela</span>
+                        </div>
+                        <p class="text-sm text-gray-300 leading-relaxed">
+                            Un cliente paga un costo mensual fijo modesto. Demanda llamadas constantes de soporte. El equipo responde amablemente sin medir el esfuerzo; asumen que el cliente es valioso por la recurrencia de su cuota mensual.
+                        </p>
+                    </div>
+                    <span class="text-xs text-red-400 font-semibold mt-6 block">Resultado: Fuga de capital subsidiando soporte no facturado.</span>
+                </div>
+
+                <div class="bg-green-950/15 border border-green-500/20 p-8 rounded-3xl flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-xs font-bold text-green-400 uppercase tracking-widest">Caso B: OnGoing</span>
+                            <span class="text-[10px] text-green-400 bg-green-950/40 px-2 py-0.5 rounded">Cruces Financieros</span>
+                        </div>
+                        <p class="text-sm text-gray-300 leading-relaxed">
+                            OnGoing cruza la cuota cobrada contra el costo/hora de las reuniones de soporte registradas. El reporte revela que el cliente genera pérdidas netas de 20%, lo que permite renegociar las tarifas del contrato a su vencimiento.
+                        </p>
+                    </div>
+                    <span class="text-xs text-green-400 font-semibold mt-6 block">Resultado: Visibilidad de pérdidas ocultas y alza de tarifas.</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. Final CTA Conversión -->
+    <section class="py-16 border-t border-white/5">
+        <div class="container mx-auto px-6 max-w-5xl text-center">
+            <div class="bg-gradient-to-tr from-primary via-[#001442] to-dark p-12 rounded-3xl border border-action/25 relative overflow-hidden group shadow-2xl space-y-6">
+                <div class="absolute -left-20 -bottom-20 w-60 h-60 bg-action/10 rounded-full blur-[100px]"></div>
+                <div class="absolute -right-20 -top-20 w-60 h-60 bg-blue-500/10 rounded-full blur-[100px]"></div>
+                
+                <span class="text-action text-xs font-bold uppercase tracking-widest block">Prueba OnGoing PSA</span>
+                <h3 class="font-display text-3xl md:text-4xl font-extrabold text-white leading-tight max-w-xl mx-auto">
+                    Toma el Control de la Rentabilidad de tus Proyectos
+                </h3>
+                <p class="text-sm text-gray-300 max-w-lg mx-auto leading-relaxed">
+                    Instala un control operativo moderno que protege cada hora invertida por tu equipo de colaboradores.
+                </p>
+                <div class="pt-4">
+                    <a href="https://ongoing2.mx" class="inline-block bg-action text-primary font-extrabold text-[15px] px-8 py-4 rounded-full hover:bg-opacity-90 active:scale-95 transition-all shadow-lg shadow-action/30 glow-cta">
+                        Empieza Gratis Ahora &bull; 14 Días
+                    </a>
+                </div>
+                <span class="block text-[10px] text-gray-500 font-medium">Configuración síncrona en 2 minutos. No requiere tarjeta.</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/10 pt-10 pb-8 bg-black/40 relative overflow-hidden">
+        <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-action/5 rounded-t-full blur-[100px] -z-10 pointer-events-none"></div>
+
+        <div class="container mx-auto px-6 max-w-6xl relative z-10">
+            <div class="grid grid-cols-2 md:grid-cols-12 gap-10 md:gap-8 mb-16 text-sm">
+                <div class="col-span-2 md:col-span-4 pr-0 md:pr-12">
+                    <a href="../" class="inline-block mb-6 transition-opacity hover:opacity-80 outline-none">
+                        <img src="../img/ongoing-logo.png" alt="Ongoing Logo" class="h-9 md:h-10 w-auto">
+                    </a>
+                    <p class="text-secondary leading-relaxed font-medium">Tu brazo tecnológico para escalar sin límites. Integra finanzas, operaciones y CRM en un solo lugar impulsado por IA.</p>
+                </div>
+
+                <div class="col-span-1 md:col-span-2 md:col-start-6">
+                    <h4 class="font-extrabold mb-5 text-white uppercase tracking-wider text-xs">Soluciones</h4>
+                    <ul class="space-y-4 text-secondary font-medium">
+                        <li><a href="crm-ventas.html" class="hover:text-action transition-colors">CRM</a></li>
+                        <!-- <li><span class="hover:text-action transition-colors">Finanzas y SAT</span></li> -->
+                        <li><a href="gestion-operativa.html" class="hover:text-action transition-colors">Gestión Operativa</a></li>
+                        <li><a href="infraestructura-multitenant.html" class="hover:text-action transition-colors">Seguridad</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-span-1 md:col-span-2">
+                    <h4 class="font-extrabold mb-5 text-white uppercase tracking-wider text-xs">Recursos</h4>
+                    <ul class="space-y-4 text-secondary font-medium">
+                        <li><span class="hover:text-action transition-colors flex items-center gap-2">KAI AI <span class="bg-action/20 text-action text-[10px] px-2 py-0.5 rounded border border-action/30">Nuevo</span></span></li>
+                        <li><a href="../docs/" class="hover:text-action transition-colors">Centro de Ayuda</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-span-2 md:col-span-3">
+                    <h4 class="font-extrabold mb-5 text-white uppercase tracking-wider text-xs">Contacto & Legal</h4>
+                    <ul class="space-y-4 text-secondary font-medium">
+                        <li><span class="hover:text-action transition-colors flex items-center gap-2"><i data-lucide="shield" class="w-4 h-4"></i> Aviso de Privacidad</span></li>
+                        <li><span class="hover:text-action transition-colors flex items-center gap-2"><i data-lucide="file-text" class="w-4 h-4"></i> Términos y Condiciones</span></li>
+                        <li><span class="hover:text-action transition-colors flex items-center gap-2 mt-6"><i data-lucide="mail" class="w-4 h-4"></i> hola@ongoing.mx</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Copyright -->
+            <div class="text-center text-xs text-gray-500 pt-8 border-t border-white/10 font-medium">
+                © 2026 Ongoing
+            </div>
+        </div>
+    </footer>
+
+    <!-- KAI Chatbot Floating Widget -->
+    <div class="fixed bottom-6 right-6 z-50 flex flex-col items-end">
+        <!-- Chat Trigger Button -->
+        <button id="kai-chat-trigger" class="w-14 h-14 rounded-full bg-action text-primary flex items-center justify-center shadow-[0_0_20px_rgba(0,192,255,0.4)] hover:shadow-[0_0_30px_rgba(0,192,255,0.7)] transition-all duration-300 outline-none transform active:scale-95 group relative animate-pulse-glow">
+            <i data-lucide="message-square" class="w-6 h-6 text-primary transition-transform duration-300 group-hover:scale-110"></i>
+            <span class="absolute -top-10 right-0 bg-[#001953] border border-action/30 text-white text-xs font-bold py-1.5 px-3 rounded-lg shadow-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap">
+                Pregúntale a KAI
+            </span>
+        </button>
+
+        <!-- Chat Container -->
+        <div id="kai-chat-container" class="hidden w-[350px] sm:w-[400px] h-[500px] bg-[#001953]/95 backdrop-blur-md border border-white/10 rounded-2xl flex flex-col shadow-[0_20px_50px_rgba(0,0,0,0.5)] overflow-hidden transition-all duration-300 mt-4 origin-bottom-right">
+            <!-- Header -->
+            <div class="flex items-center justify-between px-5 py-4 border-b border-white/10 bg-[#001442]">
+                <div class="flex items-center gap-3">
+                    <img src="../img/ongoing-logo.png" alt="Ongoing Logo" class="h-5 w-auto">
+                    <div class="h-4 w-px bg-white/20"></div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-white font-extrabold text-sm tracking-wider">KAI</span>
+                        <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                    </div>
+                </div>
+                <button id="kai-chat-close" class="text-white/60 hover:text-white transition-colors">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+
+            <!-- Body (Messages Scroll Area) -->
+            <div id="kai-chat-messages" class="flex-grow p-4 overflow-y-auto flex flex-col gap-4 text-sm font-medium">
+                <!-- Welcome Message from KAI -->
+                <div class="flex gap-2">
+                    <div class="w-8 h-8 rounded-full bg-action flex items-center justify-center shadow-lg shrink-0">
+                        <i data-lucide="sparkles" class="text-primary w-4 h-4"></i>
+                    </div>
+                    <div class="bg-blue-900/40 border border-blue-500/20 px-4 py-3 rounded-2xl rounded-tl-sm text-white max-w-[85%] leading-relaxed">
+                        ¡Hola! Soy **KAI**, tu analista de negocios inteligente 24/7. Pregúntame sobre cómo erradicar el caos de Excel, medir rentabilidad real o sobre nuestra infraestructura multi-tenant.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Input area (Footer) -->
+            <form id="kai-chat-form" class="p-4 border-t border-white/10 bg-[#001442] flex gap-2">
+                <input id="kai-chat-input" type="text" autocomplete="off" placeholder="Escribe tu duda aquí..." class="flex-grow bg-white/5 px-4 py-3 rounded-xl border border-white/10 focus:outline-none focus:border-action focus:ring-2 focus:ring-action/20 transition-all text-white placeholder-white/30 text-sm">
+                <button type="submit" class="bg-action text-primary font-bold px-4 rounded-xl hover:bg-opacity-90 transition-all shadow-md active:scale-95 flex items-center justify-center shrink-0">
+                    <i data-lucide="send" class="w-4 h-4"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize Lucide Icons
+            lucide.createIcons();
+            
+            // --- Sticky Header Scroll Logic ---
+            const header = document.getElementById('main-header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('py-3');
+                    header.classList.remove('py-4');
+                } else {
+                    header.classList.add('py-4');
+                    header.classList.remove('py-3');
+                }
+            });
+
+            // --- KAI Chatbot Controller ---
+            const kaiTrigger = document.getElementById('kai-chat-trigger');
+            const kaiContainer = document.getElementById('kai-chat-container');
+            const kaiClose = document.getElementById('kai-chat-close');
+            const kaiMessages = document.getElementById('kai-chat-messages');
+            const kaiForm = document.getElementById('kai-chat-form');
+            const kaiInput = document.getElementById('kai-chat-input');
+            
+            if (kaiTrigger && kaiContainer && kaiClose && kaiMessages && kaiForm && kaiInput) {
+                const scrollToBottom = () => {
+                    kaiMessages.scrollTop = kaiMessages.scrollHeight;
+                };
+            
+                // Toggle Chat visibility
+                kaiTrigger.addEventListener('click', () => {
+                    const isHidden = kaiContainer.classList.contains('hidden');
+                    if (isHidden) {
+                        kaiContainer.classList.remove('hidden');
+                        kaiContainer.classList.add('active');
+                        scrollToBottom();
+                        kaiInput.focus();
+                    } else {
+                        kaiContainer.classList.add('hidden');
+                        kaiContainer.classList.remove('active');
+                    }
+                });
+            
+                // Close Chat
+                kaiClose.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    kaiContainer.classList.add('hidden');
+                    kaiContainer.classList.remove('active');
+                });
+            
+                // Handle Form Submit
+                kaiForm.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    const userMessage = kaiInput.value.trim();
+                    if (!userMessage) return;
+            
+                    // 1. Render User Message
+                    const userBubble = document.createElement('div');
+                    userBubble.className = 'chat-bubble-user px-4 py-3 max-w-[85%] leading-relaxed break-words';
+                    userBubble.textContent = userMessage;
+                    kaiMessages.appendChild(userBubble);
+                    
+                    // Clear input and scroll
+                    kaiInput.value = '';
+                    scrollToBottom();
+            
+                    // 2. Render KAI Loading State
+                    const loadingBubble = document.createElement('div');
+                    loadingBubble.id = 'kai-loading-bubble';
+                    loadingBubble.className = 'flex gap-2';
+                    loadingBubble.innerHTML = `
+                        <div class="w-8 h-8 rounded-full bg-action flex items-center justify-center shadow-lg shrink-0">
+                            <i data-lucide="sparkles" class="text-primary w-4.5 h-4.5"></i>
+                        </div>
+                        <div class="chat-bubble-kai px-4 py-3 max-w-[85%] leading-relaxed flex items-center gap-1.5">
+                            <span class="text-white/80">KAI está analizando</span>
+                            <span class="flex gap-0.5 mt-1.5">
+                                <span class="w-1.5 h-1.5 rounded-full bg-white/70 animate-bounce" style="animation-delay: 0.1s"></span>
+                                <span class="w-1.5 h-1.5 rounded-full bg-white/70 animate-bounce" style="animation-delay: 0.2s"></span>
+                                <span class="w-1.5 h-1.5 rounded-full bg-white/70 animate-bounce" style="animation-delay: 0.3s"></span>
+                            </span>
+                        </div>
+                    `;
+                    kaiMessages.appendChild(loadingBubble);
+                    lucide.createIcons();
+                    scrollToBottom();
+            
+                    const renderKaiReply = (reply) => {
+                        const kaiBubble = document.createElement('div');
+                        kaiBubble.className = 'flex gap-2';
+                        kaiBubble.innerHTML = `
+                            <div class="w-8 h-8 rounded-full bg-action flex items-center justify-center shadow-lg shrink-0">
+                                <i data-lucide="sparkles" class="text-primary w-4.5 h-4.5"></i>
+                            </div>
+                            <div class="chat-bubble-kai px-4 py-3 max-w-[85%] leading-relaxed text-white">
+                                ${formatMarkdown(reply)}
+                            </div>
+                        `;
+                        kaiMessages.appendChild(kaiBubble);
+                        lucide.createIcons();
+                        scrollToBottom();
+                    };
+            
+                    const renderError = () => {
+                        const errorBubble = document.createElement('div');
+                        errorBubble.className = 'flex gap-2 text-red-400';
+                        errorBubble.innerHTML = `
+                            <div class="w-8 h-8 rounded-full bg-red-950 flex items-center justify-center shadow-lg shrink-0 border border-red-500/30">
+                                <i data-lucide="alert-circle" class="w-4.5 h-4.5 text-red-400"></i>
+                            </div>
+                            <div class="chat-bubble-kai px-4 py-3 max-w-[85%] border-red-500/20 leading-relaxed text-red-400 font-medium">
+                                Lo siento, ocurrió un error al procesar tu solicitud. Por favor intenta de nuevo o inicia tu prueba de 14 días gratis en <a href="https://ongoing2.mx" class="text-action underline">ongoing2.mx</a>.
+                            </div>
+                        `;
+                        kaiMessages.appendChild(errorBubble);
+                        lucide.createIcons();
+                        scrollToBottom();
+                    };
+            
+                    // 3. Make fetch request to serverless endpoint
+                    try {
+                        const response = await fetch('../api/chat', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({ message: userMessage })
+                        });
+            
+                        // Remove loading bubble
+                        const loader = document.getElementById('kai-loading-bubble');
+                        if (loader) loader.remove();
+            
+                        if (!response.ok) {
+                            throw new Error(`Serverless endpoint returned status ${response.status}`);
+                        }
+            
+                        const data = await response.json();
+                        const reply = data.response;
+                        renderKaiReply(reply);
+            
+                    } catch (error) {
+                        console.warn('Serverless API failed, attempting local static fallback:', error);
+                        try {
+                            let localApiKey = window.OPENAI_API_KEY;
+                            
+                            if (!localApiKey) {
+                                // Local static fallback: Try to load the .env file from the local server
+                                let envResponse = await fetch('../.env');
+                                if (!envResponse.ok) {
+                                    envResponse = await fetch('.env');
+                                    if (!envResponse.ok) throw new Error('Could not fetch .env file');
+                                }
+                                
+                                const envText = await envResponse.text();
+                                // Parse key
+                                const match = envText.match(/OPENAI_API_KEY\s*=\s*([^\s#]+)/);
+                                if (!match || !match[1]) throw new Error('No API key found in local .env');
+                                localApiKey = match[1].trim();
+                            }
+            
+                            // Load llms.txt context locally
+                            let localContext = '';
+                            try {
+                                let llmRes = await fetch('../llms.txt');
+                                if (!llmRes.ok) {
+                                    llmRes = await fetch('llms.txt');
+                                }
+                                if (llmRes.ok) localContext = await llmRes.text();
+                            } catch(e) {
+                                console.warn('Could not load llms.txt locally, running without context:', e);
+                            }
+            
+                            // Call OpenAI direct from client
+                            const aiResponse = await fetch('https://api.openai.com/v1/chat/completions', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                    'Authorization': `Bearer ${localApiKey}`
+                                },
+                                body: JSON.stringify({
+                                    model: 'gpt-4o-mini',
+                                    messages: [
+                                        { 
+                                            role: 'system', 
+                                            content: `Eres KAI, el asistente de inteligencia artificial de OnGoing ERP ("La evolución del ERP en México"). Tu estilo de comunicación sigue el ADN "Deep Tech & Human Clarity": debes ser profesional, directo, claro y con español de México.
+                                            
+                                            Contexto:
+                                            ${localContext}
+            
+                                            REGLAS:
+                                            1. Responde basándote únicamente en el contexto. Si no está en el contexto, indícalo y sugiere contactar a hola@ongoing.mx o iniciar la prueba gratis en https://ongoing2.mx.
+                                            2. Jailbreak Guard: Si preguntan sobre temas ajenos (recetas, poemas, chistes, etc.), debes negarte a responder de forma elegante y breve, sugiriendo iniciar la prueba de 14 días gratis en https://ongoing2.mx.`
+                                        },
+                                        { role: 'user', content: userMessage }
+                                    ],
+                                    temperature: 0.3
+                                })
+                            });
+            
+                            // Remove loading bubble
+                            const loader = document.getElementById('kai-loading-bubble');
+                            if (loader) loader.remove();
+            
+                            if (!aiResponse.ok) throw new Error('Direct OpenAI call failed');
+                            const aiData = await aiResponse.json();
+                            const reply = aiData.choices[0].message.content;
+                            renderKaiReply(reply);
+            
+                        } catch (fallbackError) {
+                            console.error('Local fallback failed:', fallbackError);
+                            
+                            // Remove loading bubble
+                            const loader = document.getElementById('kai-loading-bubble');
+                            if (loader) loader.remove();
+            
+                            renderError();
+                        }
+                    }
+                });
+            }
+            
+            // Simple helper to format basic bold and links from markdown
+            function formatMarkdown(text) {
+                if (!text) return '';
+                // Format bold: **text** -> <strong>text</strong>
+                let formatted = text.replace(/\*\*(.*?)\*\*/g, '<strong class="text-action font-extrabold">$1</strong>');
+                // Format links: [label](url) -> <a href="$2" target="_blank" class="text-action underline font-bold">$1</a>
+                formatted = formatted.replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" target="_blank" class="text-action underline font-bold">$1</a>');
+                // Format bullet points
+                formatted = formatted.replace(/^\*\s(.*)$/gm, '• $1');
+                // Replace newlines with <br>
+                formatted = formatted.replace(/\n/g, '<br>');
+                return formatted;
+            }
+        });
+    </script>
+</body>
+</html>
