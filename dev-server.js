@@ -44,8 +44,8 @@ const MIME_TYPES = {
 };
 
 const server = http.createServer(async (req, res) => {
-    // 2. Handle API route
-    if (req.url.split('?')[0] === '/api/chat' && req.method === 'POST') {
+    const reqPath = req.url.split('?')[0];
+    if ((reqPath === '/api/chat' || reqPath === '/api/chat/') && req.method === 'POST') {
         try {
             let body = '';
             req.on('data', chunk => {
