@@ -444,7 +444,7 @@ if (kaiTrigger && kaiContainer && kaiClose && kaiMessages && kaiForm && kaiInput
 
         // 3. Make fetch request to serverless endpoint
         try {
-            const response = await fetch('api/chat/', {
+            const response = await fetch('api/chat/index.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

@@ -45,7 +45,7 @@ const MIME_TYPES = {
 
 const server = http.createServer(async (req, res) => {
     const reqPath = req.url.split('?')[0];
-    if ((reqPath === '/api/chat' || reqPath === '/api/chat/') && req.method === 'POST') {
+    if ((reqPath === '/api/chat' || reqPath === '/api/chat/' || reqPath === '/api/chat/index.php') && req.method === 'POST') {
         try {
             let body = '';
             req.on('data', chunk => {
