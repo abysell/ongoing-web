@@ -25,23 +25,21 @@ window.addEventListener('scroll', () => {
 // Mobile Menu Toggle Logic
 const mobileMenuBtn = document.getElementById('mobile-menu-btn');
 const mobileNavPanel = document.getElementById('mobile-nav-panel');
-const mobileMenuIcon = document.getElementById('mobile-menu-icon');
 
 if (mobileMenuBtn && mobileNavPanel) {
     mobileMenuBtn.addEventListener('click', () => {
         const isHidden = mobileNavPanel.classList.contains('hidden');
+        const iconOpen = document.getElementById('mobile-menu-icon-open');
+        const iconClose = document.getElementById('mobile-menu-icon-close');
+
         if (isHidden) {
             mobileNavPanel.classList.remove('hidden');
-            if (mobileMenuIcon) {
-                mobileMenuIcon.setAttribute('data-lucide', 'x');
-                lucide.createIcons();
-            }
+            if (iconOpen) iconOpen.classList.add('hidden');
+            if (iconClose) iconClose.classList.remove('hidden');
         } else {
             mobileNavPanel.classList.add('hidden');
-            if (mobileMenuIcon) {
-                mobileMenuIcon.setAttribute('data-lucide', 'menu');
-                lucide.createIcons();
-            }
+            if (iconOpen) iconOpen.classList.remove('hidden');
+            if (iconClose) iconClose.classList.add('hidden');
         }
     });
 }

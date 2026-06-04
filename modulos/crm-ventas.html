@@ -160,7 +160,8 @@
 
             <!-- Mobile Menu Toggle Button -->
             <button id="mobile-menu-btn" class="flex md:hidden p-2 text-white hover:text-action transition-colors focus:outline-none" aria-label="Toggle Menu">
-                <i data-lucide="menu" id="mobile-menu-icon" class="w-6 h-6"></i>
+                <i data-lucide="menu" id="mobile-menu-icon-open" class="w-6 h-6"></i>
+                <i data-lucide="x" id="mobile-menu-icon-close" class="w-6 h-6 hidden"></i>
             </button>
         </div>
 
@@ -685,23 +686,21 @@
             // --- Mobile Menu Toggle Logic ---
             const mobileMenuBtn = document.getElementById('mobile-menu-btn');
             const mobileNavPanel = document.getElementById('mobile-nav-panel');
-            const mobileMenuIcon = document.getElementById('mobile-menu-icon');
 
             if (mobileMenuBtn && mobileNavPanel) {
                 mobileMenuBtn.addEventListener('click', () => {
                     const isHidden = mobileNavPanel.classList.contains('hidden');
+                    const iconOpen = document.getElementById('mobile-menu-icon-open');
+                    const iconClose = document.getElementById('mobile-menu-icon-close');
+
                     if (isHidden) {
                         mobileNavPanel.classList.remove('hidden');
-                        if (mobileMenuIcon) {
-                            mobileMenuIcon.setAttribute('data-lucide', 'x');
-                            lucide.createIcons();
-                        }
+                        if (iconOpen) iconOpen.classList.add('hidden');
+                        if (iconClose) iconClose.classList.remove('hidden');
                     } else {
                         mobileNavPanel.classList.add('hidden');
-                        if (mobileMenuIcon) {
-                            mobileMenuIcon.setAttribute('data-lucide', 'menu');
-                            lucide.createIcons();
-                        }
+                        if (iconOpen) iconOpen.classList.remove('hidden');
+                        if (iconClose) iconClose.classList.add('hidden');
                     }
                 });
             }
