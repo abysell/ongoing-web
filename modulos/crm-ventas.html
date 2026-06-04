@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17435181220"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'AW-17435181220');
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CRM y Ventas: La Guía Definitiva para PyMEs | OnGoing ERP</title>
@@ -588,7 +598,7 @@
     <!-- KAI Chatbot Floating Widget -->
     <div class="fixed bottom-6 right-6 z-50 flex flex-col items-end">
         <!-- Chat Trigger Button -->
-        <button id="kai-chat-trigger" class="w-14 h-14 rounded-full bg-action text-primary flex items-center justify-center shadow-[0_0_20px_rgba(0,192,255,0.4)] hover:shadow-[0_0_30px_rgba(0,192,255,0.7)] transition-all duration-300 outline-none transform active:scale-95 group relative animate-pulse-glow">
+        <button id="kai-chat-trigger" class="w-16 h-16 sm:w-14 sm:h-14 rounded-full bg-action text-primary flex items-center justify-center shadow-[0_0_20px_rgba(0,192,255,0.4)] hover:shadow-[0_0_30px_rgba(0,192,255,0.7)] transition-all duration-300 outline-none transform active:scale-95 group relative animate-pulse-glow">
             <i data-lucide="message-square" class="w-6 h-6 text-primary transition-transform duration-300 group-hover:scale-110"></i>
             <span class="absolute -top-10 right-0 bg-[#001953] border border-action/30 text-white text-xs font-bold py-1.5 px-3 rounded-lg shadow-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap">
                 Pregúntale a KAI
@@ -607,7 +617,8 @@
                         <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
                     </div>
                 </div>
-                <button id="kai-chat-close" class="text-white/60 hover:text-white transition-colors">
+                <button id="kai-chat-close" class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/10 text-white/80 hover:text-white hover:bg-white/20 transition-all text-xs font-bold sm:bg-transparent sm:p-0 sm:hover:bg-transparent sm:text-white/60 sm:hover:text-white">
+                    <span class="sm:hidden tracking-wider uppercase text-[10px]">Cerrar</span>
                     <i data-lucide="x" class="w-5 h-5"></i>
                 </button>
             </div>
