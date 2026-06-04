@@ -22,7 +22,29 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Mobile Menu Removed
+// Mobile Menu Toggle Logic
+const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+const mobileNavPanel = document.getElementById('mobile-nav-panel');
+const mobileMenuIcon = document.getElementById('mobile-menu-icon');
+
+if (mobileMenuBtn && mobileNavPanel) {
+    mobileMenuBtn.addEventListener('click', () => {
+        const isHidden = mobileNavPanel.classList.contains('hidden');
+        if (isHidden) {
+            mobileNavPanel.classList.remove('hidden');
+            if (mobileMenuIcon) {
+                mobileMenuIcon.setAttribute('data-lucide', 'x');
+                lucide.createIcons();
+            }
+        } else {
+            mobileNavPanel.classList.add('hidden');
+            if (mobileMenuIcon) {
+                mobileMenuIcon.setAttribute('data-lucide', 'menu');
+                lucide.createIcons();
+            }
+        }
+    });
+}
 
 // 2. KAI Tabs Logic
 const tabBtns = document.querySelectorAll('.tab-btn');
