@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OnGoing V2 | Automatización de Servicios (PSA) y Gestión de Proyectos</title>
+    <meta name="description" content="Asegura la rentabilidad real de cada proyecto. Combina la gestión de tareas con un Time Tracker preciso. Tu asistente KAI AI te reporta desviación de costos.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="img/favicon-ongoing.png">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Shared Stylesheet -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- Sticky Banner Global (Glassmorphism) -->
+    <div class="sticky-banner" id="global-sticky-banner">
+        <span>🚀 No esperes a un vendedor. Explora OnGoing V2 ahora mismo en nuestro <a href="https://demo.ongoing2.mx" target="_blank">Demo Interactivo en vivo (demo.ongoing2.mx)</a> o inicia tu prueba de 14 días gratis.</span>
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="navbar" id="main-navbar">
+        <a href="index.html" class="nav-brand">
+            <img src="img/ongoing-logo.png" alt="Ongoing Logo">
+        </a>
+        <button class="nav-toggle" id="menu-toggle" aria-label="Abrir menú">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <ul class="nav-links" id="nav-menu">
+            <li><a href="index.html">KAI IA Flagship</a></li>
+            <li><a href="crm.html">CRM Comercial</a></li>
+            <li><a href="inventario.html">Inventario y Logística</a></li>
+            <li><a href="servicios.html" class="active">Servicios (PSA)</a></li>
+            <li><a href="finanzas.html">Finanzas</a></li>
+            <li class="mobile-only"><a href="https://demo.ongoing2.mx" target="_blank" class="btn-text">Entrar al Demo</a></li>
+        </ul>
+        <div class="nav-ctas">
+            <a href="https://demo.ongoing2.mx" target="_blank" class="btn-text">Ingresar</a>
+            <a href="https://demo.ongoing2.mx" target="_blank" class="btn btn-primary">Empieza Gratis</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <span class="hero-tag">💼 Automatización de Servicios (PSA)</span>
+                <h1>Asegura la rentabilidad real de <span>cada proyecto.</span> (Prueba el módulo PSA hoy).</h1>
+                <p class="hero-sub">Combina la gestión de tareas con un *Time Tracker* preciso. Tu asistente <strong>KAI AI</strong> te reporta la desviación de costos al instante. Entra al demo sin barreras y registra tu primera hora.</p>
+                <p class="hero-price">Rentabilidad garantizada. Desde <strong>$1,000 MXN / mes</strong> por usuario. Sin plazos forzosos.</p>
+                <div class="hero-actions">
+                    <a href="https://demo.ongoing2.mx" target="_blank" class="btn btn-primary">Entrar al Demo de Proyectos <i data-lucide="arrow-up-right" class="btn-icon"></i></a>
+                    <a href="#trial-section" class="btn btn-secondary-white">Iniciar Prueba de 14 Días</a>
+                </div>
+                <p class="hero-microcopy">✨ Explora los hitos en demo.ongoing2.mx sin compromiso.</p>
+            </div>
+            <div class="hero-mockup">
+                <!-- Browser Window Mockup -->
+                <div class="browser-window animate-float">
+                    <div class="browser-header">
+                        <div class="browser-controls">
+                            <span class="browser-control control-close"></span>
+                            <span class="browser-control control-minimize"></span>
+                            <span class="browser-control control-maximize"></span>
+                        </div>
+                        <div class="browser-address">ongoing2.mx/dashboard/projects</div>
+                    </div>
+                    <div class="browser-body">
+                        <!-- Hero image: NOT lazy-loaded for LCP performance -->
+                        <img src="img/real_psa_projects.png" alt="OnGoing V2 Real PSA Projects">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- KAI AI in Projects Section (Interactive Chat UI) -->
+    <section class="section">
+        <div class="section-header">
+            <span class="section-subtitle">El Factor KAI en Proyectos</span>
+            <h2>El mejor aliado para tu Project Manager.</h2>
+            <p class="section-description">KAI vigila el costeo de horas y el progreso de tus tareas. Pídele un diagnóstico de avance o asigna actividades en un solo chat.</p>
+        </div>
+        <div class="kai-section">
+            <div class="kai-info">
+                <h3>Dirección de Proyectos Inteligente</h3>
+                <p>Haz clic en los siguientes botones para ver cómo interactuar con KAI para gestionar tu operación y rentabilidad:</p>
+                <div class="kai-tabs">
+                    <button class="kai-tab-btn active" onclick="switchKaiTab('diagnostico')">
+                        <h4><i data-lucide="activity"></i> 1. Diagnóstico de Salud</h4>
+                        <p>"KAI, dame el reporte de avance del Proyecto Alfa."</p>
+                    </button>
+                    <button class="kai-tab-btn" onclick="switchKaiTab('asignacion')">
+                        <h4><i data-lucide="check-square"></i> 2. Asignación Veloz</h4>
+                        <p>"Crea la tarea 'Revisión', asígnala a Carlos para el viernes."</p>
+                    </button>
+                </div>
+            </div>
+            <div class="chat-container">
+                <!-- Chat Window Mockup -->
+                <div class="chat-window">
+                    <div class="chat-header">
+                        <div class="chat-kai-avatar">K</div>
+                        <div class="chat-header-info">
+                            <h4>KAI AI Assistant</h4>
+                            <span>En línea (Demo)</span>
+                        </div>
+                    </div>
+                    <div class="chat-body" id="chat-body">
+                        <!-- Dynamic Chat Content -->
+                        <div class="chat-msg user">
+                            KAI, dame el reporte de avance del Proyecto Alfa.
+                        </div>
+                        <div class="chat-msg kai">
+                            Analizando el estado del <strong>Proyecto Alfa</strong>...
+                            <br><br>
+                            ⚠️ <strong>Alerta Crítica:</strong> El proyecto ha alcanzado el <strong>96% del presupuesto estimado</strong> de horas de servicio contratado, consumiendo $96,000 MXN del presupuesto total de $100,000 MXN.
+                            <br><br>
+                            • <strong>Avance Físico:</strong> 85% de hitos completados.
+                            <br>
+                            • <strong>Colaborador Principal:</strong> Carlos Gómez (12 horas extras registradas).
+                            <br><br>
+                            <strong>Acción Correctiva Sugerida:</strong> KAI recomienda pausar la asignación de nuevas horas a este proyecto y renegociar alcances con el cliente para mitigar pérdidas financieras.
+                        </div>
+                    </div>
+                    <div class="chat-input-area">
+                        <div class="chat-input-sim" id="chat-input-placeholder">
+                            Escribe una instrucción a KAI...
+                        </div>
+                        <button class="chat-btn-send"><i data-lucide="send"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bento Grid Ecosystem -->
+    <section class="section">
+        <div class="section-header">
+            <span class="section-subtitle">El Ecosistema OnGoing</span>
+            <h2>Operación, ventas y finanzas en el mismo idioma.</h2>
+            <p class="section-description">Una vez que el proyecto se entrega o avanza, OnGoing V2 facilita el resto del ciclo de vida de tu empresa gracias a sus módulos integrados:</p>
+        </div>
+        <div class="bento-grid">
+            
+            <!-- Invoicing -->
+            <div class="bento-card bento-span-4">
+                <div class="bento-card-icon"><i data-lucide="receipt"></i></div>
+                <h3>🧾 Factura Hitos al Instante</h3>
+                <p>Factura (CFDI 4.0) los hitos del proyecto completados o las horas acumuladas en el Timesheet con un solo clic, sin recapturas.</p>
+                <a href="finanzas.html" class="bento-card-footer-link">Ver Finanzas <i data-lucide="arrow-right"></i></a>
+            </div>
+
+            <!-- CRM Integration -->
+            <div class="bento-card bento-span-4">
+                <div class="bento-card-icon"><i data-lucide="handshake"></i></div>
+                <h3>🤝 Fidelización del Cliente</h3>
+                <p>Gestiona la relación con tus clientes a través del CRM integrado y ten historial completo de sus proyectos en su ficha de contacto.</p>
+                <a href="crm.html" class="bento-card-footer-link">Ver CRM Comercial <i data-lucide="arrow-right"></i></a>
+            </div>
+
+            <!-- Cash Flow Analysis -->
+            <div class="bento-card bento-span-4">
+                <div class="bento-card-icon"><i data-lucide="line-chart"></i></div>
+                <h3>📈 Impacto Financiero Real</h3>
+                <p>Visualiza cómo las horas trabajadas y devengadas por tu equipo de servicios impactan positivamente tu flujo de caja neto en tiempo real.</p>
+                <a href="index.html" class="bento-card-footer-link">Ver Inteligencia KAI <i data-lucide="arrow-right"></i></a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Trust Logos Grid -->
+    <section class="trust-logos">
+        <h4 class="trust-logos-title">Empresas líderes que confían en OnGoing</h4>
+        <div class="trust-logos-grid">
+            <img src="img/logo_alimentro.png" alt="Alimentro Logo" class="trust-logo-item" loading="lazy">
+            <img src="img/logo_apetit.png" alt="Apetit Logo" class="trust-logo-item" loading="lazy">
+            <img src="img/logo_macero.png" alt="Macero Logo" class="trust-logo-item" loading="lazy">
+            <img src="img/logo_mentoria_banregio.png" alt="Mentoría Banregio Logo" class="trust-logo-item" loading="lazy">
+            <img src="img/logo_montgomery.png" alt="Montgomery Logo" class="trust-logo-item" loading="lazy">
+            <img src="img/logo_steel.png" alt="Steel Logo" class="trust-logo-item" loading="lazy">
+        </div>
+    </section>
+
+    <!-- CTA Final Section -->
+    <section class="cta-final" id="trial-section">
+        <div class="cta-final-content">
+            <h2>Toma el control de tus horas facturables. Vívelo en tiempo real.</h2>
+            <p>Monitorea y optimiza la rentabilidad operativa de tu agencia o consultora ahora mismo en el demo en vivo.</p>
+            <div class="cta-final-actions">
+                <a href="https://demo.ongoing2.mx" target="_blank" class="btn btn-primary">Probar PSA Funcional Ahora <i data-lucide="play" class="btn-icon"></i></a>
+                <a href="https://demo.ongoing2.mx" target="_blank" class="btn btn-secondary-white">Iniciar mis 14 días gratis</a>
+            </div>
+            <p class="cta-final-microcopy">✨ Desde $1,000 MXN / mes. Cero letras chiquitas y sin contratos forzosos.</p>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-about">
+                <img src="img/ongoing-logo.png" alt="Ongoing Logo">
+                <p>La evolución de la gestión empresarial B2B en México mediante Inteligencia Artificial.</p>
+            </div>
+            <div class="footer-column">
+                <h4>Soluciones</h4>
+                <ul>
+                    <li><a href="index.html">KAI IA Flagship</a></li>
+                    <li><a href="crm.html">CRM Comercial</a></li>
+                    <li><a href="inventario.html">Inventarios y Compras</a></li>
+                    <li><a href="servicios.html">Proyectos y PSA</a></li>
+                    <li><a href="finanzas.html">Control Financiero</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Recursos</h4>
+                <ul>
+                    <li><a href="https://demo.ongoing2.mx" target="_blank">Demo en Vivo</a></li>
+                    <li><a href="#">Centro de Ayuda</a></li>
+                    <li><a href="#">Documentación API</a></li>
+                    <li><a href="#">Soporte Técnico</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Términos de Servicio</a></li>
+                    <li><a href="#">Aviso de Privacidad</a></li>
+                    <li><a href="#">SLA de Servicio</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2026 OnGoing ERP. Realizado con IA, diseñado para humanos.</span>
+            <img src="img/ongoing-logo.png" alt="Ongoing Logo" class="footer-logo-small">
+        </div>
+    </footer>
+
+    <!-- Lucide Icons initialization -->
+    <script>
+        lucide.createIcons();
+
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const navMenu = document.getElementById('nav-menu');
+
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('open');
+            const spans = menuToggle.querySelectorAll('span');
+            spans[0].style.transform = navMenu.classList.contains('open') ? 'rotate(45deg) translate(5px, 5px)' : 'none';
+            spans[1].style.opacity = navMenu.classList.contains('open') ? '0' : '1';
+            spans[2].style.transform = navMenu.classList.contains('open') ? 'rotate(-45deg) translate(6px, -6px)' : 'none';
+        });
+
+        // KAI Interactive Chat simulation for PSA
+        function switchKaiTab(type) {
+            const tabs = document.querySelectorAll('.kai-tab-btn');
+            tabs.forEach(t => t.classList.remove('active'));
+            
+            const currentTab = event.currentTarget;
+            currentTab.classList.add('active');
+            
+            const chatBody = document.getElementById('chat-body');
+            const chatInput = document.getElementById('chat-input-placeholder');
+            
+            if (type === 'diagnostico') {
+                chatInput.innerText = "Escribe una instrucción a KAI...";
+                chatBody.innerHTML = `
+                    <div class="chat-msg user">
+                        KAI, dame el reporte de avance del Proyecto Alfa.
+                    </div>
+                    <div class="chat-msg kai">
+                        Analizando el estado del <strong>Proyecto Alfa</strong>...
+                        <br><br>
+                        ⚠️ <strong>Alerta Crítica:</strong> El proyecto ha alcanzado el <strong>96% del presupuesto estimado</strong> de horas de servicio contratado, consumiendo $96,000 MXN del presupuesto total de $100,000 MXN.
+                        <br><br>
+                        • <strong>Avance Físico:</strong> 85% de hitos completados.
+                        <br>
+                        • <strong>Colaborador Principal:</strong> Carlos Gómez (12 horas extras registradas).
+                        <br><br>
+                        <strong>Acción Correctiva Sugerida:</strong> KAI recomienda pausar la asignación de nuevas horas a este proyecto y renegociar alcances con el cliente para mitigar pérdidas financieras.
+                    </div>
+                `;
+            } else if (type === 'asignacion') {
+                chatInput.innerText = "Escribe una instrucción a KAI...";
+                chatBody.innerHTML = `
+                    <div class="chat-msg user">
+                        Crea la tarea 'Revisión final de código', asígnala a Carlos para el viernes.
+                    </div>
+                    <div class="chat-msg kai">
+                        Creando tarea operativa...
+                        <br><br>
+                        <i data-lucide="check-circle" style="color: #27c93f; display: inline-block; vertical-align: middle; margin-right: 4px; width: 16px; height: 16px;"></i> 
+                        He creado la tarea exitosamente.
+                        <br><br>
+                        • <strong>Tarea:</strong> Revisión final de código
+                        <br>
+                        • <strong>Responsable:</strong> Carlos Gómez
+                        <br>
+                        • <strong>Vence:</strong> Viernes (próximo)
+                        <br>
+                        • <strong>Proyecto:</strong> Proyecto Alfa
+                        <br><br>
+                        Carlos ha sido notificado automáticamente en su consola de actividades y se ha registrado en su Timesheet.
+                    </div>
+                `;
+            }
+            lucide.createIcons();
+        }
+    </script>
+</body>
+</html>

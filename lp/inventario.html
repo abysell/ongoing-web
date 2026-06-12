@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OnGoing V2 | Gestión de Inventario, Logística y Compras con IA</title>
+    <meta name="description" content="Inventarios exactos y abastecimiento inteligente. Controla múltiples almacenes y automatiza compras. Descubre cómo KAI AI audita el stock al instante.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="img/favicon-ongoing.png">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Shared Stylesheet -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- Sticky Banner Global (Glassmorphism) -->
+    <div class="sticky-banner" id="global-sticky-banner">
+        <span>🚀 No esperes a un vendedor. Explora OnGoing V2 ahora mismo en nuestro <a href="https://demo.ongoing2.mx" target="_blank">Demo Interactivo en vivo (demo.ongoing2.mx)</a> o inicia tu prueba de 14 días gratis.</span>
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="navbar" id="main-navbar">
+        <a href="index.html" class="nav-brand">
+            <img src="img/ongoing-logo.png" alt="Ongoing Logo">
+        </a>
+        <button class="nav-toggle" id="menu-toggle" aria-label="Abrir menú">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <ul class="nav-links" id="nav-menu">
+            <li><a href="index.html">KAI IA Flagship</a></li>
+            <li><a href="crm.html">CRM Comercial</a></li>
+            <li><a href="inventario.html" class="active">Inventario y Logística</a></li>
+            <li><a href="servicios.html">Servicios (PSA)</a></li>
+            <li><a href="finanzas.html">Finanzas</a></li>
+            <li class="mobile-only"><a href="https://demo.ongoing2.mx" target="_blank" class="btn-text">Entrar al Demo</a></li>
+        </ul>
+        <div class="nav-ctas">
+            <a href="https://demo.ongoing2.mx" target="_blank" class="btn-text">Ingresar</a>
+            <a href="https://demo.ongoing2.mx" target="_blank" class="btn btn-primary">Empieza Gratis</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <span class="hero-tag">📦 Logística & Control de Inventarios</span>
+                <h1>Inventarios exactos y <span>abastecimiento inteligente.</span> (Navega el demo ahora).</h1>
+                <p class="hero-sub">Controla múltiples almacenes y automatiza compras. Descubre cómo <strong>KAI AI</strong> audita el stock al instante. No agendes llamadas, entra a nuestro entorno vivo y compruébalo.</p>
+                <p class="hero-price">Control operativo total. Desde <strong>$1,000 MXN / mes</strong> por usuario. Sin ataduras.</p>
+                <div class="hero-actions">
+                    <a href="https://demo.ongoing2.mx" target="_blank" class="btn btn-primary">Entrar al Demo de Logística <i data-lucide="arrow-up-right" class="btn-icon"></i></a>
+                    <a href="#trial-section" class="btn btn-secondary-white">Iniciar Prueba de 14 Días</a>
+                </div>
+                <p class="hero-microcopy">✨ Genera una orden de compra en demo.ongoing2.mx sin registro.</p>
+            </div>
+            <div class="hero-mockup">
+                <!-- Browser Window Mockup -->
+                <div class="browser-window animate-float">
+                    <div class="browser-header">
+                        <div class="browser-controls">
+                            <span class="browser-control control-close"></span>
+                            <span class="browser-control control-minimize"></span>
+                            <span class="browser-control control-maximize"></span>
+                        </div>
+                        <div class="browser-address">ongoing2.mx/dashboard/inventory</div>
+                    </div>
+                    <div class="browser-body">
+                        <!-- Hero image: NOT lazy-loaded for LCP performance -->
+                        <img src="img/real_inventory_warehouses.png" alt="OnGoing V2 Real Inventory Control">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- KAI AI in Logistics Section (Interactive Chat UI) -->
+    <section class="section">
+        <div class="section-header">
+            <span class="section-subtitle">El Factor KAI en Logística</span>
+            <h2>Abastecimiento autónomo asistido por IA.</h2>
+            <p class="section-description">KAI vigila tus existencias y realiza auditorías en tiempo real. Configura stock mínimo y deja que KAI te alerte de compras críticas.</p>
+        </div>
+        <div class="kai-section">
+            <div class="kai-info">
+                <h3>Control de Stock Asistido</h3>
+                <p>Haz clic en los siguientes botones para ver cómo interactuar con KAI para gestionar tu stock de forma inmediata:</p>
+                <div class="kai-tabs">
+                    <button class="kai-tab-btn active" onclick="switchKaiTab('auditoria')">
+                        <h4><i data-lucide="search"></i> 1. Auditoría Express</h4>
+                        <p>"¿Cuántas laptops quedan en el Almacén Central?"</p>
+                    </button>
+                    <button class="kai-tab-btn" onclick="switchKaiTab('ejecucion')">
+                        <h4><i data-lucide="file-plus"></i> 2. Ejecución de Orden</h4>
+                        <p>"Crea una orden de compra para el proveedor X."</p>
+                    </button>
+                </div>
+            </div>
+            <div class="chat-container">
+                <!-- Chat Window Mockup -->
+                <div class="chat-window">
+                    <div class="chat-header">
+                        <div class="chat-kai-avatar">K</div>
+                        <div class="chat-header-info">
+                            <h4>KAI AI Assistant</h4>
+                            <span>En línea (Demo)</span>
+                        </div>
+                    </div>
+                    <div class="chat-body" id="chat-body">
+                        <!-- Dynamic Chat Content -->
+                        <div class="chat-msg user">
+                            KAI, ¿cuántas laptops quedan en el Almacén Central?
+                        </div>
+                        <div class="chat-msg kai">
+                            Consultando Almacén Central...
+                            <br><br>
+                            Quedan <strong>14 Laptops Pro 15"</strong> disponibles.
+                            <br><br>
+                            ⚠️ <strong>Alerta:</strong> Este producto se encuentra por debajo del stock mínimo configurado (15 unidades). 
+                            <br><br>
+                            ¿Quieres que elabore un borrador de orden de compra para reabastecer 10 unidades con el proveedor habitual?
+                        </div>
+                    </div>
+                    <div class="chat-input-area">
+                        <div class="chat-input-sim" id="chat-input-placeholder">
+                            Escribe una instrucción a KAI...
+                        </div>
+                        <button class="chat-btn-send"><i data-lucide="send"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bento Grid Ecosystem -->
+    <section class="section">
+        <div class="section-header">
+            <span class="section-subtitle">El Ecosistema OnGoing</span>
+            <h2>Un almacén conectado a tus finanzas y ventas.</h2>
+            <p class="section-description">Con OnGoing V2, tu inventario no vive en una isla. Al ser un ERP integral, tu operación logística impacta en tiempo real al resto del negocio:</p>
+        </div>
+        <div class="bento-grid">
+            
+            <!-- Cuentas por Pagar -->
+            <div class="bento-card bento-span-4">
+                <div class="bento-card-icon"><i data-lucide="dollar-sign"></i></div>
+                <h3>💰 Finanzas Integradas</h3>
+                <p>Genera automáticamente las cuentas por pagar y pasivos correspondientes al momento de ingresar la mercancía en el almacén.</p>
+                <a href="finanzas.html" class="bento-card-footer-link">Ver Finanzas <i data-lucide="arrow-right"></i></a>
+            </div>
+
+            <!-- CRM Stock Check -->
+            <div class="bento-card bento-span-4">
+                <div class="bento-card-icon"><i data-lucide="handshake"></i></div>
+                <h3>🤝 Ventas sin Sorpresas</h3>
+                <p>Tus vendedores (CRM) saben exactamente qué stock físico y disponible existe para cotizar al momento, evitando sobreventas.</p>
+                <a href="crm.html" class="bento-card-footer-link">Ver CRM Comercial <i data-lucide="arrow-right"></i></a>
+            </div>
+
+            <!-- Cash Flow Analysis -->
+            <div class="bento-card bento-span-4">
+                <div class="bento-card-icon"><i data-lucide="line-chart"></i></div>
+                <h3>🤖 Inteligencia Operativa</h3>
+                <p>KAI analiza tus costos de almacenamiento y tiempos de rotación de stock para mantener tu flujo de caja sano.</p>
+                <a href="index.html" class="bento-card-footer-link">Ver Inteligencia KAI <i data-lucide="arrow-right"></i></a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Trust Logos Grid -->
+    <section class="trust-logos">
+        <h4 class="trust-logos-title">Empresas líderes que confían en OnGoing</h4>
+        <div class="trust-logos-grid">
+            <img src="img/logo_alimentro.png" alt="Alimentro Logo" class="trust-logo-item" loading="lazy">
+            <img src="img/logo_apetit.png" alt="Apetit Logo" class="trust-logo-item" loading="lazy">
+            <img src="img/logo_macero.png" alt="Macero Logo" class="trust-logo-item" loading="lazy">
+            <img src="img/logo_mentoria_banregio.png" alt="Mentoría Banregio Logo" class="trust-logo-item" loading="lazy">
+            <img src="img/logo_montgomery.png" alt="Montgomery Logo" class="trust-logo-item" loading="lazy">
+            <img src="img/logo_steel.png" alt="Steel Logo" class="trust-logo-item" loading="lazy">
+        </div>
+    </section>
+
+    <!-- CTA Final Section -->
+    <section class="cta-final" id="trial-section">
+        <div class="cta-final-content">
+            <h2>Elimina el caos en tu almacén. Juega con la solución hoy.</h2>
+            <p>Comienza a operar con precisión absoluta. Explora nuestro almacén demo de inmediato.</p>
+            <div class="cta-final-actions">
+                <a href="https://demo.ongoing2.mx" target="_blank" class="btn btn-primary">Abrir Demo Interactivo <i data-lucide="play" class="btn-icon"></i></a>
+                <a href="https://demo.ongoing2.mx" target="_blank" class="btn btn-secondary-white">Crear mi cuenta (14 días gratis)</a>
+            </div>
+            <p class="cta-final-microcopy">✨ Desde $1,000 MXN / mes. Cancela en el momento que desees, sin planes forzosos.</p>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-about">
+                <img src="img/ongoing-logo.png" alt="Ongoing Logo">
+                <p>La evolución de la gestión empresarial B2B en México mediante Inteligencia Artificial.</p>
+            </div>
+            <div class="footer-column">
+                <h4>Soluciones</h4>
+                <ul>
+                    <li><a href="index.html">KAI IA Flagship</a></li>
+                    <li><a href="crm.html">CRM Comercial</a></li>
+                    <li><a href="inventario.html">Inventarios y Compras</a></li>
+                    <li><a href="servicios.html">Proyectos y PSA</a></li>
+                    <li><a href="finanzas.html">Control Financiero</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Recursos</h4>
+                <ul>
+                    <li><a href="https://demo.ongoing2.mx" target="_blank">Demo en Vivo</a></li>
+                    <li><a href="#">Centro de Ayuda</a></li>
+                    <li><a href="#">Documentación API</a></li>
+                    <li><a href="#">Soporte Técnico</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Términos de Servicio</a></li>
+                    <li><a href="#">Aviso de Privacidad</a></li>
+                    <li><a href="#">SLA de Servicio</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2026 OnGoing ERP. Realizado con IA, diseñado para humanos.</span>
+            <img src="img/ongoing-logo.png" alt="Ongoing Logo" class="footer-logo-small">
+        </div>
+    </footer>
+
+    <!-- Lucide Icons initialization -->
+    <script>
+        lucide.createIcons();
+
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const navMenu = document.getElementById('nav-menu');
+
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('open');
+            const spans = menuToggle.querySelectorAll('span');
+            spans[0].style.transform = navMenu.classList.contains('open') ? 'rotate(45deg) translate(5px, 5px)' : 'none';
+            spans[1].style.opacity = navMenu.classList.contains('open') ? '0' : '1';
+            spans[2].style.transform = navMenu.classList.contains('open') ? 'rotate(-45deg) translate(6px, -6px)' : 'none';
+        });
+
+        // KAI Interactive Chat simulation for Inventory
+        function switchKaiTab(type) {
+            const tabs = document.querySelectorAll('.kai-tab-btn');
+            tabs.forEach(t => t.classList.remove('active'));
+            
+            const currentTab = event.currentTarget;
+            currentTab.classList.add('active');
+            
+            const chatBody = document.getElementById('chat-body');
+            const chatInput = document.getElementById('chat-input-placeholder');
+            
+            if (type === 'auditoria') {
+                chatInput.innerText = "Escribe una instrucción a KAI...";
+                chatBody.innerHTML = `
+                    <div class="chat-msg user">
+                        KAI, ¿cuántas laptops quedan en el Almacén Central?
+                    </div>
+                    <div class="chat-msg kai">
+                        Consultando Almacén Central...
+                        <br><br>
+                        Quedan <strong>14 Laptops Pro 15"</strong> disponibles.
+                        <br><br>
+                        ⚠️ <strong>Alerta:</strong> Este producto se encuentra por debajo del stock mínimo configurado (15 unidades). 
+                        <br><br>
+                        ¿Quieres que elabore un borrador de orden de compra para reabastecer 10 unidades con el proveedor habitual?
+                    </div>
+                `;
+            } else if (type === 'ejecucion') {
+                chatInput.innerText = "Escribe una instrucción a KAI...";
+                chatBody.innerHTML = `
+                    <div class="chat-msg user">
+                        Crea una orden de compra para el proveedor "Equipos de Occidente" por 10 laptops.
+                    </div>
+                    <div class="chat-msg kai">
+                        Generando orden de compra...
+                        <br><br>
+                        <i data-lucide="check-circle" style="color: #27c93f; display: inline-block; vertical-align: middle; margin-right: 4px; width: 16px; height: 16px;"></i> 
+                        He generado la orden de compra <strong>#OC-9844</strong>.
+                        <br><br>
+                        • <strong>Proveedor:</strong> Equipos de Occidente S.A.
+                        <br>
+                        • <strong>Artículos:</strong> 10x Laptop Pro 15" ($15,000 MXN c/u)
+                        <br>
+                        • <strong>Monto Total:</strong> $150,000 MXN
+                        <br>
+                        • <strong>Estado:</strong> Borrador (Listo para tu firma)
+                        <br><br>
+                        El documento ha sido guardado y se refleja provisionalmente en tus compromisos de flujo de efectivo.
+                    </div>
+                `;
+            }
+            lucide.createIcons();
+        }
+    </script>
+</body>
+</html>
