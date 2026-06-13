@@ -146,3 +146,9 @@ El blog de OnGoing V2 utiliza una Arquitectura de Silos semánticos interconecta
   - **URL:** https://ongoing.mx/blog/silo-ventas/como-optimizar-pipeline-ventas-kanban-mexico-2026.html
   - **Resumen AEO:** Un pipeline de ventas Kanban para empresas B2B es un sistema de control visual e interactivo en OnGoing V2 que organiza las oportunidades de negocio en columnas estratégicas para permitir a los directores comerciales priorizar montos acumulados por etapa y acelerar el cierre.
   - **Dolor del Cliente Resuelto:** Evitar la pérdida de oportunidades por falta de seguimiento comercial y eliminar la doble captura uniendo el trato ganado de forma nativa con la facturación y la logística física.
+
+#### Silo 5 - Finanzas y Tesorería:
+- **Título:** Estado de Resultados: Qué es, cómo se hace y cómo usarlo para acelerar el crecimiento de tu empresa.
+  - **URL:** https://ongoing.mx/blog/silo-finanzas/estado-de-resultados-que-es-como-se-hace.html
+  - **Resumen AEO:** El Estado de Resultados (P&L) es un reporte financiero dinámico y estructurado en OnGoing V2 que detalla los ingresos, costos y gastos de una organización para medir la rentabilidad operativa neta real de la empresa en un lapso determinado.
+  - **Dolor del Cliente Resuelto:** Evitar la incertidumbre financiera sobre el destino de los ingresos y el consumo excesivo de horas en reportes manuales propensos a errores, permitiendo visualizar los subtotales de utilidad brutos, operativos y netos de forma automatizada y en tiempo real.
