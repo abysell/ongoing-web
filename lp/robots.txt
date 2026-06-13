@@ -4,7 +4,14 @@ Allow: /
 
 # Explicitly allow AI Search and Generative Engines
 User-agent: GPTBot
-Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+Allow: /lp/
+
+User-agent: PerplexityBot
+Allow: /llms.txt
+Allow: /llms-full.txt
+Allow: /lp/
 
 User-agent: ChatGPT-User
 Allow: /
@@ -12,11 +19,29 @@ Allow: /
 User-agent: ClaudeBot
 Allow: /
 
-User-agent: PerplexityBot
-Allow: /
-
 User-agent: OAI-SearchBot
 Allow: /
 
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: FacebookBot
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
 # Sitemap Location
-Sitemap: https://ongoing.mx/lp/sitemap.xml
+Sitemap: https://ongoing.mx/sitemap.xml

@@ -1,10 +1,17 @@
 # OnGoing ERP Landing - Apache Configuration for cPanel
 RewriteEngine On
 
+# Force UTF-8 Encoding to fix character parsing issues
+AddDefaultCharset UTF-8
+
 # Ensure api/chat request routes directly to the PHP API handler
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^api/chat$ api/chat/index.php [L]
+
+# 301 Redirects for Legacy Modules to New Landing Pages
+Redirect 301 /modulos/crm-ventas.html /lp/crm.html
+Redirect 301 /modulos/gestion-operativa.html /lp/servicios.html
 
 # Prevent directory listing for privacy and security
 Options -Indexes

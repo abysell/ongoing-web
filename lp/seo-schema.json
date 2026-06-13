@@ -2,11 +2,33 @@
   "@context": "https://schema.org",
   "@graph": [
     {
+      "@type": "Organization",
+      "@id": "https://ongoing.mx/#organization",
+      "name": "OnGoing",
+      "url": "https://ongoing.mx/",
+      "logo": {
+        "@type": "ImageObject",
+        "@id": "https://ongoing.mx/#logo",
+        "url": "https://ongoing.mx/img/ongoing-logo.png",
+        "caption": "OnGoing Logo"
+      },
+      "image": {
+        "@id": "https://ongoing.mx/#logo"
+      },
+      "sameAs": [
+        "https://x.com/ongoing_mx",
+        "https://www.linkedin.com/company/ongoing-mx"
+      ]
+    },
+    {
       "@type": "SoftwareApplication",
       "@id": "https://ongoing.mx/lp/#software",
       "name": "OnGoing ERP V2",
       "operatingSystem": "Web / Cloud-Based",
       "applicationCategory": "BusinessApplication",
+      "publisher": {
+        "@id": "https://ongoing.mx/#organization"
+      },
       "offers": {
         "@type": "Offer",
         "price": "1000",
@@ -35,8 +57,7 @@
       "operatingSystem": "All",
       "description": "Módulo CRM comercial y gestión de ventas de OnGoing ERP V2.",
       "author": {
-        "@type": "Organization",
-        "name": "OnGoing"
+        "@id": "https://ongoing.mx/#organization"
       }
     },
     {
@@ -49,8 +70,7 @@
       "operatingSystem": "All",
       "description": "Módulo de gestión de inventarios multialmacén, compras y logística de OnGoing ERP V2.",
       "author": {
-        "@type": "Organization",
-        "name": "OnGoing"
+        "@id": "https://ongoing.mx/#organization"
       }
     },
     {
@@ -63,8 +83,7 @@
       "operatingSystem": "All",
       "description": "Módulo de gestión de proyectos, tracking de horas y rentabilidad de servicios PSA de OnGoing ERP V2.",
       "author": {
-        "@type": "Organization",
-        "name": "OnGoing"
+        "@id": "https://ongoing.mx/#organization"
       }
     },
     {
@@ -77,8 +96,7 @@
       "operatingSystem": "All",
       "description": "Módulo de control financiero, flujo de caja y timbrado CFDI 4.0 integrado al SAT de OnGoing ERP V2.",
       "author": {
-        "@type": "Organization",
-        "name": "OnGoing"
+        "@id": "https://ongoing.mx/#organization"
       }
     }
   ]

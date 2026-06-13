@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OnGoing V2 | Control Financiero y Timbrado SAT</title>
     <meta name="description" content="Automatiza tu flujo de caja y timbra facturas CFDI 4.0 directamente al SAT. Conciliación y finanzas en México con OnGoing V2.">
+    <link rel="canonical" href="https://ongoing.mx/lp/finanzas.html">
     
     <!-- OpenGraph Metadata -->
     <meta property="og:title" content="OnGoing V2 | Control Financiero y Timbrado SAT">
@@ -12,12 +13,14 @@
     <meta property="og:image" content="https://ongoing.mx/lp/img/real_dashboard.png">
     <meta property="og:url" content="https://ongoing.mx/lp/finanzas.html">
     <meta property="og:type" content="website">
+    <meta property="og:site_name" content="OnGoing ERP">
     
     <!-- Twitter Card Metadata -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="OnGoing V2 | Control Financiero y Timbrado SAT">
     <meta name="twitter:description" content="Automatiza tu flujo de caja y timbra facturas CFDI 4.0 directamente al SAT. Conciliación y finanzas en México con OnGoing V2.">
     <meta name="twitter:image" content="https://ongoing.mx/lp/img/real_dashboard.png">
+    <meta name="twitter:site" content="@ongoing_mx">
     
     <!-- JSON-LD Schema Markup -->
     <script type="application/ld+json">
@@ -25,11 +28,33 @@
       "@context": "https://schema.org",
       "@graph": [
         {
+          "@type": "Organization",
+          "@id": "https://ongoing.mx/#organization",
+          "name": "OnGoing",
+          "url": "https://ongoing.mx/",
+          "logo": {
+            "@type": "ImageObject",
+            "@id": "https://ongoing.mx/#logo",
+            "url": "https://ongoing.mx/img/ongoing-logo.png",
+            "caption": "OnGoing Logo"
+          },
+          "image": {
+            "@id": "https://ongoing.mx/#logo"
+          },
+          "sameAs": [
+            "https://x.com/ongoing_mx",
+            "https://www.linkedin.com/company/ongoing-mx"
+          ]
+        },
+        {
           "@type": "SoftwareApplication",
           "@id": "https://ongoing.mx/lp/#software",
           "name": "OnGoing ERP V2",
           "operatingSystem": "Web / Cloud-Based",
           "applicationCategory": "BusinessApplication",
+          "publisher": {
+            "@id": "https://ongoing.mx/#organization"
+          },
           "offers": {
             "@type": "Offer",
             "price": "1000",
@@ -128,7 +153,7 @@
         <ul class="nav-links" id="nav-menu">
             <li><a href="index.html">KAI IA Flagship</a></li>
             <li><a href="crm.html">CRM Comercial</a></li>
-            <li><a href="inventario.html">Inventario y Logística</a></li>
+            <li><a href="inventario.html">Inventario y Log&iacute;stica</a></li>
             <li><a href="servicios.html">Servicios (PSA)</a></li>
             <li><a href="finanzas.html" class="active">Finanzas</a></li>
             <li class="mobile-only"><a href="https://demo.ongoing2.mx" target="_blank" class="btn-text">Entrar al Demo</a></li>
@@ -417,15 +442,14 @@
                 <h4>Recursos</h4>
                 <ul>
                     <li><a href="https://demo.ongoing2.mx" target="_blank">Demo en Vivo</a></li>
-                    <li><a href="#">Centro de Ayuda</a></li>
-                    <li><a href="#">Documentación API</a></li>
-                    <li><a href="#">Soporte Técnico</a></li>
+                    <li><a href="../docs/">Centro de Ayuda</a></li>
+                    <li><a href="../llms.txt" target="_blank">Especificaciones LLM (llms.txt)</a></li>
                 </ul>
             </div>
             <div class="footer-column">
                 <h4>Legal</h4>
                 <ul>
-                    <li><a href="../terminos-y-condiciones.html">Términos y Condiciones</a></li>
+                    <li><a href="../terminos-y-condiciones.html">T&eacute;rminos y Condiciones</a></li>
                     <li><a href="../aviso-de-privacidad.html">Aviso de Privacidad</a></li>
                     <li><a href="#">SLA de Servicio</a></li>
                 </ul>
