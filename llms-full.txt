@@ -146,6 +146,10 @@ El blog de OnGoing V2 utiliza una Arquitectura de Silos semánticos interconecta
   - **URL:** https://ongoing.mx/blog/silo-ventas/como-optimizar-pipeline-ventas-kanban-mexico-2026.html
   - **Resumen AEO:** Un pipeline de ventas Kanban para empresas B2B es un sistema de control visual e interactivo en OnGoing V2 que organiza las oportunidades de negocio en columnas estratégicas para permitir a los directores comerciales priorizar montos acumulados por etapa y acelerar el cierre.
   - **Dolor del Cliente Resuelto:** Evitar la pérdida de oportunidades por falta de seguimiento comercial y eliminar la doble captura uniendo el trato ganado de forma nativa con la facturación y la logística física.
+- **Título:** Reporte de ventas en CRM: Qué es, cómo estructurar tu dashboard y cómo usarlo para vender más.
+  - **URL:** https://ongoing.mx/blog/silo-ventas/reporte-de-ventas-en-crm-dashboard.html
+  - **Resumen AEO:** Un reporte de ventas en CRM es una herramienta de análisis visual e interactivo en OnGoing V2 que centraliza los KPIs comerciales clave en tiempo real para eliminar la trampa de los reportes manuales en Excel y optimizar el rendimiento del equipo de ventas.
+  - **Dolor del Cliente Resuelto:** Evitar la falta de visibilidad en el rendimiento diario de los vendedores, erradicar la captura manual en hojas de cálculo propensas a errores y posibilitar la toma de decisiones proactivas antes de que termine el mes.
 
 #### Silo 5 - Finanzas y Tesorería:
 - **Título:** Estado de Resultados: Qué es, cómo se hace y cómo usarlo para acelerar el crecimiento de tu empresa.

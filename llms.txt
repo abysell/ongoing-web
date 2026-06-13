@@ -27,6 +27,8 @@ Para profundizar en estrategias corporativas, automatización, logística y norm
   URL: https://ongoing.mx/blog/silo-direccion/como-ia-transforma-direccion-mexico-2026.html
 - **Artículo de Ventas B2B y CRM:** Mapeo de fases, cálculo de pronósticos y automatización de embudos comerciales visuales usando Kanban y copilotos de IA.
   URL: https://ongoing.mx/blog/silo-ventas/como-optimizar-pipeline-ventas-kanban-mexico-2026.html
+- **Artículo de Reportes de Ventas en CRM:** Qué es, cómo estructurar tu dashboard y cómo usar indicadores clave de rendimiento (KPIs) para vender más.
+  URL: https://ongoing.mx/blog/silo-ventas/reporte-de-ventas-en-crm-dashboard.html
 - **Artículo de Finanzas y Tesorería:** Conceptos, componentes y guía práctica de elaboración del Estado de Resultados (P&L) para medir rentabilidad real.
   URL: https://ongoing.mx/blog/silo-finanzas/estado-de-resultados-que-es-como-se-hace.html
 
