@@ -63,6 +63,15 @@
                 <img src="img/ongoing-logo.png" alt="Ongoing Logo" class="h-8 md:h-[38px] w-auto">
             </a>
 
+            <!-- Desktop Links (Centered Navigation) -->
+            <div class="hidden md:flex items-center gap-6 mx-auto">
+                <a href="lp/index.html" class="text-white/80 hover:text-action font-semibold text-sm transition-colors">Flagship KAI</a>
+                <a href="lp/crm.html" class="text-white/80 hover:text-action font-semibold text-sm transition-colors">CRM</a>
+                <a href="lp/inventario.html" class="text-white/80 hover:text-action font-semibold text-sm transition-colors">Inventario</a>
+                <a href="lp/servicios.html" class="text-white/80 hover:text-action font-semibold text-sm transition-colors">Servicios</a>
+                <a href="lp/finanzas.html" class="text-white/80 hover:text-action font-semibold text-sm transition-colors">Finanzas</a>
+            </div>
+
             <!-- Desktop Navigation (Derecha / Botones) -->
             <div class="hidden md:flex items-center gap-4">
                 <a href="docs/" class="text-white/85 hover:text-action font-semibold text-sm md:text-[15px] transition-colors mr-2">
@@ -85,6 +94,21 @@
 
         <!-- Mobile Navigation Panel -->
         <div id="mobile-nav-panel" class="hidden absolute top-full left-0 w-full bg-[#000b2e]/95 backdrop-blur-lg border-b border-white/10 flex flex-col px-6 py-6 gap-4 shadow-2xl z-40">
+            <a href="lp/index.html" class="text-white/80 hover:text-action font-semibold text-[15px] transition-colors py-2 border-b border-white/5">
+                Flagship KAI
+            </a>
+            <a href="lp/crm.html" class="text-white/80 hover:text-action font-semibold text-[15px] transition-colors py-2 border-b border-white/5">
+                CRM Comercial
+            </a>
+            <a href="lp/inventario.html" class="text-white/80 hover:text-action font-semibold text-[15px] transition-colors py-2 border-b border-white/5">
+                Inventario y Logística
+            </a>
+            <a href="lp/servicios.html" class="text-white/80 hover:text-action font-semibold text-[15px] transition-colors py-2 border-b border-white/5">
+                Servicios (PSA)
+            </a>
+            <a href="lp/finanzas.html" class="text-white/80 hover:text-action font-semibold text-[15px] transition-colors py-2 border-b border-white/5">
+                Control Financiero
+            </a>
             <a href="docs/" class="text-white/80 hover:text-action font-semibold text-[15px] transition-colors py-2 border-b border-white/5">
                 Documentación
             </a>
@@ -669,7 +693,7 @@
                                 Control absoluto del embudo de ventas en tiempo real
                             </div>
                             <div class="mt-8">
-                                <a href="modulos/crm-ventas.html" class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3.5 px-8 rounded-full transition-all text-sm md:text-base shadow-lg shadow-blue-600/20 hover:-translate-y-0.5 active:translate-y-0">
+                                <a href="lp/crm.html" class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3.5 px-8 rounded-full transition-all text-sm md:text-base shadow-lg shadow-blue-600/20 hover:-translate-y-0.5 active:translate-y-0">
                                     Ver Detalle de CRM <i data-lucide="arrow-right" class="w-4 h-4"></i>
                                 </a>
                             </div>
@@ -728,7 +752,7 @@
                                 Alertas automáticas de desviaciones de tiempos y costos
                             </div>
                             <div class="mt-8">
-                                <a href="modulos/gestion-operativa.html" class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3.5 px-8 rounded-full transition-all text-sm md:text-base shadow-lg shadow-blue-600/20 hover:-translate-y-0.5 active:translate-y-0">
+                                <a href="lp/servicios.html" class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3.5 px-8 rounded-full transition-all text-sm md:text-base shadow-lg shadow-blue-600/20 hover:-translate-y-0.5 active:translate-y-0">
                                     Ver Detalle de Gestión Operativa <i data-lucide="arrow-right" class="w-4 h-4"></i>
                                 </a>
                             </div>
@@ -887,7 +911,7 @@
                     </div>
                     <h3 class="text-xl font-bold mb-3 text-white">Clientes y Ventas</h3>
                     <p class="text-secondary text-sm mb-8 flex-grow font-medium leading-relaxed">Deja de perder ventas en post-its y hojas de cálculo desactualizadas.</p>
-                    <a href="modulos/crm-ventas.html"
+                    <a href="lp/crm.html"
                         class="text-action text-sm font-bold flex items-center gap-2 hover:gap-3 transition-all mt-auto border-t border-white/10 pt-4">
                         Ver Módulo CRM <i data-lucide="arrow-right" class="w-4 h-4"></i>
                     </a>
@@ -902,10 +926,10 @@
                     </div>
                     <h3 class="text-xl font-bold mb-3 text-white">Financiero</h3>
                     <p class="text-secondary text-sm mb-8 flex-grow font-medium leading-relaxed">Cumple con el SAT y visualiza tu dinero real en tiempo real sin retrasos.</p>
-                    <span
-                        class="text-white/40 text-sm font-bold flex items-center gap-2 mt-auto border-t border-white/10 pt-4">
-                        Probar Finanzas
-                    </span>
+                    <a href="lp/finanzas.html"
+                        class="text-action text-sm font-bold flex items-center gap-2 hover:gap-3 transition-all mt-auto border-t border-white/10 pt-4">
+                        Ver Módulo Finanzas <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
                 </div>
 
                 <!-- Operativo / PSA -->
@@ -917,7 +941,7 @@
                     </div>
                     <h3 class="text-xl font-bold mb-3 text-white">Proyectos y Rentabilidad</h3>
                     <p class="text-secondary text-sm mb-8 flex-grow font-medium leading-relaxed">Del caos a la ejecución. Asigna, mide y evita pérdidas por horas mal estimadas.</p>
-                    <a href="modulos/gestion-operativa.html"
+                    <a href="lp/servicios.html"
                         class="text-action text-sm font-bold flex items-center gap-2 hover:gap-3 transition-all mt-auto border-t border-white/10 pt-4">
                         Ver Gestión Operativa <i data-lucide="arrow-right" class="w-4 h-4"></i>
                     </a>
@@ -1022,10 +1046,11 @@
                 <div class="col-span-1 md:col-span-2 md:col-start-6">
                     <h4 class="font-extrabold mb-5 text-white uppercase tracking-wider text-xs">Soluciones</h4>
                     <ul class="space-y-4 text-secondary font-medium">
-                        <li><a href="modulos/crm-ventas.html" class="hover:text-action transition-colors">CRM</a></li>
-                        <!-- <li><span class="hover:text-action transition-colors">Finanzas y SAT</span></li> -->
-                        <li><a href="modulos/gestion-operativa.html" class="hover:text-action transition-colors">Gestión Operativa</a></li>
-                        <li><a href="modulos/infraestructura-multitenant.html" class="hover:text-action transition-colors">Seguridad</a></li>
+                        <li><a href="lp/index.html" class="hover:text-action transition-colors">Flagship KAI</a></li>
+                        <li><a href="lp/crm.html" class="hover:text-action transition-colors">CRM</a></li>
+                        <li><a href="lp/inventario.html" class="hover:text-action transition-colors">Inventario y Logística</a></li>
+                        <li><a href="lp/servicios.html" class="hover:text-action transition-colors">Gestión Operativa</a></li>
+                        <li><a href="lp/finanzas.html" class="hover:text-action transition-colors">Finanzas y SAT</a></li>
                     </ul>
                 </div>
 
@@ -1042,10 +1067,10 @@
                 <div class="col-span-2 md:col-span-3">
                     <h4 class="font-extrabold mb-5 text-white uppercase tracking-wider text-xs">Contacto & Legal</h4>
                     <ul class="space-y-4 text-secondary font-medium">
-                        <li><span class="hover:text-action transition-colors flex items-center gap-2"><i
-                                    data-lucide="shield" class="w-4 h-4"></i> Aviso de Privacidad</span></li>
-                        <li><span class="hover:text-action transition-colors flex items-center gap-2"><i
-                                    data-lucide="file-text" class="w-4 h-4"></i> Términos y Condiciones</span></li>
+                        <li><a href="aviso-de-privacidad.html" class="hover:text-action transition-colors flex items-center gap-2"><i
+                                    data-lucide="shield" class="w-4 h-4"></i> Aviso de Privacidad</a></li>
+                        <li><a href="terminos-y-condiciones.html" class="hover:text-action transition-colors flex items-center gap-2"><i
+                                    data-lucide="file-text" class="w-4 h-4"></i> Términos y Condiciones</a></li>
                         <li><span class="hover:text-action transition-colors flex items-center gap-2 mt-6"><i
                                     data-lucide="mail" class="w-4 h-4"></i> hola@ongoing.mx</span></li>
                     </ul>

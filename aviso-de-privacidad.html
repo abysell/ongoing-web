@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aviso de Privacidad | OnGoing</title>
+    <link rel="icon" type="image/png" href="img/favicon-ongoing.png">
+
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#001953',
+                        action: '#00c0ff',
+                        dark: '#000b2e',
+                        light: '#F5F7FA',
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .glass-header {
+            background-color: rgba(0, 11, 46, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+    </style>
+</head>
+
+<body class="bg-dark text-white font-sans min-h-screen flex flex-col">
+
+    <!-- Header (Same as root index.html) -->
+    <header id="main-header" class="fixed top-0 w-full z-50 transition-all duration-300 py-4 glass-header">
+        <div class="container mx-auto px-6 max-w-7xl flex items-center justify-between">
+            <!-- Logo -->
+            <a href="index.html" class="flex items-center transition-opacity hover:opacity-80 outline-none">
+                <img src="img/ongoing-logo.png" alt="Ongoing Logo" class="h-8 md:h-[38px] w-auto">
+            </a>
+
+            <!-- Desktop Links (Centered Navigation) -->
+            <div class="hidden md:flex items-center gap-6 mx-auto">
+                <a href="lp/index.html" class="text-white/80 hover:text-action font-semibold text-sm transition-colors">Flagship KAI</a>
+                <a href="lp/crm.html" class="text-white/80 hover:text-action font-semibold text-sm transition-colors">CRM</a>
+                <a href="lp/inventario.html" class="text-white/80 hover:text-action font-semibold text-sm transition-colors">Inventario</a>
+                <a href="lp/servicios.html" class="text-white/80 hover:text-action font-semibold text-sm transition-colors">Servicios</a>
+                <a href="lp/finanzas.html" class="text-white/80 hover:text-action font-semibold text-sm transition-colors">Finanzas</a>
+            </div>
+
+            <!-- Desktop Navigation (Derecha / Botones) -->
+            <div class="hidden md:flex items-center gap-4">
+                <a href="docs/" class="text-white/85 hover:text-action font-semibold text-sm md:text-[15px] transition-colors mr-2">
+                    Documentación
+                </a>
+                <a href="https://ongoing2.mx/login" class="text-white hover:text-action font-semibold text-sm md:text-[15px] transition-colors">
+                    Ingresar
+                </a>
+                <a href="https://ongoing2.mx" class="bg-action text-primary font-bold py-2 md:py-2.5 px-5 md:px-7 rounded-full hover:bg-opacity-90 transition-all text-sm md:text-[15px] shadow-[0_0_15px_rgba(0,192,255,0.3)]">
+                    Empieza Gratis
+                </a>
+            </div>
+
+            <!-- Mobile Menu Toggle Button -->
+            <button id="mobile-menu-btn" class="flex md:hidden p-2 text-white hover:text-action transition-colors focus:outline-none" aria-label="Toggle Menu">
+                <i data-lucide="menu" id="mobile-menu-icon-open" class="w-6 h-6"></i>
+                <i data-lucide="x" id="mobile-menu-icon-close" class="w-6 h-6 hidden"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation Panel -->
+        <div id="mobile-nav-panel" class="hidden absolute top-full left-0 w-full bg-[#000b2e]/95 backdrop-blur-lg border-b border-white/10 flex flex-col px-6 py-6 gap-4 shadow-2xl z-40">
+            <a href="lp/index.html" class="text-white/80 hover:text-action font-semibold text-[15px] transition-colors py-2 border-b border-white/5">
+                Flagship KAI
+            </a>
+            <a href="lp/crm.html" class="text-white/80 hover:text-action font-semibold text-[15px] transition-colors py-2 border-b border-white/5">
+                CRM Comercial
+            </a>
+            <a href="lp/inventario.html" class="text-white/80 hover:text-action font-semibold text-[15px] transition-colors py-2 border-b border-white/5">
+                Inventario y Logística
+            </a>
+            <a href="lp/servicios.html" class="text-white/80 hover:text-action font-semibold text-[15px] transition-colors py-2 border-b border-white/5">
+                Servicios (PSA)
+            </a>
+            <a href="lp/finanzas.html" class="text-white/80 hover:text-action font-semibold text-[15px] transition-colors py-2 border-b border-white/5">
+                Control Financiero
+            </a>
+            <a href="docs/" class="text-white/80 hover:text-action font-semibold text-[15px] transition-colors py-2 border-b border-white/5">
+                Documentación
+            </a>
+            <a href="https://ongoing2.mx/login" class="text-white/80 hover:text-action font-semibold text-[15px] transition-colors py-2 border-b border-white/5">
+                Ingresar
+            </a>
+            <a href="https://ongoing2.mx" class="bg-action text-primary text-center font-bold py-3.5 px-6 rounded-full hover:bg-opacity-90 transition-all text-[15px] shadow-[0_0_15px_rgba(0,192,255,0.3)] mt-2">
+                Empieza Gratis
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-grow pt-32 pb-20 px-6 max-w-4xl mx-auto w-full relative">
+        <!-- Background Radial Glow -->
+        <div class="absolute top-10 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-action/5 rounded-full blur-[120px] pointer-events-none -z-10"></div>
+
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-8 md:p-12 shadow-2xl backdrop-blur-md">
+            <h1 class="text-3xl md:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-300 mb-2">
+                Aviso de Privacidad
+            </h1>
+            <p class="text-action font-semibold text-sm mb-8 uppercase tracking-widest">
+                Estructura LFPDPPP / México
+            </p>
+            
+            <div class="prose prose-invert max-w-none text-white/80 space-y-6 text-[15px] leading-relaxed">
+                <p class="font-semibold text-white text-base">AVISO DE PRIVACIDAD INTEGRAL</p>
+                
+                <hr class="border-white/10 my-6">
+
+                <div class="space-y-3">
+                    <h3 class="text-white font-bold text-lg border-l-4 border-action pl-3">1. Identidad y Domicilio del Responsable</h3>
+                    <p>OnGoing (en lo sucesivo "El Responsable"), con sitio web oficial <a href="index.html" class="text-action hover:underline font-semibold">ongoing.mx</a> y plataforma de aterrizaje bajo el directorio <code class="bg-white/10 px-1.5 py-0.5 rounded text-white text-sm">/lp</code>, es responsable del uso y protección de sus datos personales. Para cualquier duda relacionada con el presente aviso, puede contactarnos a través del correo electrónico oficial de soporte o legal visible en nuestra plataforma.</p>
+                </div>
+
+                <div class="space-y-3 pt-2">
+                    <h3 class="text-white font-bold text-lg border-l-4 border-action pl-3">2. Datos Personales que Recabamos</h3>
+                    <p>Para llevar a cabo las finalidades descritas en el presente aviso de privacidad, recabaremos las siguientes categorías de datos:</p>
+                    <ul class="list-none pl-0 space-y-3">
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="check-circle" class="w-5 h-5 text-action shrink-0 mt-0.5"></i>
+                            <div><strong>Datos de identificación:</strong> Nombre completo.</div>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="check-circle" class="w-5 h-5 text-action shrink-0 mt-0.5"></i>
+                            <div><strong>Datos de contacto:</strong> Correo electrónico corporativo y número de teléfono/WhatsApp.</div>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="check-circle" class="w-5 h-5 text-action shrink-0 mt-0.5"></i>
+                            <div><strong>Datos fiscales (opcional en fase de captación):</strong> RFC y datos de facturación (únicamente en caso de contratación de planes de pago).</div>
+                        </li>
+                    </ul>
+                    <div class="bg-action/10 border border-action/20 rounded-xl p-4 text-action/90 text-sm flex gap-3 mt-4">
+                        <i data-lucide="info" class="w-5 h-5 text-action shrink-0 mt-0.5"></i>
+                        <div>
+                            <strong>Nota sobre el entorno Demo (<a href="https://demo.ongoing2.mx" target="_blank" class="underline hover:text-white">demo.ongoing2.mx</a>):</strong> Al interactuar de forma anónima con nuestro demo o el chat interactivo KAI, no se recaban datos de identificación personal a menos que usted decida registrarse voluntariamente para la prueba de 14 días.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-3 pt-2">
+                    <h3 class="text-white font-bold text-lg border-l-4 border-action pl-3">3. Finalidades del Tratamiento de los Datos</h3>
+                    <p>Los datos personales que recabamos de usted los utilizaremos para las siguientes finalidades que son necesarias para el servicio solicitado:</p>
+                    <ul class="list-none pl-0 space-y-3">
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="arrow-right-circle" class="w-5 h-5 text-action shrink-0 mt-0.5"></i>
+                            <span>Creación, configuración y acceso a su cuenta de prueba gratuita por 14 días de OnGoing V2.</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="arrow-right-circle" class="w-5 h-5 text-action shrink-0 mt-0.5"></i>
+                            <span>Brindar soporte técnico y asesoría sobre el funcionamiento del ERP y su asistente de IA (KAI).</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="arrow-right-circle" class="w-5 h-5 text-action shrink-0 mt-0.5"></i>
+                            <span>Procesar los pagos y emisión de comprobantes fiscales (CFDI 4.0) en caso de contratación.</span>
+                        </li>
+                    </ul>
+                    <p class="mt-4">De manera adicional, utilizaremos su información para las siguientes finalidades secundarias que no son necesarias para el servicio principal, pero que nos permiten brindarle una mejor atención:</p>
+                    <ul class="list-none pl-0 space-y-3">
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="plus" class="w-5 h-5 text-action shrink-0 mt-0.5"></i>
+                            <span>Envío de correos informativos, actualizaciones del sistema y ofertas promocionales relacionadas con OnGoing.</span>
+                        </li>
+                    </ul>
+                    <p class="mt-3 text-white/70 italic text-sm">Si usted no desea que sus datos personales sean tratados para estos fines secundarios, puede enviar un correo electrónico en cualquier momento solicitando la baja de nuestras listas de distribución.</p>
+                </div>
+
+                <div class="space-y-3 pt-2">
+                    <h3 class="text-white font-bold text-lg border-l-4 border-action pl-3">4. Transferencia de Datos</h3>
+                    <p>El Responsable no transferirá sus datos personales a terceros, nacionales o extranjeros, sin su consentimiento previo, salvo las excepciones previstas en el artículo 37 de la LFPDPPP (como el timbrado de facturas ante el SAT a través de Proveedores Autorizados de Certificación o requerimientos judiciales).</p>
+                </div>
+
+                <div class="space-y-3 pt-2">
+                    <h3 class="text-white font-bold text-lg border-l-4 border-action pl-3">5. Medidas de Seguridad</h3>
+                    <p>Para garantizar la confidencialidad e integridad de sus datos y de la información operativa de su empresa, implementamos medidas de seguridad administrativas, técnicas y físicas, incluyendo protocolos de encriptación SSL/TLS, bases de datos aisladas por inquilino (tenant) y almacenamiento en servidores de alta disponibilidad con redundancia y firewalls avanzados.</p>
+                </div>
+
+                <div class="space-y-3 pt-2">
+                    <h3 class="text-white font-bold text-lg border-l-4 border-action pl-3">6. Derechos ARCO (Acceso, Rectificación, Cancelación y Oposición)</h3>
+                    <p>Usted tiene derecho a conocer qué datos personales tenemos de usted, para qué los utilizamos y las condiciones del uso que les damos (Acceso). Asimismo, es su derecho solicitar la corrección de su información personal en caso de que esté desactualizada, sea inexacta o incompleta (Rectificación); que la eliminemos de nuestros registros o bases de datos cuando considere que la misma no está siendo utilizada adecuadamente (Cancelación); así como oponerse al uso de sus datos personales para fines específicos (Oposición).</p>
+                    <p class="mt-3">Para el ejercicio de cualquiera de los derechos ARCO, usted deberá presentar la solicitud respectiva a través de un correo electrónico dirigido al área legal de OnGoing, adjuntando una identificación oficial para validar su identidad.</p>
+                </div>
+
+                <div class="space-y-3 pt-2">
+                    <h3 class="text-white font-bold text-lg border-l-4 border-action pl-3">7. Cambios al Aviso de Privacidad</h3>
+                    <p>El presente aviso de privacidad puede sufrir modificaciones, cambios o actualizaciones derivadas de nuevos requerimientos legales o de nuestras propias necesidades por los servicios y módulos que ofrecemos. Nos comprometemos a mantenerlo informado sobre estos cambios a través de modificaciones visibles en <code class="bg-white/10 px-1.5 py-0.5 rounded text-white text-sm">ongoing.mx/aviso-de-privacidad</code>.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/10 pt-10 pb-8 bg-black/40 relative overflow-hidden">
+        <div class="container mx-auto px-6 max-w-6xl relative z-10">
+            <div class="grid grid-cols-2 md:grid-cols-12 gap-10 md:gap-8 mb-16 text-sm">
+                <div class="col-span-2 md:col-span-4 pr-0 md:pr-12">
+                    <a href="index.html" class="inline-block mb-6 transition-opacity hover:opacity-80 outline-none">
+                        <img src="img/ongoing-logo.png" alt="Ongoing Logo" class="h-9 md:h-10 w-auto">
+                    </a>
+                    <p class="text-secondary leading-relaxed font-medium text-white/60">Tu brazo tecnológico para escalar sin límites. Integra finanzas, operaciones y CRM en un solo lugar impulsado por IA.</p>
+                </div>
+
+                <div class="col-span-1 md:col-span-2 md:col-start-6">
+                    <h4 class="font-extrabold mb-5 text-white uppercase tracking-wider text-xs">Soluciones</h4>
+                    <ul class="space-y-4 text-white/60 font-medium">
+                        <li><a href="lp/index.html" class="hover:text-action transition-colors">Flagship KAI</a></li>
+                        <li><a href="lp/crm.html" class="hover:text-action transition-colors">CRM</a></li>
+                        <li><a href="lp/inventario.html" class="hover:text-action transition-colors">Inventario y Logística</a></li>
+                        <li><a href="lp/servicios.html" class="hover:text-action transition-colors">Gestión Operativa</a></li>
+                        <li><a href="lp/finanzas.html" class="hover:text-action transition-colors">Finanzas y SAT</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-span-1 md:col-span-2">
+                    <h4 class="font-extrabold mb-5 text-white uppercase tracking-wider text-xs">Recursos</h4>
+                    <ul class="space-y-4 text-white/60 font-medium">
+                        <li><a href="docs/" class="hover:text-action transition-colors">Centro de Ayuda</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-span-2 md:col-span-3">
+                    <h4 class="font-extrabold mb-5 text-white uppercase tracking-wider text-xs">Contacto & Legal</h4>
+                    <ul class="space-y-4 text-white/60 font-medium">
+                        <li><a href="aviso-de-privacidad.html" class="hover:text-action transition-colors flex items-center gap-2"><i data-lucide="shield" class="w-4 h-4"></i> Aviso de Privacidad</a></li>
+                        <li><a href="terminos-y-condiciones.html" class="hover:text-action transition-colors flex items-center gap-2"><i data-lucide="file-text" class="w-4 h-4"></i> Términos y Condiciones</a></li>
+                        <li><span class="hover:text-action transition-colors flex items-center gap-2 mt-6"><i data-lucide="mail" class="w-4 h-4"></i> hola@ongoing.mx</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Copyright -->
+            <div class="text-center text-xs text-gray-500 pt-8 border-t border-white/10 font-medium">
+                © 2026 Ongoing
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lucide Icons -->
+    <script>
+        lucide.createIcons();
+
+        // Header Scroll Effect
+        const header = document.getElementById('main-header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.remove('py-4');
+                header.classList.add('py-3');
+            } else {
+                header.classList.add('py-4');
+                header.classList.remove('py-3');
+            }
+        });
+
+        // Mobile Menu Logic
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileNavPanel = document.getElementById('mobile-nav-panel');
+
+        if (mobileMenuBtn && mobileNavPanel) {
+            mobileMenuBtn.addEventListener('click', () => {
+                const isHidden = mobileNavPanel.classList.contains('hidden');
+                const iconOpen = document.getElementById('mobile-menu-icon-open');
+                const iconClose = document.getElementById('mobile-menu-icon-close');
+
+                if (isHidden) {
+                    mobileNavPanel.classList.remove('hidden');
+                    if (iconOpen) iconOpen.classList.add('hidden');
+                    if (iconClose) iconClose.classList.remove('hidden');
+                } else {
+                    mobileNavPanel.classList.add('hidden');
+                    if (iconOpen) iconOpen.classList.remove('hidden');
+                    if (iconClose) iconClose.classList.add('hidden');
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

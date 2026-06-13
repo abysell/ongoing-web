@@ -1,0 +1,85 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://ongoing.mx/lp/#software",
+      "name": "OnGoing ERP V2",
+      "operatingSystem": "Web / Cloud-Based",
+      "applicationCategory": "BusinessApplication",
+      "offers": {
+        "@type": "Offer",
+        "price": "1000",
+        "priceCurrency": "MXN",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "1000",
+          "priceCurrency": "MXN",
+          "referenceQuantity": {
+            "@type": "QuantitativeValue",
+            "value": "1",
+            "unitCode": "MON"
+          },
+          "description": "Suscripción mensual por usuario"
+        }
+      },
+      "featureList": "Asistente de IA KAI, CRM B2B, Inventario Multialmacén, Gestión de Proyectos PSA, Facturación CFDI 4.0"
+    },
+    {
+      "@type": "WebApplication",
+      "@id": "https://ongoing.mx/lp/crm.html#webapp",
+      "name": "OnGoing CRM Comercial",
+      "url": "https://ongoing.mx/lp/crm.html",
+      "applicationCategory": "BusinessApplication",
+      "browserRequirements": "Requires HTML5 compatible browser",
+      "operatingSystem": "All",
+      "description": "Módulo CRM comercial y gestión de ventas de OnGoing ERP V2.",
+      "author": {
+        "@type": "Organization",
+        "name": "OnGoing"
+      }
+    },
+    {
+      "@type": "WebApplication",
+      "@id": "https://ongoing.mx/lp/inventario.html#webapp",
+      "name": "OnGoing Inventario y Logística",
+      "url": "https://ongoing.mx/lp/inventario.html",
+      "applicationCategory": "BusinessApplication",
+      "browserRequirements": "Requires HTML5 compatible browser",
+      "operatingSystem": "All",
+      "description": "Módulo de gestión de inventarios multialmacén, compras y logística de OnGoing ERP V2.",
+      "author": {
+        "@type": "Organization",
+        "name": "OnGoing"
+      }
+    },
+    {
+      "@type": "WebApplication",
+      "@id": "https://ongoing.mx/lp/servicios.html#webapp",
+      "name": "OnGoing Servicios y Proyectos PSA",
+      "url": "https://ongoing.mx/lp/servicios.html",
+      "applicationCategory": "BusinessApplication",
+      "browserRequirements": "Requires HTML5 compatible browser",
+      "operatingSystem": "All",
+      "description": "Módulo de gestión de proyectos, tracking de horas y rentabilidad de servicios PSA de OnGoing ERP V2.",
+      "author": {
+        "@type": "Organization",
+        "name": "OnGoing"
+      }
+    },
+    {
+      "@type": "WebApplication",
+      "@id": "https://ongoing.mx/lp/finanzas.html#webapp",
+      "name": "OnGoing Control Financiero y SAT",
+      "url": "https://ongoing.mx/lp/finanzas.html",
+      "applicationCategory": "BusinessApplication",
+      "browserRequirements": "Requires HTML5 compatible browser",
+      "operatingSystem": "All",
+      "description": "Módulo de control financiero, flujo de caja y timbrado CFDI 4.0 integrado al SAT de OnGoing ERP V2.",
+      "author": {
+        "@type": "Organization",
+        "name": "OnGoing"
+      }
+    }
+  ]
+}

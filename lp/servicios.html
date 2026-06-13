@@ -3,9 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OnGoing V2 | Automatización de Servicios (PSA) y Gestión de Proyectos</title>
-    <meta name="description" content="Asegura la rentabilidad real de cada proyecto. Combina la gestión de tareas con un Time Tracker preciso. Tu asistente KAI AI te reporta desviación de costos.">
+    <title>OnGoing V2 | Gestión de Proyectos y Servicios PSA</title>
+    <meta name="description" content="Asegura la rentabilidad real de cada proyecto y cliente en México. Time Tracker y costeo de horas de servicio con OnGoing V2.">
     
+    <!-- OpenGraph Metadata -->
+    <meta property="og:title" content="OnGoing V2 | Gestión de Proyectos y Servicios PSA">
+    <meta property="og:description" content="Asegura la rentabilidad real de cada proyecto y cliente en México. Time Tracker y costeo de horas de servicio con OnGoing V2.">
+    <meta property="og:image" content="https://ongoing.mx/lp/img/real_dashboard.png">
+    <meta property="og:url" content="https://ongoing.mx/lp/servicios.html">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card Metadata -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="OnGoing V2 | Gestión de Proyectos y Servicios PSA">
+    <meta name="twitter:description" content="Asegura la rentabilidad real de cada proyecto y cliente en México. Time Tracker y costeo de horas de servicio con OnGoing V2.">
+    <meta name="twitter:image" content="https://ongoing.mx/lp/img/real_dashboard.png">
+    
+    <!-- JSON-LD Schema Markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://ongoing.mx/lp/#software",
+          "name": "OnGoing ERP V2",
+          "operatingSystem": "Web / Cloud-Based",
+          "applicationCategory": "BusinessApplication",
+          "offers": {
+            "@type": "Offer",
+            "price": "1000",
+            "priceCurrency": "MXN",
+            "priceSpecification": {
+              "@type": "UnitPriceSpecification",
+              "price": "1000",
+              "priceCurrency": "MXN",
+              "referenceQuantity": {
+                "@type": "QuantitativeValue",
+                "value": "1",
+                "unitCode": "MON"
+              },
+              "description": "Suscripción mensual por usuario"
+            }
+          },
+          "featureList": "Asistente de IA KAI, CRM B2B, Inventario Multialmacén, Gestión de Proyectos PSA, Facturación CFDI 4.0"
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "¿Cómo asegurar la rentabilidad de proyectos de servicios en México?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "OnGoing V2 es una herramienta avanzada para la gestión de proyectos de servicios (PSA) en México que permite costear horas y asegurar la rentabilidad. A través de un Time Tracker nativo y tableros Kanban, calcula en tiempo real los costos directos por hora trabajada de cada consultor o desarrollador, comparándolos automáticamente con el presupuesto y entregables aprobados para evitar desviaciones financieras."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="img/favicon-ongoing.png">
     
@@ -24,7 +83,7 @@
 
     <!-- Navigation Header -->
     <header class="navbar" id="main-navbar">
-        <a href="index.html" class="nav-brand">
+        <a href="../index.html" class="nav-brand">
             <img src="img/ongoing-logo.png" alt="Ongoing Logo">
         </a>
         <button class="nav-toggle" id="menu-toggle" aria-label="Abrir menú">
@@ -176,6 +235,69 @@
         </div>
     </section>
 
+        <!-- Contact Form Section -->
+    <section class="contact-section" id="contacto-section">
+        <div class="contact-container">
+            <div class="contact-info">
+                <span class="section-subtitle">¿Listo para operar sin complicaciones?</span>
+                <h2>Hablemos de tu negocio</h2>
+                <p>Déjanos tus datos y un especialista de OnGoing se pondrá en contacto contigo para ayudarte a configurar la herramienta según tu sector y responder todas tus dudas.</p>
+                
+                <div class="contact-features">
+                    <div class="contact-feature-item">
+                        <div class="contact-feature-icon"><i data-lucide="sparkles"></i></div>
+                        <div class="contact-feature-text">
+                            <h4>Demostración Personalizada</h4>
+                            <p>Te mostramos el funcionamiento de OnGoing V2 con ejemplos reales y flujos específicos para tu negocio.</p>
+                        </div>
+                    </div>
+                    <div class="contact-feature-item">
+                        <div class="contact-feature-icon"><i data-lucide="clock"></i></div>
+                        <div class="contact-feature-text">
+                            <h4>Respuesta en Menos de 2 Horas</h4>
+                            <p>Valoramos tu tiempo. Un asesor experto responderá tus dudas el mismo día hábil.</p>
+                        </div>
+                    </div>
+                    <div class="contact-feature-item">
+                        <div class="contact-feature-icon"><i data-lucide="shield"></i></div>
+                        <div class="contact-feature-text">
+                            <h4>Prueba Asistida Gratis</h4>
+                            <p>Configuramos un espacio de prueba real de 14 días para ti sin ningún costo de implementación.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-form-card">
+                <form id="lead-contact-form" onsubmit="handleFormSubmit(event)">
+                    <div class="form-group">
+                        <label class="form-label" for="contact-name">Nombre Completo</label>
+                        <input type="text" id="contact-name" class="form-control" placeholder="Ej: Sofía Rodríguez" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="contact-email">Correo Electrónico Corporativo</label>
+                        <input type="email" id="contact-email" class="form-control" placeholder="Ej: sofia@empresa.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="contact-phone">Teléfono de Contacto</label>
+                        <input type="tel" id="contact-phone" class="form-control" placeholder="Ej: +52 55 1234 5678" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="contact-company">Nombre de tu Empresa</label>
+                        <input type="text" id="contact-company" class="form-control" placeholder="Ej: Distribuidora del Centro" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="contact-message">¿Qué te gustaría resolver en tu operación?</label>
+                        <textarea id="contact-message" class="form-control" placeholder="Cuéntanos un poco sobre tus retos con finanzas, inventarios, CRM o proyectos..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">
+                        Enviar Mensaje <i data-lucide="send" class="btn-icon"></i>
+                    </button>
+                    <div class="form-feedback" id="form-feedback-message"></div>
+                </form>
+            </div>
+        </div>
+    </section>
+
     <!-- Trust Logos Grid -->
     <section class="trust-logos">
         <h4 class="trust-logos-title">Empresas líderes que confían en OnGoing</h4>
@@ -199,6 +321,29 @@
                 <a href="https://demo.ongoing2.mx" target="_blank" class="btn btn-secondary-white">Iniciar mis 14 días gratis</a>
             </div>
             <p class="cta-final-microcopy">✨ Desde $1,000 MXN / mes. Cero letras chiquitas y sin contratos forzosos.</p>
+        </div>
+    </section>
+
+    <!-- FAQ Section (AEO/GEO Optimized) -->
+    <section class="faq-section">
+        <div class="faq-container">
+            <div class="faq-header">
+                <h2>Preguntas Frecuentes</h2>
+                <p>Respuestas rápidas y directas sobre la gestión de Proyectos y Servicios PSA.</p>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        ¿Cómo asegurar la rentabilidad de proyectos de servicios en México?
+                        <span class="faq-icon"><i data-lucide="plus" class="w-5 h-5"></i></span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            OnGoing V2 es una herramienta avanzada para la gestión de proyectos de servicios (PSA) en México que permite costear horas y asegurar la rentabilidad. A través de un Time Tracker nativo y tableros Kanban, calcula en tiempo real los costos directos por hora trabajada de cada consultor o desarrollador, comparándolos automáticamente con el presupuesto y entregables aprobados para evitar desviaciones financieras.
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -231,8 +376,8 @@
             <div class="footer-column">
                 <h4>Legal</h4>
                 <ul>
-                    <li><a href="#">Términos de Servicio</a></li>
-                    <li><a href="#">Aviso de Privacidad</a></li>
+                    <li><a href="../terminos-y-condiciones.html">Términos y Condiciones</a></li>
+                    <li><a href="../aviso-de-privacidad.html">Aviso de Privacidad</a></li>
                     <li><a href="#">SLA de Servicio</a></li>
                 </ul>
             </div>
@@ -314,6 +459,110 @@
             }
             lucide.createIcons();
         }
+
+        // Lead Contact Form handler
+        async function handleFormSubmit(event) {
+            event.preventDefault();
+            const form = event.target;
+            const button = form.querySelector('button[type="submit"]');
+            const feedback = document.getElementById('form-feedback-message');
+            
+            // Set loading state
+            button.disabled = true;
+            button.innerHTML = 'Enviando... <i data-lucide="loader" class="btn-icon animate-spin"></i>';
+            if (window.lucide) window.lucide.createIcons();
+            
+            // Form fields
+            const fullName = document.getElementById('contact-name').value.trim();
+            const email = document.getElementById('contact-email').value.trim();
+            const phone = document.getElementById('contact-phone').value.trim();
+            const company = document.getElementById('contact-company').value.trim();
+            const message = document.getElementById('contact-message').value.trim();
+            
+            // Split name
+            const nameParts = fullName.split(' ');
+            const firstName = nameParts[0];
+            const lastName = nameParts.slice(1).join(' ') || '.';
+            
+            // Determine opportunity title based on page URL
+            const pathName = window.location.pathname;
+            let opportunityTitle = "Interés en ERP OnGoing V2";
+            if (pathName.includes('crm.html')) {
+                opportunityTitle = "Interés en CRM Comercial - Campaña LP";
+            } else if (pathName.includes('inventario.html')) {
+                opportunityTitle = "Interés en Inventarios y Logística - Campaña LP";
+            } else if (pathName.includes('servicios.html')) {
+                opportunityTitle = "Interés en Servicios PSA - Campaña LP";
+            } else if (pathName.includes('finanzas.html')) {
+                opportunityTitle = "Interés en Control Financiero - Campaña LP";
+            } else {
+                opportunityTitle = "Interés en ERP + IA Flagship - Campaña LP";
+            }
+            
+            const payload = {
+                first_name: firstName,
+                last_name: lastName,
+                email: email,
+                phone: phone,
+                position: "",
+                company_name: company,
+                opportunity_title: opportunityTitle,
+                amount: null,
+                campaign_id: null,
+                message: message
+            };
+            
+            try {
+                const response = await fetch('https://kodex.ongoing2.mx/api/v1/leads', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json',
+                        'Authorization': 'Bearer ed47812213e9fd555897f1b6f419b95410609dadc960e22e2404bdffbf5d78d3'
+                    },
+                    body: JSON.stringify(payload)
+                });
+                
+                if (response.ok) {
+                    form.reset();
+                    window.location.href = 'gracias.html';
+                } else {
+                    const errorData = await response.json().catch(() => ({}));
+                    console.error('API validation errors:', errorData);
+                    throw new Error(errorData.message || 'API response not OK');
+                }
+            } catch (error) {
+                console.error('Error submitting lead:', error);
+                feedback.style.display = 'block';
+                feedback.style.color = '#ef4444';
+                feedback.innerText = 'Ocurrió un error al enviar el mensaje. Por favor, intenta de nuevo o escríbenos a hola@ongoing.mx.';
+            } finally {
+                button.disabled = false;
+                button.innerHTML = 'Enviar Mensaje <i data-lucide="send" class="btn-icon"></i>';
+                if (window.lucide) window.lucide.createIcons();
+            }
+        }
+
+        // FAQ Accordion Toggle
+        const faqQuestions = document.querySelectorAll('.faq-question');
+        faqQuestions.forEach(q => {
+            q.addEventListener('click', () => {
+                const item = q.parentElement;
+                const isActive = item.classList.contains('active');
+                
+                // Close all other FAQ items
+                document.querySelectorAll('.faq-item').forEach(i => {
+                    i.classList.remove('active');
+                    i.querySelector('.faq-answer').style.maxHeight = null;
+                });
+                
+                if (!isActive) {
+                    item.classList.add('active');
+                    const answer = item.querySelector('.faq-answer');
+                    answer.style.maxHeight = answer.scrollHeight + 'px';
+                }
+            });
+        });
     </script>
 </body>
 </html>

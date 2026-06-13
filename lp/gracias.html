@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OnGoing V2 | ¡Gracias por contactarnos!</title>
+    <meta name="description" content="Hemos recibido tus datos con éxito. En breve nos pondremos en contacto contigo.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="img/favicon-ongoing.png">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Shared Stylesheet -->
+    <link rel="stylesheet" href="css/styles.css">
+
+    <style>
+        .thank-you-section {
+            min-height: calc(100vh - 113px - 280px); /* Height minus header and footer */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 20px;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+        }
+
+        .thank-you-card {
+            background: var(--color-white);
+            border: 1px solid var(--border-light);
+            border-radius: 24px;
+            box-shadow: var(--shadow-lg);
+            padding: 60px 40px;
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .thank-you-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(39, 201, 63, 0.1);
+            border: 2px solid #27c93f;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #27c93f;
+            margin: 0 auto 30px auto;
+            font-size: 2.5rem;
+            animation: pulseSuccess 2s infinite;
+        }
+
+        @keyframes pulseSuccess {
+            0% { box-shadow: 0 0 0 0 rgba(39, 201, 63, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(39, 201, 63, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(39, 201, 63, 0); }
+        }
+
+        .thank-you-card h1 {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+            color: var(--color-brand-dark);
+            letter-spacing: -0.02em;
+        }
+
+        .thank-you-card p {
+            color: var(--color-text-muted);
+            font-size: 1.15rem;
+            line-height: 1.6;
+            margin-bottom: 40px;
+        }
+
+        .thank-you-auras {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .thank-you-aura {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(0, 192, 255, 0.08) 0%, rgba(0, 192, 255, 0) 70%);
+            filter: blur(40px);
+            top: -100px;
+            left: -100px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sticky Banner Global (Glassmorphism) -->
+    <div class="sticky-banner" id="global-sticky-banner">
+        <span>🚀 No esperes a un vendedor. Explora OnGoing V2 ahora mismo en nuestro <a href="https://demo.ongoing2.mx" target="_blank">Demo Interactivo en vivo (demo.ongoing2.mx)</a> o inicia tu prueba de 14 días gratis.</span>
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="navbar" id="main-navbar">
+        <a href="../index.html" class="nav-brand">
+            <img src="img/ongoing-logo.png" alt="Ongoing Logo">
+        </a>
+        <button class="nav-toggle" id="menu-toggle" aria-label="Abrir menú">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <ul class="nav-links" id="nav-menu">
+            <li><a href="index.html">KAI IA Flagship</a></li>
+            <li><a href="crm.html">CRM Comercial</a></li>
+            <li><a href="inventario.html">Inventario y Logística</a></li>
+            <li><a href="servicios.html">Servicios (PSA)</a></li>
+            <li><a href="finanzas.html">Finanzas</a></li>
+            <li class="mobile-only"><a href="https://demo.ongoing2.mx" target="_blank" class="btn-text">Entrar al Demo</a></li>
+        </ul>
+        <div class="nav-ctas">
+            <a href="https://demo.ongoing2.mx" target="_blank" class="btn-text">Ingresar</a>
+            <a href="https://demo.ongoing2.mx" target="_blank" class="btn btn-primary">Empieza Gratis</a>
+        </div>
+    </header>
+
+    <!-- Thank You Section -->
+    <section class="thank-you-section">
+        <div class="thank-you-auras">
+            <div class="thank-you-aura"></div>
+        </div>
+        <div class="thank-you-card">
+            <div class="thank-you-icon">
+                <i data-lucide="check-circle-2"></i>
+            </div>
+            <h1>¡Gracias por contactarnos!</h1>
+            <p>Hemos recibido tus datos correctamente en nuestro sistema. KAI o un asesor especializado de OnGoing se pondrá en contacto contigo en menos de 2 horas para ayudarte con tus requerimientos.</p>
+            <div class="thank-you-actions">
+                <a href="../index.html" class="btn btn-primary">Volver al Inicio <i data-lucide="arrow-left" style="margin-left: 8px; margin-right: 0;" class="btn-icon"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-about">
+                <img src="img/ongoing-logo.png" alt="Ongoing Logo">
+                <p>La evolución de la gestión empresarial B2B en México mediante Inteligencia Artificial.</p>
+            </div>
+            <div class="footer-column">
+                <h4>Soluciones</h4>
+                <ul>
+                    <li><a href="index.html">KAI IA Flagship</a></li>
+                    <li><a href="crm.html">CRM Comercial</a></li>
+                    <li><a href="inventario.html">Inventarios y Compras</a></li>
+                    <li><a href="servicios.html">Proyectos y PSA</a></li>
+                    <li><a href="finanzas.html">Control Financiero</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Recursos</h4>
+                <ul>
+                    <li><a href="https://demo.ongoing2.mx" target="_blank">Demo en Vivo</a></li>
+                    <li><a href="#">Centro de Ayuda</a></li>
+                    <li><a href="#">Documentación API</a></li>
+                    <li><a href="#">Soporte Técnico</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="../terminos-y-condiciones.html">Términos y Condiciones</a></li>
+                    <li><a href="../aviso-de-privacidad.html">Aviso de Privacidad</a></li>
+                    <li><a href="#">SLA de Servicio</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2026 OnGoing ERP. Realizado con IA, diseñado para humanos.</span>
+            <img src="img/ongoing-logo.png" alt="Ongoing Logo" class="footer-logo-small">
+        </div>
+    </footer>
+
+    <!-- Lucide Icons initialization -->
+    <script>
+        lucide.createIcons();
+
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const navMenu = document.getElementById('nav-menu');
+
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('open');
+            const spans = menuToggle.querySelectorAll('span');
+            spans[0].style.transform = navMenu.classList.contains('open') ? 'rotate(45deg) translate(5px, 5px)' : 'none';
+            spans[1].style.opacity = navMenu.classList.contains('open') ? '0' : '1';
+            spans[2].style.transform = navMenu.classList.contains('open') ? 'rotate(-45deg) translate(6px, -6px)' : 'none';
+        });
+    </script>
+</body>
+</html>

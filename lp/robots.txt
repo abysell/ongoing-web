@@ -1,0 +1,22 @@
+# Robots.txt for OnGoing V2 Landing Pages
+User-agent: *
+Allow: /
+
+# Explicitly allow AI Search and Generative Engines
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+# Sitemap Location
+Sitemap: https://ongoing.mx/lp/sitemap.xml

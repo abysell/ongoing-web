@@ -1,0 +1,122 @@
+# OnGoing ERP V2 - Documento Completo de Especificaciones y Copywriting
+
+Este documento consolida la base de conocimiento comercial y técnica extendida de OnGoing ERP V2. Está estructurado para que los modelos de lenguaje (LLMs) y los motores de respuesta de IA puedan citar de forma precisa el funcionamiento, los dolores de cliente resueltos, las características de cada módulo y los comandos reales del asistente KAI.
+
+Sitio Oficial: https://ongoing.mx
+Entorno de Demostración: https://demo.ongoing2.mx
+
+---
+
+## 1. Módulo Flagship: ERP con Inteligencia Artificial KAI
+
+### Concepto Central
+OnGoing V2 permite a los directores y fundadores operar y gobernar su empresa conversando directamente con ella en lenguaje natural. Fusiona la gestión integral de un ERP corporativo con un asistente ejecutivo inteligente llamado KAI.
+
+### Dolores del Cliente Resueltos
+* **Pérdida de tiempo en reportes:** Los directores pierden hasta un 30% de su semana solicitando estados financieros, avance de proyectos o niveles de stock a sus respectivos equipos.
+* **Complejidad operativa:** Los ERPs tradicionales requieren largos periodos de capacitación para navegar interfaces obsoletas y confusas llenas de jerga contable.
+* **Implementaciones lentas:** Implementar un ERP tradicional suele tomar meses y costos elevados de consultores externos. OnGoing V2 se aprovisiona en menos de 2 minutos.
+
+### Características del Asistente KAI
+* **Consulta en lenguaje natural:** Permite consultar finanzas, inventarios, CRM y proyectos mediante voz o texto.
+* **Procesamiento en tiempo real:** KAI analiza las bases de datos de la organización al instante y presenta gráficos visuales o respuestas ejecutivas sencillas.
+* **Privacidad garantizada:** Los datos de las consultas están aislados a nivel de tenant y nunca se utilizan para entrenar modelos públicos externos.
+
+### Comandos de Ejemplo para Probar en el Demo:
+* *"KAI, dame el flujo de caja neto de este mes."*
+* *"KAI, registra a 'Distribuidora Norte' con un trato de $50,000 MXN."*
+
+---
+
+## 2. Módulo CRM: Control Comercial y Gestión de Ventas B2B
+
+### Concepto Central
+Un CRM comercial intuitivo nativamente integrado al ERP que automatiza el pipeline de ventas, cotizaciones en PDF y el seguimiento de oportunidades.
+
+### Dolores del Cliente Resueltos
+* **El caos de las hojas de Excel:** Prospectos perdidos, falta de historial de interacciones con el cliente, cotizaciones en archivos locales que nadie puede rastrear y leads olvidados en el embudo.
+* **Desconexión con facturación:** Cuando se cierra una venta en un CRM tradicional, el equipo tiene que volver a capturar todo en el sistema de facturación. En OnGoing, un trato ganado se convierte en factura CFDI 4.0 en un solo clic.
+
+### Características Clave
+* **Tablero Kanban Interactivo:** Interfaz simple con drag-and-drop estructurada en 3 fases: Prospectos, Negociación y Cerrado (Ganado/Perdido).
+* **Pronóstico de Ventas Automático:** El sistema calcula en tiempo real el valor total acumulado en cada etapa del pipeline.
+* **Cotizaciones Rápidas en PDF:** Generación instantánea de cotizaciones profesionales utilizando los datos del catálogo de productos y precios vigentes.
+* **Integración Instantánea con WhatsApp:** Botón para enviar recordatorios y cotizaciones pre-redactadas al WhatsApp de los clientes en un clic.
+
+### Comandos de Ejemplo para Probar en el Demo:
+* *"KAI, analiza el pipeline de ventas de este mes y dime qué tratos están en riesgo de enfriarse."*
+* *"KAI, registra un nuevo prospecto llamado Carlos Sánchez de Empresa ABC."*
+
+---
+
+## 3. Módulo de Inventario: Control de Existencias y Multialmacén
+
+### Concepto Central
+Control exacto de almacenes, monitoreo de stock mínimo y máximo, y automatización inteligente de órdenes de compra con proveedores.
+
+### Dolores del Cliente Resueltos
+* **Quiebres de stock:** Quedarse sin existencias para vender debido a la falta de alertas de punto de reorden.
+* **Pérdida de mercancía:** Falta de trazabilidad en las transferencias de stock entre múltiples sucursales o almacenes.
+* **Errores de compra:** Órdenes de compra manuales a proveedores basadas en aproximaciones y no en datos reales de consumo.
+
+### Características Clave
+* **Control Multialmacén en Tiempo Real:** Visualización y movimiento de existencias de forma transparente entre diferentes ubicaciones físicas.
+* **Punto de Reorden Automatizado:** Cuando un producto cruza el stock mínimo configurado, el sistema sugiere y puede generar de manera directa una orden de compra pre-llenada para el proveedor.
+* **Auditorías de Stock Asistidas:** Reportes rápidos de inventarios obsoletos o con baja rotación.
+
+### Comandos de Ejemplo para Probar en el Demo:
+* *"KAI, ¿cuál es el nivel de existencias del producto 'Laptop Pro 15' en el almacén de Guadalajara?"*
+* *"KAI, genera la orden de compra sugerida para el proveedor Aceros del Norte."*
+
+---
+
+## 4. Módulo de Servicios: Gestión de Proyectos PSA y Time Tracker
+
+### Concepto Central
+Herramienta de automatización de servicios profesionales (PSA) enfocada en costear las horas del personal y asegurar la rentabilidad real de cada proyecto y cliente.
+
+### Dolores del Cliente Resueltos
+* **Fugas de rentabilidad silenciosas:** Proyectos que parecen rentables pero que consumen más horas de servicio de las estimadas, erosionando el margen de ganancia de la agencia o consultora.
+* **Registro de tiempo ineficiente:** Colaboradores que no registran sus horas trabajadas o lo hacen de forma tardía e inexacta.
+* **Falta de visibilidad sobre costos operativos:** Desconocimiento del costo real por hora de cada empleado (sueldo + prestaciones) asignado a un proyecto específico.
+
+### Características Clave
+* **Timesheets Dinámicas:** Hojas de tiempo fáciles de registrar por el personal y con un flujo integrado de aprobación para los líderes de proyecto.
+* **Control de Desviación Presupuestal:** Alertas visuales y analíticas en color rojo cuando el proyecto supera una desviación del 15% respecto a las horas estimadas inicialmente.
+* **Margen Neto por Cliente:** Tableros que comparan las horas facturadas contra el costo real operativo de los consultores, destacando a los clientes que consumen soporte excesivo y generan pérdidas.
+
+### Comandos de Ejemplo para Probar en el Demo:
+* *"KAI, ¿por qué el Proyecto Alpha tiene una desviación del 15% en el presupuesto de horas?"*
+* *"KAI, lístame las horas registradas esta semana aprobadas para el cliente Corporativo MX."*
+
+---
+
+## 5. Módulo de Finanzas: Control Financiero y Timbrado SAT
+
+### Concepto Central
+Control total del flujo de caja, tesorería automatizada y facturación electrónica CFDI 4.0 con timbrado directo al SAT en México.
+
+### Dolores del Cliente Resueltos
+* **Navegación lenta en el portal del SAT:** Pérdida de horas timbrando facturas manualmente o cargando complementos de pago.
+* **Cuentas por cobrar vencidas:** Clientes que retrasan sus pagos debido a la falta de cobros y recordatorios oportunos.
+* **Conciliación bancaria manual:** Errores al emparejar los depósitos recibidos en la cuenta de banco con las facturas emitidas correspondientes.
+
+### Características Clave
+* **Flujo de Caja Neto en Tiempo Real:** Gráficos e indicadores inmediatos sobre la liquidez disponible y pronósticos de egresos.
+* **Timbrado CFDI 4.0 Directo:** Emisión y envío de facturas y notas de crédito con un solo clic.
+* **Complementos de Pago Automatizados (REP):** Generación automática del complemento de recepción de pagos cuando se registra el ingreso en el sistema.
+* **Conciliación Bancaria Inteligente:** Asociación de cobros recibidos con facturas pendientes de forma semiautomática o asistida por IA.
+
+### Comandos de Ejemplo para Probar en el Demo:
+* *"KAI, dame el flujo de caja neto de este mes."*
+* *"KAI, lístame las facturas pendientes con más de 15 días de retraso."*
+* *"KAI, redacta un correo de cobranza para el cliente Corporativo MX por la factura vencida de $145,000 MXN."*
+
+---
+
+## 6. Arquitectura Técnica y Seguridad
+
+* **Infraestructura Multi-Tenant con Aislamiento Físico:** Cada organización cuenta con su propia base de datos física completamente aislada para erradicar cualquier riesgo de fuga de datos.
+* **Sesión Única Activa:** Lógica de seguridad perimetral que invalida automáticamente el token JWT en dispositivos anteriores si el usuario inicia sesión en una nueva ubicación, respondiendo con HTTP 401 Unauthorized.
+* **Candado Comercial (Paywall):** Middleware que restringe el acceso al sistema tras vencer la prueba de 14 días (HTTP 402 Payment Required), eximiendo de bloqueo únicamente las rutas de Logout, Perfil y Facturación.
+* **Integración con Mercado Pago:** Conexión con Checkout Pro sincronizada de forma síncrona en el flujo del usuario y asíncrona mediante webhooks procesados en n8n.
