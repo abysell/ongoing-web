@@ -8,3 +8,30 @@ RewriteRule ^api/chat$ api/chat/index.php [L]
 
 # Prevent directory listing for privacy and security
 Options -Indexes
+
+# Security Headers Configuration
+<IfModule mod_headers.c>
+    # 1. HSTS (Strict-Transport-Security)
+    # Forces browsers to use HTTPS for 2 years (63072000s) including subdomains and preload support
+    Header always set Strict-Transport-Security "max-age=63072000; includeSubDomains; preload"
+
+    # 2. X-Frame-Options
+    # Prevents clickjacking by allowing iframe embedding only from the same origin
+    Header always set X-Frame-Options "SAMEORIGIN"
+
+    # 3. X-Content-Type-Options
+    # Disables MIME-type sniffing to prevent executing non-executable files as JS/CSS
+    Header always set X-Content-Type-Options "nosniff"
+
+    # 4. Referrer-Policy
+    # Protects user privacy by sending the full URL only on same-origin requests
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+    # 5. Permissions-Policy
+    # Disables unused hardware/browser features to protect privacy (camera, location, mic, etc.)
+    Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), midi=(), magnetometer=(), gyroscope=()"
+
+    # 6. Content-Security-Policy (CSP)
+    # Restricts loading of external resources. Optimized to allow Google Tag Manager/Analytics, Tailwind CSS CDN, Lucide Icons, and Kodex API
+    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://unpkg.com https://cdn.tailwindcss.com https://www.googletagmanager.com https://www.google-analytics.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' data: https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https://kodex.ongoing2.mx https://www.google-analytics.com https://www.googletagmanager.com https://*.google-analytics.com; frame-ancestors 'self';"
+</IfModule>
