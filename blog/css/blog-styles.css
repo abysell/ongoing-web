@@ -1,0 +1,482 @@
+/* ==========================================================================
+   ONGOING V2 - BLOG & SILO ARCHITECTURE STYLES
+   ========================================================================== */
+
+/* Layout & Reading Width Optimization */
+.blog-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.article-layout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 25, 83, 0.04);
+    padding: 50px 40px;
+    margin-top: 40px;
+    margin-bottom: 60px;
+}
+
+.article-header {
+    width: 100%;
+    max-width: 720px;
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+.article-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    font-size: 0.875rem;
+    color: #64748b;
+    margin-bottom: 15px;
+    align-items: center;
+}
+
+.article-category {
+    background-color: rgba(0, 192, 255, 0.1);
+    color: #008cc0;
+    padding: 4px 12px;
+    border-radius: 9999px;
+    font-weight: 600;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.article-title {
+    font-size: 2.25rem;
+    font-weight: 800;
+    color: #001953;
+    line-height: 1.25;
+    margin-bottom: 20px;
+}
+
+.article-author-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-top: 1px solid rgba(15, 23, 42, 0.08);
+    border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+    padding: 15px 0;
+    margin-top: 10px;
+}
+
+.article-author-avatar {
+    width: 40px;
+    height: 40px;
+    background-color: #001953;
+    color: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.article-author-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.article-author-name {
+    font-weight: 700;
+    color: #0f172a;
+    font-size: 0.95rem;
+}
+
+.article-author-role {
+    font-size: 0.8rem;
+    color: #64748b;
+}
+
+/* Article Body Content (Restricted to 680px for ultimate readability) */
+.article-body {
+    width: 100%;
+    max-width: 680px;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #334155; /* Soft dark gray to prevent eye strain */
+}
+
+.article-body p {
+    margin-bottom: 25px;
+}
+
+.article-body p:first-of-type {
+    font-size: 1.15rem;
+    line-height: 1.85;
+    color: #0f172a;
+    font-weight: 500;
+}
+
+.article-body h2 {
+    font-size: 1.6rem;
+    color: #001953;
+    margin-top: 45px;
+    margin-bottom: 20px;
+    font-weight: 800;
+    position: relative;
+    padding-bottom: 8px;
+}
+
+.article-body h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 3px;
+    background-color: #00c0ff;
+    border-radius: 2px;
+}
+
+.article-body h3 {
+    font-size: 1.3rem;
+    color: #001953;
+    margin-top: 35px;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.article-body ul, .article-body ol {
+    margin-bottom: 25px;
+    padding-left: 20px;
+}
+
+.article-body li {
+    margin-bottom: 10px;
+}
+
+.article-body li strong {
+    color: #0f172a;
+}
+
+/* Custom Blockquotes */
+.article-body blockquote {
+    border-left: 4px solid #00c0ff;
+    background-color: #f8fafc;
+    padding: 20px 25px;
+    margin: 35px 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    color: #475569;
+}
+
+.article-body blockquote p {
+    margin-bottom: 0;
+    font-size: 1.05rem;
+}
+
+/* In-Article Bento CTA Card */
+.in-article-cta {
+    background: linear-gradient(135deg, #001953 0%, #010f33 100%);
+    border-radius: 16px;
+    padding: 35px;
+    margin: 45px 0;
+    color: #ffffff;
+    border: 1px solid rgba(0, 192, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 25, 83, 0.15);
+}
+
+.in-article-cta::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(0, 192, 255, 0.15) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.cta-tag {
+    background-color: rgba(0, 192, 255, 0.2);
+    color: #00c0ff;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+.cta-title {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: #ffffff !important;
+    margin-bottom: 12px;
+    line-height: 1.3;
+}
+
+.cta-description {
+    font-size: 0.95rem;
+    color: #cbd5e1;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.cta-button {
+    background-color: #00c0ff;
+    color: #001953 !important;
+    font-weight: 700;
+    padding: 12px 24px;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 192, 255, 0.3);
+}
+
+.cta-button:hover {
+    background-color: #00a0d6;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0, 192, 255, 0.4);
+}
+
+.cta-microcopy {
+    display: block;
+    margin-top: 12px;
+    font-size: 0.8rem;
+    color: #94a3b8;
+}
+
+/* Comparison Tables */
+.comparison-table-wrapper {
+    overflow-x: auto;
+    margin: 35px 0;
+    border-radius: 12px;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+    text-align: left;
+    min-width: 500px;
+}
+
+.comparison-table th {
+    background-color: #f8fafc;
+    color: #001953;
+    font-weight: 700;
+    padding: 16px;
+    border-bottom: 2px solid rgba(15, 23, 42, 0.08);
+}
+
+.comparison-table td {
+    padding: 16px;
+    border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+    color: #475569;
+}
+
+.comparison-table tr:last-child td {
+    border-bottom: none;
+}
+
+.comparison-table tr:hover td {
+    background-color: #f8fafc;
+}
+
+.comparison-table th:nth-child(2), .comparison-table td:nth-child(2) {
+    background-color: rgba(239, 68, 68, 0.02);
+}
+
+.comparison-table th:nth-child(3), .comparison-table td:nth-child(3) {
+    background-color: rgba(0, 192, 255, 0.02);
+    font-weight: 500;
+    color: #0f172a;
+}
+
+.table-check {
+    color: #10b981;
+    font-weight: bold;
+}
+
+.table-cross {
+    color: #ef4444;
+    font-weight: bold;
+}
+
+/* ==========================================================================
+   BLOG HUB CENTRAL (index.html) STYLES
+   ========================================================================== */
+
+.blog-hero {
+    text-align: center;
+    padding: 60px 20px 40px;
+    background: radial-gradient(circle at 50% 0%, rgba(0, 192, 255, 0.05) 0%, transparent 60%);
+}
+
+.blog-hero h1 {
+    font-size: 2.5rem;
+    color: #001953;
+    margin-bottom: 15px;
+}
+
+.blog-hero p {
+    color: #64748b;
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Silos Bento Grid */
+.silos-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 24px;
+    margin-top: 40px;
+}
+
+.silo-card {
+    background-color: #ffffff;
+    border: 1px solid rgba(15, 23, 42, 0.06);
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 4px 15px rgba(0, 25, 83, 0.02);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.silo-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0, 25, 83, 0.06);
+    border-color: rgba(0, 192, 255, 0.3);
+}
+
+.silo-card-1 { grid-column: span 8; }
+.silo-card-2 { grid-column: span 4; }
+.silo-card-3 { grid-column: span 4; }
+.silo-card-4 { grid-column: span 4; }
+.silo-card-5 { grid-column: span 4; }
+
+.silo-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    background-color: rgba(0, 192, 255, 0.1);
+    color: #00a0d6;
+}
+
+.silo-card-1 .silo-icon { background-color: rgba(0, 192, 255, 0.12); color: #008cc0; }
+.silo-card-2 .silo-icon { background-color: rgba(16, 185, 129, 0.12); color: #059669; }
+.silo-card-3 .silo-icon { background-color: rgba(245, 158, 11, 0.12); color: #d97706; }
+.silo-card-4 .silo-icon { background-color: rgba(99, 102, 241, 0.12); color: #4f46e5; }
+.silo-card-5 .silo-icon { background-color: rgba(236, 72, 153, 0.12); color: #db2777; }
+
+.silo-name {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #001953;
+    margin-bottom: 10px;
+}
+
+.silo-description {
+    font-size: 0.925rem;
+    color: #64748b;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+/* Article List in Silo */
+.silo-article-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-top: 1px solid rgba(15, 23, 42, 0.06);
+    padding-top: 15px;
+}
+
+.silo-article-item {
+    margin-bottom: 12px;
+}
+
+.silo-article-item:last-child {
+    margin-bottom: 0;
+}
+
+.silo-article-link {
+    font-size: 0.925rem;
+    font-weight: 600;
+    color: #334155;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    line-height: 1.4;
+    transition: color 0.2s ease;
+}
+
+.silo-article-link:hover {
+    color: #00c0ff;
+}
+
+.silo-article-link i {
+    margin-top: 3px;
+    flex-shrink: 0;
+}
+
+.silo-link-lp {
+    font-size: 0.825rem;
+    font-weight: 700;
+    color: #008cc0;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin-top: 15px;
+    align-self: flex-start;
+}
+
+.silo-link-lp:hover {
+    color: #00c0ff;
+    text-decoration: underline;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .silo-card-1 { grid-column: span 6; }
+    .silo-card-2 { grid-column: span 6; }
+    .silo-card-3 { grid-column: span 6; }
+    .silo-card-4 { grid-column: span 6; }
+    .silo-card-5 { grid-column: span 12; }
+}
+
+@media (max-width: 768px) {
+    .silos-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .article-layout {
+        padding: 30px 20px;
+        border-radius: 0;
+        margin-top: 20px;
+    }
+    
+    .article-title {
+        font-size: 1.75rem;
+    }
+}

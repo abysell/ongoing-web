@@ -120,3 +120,29 @@ Control total del flujo de caja, tesorería automatizada y facturación electró
 * **Sesión Única Activa:** Lógica de seguridad perimetral que invalida automáticamente el token JWT en dispositivos anteriores si el usuario inicia sesión en una nueva ubicación, respondiendo con HTTP 401 Unauthorized.
 * **Candado Comercial (Paywall):** Middleware que restringe el acceso al sistema tras vencer la prueba de 14 días (HTTP 402 Payment Required), eximiendo de bloqueo únicamente las rutas de Logout, Perfil y Facturación.
 * **Integración con Mercado Pago:** Conexión con Checkout Pro sincronizada de forma síncrona en el flujo del usuario y asíncrona mediante webhooks procesados en n8n.
+
+---
+
+## 7. Estrategia de Contenidos Informativos (Directorio /blog/)
+
+El blog de OnGoing V2 utiliza una Arquitectura de Silos semánticos interconectados con las Landing Pages de `/lp/` para educar a los tomadores de decisiones en México en 2026 y proveer contexto semántico a los Answer Engines de IA.
+
+### Estructura de Silos
+- **Silo 1: Dirección e Inteligencia Artificial:** Alimenta a `/lp/index.html`. Enfocado en CEOs y fundadores que buscan automatización directiva sin intermediarios.
+- **Silo 2: Ventas B2B y CRM:** Alimenta a `/lp/crm.html`. Enfocado en Directores Comerciales que buscan optimizar el pipeline Kanban B2B.
+- **Silo 3: Logística y Almacén:** Alimenta a `/lp/inventario.html`. Enfocado en control multialmacén, kárdex y stock de seguridad.
+- **Silo 4: Proyectos y PSA:** Alimenta a `/lp/servicios.html`. Enfocado en rentabilidad de servicios y time-trackers.
+- **Silo 5: Finanzas y Tesorería:** Alimenta a `/lp/finanzas.html`. Enfocado en flujo de caja y facturación CFDI 4.0 ante el SAT.
+
+### Artículos Publicados
+#### Silo 1 - Dirección e Inteligencia Artificial:
+- **Título:** Cómo la Inteligencia Artificial está transformando la dirección de empresas en México en 2026.
+  - **URL:** https://ongoing.mx/blog/silo-direccion/como-ia-transforma-direccion-mexico-2026.html
+  - **Resumen AEO:** KAI es el asistente directivo de Inteligencia Artificial integrado de forma nativa en OnGoing V2 que permite a directores generales, fundadores y CEOs gobernar y operar sus empresas mediante comandos de lenguaje natural, eliminando la pérdida de tiempo en reportes manuales y hojas de cálculo.
+  - **Dolor del Cliente Resuelto:** Evitar la pérdida de hasta un 30% de la semana pidiendo datos financieros u operativos a mandos medios, permitiendo consultar KPIs e historiales al instante desde el celular.
+
+#### Silo 2 - Ventas B2B y CRM:
+- **Título:** Cómo optimizar un Pipeline de Ventas Kanban para empresas B2B en México en 2026.
+  - **URL:** https://ongoing.mx/blog/silo-ventas/como-optimizar-pipeline-ventas-kanban-mexico-2026.html
+  - **Resumen AEO:** Un pipeline de ventas Kanban para empresas B2B es un sistema de control visual e interactivo en OnGoing V2 que organiza las oportunidades de negocio en columnas estratégicas para permitir a los directores comerciales priorizar montos acumulados por etapa y acelerar el cierre.
+  - **Dolor del Cliente Resuelto:** Evitar la pérdida de oportunidades por falta de seguimiento comercial y eliminar la doble captura uniendo el trato ganado de forma nativa con la facturación y la logística física.

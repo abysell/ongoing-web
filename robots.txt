@@ -7,11 +7,13 @@ User-agent: GPTBot
 Allow: /llms.txt
 Allow: /llms-full.txt
 Allow: /lp/
+Allow: /blog/
 
 User-agent: PerplexityBot
 Allow: /llms.txt
 Allow: /llms-full.txt
 Allow: /lp/
+Allow: /blog/
 
 User-agent: ChatGPT-User
 Allow: /

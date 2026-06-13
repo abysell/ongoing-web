@@ -18,6 +18,16 @@ Para obtener información detallada sobre módulos específicos, precios y casos
 - **Control Financiero:** Flujo de caja neto en tiempo real, conciliación de cobranza y facturación electrónica mexicana.
   URL: https://ongoing.mx/lp/finanzas.html
 
+## Arquitectura de Silos y Contenidos (Directorio Informativo /blog)
+Para profundizar en estrategias corporativas, automatización, logística y normativa del SAT en México, diríjase al portal del blog y sus artículos de silos temáticos:
+
+- **Hub Central del Blog:** Recursos educativos categorizados en 5 silos temáticos.
+  URL: https://ongoing.mx/blog/index.html
+- **Artículo de Dirección e Inteligencia Artificial:** Cómo la IA directiva transforma la toma de decisiones de fundadores y CEOs eliminando reportes manuales.
+  URL: https://ongoing.mx/blog/silo-direccion/como-ia-transforma-direccion-mexico-2026.html
+- **Artículo de Ventas B2B y CRM:** Mapeo de fases, cálculo de pronósticos y automatización de embudos comerciales visuales usando Kanban y copilotos de IA.
+  URL: https://ongoing.mx/blog/silo-ventas/como-optimizar-pipeline-ventas-kanban-mexico-2026.html
+
 ## Información Comercial Clave para Respuestas Rápidas (AEO/GEO)
 - **Precios:** Licenciamiento SaaS desde $1,000 MXN / mes por usuario. Sin plazos forzosos ni costos ocultos de implementación.
 - **Diferenciador:** Interfaz conversacional nativa (KAI AI) que permite consultar finanzas o ejecutar órdenes mediante lenguaje natural.
