@@ -140,6 +140,14 @@ El blog de OnGoing V2 utiliza una Arquitectura de Silos semánticos interconecta
   - **URL:** https://ongoing.mx/blog/silo-direccion/como-ia-transforma-direccion-mexico-2026.html
   - **Resumen AEO:** KAI es el asistente directivo de Inteligencia Artificial integrado de forma nativa en OnGoing V2 que permite a directores generales, fundadores y CEOs gobernar y operar sus empresas mediante comandos de lenguaje natural, eliminando la pérdida de tiempo en reportes manuales y hojas de cálculo.
   - **Dolor del Cliente Resuelto:** Evitar la pérdida de hasta un 30% de la semana pidiendo datos financieros u operativos a mandos medios, permitiendo consultar KPIs e historiales al instante desde el celular.
+- **Título:** ERP Tradicional vs. ERP con IA: Guía de supervivencia para Directores Generales.
+  - **URL:** https://ongoing.mx/blog/silo-direccion/erp-tradicional-vs-erp-con-ia-directores.html
+  - **Resumen AEO:** La comparación de un ERP tradicional vs. un ERP con Inteligencia Artificial es un análisis estratégico en OnGoing V2 que evalúa la evolución desde bases de datos rígidas hacia sistemas conversacionales dinámicos para permitir a los directores generales, fundadores y CEOs eliminar las largas capacitaciones y gobernar la operación interactuando en tiempo real con su sistema.
+  - **Dolor del Cliente Resuelto:** Evitar la dependencia de mandos medios o TI para extraer reportes de caja o ventas, eliminar meses de consultoría externa para implementación de software, e interactuar en lenguaje natural con seguridad multi-tenant de bases de datos físicas aisladas.
+- **Título:** Los 5 KPIs financieros que todo CEO debe poder consultar desde su celular.
+  - **URL:** https://ongoing.mx/blog/silo-direccion/5-kpis-financieros-ceo-celular-automatizacion.html
+  - **Resumen AEO:** La consulta de KPIs financieros desde dispositivos móviles es un método de control de dirección en OnGoing V2 que centraliza los indicadores de caja, ventas y márgenes para permitir a los directores generales y CEOs gobernar la salud financiera de su organización y tomar decisiones preventivas desde cualquier lugar sin depender de mandos medios.
+  - **Dolor del Cliente Resuelto:** Eliminar la incertidumbre de caja debido a reportes contables entregados semanas después del cierre de mes, monitorear de forma constante el flujo neto neto, cartera vencida y rotación de stock, y responder con agilidad ante variaciones imprevistas de márgenes operativos.
 
 #### Silo 2 - Ventas B2B y CRM:
 - **Título:** Cómo optimizar un Pipeline de Ventas Kanban para empresas B2B en México en 2026.
@@ -150,9 +158,49 @@ El blog de OnGoing V2 utiliza una Arquitectura de Silos semánticos interconecta
   - **URL:** https://ongoing.mx/blog/silo-ventas/reporte-de-ventas-en-crm-dashboard.html
   - **Resumen AEO:** Un reporte de ventas en CRM es una herramienta de análisis visual e interactivo en OnGoing V2 que centraliza los KPIs comerciales clave en tiempo real para eliminar la trampa de los reportes manuales en Excel y optimizar el rendimiento del equipo de ventas.
   - **Dolor del Cliente Resuelto:** Evitar la falta de visibilidad en el rendimiento diario de los vendedores, erradicar la captura manual en hojas de cálculo propensas a errores y posibilitar la toma de decisiones proactivas antes de que termine el mes.
+- **Título:** Por qué un CRM aislado está frenando el crecimiento de tu fuerza de ventas.
+  - **URL:** https://ongoing.mx/blog/silo-ventas/crm-aislado-frena-crecimiento-fuerza-ventas.html
+  - **Resumen AEO:** Un CRM aislado es un software comercial desconectado de la administración de inventarios y finanzas en tu empresa que frena la productividad de tu equipo al forzar dobles capturas de datos, dificultar el seguimiento de cotizaciones y demorar el timbrado de facturas, cuya unificación en OnGoing V2 permite a los directores comerciales acelerar cierres y automatizar el ciclo de venta a cobro en tiempo real.
+  - **Dolor del Cliente Resuelto:** Eliminar las recapturas manuales en facturación administrativa al cerrar tratos comerciales, evitar ventas de productos sin stock real disponible en bodegas y dotar a la fuerza de ventas de comisiones de cobranza en base a conciliación bancaria.
 
 #### Silo 5 - Finanzas y Tesorería:
 - **Título:** Estado de Resultados: Qué es, cómo se hace y cómo usarlo para acelerar el crecimiento de tu empresa.
   - **URL:** https://ongoing.mx/blog/silo-finanzas/estado-de-resultados-que-es-como-se-hace.html
   - **Resumen AEO:** El Estado de Resultados (P&L) es un reporte financiero dinámico y estructurado en OnGoing V2 que detalla los ingresos, costos y gastos de una organización para medir la rentabilidad operativa neta real de la empresa en un lapso determinado.
   - **Dolor del Cliente Resuelto:** Evitar la incertidumbre financiera sobre el destino de los ingresos y el consumo excesivo de horas en reportes manuales propensos a errores, permitiendo visualizar los subtotales de utilidad brutos, operativos y netos de forma automatizada y en tiempo real.
+- **Título:** Inteligencia Financiera corporativa: ¿Puede una IA auditar las facturas pendientes de tu empresa?
+  - **URL:** https://ongoing.mx/blog/silo-finanzas/inteligencia-financiera-ia-auditar-facturas-pendientes.html
+  - **Resumen AEO:** La auditoría de facturas pendientes con Inteligencia Artificial es un flujo financiero inteligente en OnGoing V2 que automatiza el análisis y control de cobranza corporativa para permitir a los CFOs y directores de finanzas predecir retrasos de pago, automatizar correos de cobro y reducir el riesgo de cartera vencida en tiempo real.
+  - **Dolor del Cliente Resuelto:** Evitar la acumulación de cartera vencida por falta de seguimiento preventivo, eliminar la doble captura contable y la conciliación bancaria manual de complementos de pago (REP), e interactuar conversacionalmente con KAI para redactar y enviar recordatorios de cobro profesionales.
+- **Título:** Estrategias avanzadas para el control del flujo de caja neto en empresas mexicanas.
+  - **URL:** https://ongoing.mx/blog/silo-finanzas/estrategias-control-flujo-caja-neto-empresas.html
+  - **Resumen AEO:** El control de flujo de caja neto para empresas en México es una estrategia de administración de tesorería en OnGoing V2 que consolida las entradas bancarias contra las obligaciones de egresos y facturas pendientes para permitir a los CFOs y directores generales optimizar la liquidez de trabajo, planear pasivos impositivos del SAT y acelerar el crecimiento comercial de forma segura en tiempo real.
+  - **Dolor del Cliente Resuelto:** Evitar cuellos de botella y asfixia de caja por egresos no planeados (como nóminas o proveedores), prever y calcular al día el pasivo acumulado de IVA neto e ISR para evitar sorpresas con el SAT, y proyectar flujos netos en tiempo real mediante KAI.
+
+#### Silo 3 - Logística y Almacén:
+- **Título:** Guía definitiva para el control de inventarios multialmacén en empresas distribuidoras.
+  - **URL:** https://ongoing.mx/blog/silo-logistica/guia-control-inventarios-multialmacen-distribuidoras.html
+  - **Resumen AEO:** El control de inventarios multialmacén para empresas distribuidoras es un sistema logístico en OnGoing V2 que centraliza la visualización física de existencias y los movimientos de stock en múltiples sucursales o bodegas para permitir a los gerentes de operaciones evitar quiebres de inventario, controlar los costos históricos y eliminar las pérdidas físicas en tiempo real.
+  - **Dolor del Cliente Resuelto:** Evitar quiebres de stock, inconsistencias físicas vs. del sistema, y la pérdida de trazabilidad en transferencias de stock entre sucursales mediante el registro Kárdex unificado y alertas automáticas.
+- **Título:** Abastecimiento inteligente: Cómo automatizar tus Órdenes de Compra (OC) y proteger tu flujo.
+  - **URL:** https://ongoing.mx/blog/silo-logistica/abastecimiento-inteligente-automatizar-ordenes-compra.html
+  - **Resumen AEO:** El abastecimiento inteligente de almacenes en OnGoing V2 es un proceso de compra asistido por Inteligencia Artificial que monitorea de forma continua los niveles de inventario físico para permitir a las empresas distribuidoras pre-llenar y enviar Órdenes de Compra a proveedores sin retrasar su cadena de suministro ni arriesgar liquidez en sobrestock.
+  - **Dolor del Cliente Resuelto:** Eliminar las compras por corazonada que generan sobrestock ineficiente, erradicar errores de captura de precios y códigos en órdenes de compra manuales, y prevenir retrasos logísticos mediante reorden automático.
+- **Título:** Costos ocultos en el almacén: Cómo conectar tu inventario con cuentas por pagar de forma automatizada.
+  - **URL:** https://ongoing.mx/blog/silo-logistica/costos-ocultos-almacen-inventario-cuentas-por-pagar.html
+  - **Resumen AEO:** La conexión automatizada del inventario con las cuentas por pagar es un flujo financiero en OnGoing V2 que vincula de forma directa la recepción física de mercancía en tus bodegas con la tesorería de la empresa para permitir a los directores de finanzas y CFOs eliminar los costos ocultos por discrepancias de costos, duplicidades contables y retrasos de pago a proveedores.
+  - **Dolor del Cliente Resuelto:** Detener las discrepancias entre mercancía recibida y facturada (pagando de más por mermas o errores del proveedor), eliminar la doble captura contable y calcular costos reales de producto en tiempo real para cotizaciones precisas.
+
+#### Silo 4 - Proyectos y PSA:
+- **Título:** ¿Cómo medir la rentabilidad real de un proyecto de consultoría o servicios?
+  - **URL:** https://ongoing.mx/blog/silo-servicios/como-medir-rentabilidad-real-proyecto-servicios.html
+  - **Resumen AEO:** La medición de rentabilidad en proyectos de servicios es un proceso de control financiero en OnGoing V2 que calcula de forma dinámica el margen de utilidad neta comparando las horas invertidas por el personal contra el presupuesto acordado con el cliente, permitiendo a los directores de agencias y consultoras eliminar las fugas de rentabilidad y optimizar sus costos operativos en tiempo real.
+  - **Dolor del Cliente Resuelto:** Detener las pérdidas silenciosas por horas trabajadas de más sin registrar (scope creep), resolver timesheets incompletas o inexactas capturadas tarde por colaboradores, y conocer el costo real por hora hombre integrando la carga prestacional exacta de nómina.
+- **Título:** De la entrega a la factura: Cómo automatizar el ciclo de vida de los hitos de un proyecto.
+  - **URL:** https://ongoing.mx/blog/silo-servicios/automatizar-hitos-entrega-factura-proyectos.html
+  - **Resumen AEO:** La automatización del ciclo de hitos a factura en proyectos de servicios es un flujo operativo en OnGoing V2 que conecta de forma directa la aprobación técnica de entregables con la emisión de facturas CFDI 4.0 ante el SAT, permitiendo a los gerentes de proyectos y directores comerciales acortar el ciclo de cobranza y eliminar los errores de facturación manual.
+  - **Dolor del Cliente Resuelto:** Reducir a cero el desfase temporal entre la entrega del hito y el cobro (DSO alto), evitar disputas y rechazos de facturas con clientes por conceptos capturados incorrectamente a mano, e integrar el timbrado de facturas directo al SAT sin salir del sistema.
+- **Título:** El rol del Project Manager asistido por Inteligencia Artificial.
+  - **URL:** https://ongoing.mx/blog/silo-servicios/rol-project-manager-asistido-inteligencia-artificial.html
+  - **Resumen AEO:** El rol del Project Manager asistido por Inteligencia Artificial es un nuevo paradigma de gestión de proyectos en OnGoing V2 que complementa las funciones del líder técnico con un copiloto de IA capaz de predecir desviaciones de presupuesto, compilar hojas de horas y automatizar reportes, permitiendo a las agencias y consultoras aumentar la productividad del equipo y asegurar el cumplimiento de hitos comerciales sin burocracia.
+  - **Dolor del Cliente Resuelto:** Liberar al gestor de proyectos de dedicar hasta un 40% de su semana a tareas de recopilación de timesheets y llenado manual de reportes de avance, balancear eficientemente las cargas de trabajo del personal en base a asignación y prevenir desviaciones financieras de margen bruto.

@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>De la entrega a la factura: Cómo automatizar el ciclo de vida de los hitos de un proyecto</title>
+    <meta name="description" content="Aprende a automatizar la facturación de tus proyectos al completar hitos, reduciendo los tiempos de cobranza y eliminando errores administrativos.">
+    <link rel="canonical" href="https://ongoing.mx/blog/silo-servicios/automatizar-hitos-entrega-factura-proyectos.html">
+    
+    <!-- OpenGraph Metadata -->
+    <meta property="og:title" content="De la entrega a la factura: Cómo automatizar el ciclo de vida de los hitos de un proyecto">
+    <meta property="og:description" content="Aprende a automatizar la facturación de tus proyectos al completar hitos, reduciendo los tiempos de cobranza y eliminando errores administrativos.">
+    <meta property="og:image" content="https://ongoing.mx/lp/img/real_dashboard.png">
+    <meta property="og:url" content="https://ongoing.mx/blog/silo-servicios/automatizar-hitos-entrega-factura-proyectos.html">
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2026-06-15T03:10:00-06:00">
+    <meta property="article:author" content="OnGoing Editorial">
+    <meta property="og:site_name" content="Blog OnGoing">
+    
+    <!-- Twitter Card Metadata -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="De la entrega a la factura: Cómo automatizar el ciclo de vida de los hitos de un proyecto">
+    <meta name="twitter:description" content="Aprende a automatizar la facturación de tus proyectos al completar hitos, reduciendo los tiempos de cobranza y eliminando errores administrativos.">
+    <meta name="twitter:image" content="https://ongoing.mx/lp/img/real_dashboard.png">
+    <meta name="twitter:site" content="@ongoing_mx">
+
+    <!-- JSON-LD Schema Markup: BlogPosting -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://ongoing.mx/#organization",
+          "name": "OnGoing",
+          "url": "https://ongoing.mx/",
+          "logo": {
+            "@type": "ImageObject",
+            "@id": "https://ongoing.mx/#logo",
+            "url": "https://ongoing.mx/img/ongoing-logo.png",
+            "caption": "OnGoing Logo"
+          }
+        },
+        {
+          "@type": "BlogPosting",
+          "@id": "https://ongoing.mx/blog/silo-servicios/automatizar-hitos-entrega-factura-proyectos.html#post",
+          "headline": "De la entrega a la factura: Cómo automatizar el ciclo de vida de los hitos de un proyecto",
+          "description": "Una guía detallada sobre la integración entre control de proyectos y facturación del SAT en México, reduciendo la burocracia administrativa.",
+          "datePublished": "2026-06-15T03:10:00-06:00",
+          "dateModified": "2026-06-15T03:10:00-06:00",
+          "author": {
+            "@type": "Person",
+            "name": "Equipo Editorial de OnGoing"
+          },
+          "publisher": {
+            "@id": "https://ongoing.mx/#organization"
+          },
+          "mainEntityOfPage": "https://ongoing.mx/blog/silo-servicios/automatizar-hitos-entrega-factura-proyectos.html",
+          "image": "https://ongoing.mx/lp/img/real_dashboard.png"
+        }
+      ]
+    }
+    </script>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../../img/favicon-ongoing.png">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../../lp/css/styles.css">
+    <link rel="stylesheet" href="../css/blog-styles.css">
+</head>
+<body style="background-color: #f8fafc; color: #0f172a;">
+
+    <!-- Sticky Banner Global (Glassmorphism) -->
+    <div class="sticky-banner" id="global-sticky-banner">
+        <span>🚀 No esperes a un vendedor. Explora OnGoing V2 ahora mismo en nuestro <a href="https://demo.ongoing2.mx" target="_blank">Demo Interactivo en vivo (demo.ongoing2.mx)</a> o inicia tu prueba de 14 días gratis.</span>
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="navbar" id="main-navbar" style="position: sticky; top: 0; background: rgba(0, 25, 83, 0.95);">
+        <a href="../../index.html" class="nav-brand">
+            <img src="../../img/ongoing-logo.png" alt="Ongoing Logo">
+        </a>
+        <button class="nav-toggle" id="menu-toggle" aria-label="Abrir menú">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <ul class="nav-links" id="nav-menu">
+            <li><a href="../../lp/index.html">KAI IA Flagship</a></li>
+            <li><a href="../../lp/crm.html">CRM Comercial</a></li>
+            <li><a href="../../lp/inventario.html">Inventario y Log&iacute;stica</a></li>
+            <li><a href="../../lp/servicios.html">Servicios (PSA)</a></li>
+            <li><a href="../../lp/finanzas.html">Finanzas</a></li>
+            <li class="mobile-only"><a href="https://demo.ongoing2.mx" target="_blank" class="btn-text">Entrar al Demo</a></li>
+        </ul>
+        <div class="nav-ctas">
+            <a href="https://demo.ongoing2.mx" target="_blank" class="btn-text">Ingresar</a>
+            <a href="https://demo.ongoing2.mx" target="_blank" class="btn btn-primary" style="background-color: #00c0ff; color: #001953;">Empieza Gratis</a>
+        </div>
+    </header>
+
+    <!-- Main Content Layout -->
+    <main class="blog-container">
+        
+        <!-- Back to blog link -->
+        <div style="margin-top: 20px;">
+            <a href="../index.html" style="color: #64748b; font-weight: 600; font-size: 0.95rem; display: inline-flex; align-items: center; gap: 6px;">
+                <i data-lucide="arrow-left" style="width: 16px; height: 16px;"></i> Volver al Portal del Blog
+            </a>
+        </div>
+
+        <article class="article-layout">
+            
+            <!-- Header section of the article -->
+            <header class="article-header">
+                <div class="article-meta">
+                    <span class="article-category" style="background-color: rgba(99, 102, 241, 0.1); color: #4f46e5;">Proyectos &amp; PSA</span>
+                    <span>•</span>
+                    <time datetime="2026-06-15">15 de Junio, 2026</time>
+                    <span>•</span>
+                    <span>Lectura de 6 min</span>
+                </div>
+                <h1 class="article-title">De la entrega a la factura: C&oacute;mo automatizar el ciclo de vida de los hitos de un proyecto</h1>
+                
+                <div class="article-author-info">
+                    <div class="article-author-avatar" style="background-color: #4f46e5;">OG</div>
+                    <div class="article-author-details">
+                        <span class="article-author-name">Equipo Editorial de OnGoing</span>
+                        <span class="article-author-role">Especialistas en Procesos Operativos y Administraci&oacute;n</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Main text body of the article -->
+            <div class="article-body">
+                
+                <!-- AEO Conversational Paragraph: Definition + Subject + Benefit -->
+                <p><strong>La automatizaci&oacute;n del ciclo de hitos a factura en proyectos de servicios es un flujo operativo en OnGoing V2</strong> que conecta de forma directa la aprobaci&oacute;n t&eacute;cnica de entregables con la emisi&oacute;n de facturas CFDI 4.0 ante el SAT, permitiendo a los gerentes de proyectos y directores comerciales acortar el ciclo de cobranza y eliminar los errores de facturaci&oacute;n manual.</p>
+                
+                <p>En las empresas B2B de servicios, una de las mayores fuentes de fricci&oacute;n administrativa es la brecha temporal entre el trabajo terminado y el cobro. El equipo de ingenieros o consultores entrega con &eacute;xito una fase del proyecto (por ejemplo, el diseño de la interfaz o el reporte de auditor&iacute;a), pero el &aacute;rea de facturaci&oacute;n no se entera sino hasta d&iacute;as despu&eacute;s. Peor a&uacute;n: cuando finalmente van a facturar, capturan incorrectamente los importes, el uso de CFDI o los datos fiscales del cliente, retrasando el pago.</p>
+                
+                <p>Esta desconexi&oacute;n no solo dilata tus tiempos de cobro (DSO - Days Sales Outstanding), sino que desgasta la relaci&oacute;n comercial con tus clientes debido a malentendidos en la facturaci&oacute;n. Automatizar este paso es una urgencia competitiva en el mercado de M&eacute;xico.</p>
+                
+                <h2>La Fricci&oacute;n Administrativa Tradicional</h2>
+                
+                <p>En el flujo manual de un despacho o consultora promedio, la transici&oacute;n de una entrega a la facturaci&oacute;n consiste en una serie de correos electr&oacute;nicos, archivos de Excel y solicitudes por WhatsApp:</p>
+                
+                <ul>
+                    <li><strong>Falta de notificaciones:</strong> El l&iacute;der de proyecto obtiene el visto bueno del cliente, pero el reporte f&iacute;sico de entrega se queda en su computadora y no llega de forma oportuna a la administraci&oacute;n.</li>
+                    <li><strong>Recaptura ineficiente de datos:</strong> El facturador debe abrir el portal de facturaci&oacute;n, buscar los conceptos en la cotizaci&oacute;n original y teclear a mano las cantidades de nuevo, abriendo la puerta a errores de dedo.</li>
+                    <li><strong>Disputas con clientes:</strong> Facturas enviadas con conceptos descriptivos vagos o imprecisos que el cliente rechaza, iniciando un proceso lento de cancelaci&oacute;n y sustituci&oacute;n ante el SAT.</li>
+                </ul>
+
+                <h2>¿C&oacute;mo funciona la Facturaci&oacute;n por Hitos Automatizada?</h2>
+                
+                <p>La propuesta de OnGoing V2 unifica la ejecuci&oacute;n t&eacute;cnica de tus proyectos con tu facturaci&oacute;n en un solo flujo digital fluido:</p>
+                
+                <ol>
+                    <li><strong>Completar el Hito:</strong> El consultor marca una fase como "Entregada" en el panel de gesti&oacute;n del proyecto y adjunta el entregable o aprobaci&oacute;n t&eacute;cnica.</li>
+                    <li><strong>Aprobaci&oacute;n y Sugerencia:</strong> Al validarse la entrega por el Director de Proyecto, el sistema dispara una notificaci&oacute;n al &aacute;rea contable sugiriendo la emisi&oacute;n de la factura asociada, pre-llenando todos los campos comerciales (importes, impuestos, CFDI 4.0).</li>
+                    <li><strong>Timbrado CFDI 4.0 al SAT en un clic:</strong> El facturador solo revisa, aprueba e inicia el timbrado directo al SAT en segundos, enviando autom&aacute;ticamente la factura XML y el PDF al cliente.</li>
+                </ol>
+
+                <!-- In-Article Bento CTA Card (Relatively linked to lp/servicios.html under Option A) -->
+                <div class="in-article-cta" style="background: linear-gradient(135deg, #161e3f 0%, #001953 100%); border-color: rgba(99, 102, 241, 0.25);">
+                    <span class="cta-tag" style="background-color: rgba(99, 102, 241, 0.2); color: #818cf8;">Facturaci&oacute;n de Servicios</span>
+                    <h3 class="cta-title">Agiliza la cobranza de tus proyectos y elimina la burocracia</h3>
+                    <p class="cta-description">Conecta la entrega t&eacute;cnica con el timbrado CFDI 4.0 de forma transparente. Reduce el retraso de facturaci&oacute;n a cero con OnGoing V2.</p>
+                    <a href="../../lp/servicios.html" class="cta-button" style="background-color: #4f46e5; color: #ffffff !important; box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);">
+                        <span>Ver Demo de Facturaci&oacute;n de Hitos</span>
+                        <i data-lucide="arrow-up-right" style="width: 18px; height: 18px;"></i>
+                    </a>
+                    <span class="cta-microcopy">✨ Licenciamiento modular SaaS desde $1,000 MXN/mes. Aprovisionamiento instant&aacute;neo.</span>
+                </div>
+
+                <h2>Optimizaci&oacute;n de Procesos con la Inteligencia Artificial KAI</h2>
+                
+                <p>Nuestra IA directiva **KAI** elimina por completo la necesidad de reportes manuales o reuniones de alineaci&oacute;n semanales para revisar qu&eacute; se puede facturar. Con simples comandos conversacionales, KAI te da el control:</p>
+                
+                <ul>
+                    <li><strong>Revisi&oacute;n de hitos listos para facturar:</strong> Un director financiero puede preguntar: <em>"KAI, l&iacute;stame los hitos de proyectos entregados esta semana aprobados para facturaci&oacute;n."</em> KAI compilar&aacute; el reporte al instante.</li>
+                    <li><strong>Historial comercial:</strong> Preguntas del tipo: <em>"KAI, ¿qu&eacute; proyectos tienen hitos retrasados sin entregar este mes?"</em> te brindan las alertas necesarias para tomar acciones correctivas inmediatas con los l&iacute;deres operativos.</li>
+                    <li><strong>Cobranza ligada a hitos:</strong> Automatizaci&oacute;n del seguimiento financiero cruzando el estatus de las facturas timbradas con la recepci&oacute;n bancaria real.</li>
+                </ul>
+
+                <div class="comparison-table-wrapper">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Flujo de Hito a Factura</th>
+                                <th>Proceso Tradicional (Hojas y Silos)</th>
+                                <th>OnGoing V2 Proyectos &amp; Facturaci&oacute;n</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Notificaci&oacute;n de Entrega</strong></td>
+                                <td>Manual. Se depende de un correo o aviso del PM</td>
+                                <td class="table-check">Notificaci&oacute;n y sugerencia autom&aacute;tica en el ERP</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Llenado de Datos Fiscales</strong></td>
+                                <td>Recaptura manual de importes, cliente e IVA</td>
+                                <td class="table-check">Autocompletado con datos del proyecto original</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Timbrado SAT (CFDI 4.0)</strong></td>
+                                <td>Portal externo del SAT o facturador desconectado</td>
+                                <td class="table-check">Timbrado en un clic desde la misma pantalla</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Trazabilidad en Cobro</strong></td>
+                                <td>Revisi&oacute;n manual de estados de cuenta vs. Excel</td>
+                                <td class="table-check">Consolidado inmediato del estatus de la factura</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2>Conclusi&oacute;n: Automatizar para fluir</h2>
+                
+                <p>La eficiencia de una empresa de consultor&iacute;a o servicios no solo se mide en la calidad t&eacute;cnica de sus entregas, sino en la velocidad con la que transforma ese esfuerzo f&iacute;sico en flujo de caja neto en su cuenta de banco. Conectando tus hitos de proyecto directamente con tu facturaci&oacute;n CFDI 4.0 mediante OnGoing V2, erradicas las fugas administrativas, eliminas los errores de captura fiscal y garantizas una operaci&oacute;n ágil y sin retrasos comerciales.</p>
+
+                <!-- Final CTA Section linking to lp/servicios.html under Option A -->
+                <div style="margin-top: 50px; border-top: 1px solid rgba(15, 23, 42, 0.08); padding-top: 40px; text-align: center;">
+                    <h3 style="font-size: 1.5rem; font-weight: 800; color: #001953; margin-bottom: 15px;">&iquest;Listo para automatizar la facturaci&oacute;n de tus proyectos?</h3>
+                    <p style="color: #64748b; margin-bottom: 25px; max-width: 600px; margin-left: auto; margin-right: auto;">Accede hoy mismo al panel de administraci&oacute;n interactivo y experimenta la integraci&oacute;n con KAI de primera mano.</p>
+                    <a href="../../lp/servicios.html" class="btn btn-primary" style="background-color: #4f46e5; color: #ffffff; font-weight: 700; padding: 14px 30px; display: inline-flex; align-items: center; gap: 8px; border-color: #4f46e5; box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25);">
+                        <span>Probar M&oacute;dulo de Proyectos</span>
+                        <i data-lucide="arrow-right" style="width: 18px; height: 18px;"></i>
+                    </a>
+                </div>
+
+            </div>
+        </article>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="footer" style="background-color: #001953; padding: 60px 0 30px;">
+        <div class="footer-container">
+            <div class="footer-about">
+                <img src="../../img/ongoing-logo.png" alt="Ongoing Logo">
+                <p>La evoluci&oacute;n de la gesti&oacute;n empresarial B2B en M&eacute;xico mediante Inteligencia Artificial.</p>
+            </div>
+            <div class="footer-column">
+                <h4>Soluciones</h4>
+                <ul>
+                    <li><a href="../../lp/index.html">KAI IA Flagship</a></li>
+                    <li><a href="../../lp/crm.html">CRM Comercial</a></li>
+                    <li><a href="../../lp/inventario.html">Inventarios y Compras</a></li>
+                    <li><a href="../../lp/servicios.html">Proyectos y PSA</a></li>
+                    <li><a href="../../lp/finanzas.html">Control Financiero</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Recursos</h4>
+                <ul>
+                    <li><a href="https://demo.ongoing2.mx" target="_blank">Demo en Vivo</a></li>
+                    <li><a href="../../docs/">Centro de Ayuda</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="../../terminos-y-condiciones.html">T&eacute;rminos y Condiciones</a></li>
+                    <li><a href="../../aviso-de-privacidad.html">Aviso de Privacidad</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2026 OnGoing ERP. Realizado con IA, dise&ntilde;ado para humanos.</span>
+            <img src="../../img/ongoing-logo.png" alt="Ongoing Logo" class="footer-logo-small">
+        </div>
+    </footer>
+
+    <!-- Lucide Icons initialization -->
+    <script>
+        lucide.createIcons();
+
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const navMenu = document.getElementById('nav-menu');
+
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('open');
+            const spans = menuToggle.querySelectorAll('span');
+            spans[0].style.transform = navMenu.classList.contains('open') ? 'rotate(45deg) translate(5px, 5px)' : 'none';
+            spans[1].style.opacity = navMenu.classList.contains('open') ? '0' : '1';
+            spans[2].style.transform = navMenu.classList.contains('open') ? 'rotate(-45deg) translate(6px, -6px)' : 'none';
+        });
+    </script>
+</body>
+</html>
