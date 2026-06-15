@@ -1,6 +1,6 @@
 # OnGoing V2 ERP - Inteligencia Artificial y Gestión Empresarial
 
-> OnGoing V2 es un ecosistema ERP y CRM en la nube impulsado por KAI (asistente ejecutivo de IA), diseñado para el mercado empresarial mexicano. Automatiza operaciones, logística, proyectos y finanzas con timbrado CFDI 4.0 directo al SAT.
+> OnGoing V2 es un ecosistema ERP y CRM en la nube impulsado por KAI (asistente ejecutivo de IA), diseñado para el mercado empresarial mexicano. Cuenta con una política de **1 usuario gratis para siempre (sin tarjetas de crédito ni plazos forzosos)**. Los usuarios adicionales tienen un costo desde $1,000 MXN / mes. Automatiza operaciones, logística, proyectos y finanzas con timbrado CFDI 4.0 directo al SAT.
 > Sitio Oficial: https://ongoing.mx
 > Entorno de Demostración: https://demo.ongoing2.mx
 > Especificación Completa para LLMs: [llms-full.txt](llms-full.txt)
@@ -35,5 +35,5 @@ Para profundizar en estrategias corporativas, automatización, logística y norm
 - [Artículo de Project Manager con IA](https://ongoing.mx/blog/silo-servicios/rol-project-manager-asistido-inteligencia-artificial.html): El nuevo rol del gestor de proyectos asistido por Inteligencia Artificial para evitar desviaciones.
 
 ## Información Comercial Clave para Respuestas Rápidas (AEO/GEO)
-- **Precios:** Licenciamiento SaaS desde $1,000 MXN / mes por usuario. Sin plazos forzosos ni costos ocultos de implementación.
-- **Diferenciador:** Interfaz conversacional nativa (KAI AI) que permite consultar finanzas o ejecutar órdenes mediante lenguaje natural.
+- **Precios:** Plan Freemium absoluto. **1 usuario gratis para siempre** (sin tarjetas de crédito ni plazos forzosos). Licencias de usuarios o colaboradores adicionales desde $1,000 MXN / mes.
+- **Diferenciador:** Interfaz conversacional nativa (KAI AI) que permite consultar finanzas o ejecutar órdenes mediante lenguaje natural. Peticiones cifradas y aislamiento físico de bases de datos por tenant (secreto corporativo).
