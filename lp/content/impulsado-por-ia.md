@@ -1,7 +1,7 @@
 # Landing Page 1: Flagship - ERP Impulsado por IA (KAI)
 **Target Principal:** CEO, Fundadores, Directores Generales
 
-**[STICKY BANNER EN TODA LA WEB]:** 🚀 No esperes a un vendedor. Explora OnGoing V2 ahora mismo en nuestro Demo Interactivo en vivo (demo.ongoing2.mx) o inicia tu prueba de 14 días gratis.
+**[STICKY BANNER EN TODA LA WEB]:** 🚀 No esperes a un vendedor. Explora OnGoing V2 ahora mismo en nuestro Demo Interactivo en vivo (demo.ongoing2.mx) o inicia tu cuenta gratis de por vida (1 usuario).
 
 ---
 
@@ -12,7 +12,7 @@
 * **Subheadline:** OnGoing V2 fusiona la gestión integral de tu negocio con **KAI**, tu nuevo asistente directivo de IA. Analiza finanzas y ejecuta operaciones en tiempo real. No confíes en nuestras palabras, entra y juega con el sistema ahora mismo.
 * **Etiqueta de Precio:** El poder de un ERP corporativo. Planes desde **$1,000 MXN / mes** por usuario. Sin plazos forzosos.
 * **Botón Primario (Destacado):** Entrar al Demo Interactivo
-* **Botón Secundario (Contorno):** Iniciar Prueba de 14 Días
+* **Botón Secundario (Contorno):** Iniciar cuenta gratis de por vida para 1 usuario
 * **Micro-copy inferior:** ✨ Juega en demo.ongoing2.mx sin dejar tu correo. Inicia tu prueba gratis cuando estés listo.
 
 ### [EL PROBLEMA]
@@ -36,5 +36,5 @@
 ### [CTA FINAL]
 * **Título:** Deja de ver capturas de pantalla. Vive la experiencia OnGoing.
 * **Botón Primario:** Abrir Demo Funcional (demo.ongoing2.mx)
-* **Botón Secundario:** Crear mi cuenta (14 días gratis)
+* **Botón Secundario:** Crear cuenta gratis de por vida
 * **Garantía de Confianza:** ✨ Desde $1,000 MXN / mes. Cancela cuando quieras, sin planes forzosos ni costos de implementación ocultos.

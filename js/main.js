@@ -454,7 +454,7 @@ if (kaiTrigger && kaiContainer && kaiClose && kaiMessages && kaiForm && kaiInput
                     <i data-lucide="alert-circle" class="w-4.5 h-4.5 text-red-400"></i>
                 </div>
                 <div class="chat-bubble-kai px-4 py-3 max-w-[85%] border-red-500/20 leading-relaxed text-red-400 font-medium">
-                    Lo siento, ocurrió un error al procesar tu solicitud. Por favor intenta de nuevo o inicia tu prueba de 14 días gratis en <a href="https://ongoing2.mx" class="text-action underline">ongoing2.mx</a>.
+                    Lo siento, ocurrió un error al procesar tu solicitud. Por favor intenta de nuevo o inicia tu cuenta gratis de por vida (1 usuario) en <a href="https://ongoing2.mx" class="text-action underline">ongoing2.mx</a>.
                 </div>
             `;
             kaiMessages.appendChild(errorBubble);
@@ -535,8 +535,8 @@ if (kaiTrigger && kaiContainer && kaiClose && kaiMessages && kaiForm && kaiInput
                                 ${localContext}
 
                                 REGLAS:
-                                1. Responde basándote únicamente en el contexto. Si no está en el contexto, indícalo y sugiere contactar a hola@ongoing.mx o iniciar la prueba gratis en https://ongoing2.mx.
-                                2. Jailbreak Guard: Si preguntan sobre temas ajenos (recetas, poemas, chistes, etc.), debes negarte a responder de forma elegante y breve, sugiriendo iniciar la prueba de 14 días gratis en https://ongoing2.mx.`
+                                1. Responde basándote únicamente en el contexto. Si no está en el contexto, indícalo y sugiere contactar a hola@ongoing.mx o iniciar la cuenta gratis de por vida en https://ongoing2.mx.
+                                2. Jailbreak Guard: Si preguntan sobre temas ajenos (recetas, poemas, chistes, etc.), debes negarte a responder de forma elegante y breve, sugiriendo iniciar la cuenta gratis de por vida para 1 usuario en https://ongoing2.mx.`
                             },
                             { role: 'user', content: userMessage }
                         ],

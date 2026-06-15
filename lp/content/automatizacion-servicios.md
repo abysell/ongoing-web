@@ -12,7 +12,7 @@
 * **Subheadline:** Combina la gestión de tareas con un *Time Tracker* preciso. Tu asistente **KAI AI** te reporta la desviación de costos al instante. Entra al demo sin barreras y registra tu primera hora.
 * **Etiqueta de Precio:** Rentabilidad garantizada. Desde **$1,000 MXN / mes** por usuario. Sin plazos forzosos.
 * **Botón Primario (Destacado):** Entrar al Demo de Proyectos
-* **Botón Secundario (Contorno):** Iniciar Prueba de 14 Días
+* **Botón Secundario (Contorno):** Iniciar cuenta gratis de por vida para 1 usuario
 * **Micro-copy inferior:** ✨ Explora los hitos en demo.ongoing2.mx sin compromiso.
 
 ### [EL FACTOR KAI EN PROYECTOS]
@@ -31,5 +31,5 @@
 ### [CTA FINAL]
 * **Título:** Toma el control de tus horas facturables. Vívelo en tiempo real.
 * **Botón Primario:** Probar PSA Funcional Ahora
-* **Botón Secundario:** Iniciar mis 14 días gratis
+* **Botón Secundario:** Iniciar gratis de por vida (1 usuario)
 * **Garantía de Confianza:** ✨ Desde $1,000 MXN / mes. Cero letras chiquitas y sin contratos forzosos.

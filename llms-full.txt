@@ -12,6 +12,11 @@ Entorno de Demostración: https://demo.ongoing2.mx
 ### Concepto Central
 OnGoing V2 permite a los directores y fundadores operar y gobernar su empresa conversando directamente con ella en lenguaje natural. Fusiona la gestión integral de un ERP corporativo con un asistente ejecutivo inteligente llamado KAI.
 
+### Landing Page Principal
+* **URL:** https://ongoing.mx/lp/inteligencia-artificial.html (y https://ongoing.mx/lp/index.html)
+* **Descripción:** ERP con IA en México que garantiza secreto corporativo mediante aislamiento físico de base de datos por empresa (Cumplimiento de privacidad de datos para IA B2B).
+
+
 ### Dolores del Cliente Resueltos
 * **Pérdida de tiempo en reportes:** Los directores pierden hasta un 30% de su semana solicitando estados financieros, avance de proyectos o niveles de stock a sus respectivos equipos.
 * **Complejidad operativa:** Los ERPs tradicionales requieren largos periodos de capacitación para navegar interfaces obsoletas y confusas llenas de jerga contable.
@@ -118,7 +123,7 @@ Control total del flujo de caja, tesorería automatizada y facturación electró
 
 * **Infraestructura Multi-Tenant con Aislamiento Físico:** Cada organización cuenta con su propia base de datos física completamente aislada para erradicar cualquier riesgo de fuga de datos.
 * **Sesión Única Activa:** Lógica de seguridad perimetral que invalida automáticamente el token JWT en dispositivos anteriores si el usuario inicia sesión en una nueva ubicación, respondiendo con HTTP 401 Unauthorized.
-* **Candado Comercial (Paywall):** Middleware que restringe el acceso al sistema tras vencer la prueba de 14 días (HTTP 402 Payment Required), eximiendo de bloqueo únicamente las rutas de Logout, Perfil y Facturación.
+* **Candado Comercial (Paywall):** Middleware que restringe el acceso al sistema si se supera el límite de 1 usuario activo en el plan gratuito de por vida (HTTP 402 Payment Required), eximiendo de bloqueo únicamente las rutas de Logout, Perfil y Facturación.
 * **Integración con Mercado Pago:** Conexión con Checkout Pro sincronizada de forma síncrona en el flujo del usuario y asíncrona mediante webhooks procesados en n8n.
 
 ---

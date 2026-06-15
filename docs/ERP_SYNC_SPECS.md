@@ -4,16 +4,16 @@ Este documento detalla las reglas de negocio críticas y la lógica de integraci
 
 ---
 
-## 1. Reglas de Negocio del Plan Demo (14 días)
+## 1. Reglas de Negocio del Plan Gratuito (1 Usuario)
 
-El Plan Demo está diseñado para permitir a los prospectos evaluar el sistema con límites estrictos antes de requerir pago.
+El Plan Gratuito está diseñado para permitir el uso permanente de la plataforma para un único administrador.
 
-* **Duración:** 14 días naturales exactos a partir del registro del tenant.
-* **Límite de Licencias:** Máximo 1 usuario administrador activo.
-* **Flujo de Expiración:**
-  1. El sistema registra el timestamp de creación (`created_at`) del tenant.
-  2. En cada petición al API, se ejecuta un middleware que evalúa si la fecha actual es mayor a `created_at + 14 días`.
-  3. Si la demo ha expirado, se cambia el estado del tenant a `expired` en la base de datos central.
+* **Duración:** De por vida (permanente).
+* **Límite de Licencias:** Máximo 1 usuario activo registrado en el tenant.
+* **Flujo de Bloqueo/Paywall:**
+  1. El sistema registra la cantidad de usuarios activos en el tenant.
+  2. En cada petición al API o al intentar dar de alta un nuevo usuario, se ejecuta un middleware que evalúa si el número total de usuarios activos excede 1.
+  3. Si el tenant intenta activar a un segundo usuario o más, el sistema requiere la contratación de licencias y cambia el estado de acceso para exigir suscripción de pago comercial.
 
 ---
 

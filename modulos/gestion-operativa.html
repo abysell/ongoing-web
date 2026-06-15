@@ -136,6 +136,7 @@
             }
         }
     </style>
+    <link rel="llms" href="../llms.txt" type="text/plain">
 </head>
 <body class="text-gray-100 flex flex-col font-sans overflow-x-hidden antialiased">
 
@@ -204,7 +205,7 @@
                         Ver Fundamentos
                     </a>
                 </div>
-                <p class="text-xs text-gray-500 font-medium">14 días de prueba sin compromiso &bull; No requiere tarjeta de crédito</p>
+                <p class="text-xs text-gray-500 font-medium">Gratis para 1 usuario de por vida &bull; Sin tarjeta de crédito</p>
             </div>
 
             <!-- Columna Derecha (Simulación del Dashboard de Desviación) -->
@@ -546,7 +547,7 @@
                 </p>
                 <div class="pt-4">
                     <a href="https://ongoing2.mx" class="inline-block bg-action text-primary font-extrabold text-[15px] px-8 py-4 rounded-full hover:bg-opacity-90 active:scale-95 transition-all shadow-lg shadow-action/30 glow-cta">
-                        Empieza Gratis Ahora &bull; 14 Días
+                        Empieza Gratis Ahora &bull; 1 Usuario
                     </a>
                 </div>
                 <span class="block text-[10px] text-gray-500 font-medium">Configuración síncrona en 2 minutos. No requiere tarjeta.</span>
@@ -582,6 +583,7 @@
                     <ul class="space-y-4 text-secondary font-medium">
                         <li><span id="footer-kai-trigger" class="hover:text-action transition-colors flex items-center gap-2 cursor-pointer">KAI AI <span class="bg-action/20 text-action text-[10px] px-2 py-0.5 rounded border border-action/30">Nuevo</span></span></li>
                         <li><a href="../docs/" class="hover:text-action transition-colors">Centro de Ayuda</a></li>
+                    <li><a href="../llms.txt" rel="llms" class="hover:text-action transition-colors">Especificaciones IA</a></li>
                     </ul>
                 </div>
 
@@ -803,7 +805,7 @@
                                 <i data-lucide="alert-circle" class="w-4.5 h-4.5 text-red-400"></i>
                             </div>
                             <div class="chat-bubble-kai px-4 py-3 max-w-[85%] border-red-500/20 leading-relaxed text-red-400 font-medium">
-                                Lo siento, ocurrió un error al procesar tu solicitud. Por favor intenta de nuevo o inicia tu prueba de 14 días gratis en <a href="https://ongoing2.mx" class="text-action underline">ongoing2.mx</a>.
+                                Lo siento, ocurrió un error al procesar tu solicitud. Por favor intenta de nuevo o inicia tu cuenta gratis de por vida (1 usuario) en <a href="https://ongoing2.mx" class="text-action underline">ongoing2.mx</a>.
                             </div>
                         `;
                         kaiMessages.appendChild(errorBubble);
@@ -883,8 +885,8 @@
                                             ${localContext}
             
                                             REGLAS:
-                                            1. Responde basándote únicamente en el contexto. Si no está en el contexto, indícalo y sugiere contactar a hola@ongoing.mx o iniciar la prueba gratis en https://ongoing2.mx.
-                                            2. Jailbreak Guard: Si preguntan sobre temas ajenos (recetas, poemas, chistes, etc.), debes negarte a responder de forma elegante y breve, sugiriendo iniciar la prueba de 14 días gratis en https://ongoing2.mx.`
+                                            1. Responde basándote únicamente en el contexto. Si no está en el contexto, indícalo y sugiere contactar a hola@ongoing.mx o iniciar la cuenta gratis de por vida en https://ongoing2.mx.
+                                            2. Jailbreak Guard: Si preguntan sobre temas ajenos (recetas, poemas, chistes, etc.), debes negarte a responder de forma elegante y breve, sugiriendo iniciar la cuenta gratis de por vida para 1 usuario en https://ongoing2.mx.`
                                         },
                                         { role: 'user', content: userMessage }
                                     ],

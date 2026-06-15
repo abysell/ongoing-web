@@ -12,7 +12,7 @@
 * **Subheadline:** Monitorea oportunidades y automatiza cotizaciones. Con **KAI AI**, tu equipo tiene un copiloto que registra interacciones en segundos. Entra al entorno funcional y compruébalo sin registrarte.
 * **Etiqueta de Precio:** Un CRM y ERP integrados. Desde **$1,000 MXN / mes** por usuario. Sin planes forzosos.
 * **Botón Primario (Destacado):** Entrar al Demo Comercial en Vivo
-* **Botón Secundario (Contorno):** Iniciar Prueba de 14 Días
+* **Botón Secundario (Contorno):** Iniciar cuenta gratis de por vida para 1 usuario
 * **Micro-copy inferior:** ✨ Interactúa en demo.ongoing2.mx hoy mismo.
 
 ### [EL FACTOR KAI EN VENTAS]
@@ -31,5 +31,5 @@
 ### [CTA FINAL]
 * **Título:** Transforma tu proceso de ventas hoy. No asumas, experiméntalo.
 * **Botón Primario:** Probar CRM Funcional Ahora
-* **Botón Secundario:** Crear cuenta gratis (14 días)
+* **Botón Secundario:** Crear cuenta gratis de por vida
 * **Garantía de Confianza:** ✨ Desde $1,000 MXN / mes. Pagas por lo que usas, sin contratos forzosos a largo plazo.

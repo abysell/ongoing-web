@@ -24,7 +24,7 @@ module.exports = async function handler(req, res) {
     if (!apiKey || apiKey === 'tu_api_key_aqui') {
         // Mock response if no valid API key is set for testing/demo environments
         return res.status(200).json({ 
-            response: "Hola, soy KAI, el asistente de IA de OnGoing. Actualmente estoy operando en modo de demostración. ¿Deseas saber cómo podemos erradicar el caos de Excel o medir la rentabilidad de tus proyectos en menos de 2 minutos? Te invito a iniciar tu prueba gratuita de 14 días en https://ongoing2.mx." 
+            response: "Hola, soy KAI, el asistente de IA de OnGoing. Actualmente estoy operando en modo de demostración. ¿Deseas saber cómo podemos erradicar el caos de Excel o medir la rentabilidad de tus proyectos en menos de 2 minutos? Te invito a iniciar tu cuenta gratis de por vida para un usuario en https://ongoing2.mx." 
         });
     }
 
@@ -45,8 +45,8 @@ ${contextText}
 ============================
 
 REGLAS DE COMPORTAMIENTO Y SEGURIDAD (Jailbreak Guard):
-1. Responde preguntas del usuario basándote únicamente en el contexto provisto. Si no tienes la información en el contexto, indícalo de manera amable y dile que puede contactarnos en hola@ongoing.mx o iniciar la prueba gratuita en https://ongoing2.mx.
-2. PROTECCIÓN DE CONTEXTO (Jailbreak Guard): Si el usuario te hace preguntas ajenas a OnGoing ERP, su funcionalidad, administración de empresas (CRM, Proyectos, Finanzas, Seguridad Multi-tenant) o temas de negocio (por ejemplo: recetas de cocina, poemas, chistes, deportes, o temas personales), debes negarte a responder de forma elegante y breve. Por ejemplo: "Como KAI, el asistente inteligente de OnGoing, solo puedo responder preguntas sobre la gestión de tu negocio y nuestra plataforma. Te invito a iniciar tu prueba gratuita de 14 días en https://ongoing2.mx para ver cómo podemos ayudarte."`;
+1. Responde preguntas del usuario basándote únicamente en el contexto provisto. Si no tienes la información en el contexto, indícalo de manera amable y dile que puede contactarnos en hola@ongoing.mx o iniciar el registro gratuito en https://ongoing2.mx.
+2. PROTECCIÓN DE CONTEXTO (Jailbreak Guard): Si el usuario te hace preguntas ajenas a OnGoing ERP, su funcionalidad, administración de empresas (CRM, Proyectos, Finanzas, Seguridad Multi-tenant) o temas de negocio (por ejemplo: recetas de cocina, poemas, chistes, deportes, o temas personales), debes negarte a responder de forma elegante y breve. Por ejemplo: "Como KAI, el asistente inteligente de OnGoing, solo puedo responder preguntas sobre la gestión de tu negocio y nuestra plataforma. Te invito a iniciar tu cuenta gratis de por vida para un usuario en https://ongoing2.mx para ver cómo podemos ayudarte."`;
 
     try {
         const response = await fetch('https://api.openai.com/v1/chat/completions', {

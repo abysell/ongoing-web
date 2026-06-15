@@ -12,7 +12,7 @@
 * **Subheadline:** Conecta ventas y compras con tu tesorería. Automatiza cuentas por cobrar/pagar con análisis en tiempo real impulsado por tu analista IA, **KAI**. Pruébalo ahora mismo con datos de ejemplo.
 * **Etiqueta de Precio:** Inteligencia financiera corporativa. Desde **$1,000 MXN / mes** por usuario.
 * **Botón Primario (Destacado):** Entrar al Demo Financiero
-* **Botón Secundario (Contorno):** Iniciar Prueba de 14 Días
+* **Botón Secundario (Contorno):** Iniciar cuenta gratis de por vida para 1 usuario
 * **Micro-copy inferior:** ✨ Audita las finanzas en demo.ongoing2.mx ahora mismo.
 
 ### [EL FACTOR KAI EN FINANZAS]
@@ -31,5 +31,5 @@
 ### [CTA FINAL]
 * **Título:** Proteja la liquidez de su empresa. Analice los datos en vivo.
 * **Botón Primario:** Abrir Demo Financiero Interactivo
-* **Botón Secundario:** Comenzar mi prueba de 14 días
+* **Botón Secundario:** Comenzar mi cuenta gratis de por vida para 1 usuario
 * **Garantía de Confianza:** ✨ Desde $1,000 MXN / mes. Libertad total, sin contratos forzosos ni plazos mínimos.

@@ -12,7 +12,7 @@
 * **Subheadline:** Controla múltiples almacenes y automatiza compras. Descubre cómo **KAI AI** audita el stock al instante. No agendes llamadas, entra a nuestro entorno vivo y compruébalo.
 * **Etiqueta de Precio:** Control operativo total. Desde **$1,000 MXN / mes** por usuario. Sin ataduras.
 * **Botón Primario (Destacado):** Entrar al Demo de Logística
-* **Botón Secundario (Contorno):** Iniciar Prueba de 14 Días
+* **Botón Secundario (Contorno):** Iniciar cuenta gratis de por vida para 1 usuario
 * **Micro-copy inferior:** ✨ Genera una orden de compra en demo.ongoing2.mx sin registro.
 
 ### [EL FACTOR KAI EN LOGÍSTICA]
@@ -31,5 +31,5 @@
 ### [CTA FINAL]
 * **Título:** Elimina el caos en tu almacén. Juega con la solución hoy.
 * **Botón Primario:** Abrir Demo Interactivo
-* **Botón Secundario:** Crear mi cuenta (14 días gratis)
+* **Botón Secundario:** Crear cuenta gratis de por vida
 * **Garantía de Confianza:** ✨ Desde $1,000 MXN / mes. Cancela en el momento que desees, sin planes forzosos.

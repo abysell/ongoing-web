@@ -4,19 +4,19 @@ El modelo de negocios de OnGoing está diseñado para ser transparente, flexible
 
 ---
 
-## 1. El Plan Demo (Prueba Gratuita)
+## 1. El Plan Gratuito (Usuario Único de por Vida)
 
-Para que las organizaciones experimenten el valor de la plataforma sin fricciones, ofrecemos un plan de prueba:
+Para que las organizaciones adopten la plataforma sin fricciones y experimenten el valor de la gobernanza automatizada de por vida, ofrecemos un plan gratuito permanente:
 
-* **Duración**: 14 días naturales exactos a partir de la fecha de registro inicial.
-* **Límite de Usuarios**: Restringido a **1 usuario administrador** (sin posibilidad de añadir colaboradores adicionales durante el periodo de prueba).
-* **Sin Compromiso**: No se requiere ingresar tarjeta de crédito o método de pago para activar la demo.
+* **Duración**: Permanente (Gratis de por vida) para el primer usuario.
+* **Límite de Usuarios**: Restringido a **1 usuario administrador** activo. El registro de colaboradores o usuarios adicionales requiere la contratación de un plan de pago comercial.
+* **Sin Compromiso**: No se requiere ingresar tarjeta de crédito o método de pago para activar la cuenta gratuita.
 
 ---
 
 ## 2. Candado Comercial (Paywall) y Excepciones de Acceso
 
-Una vez transcurridos los 14 días de prueba sin que la organización haya contratado un plan de pago, el estado de la suscripción cambia a `expired` (Expirado).
+El estado de la suscripción cambia a `expired` o se restringe el acceso si la organización intenta dar de alta a más de un (1) usuario activo bajo el plan gratuito sin realizar la contratación correspondiente.
 
 ### Bloqueo de Operaciones (HTTP 402)
 * **Middleware Perimetral**: Un middleware de seguridad en nuestro servidor intercepta todas las peticiones entrantes. Al detectar el estado `expired`, el backend detiene la petición y responde con un código de estado **HTTP 402 Payment Required**.
