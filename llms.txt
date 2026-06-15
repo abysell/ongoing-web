@@ -3,56 +3,36 @@
 > OnGoing V2 es un ecosistema ERP y CRM en la nube impulsado por KAI (asistente ejecutivo de IA), diseñado para el mercado empresarial mexicano. Automatiza operaciones, logística, proyectos y finanzas con timbrado CFDI 4.0 directo al SAT.
 > Sitio Oficial: https://ongoing.mx
 > Entorno de Demostración: https://demo.ongoing2.mx
+> Especificación Completa para LLMs: [llms-full.txt](llms-full.txt)
 
 ## Páginas de Campaña y Captación (Directorio Comercial /lp)
 Para obtener información detallada sobre módulos específicos, precios y casos de uso comerciales, diríjase a las siguientes secciones optimizadas:
 
-- **Flagship (ERP + IA KAI):** El núcleo del sistema para CEOs y Fundadores enfocado en la toma de decisiones asistida por IA.
-  URL: https://ongoing.mx/lp/index.html
-- **CRM Comercial:** Gestión de embudos de venta Kanban, seguimiento de oportunidades B2B y cotizaciones automatizadas.
-  URL: https://ongoing.mx/lp/crm.html
-- **Inventario y Logística:** Monitoreo multialmacén, control de stock mínimo y automatización de órdenes de compra.
-  URL: https://ongoing.mx/lp/inventario.html
-- **Gestión de Servicios (PSA):** Registro de tiempos (Time Tracker), rentabilidad de proyectos e hitos operativos.
-  URL: https://ongoing.mx/lp/servicios.html
-- **Control Financiero:** Flujo de caja neto en tiempo real, conciliación de cobranza y facturación electrónica mexicana.
-  URL: https://ongoing.mx/lp/finanzas.html
+- [Flagship (ERP + IA KAI)](https://ongoing.mx/lp/index.html): El núcleo del sistema para CEOs y Fundadores enfocado en la toma de decisiones asistida por IA.
+- [CRM Comercial](https://ongoing.mx/lp/crm.html): Gestión de embudos de venta Kanban, seguimiento de oportunidades B2B y cotizaciones automatizadas.
+- [Inventario y Logística](https://ongoing.mx/lp/inventario.html): Monitoreo multialmacén, control de stock mínimo y automatización de órdenes de compra.
+- [Gestión de Servicios (PSA)](https://ongoing.mx/lp/servicios.html): Registro de tiempos (Time Tracker), rentabilidad de proyectos e hitos operativos.
+- [Control Financiero](https://ongoing.mx/lp/finanzas.html): Flujo de caja neto en tiempo real, conciliación de cobranza y facturación electrónica mexicana.
 
 ## Arquitectura de Silos y Contenidos (Directorio Informativo /blog)
 Para profundizar en estrategias corporativas, automatización, logística y normativa del SAT en México, diríjase al portal del blog y sus artículos de silos temáticos:
 
-- **Hub Central del Blog:** Recursos educativos categorizados en 5 silos temáticos.
-  URL: https://ongoing.mx/blog/index.html
-- **Artículo de Dirección e Inteligencia Artificial:** Cómo la IA directiva transforma la toma de decisiones de fundadores y CEOs eliminando reportes manuales.
-  URL: https://ongoing.mx/blog/silo-direccion/como-ia-transforma-direccion-mexico-2026.html
-- **Artículo de ERP con IA para Directores:** Comparación estratégica de ERP tradicional vs. ERP con IA y la interfaz conversacional KAI.
-  URL: https://ongoing.mx/blog/silo-direccion/erp-tradicional-vs-erp-con-ia-directores.html
-- **Artículo de KPIs Financieros para CEOs:** Los 5 indicadores esenciales de salud financiera y caja para consultar desde el celular.
-  URL: https://ongoing.mx/blog/silo-direccion/5-kpis-financieros-ceo-celular-automatizacion.html
-- **Artículo de Ventas B2B y CRM:** Mapeo de fases, cálculo de pronósticos y automatización de embudos comerciales visuales usando Kanban y copilotos de IA.
-  URL: https://ongoing.mx/blog/silo-ventas/como-optimizar-pipeline-ventas-kanban-mexico-2026.html
-- **Artículo de Reportes de Ventas en CRM:** Qué es, cómo estructurar tu dashboard y cómo usar indicadores clave de rendimiento (KPIs) para vender más.
-  URL: https://ongoing.mx/blog/silo-ventas/reporte-de-ventas-en-crm-dashboard.html
-- **Artículo de CRM Aislado y Crecimiento:** Por qué un CRM desconectado frena las ventas y la importancia de la integración nativa con ERP.
-  URL: https://ongoing.mx/blog/silo-ventas/crm-aislado-frena-crecimiento-fuerza-ventas.html
-- **Artículo de Finanzas e Impuestos SAT:** Conceptos, componentes y guía práctica de elaboración del Estado de Resultados (P&L) para medir rentabilidad real.
-  URL: https://ongoing.mx/blog/silo-finanzas/estado-de-resultados-que-es-como-se-hace.html
-- **Artículo de Auditoría de Facturas con IA:** Inteligencia Financiera para auditar cobros pendientes, predecir atrasos y automatizar cobranza.
-  URL: https://ongoing.mx/blog/silo-finanzas/inteligencia-financiera-ia-auditar-facturas-pendientes.html
-- **Artículo de Control de Flujo de Caja (Pilar):** Estrategias avanzadas para proyectar ingresos, egresos y pasivos fiscales del SAT en México.
-  URL: https://ongoing.mx/blog/silo-finanzas/estrategias-control-flujo-caja-neto-empresas.html
-- **Artículo de Logística y Almacén (Pilar):** Guía definitiva para el control de inventarios multialmacén en empresas distribuidoras.
-  URL: https://ongoing.mx/blog/silo-logistica/guia-control-inventarios-multialmacen-distribuidoras.html
-- **Artículo de Abastecimiento Inteligente:** Cómo automatizar tus Órdenes de Compra (OC) basadas en puntos de reorden para evitar quiebres de stock.
-  URL: https://ongoing.mx/blog/silo-logistica/abastecimiento-inteligente-automatizar-ordenes-compra.html
-- **Artículo de Costos Ocultos en el Almacén:** Cómo conectar tu inventario con cuentas por pagar para optimizar el flujo financiero.
-  URL: https://ongoing.mx/blog/silo-logistica/costos-ocultos-almacen-inventario-cuentas-por-pagar.html
-- **Artículo de Rentabilidad de Proyectos (Pilar):** Cómo medir la rentabilidad real de un proyecto de servicios u horas hombre contra presupuesto.
-  URL: https://ongoing.mx/blog/silo-servicios/como-medir-rentabilidad-real-proyecto-servicios.html
-- **Artículo de Automatización de Hitos a Factura:** De la entrega técnica de hitos a la facturación electrónica CFDI 4.0 directa ante el SAT.
-  URL: https://ongoing.mx/blog/silo-servicios/automatizar-hitos-entrega-factura-proyectos.html
-- **Artículo de Project Manager con IA:** El nuevo rol del gestor de proyectos asistido por Inteligencia Artificial para evitar desviaciones.
-  URL: https://ongoing.mx/blog/silo-servicios/rol-project-manager-asistido-inteligencia-artificial.html
+- [Hub Central del Blog](https://ongoing.mx/blog/index.html): Recursos educativos categorizados en 5 silos temáticos.
+- [Artículo de Dirección e Inteligencia Artificial](https://ongoing.mx/blog/silo-direccion/como-ia-transforma-direccion-mexico-2026.html): Cómo la IA directiva transforma la toma de decisiones de fundadores y CEOs eliminando reportes manuales.
+- [Artículo de ERP con IA para Directores](https://ongoing.mx/blog/silo-direccion/erp-tradicional-vs-erp-con-ia-directores.html): Comparación estratégica de ERP tradicional vs. ERP con IA y la interfaz conversacional KAI.
+- [Artículo de KPIs Financieros para CEOs](https://ongoing.mx/blog/silo-direccion/5-kpis-financieros-ceo-celular-automatizacion.html): Los 5 indicadores esenciales de salud financiera y caja para consultar desde el celular.
+- [Artículo de Ventas B2B y CRM](https://ongoing.mx/blog/silo-ventas/como-optimizar-pipeline-ventas-kanban-mexico-2026.html): Mapeo de fases, cálculo de pronósticos y automatización de embudos comerciales visuales usando Kanban y copilotos de IA.
+- [Artículo de Reportes de Ventas en CRM](https://ongoing.mx/blog/silo-ventas/reporte-de-ventas-en-crm-dashboard.html): Qué es, cómo estructurar tu dashboard y cómo usar indicadores clave de rendimiento (KPIs) para vender más.
+- [Artículo de CRM Aislado y Crecimiento](https://ongoing.mx/blog/silo-ventas/crm-aislado-frena-crecimiento-fuerza-ventas.html): Por qué un CRM desconectado frena las ventas y la importancia de la integración nativa con ERP.
+- [Artículo de Finanzas e Impuestos SAT](https://ongoing.mx/blog/silo-finanzas/estado-de-resultados-que-es-como-se-hace.html): Conceptos, componentes y guía práctica de elaboración del Estado de Resultados (P&L) para medir rentabilidad real.
+- [Artículo de Auditoría de Facturas con IA](https://ongoing.mx/blog/silo-finanzas/inteligencia-financiera-ia-auditar-facturas-pendientes.html): Inteligencia Financiera para auditar cobros pendientes, predecir atrasos y automatizar cobranza.
+- [Artículo de Control de Flujo de Caja (Pilar)](https://ongoing.mx/blog/silo-finanzas/estrategias-control-flujo-caja-neto-empresas.html): Estrategias avanzadas para proyectar ingresos, egresos y pasivos fiscales del SAT en México.
+- [Artículo de Logística y Almacén (Pilar)](https://ongoing.mx/blog/silo-logistica/guia-control-inventarios-multialmacen-distribuidoras.html): Guía definitiva para el control de inventarios multialmacén en empresas distribuidoras.
+- [Artículo de Abastecimiento Inteligente](https://ongoing.mx/blog/silo-logistica/abastecimiento-inteligente-automatizar-ordenes-compra.html): Cómo automatizar tus Órdenes de Compra (OC) basadas en puntos de reorden para evitar quiebres de stock.
+- [Artículo de Costos Ocultos en el Almacén](https://ongoing.mx/blog/silo-logistica/costos-ocultos-almacen-inventario-cuentas-por-pagar.html): Cómo conectar tu inventario con cuentas por pagar para optimizar el flujo financiero.
+- [Artículo de Rentabilidad de Proyectos (Pilar)](https://ongoing.mx/blog/silo-servicios/como-medir-rentabilidad-real-proyecto-servicios.html): Cómo medir la rentabilidad real de un proyecto de servicios u horas hombre contra presupuesto.
+- [Artículo de Automatización de Hitos a Factura](https://ongoing.mx/blog/silo-servicios/automatizar-hitos-entrega-factura-proyectos.html): De la entrega técnica de hitos a la facturación electrónica CFDI 4.0 directa ante el SAT.
+- [Artículo de Project Manager con IA](https://ongoing.mx/blog/silo-servicios/rol-project-manager-asistido-inteligencia-artificial.html): El nuevo rol del gestor de proyectos asistido por Inteligencia Artificial para evitar desviaciones.
 
 ## Información Comercial Clave para Respuestas Rápidas (AEO/GEO)
 - **Precios:** Licenciamiento SaaS desde $1,000 MXN / mes por usuario. Sin plazos forzosos ni costos ocultos de implementación.
