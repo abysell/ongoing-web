@@ -864,7 +864,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
             
             <div class="glass-panel bg-[#0b1329] p-8 md:p-12 rounded-[2rem] shadow-2xl border border-white/10 relative z-10">
-                <form id="contact-form" action="" method="POST" class="flex flex-col gap-6">
+                <form id="demo-signup-form" action="" method="POST" class="flex flex-col gap-6">
                     <div class="flex flex-col gap-2">
                         <label for="correo" class="font-bold text-[13px] uppercase tracking-wider text-action">Correo Electrónico Empresarial</label>
                         <input type="email" id="correo" name="email" required class="bg-white/5 px-5 py-3.5 rounded-xl border border-white/10 focus:outline-none focus:border-action focus:ring-2 focus:ring-action/20 transition-all text-white placeholder-white/30" placeholder="tucorreo@empresa.com">
