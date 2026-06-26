@@ -31,6 +31,7 @@ try {
 const PORT = 3000;
 const MIME_TYPES = {
     '.html': 'text/html',
+    '.php': 'text/html',
     '.css': 'text/css',
     '.js': 'text/javascript',
     '.json': 'application/json',
@@ -112,7 +113,7 @@ const server = http.createServer(async (req, res) => {
     // 3. Serve static files
     let urlPath = req.url.split('?')[0];
     if (urlPath === '/') {
-        urlPath = '/index.html';
+        urlPath = '/index.php';
     }
     
     let filePath = path.join(__dirname, urlPath);

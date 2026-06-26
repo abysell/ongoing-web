@@ -1,5 +1,9 @@
 # OnGoing ERP Landing - Apache Configuration for cPanel
+DirectoryIndex index.php index.html
 RewriteEngine On
+
+# Redirect index.html to index.php
+RewriteRule ^index\.html$ index.php [R=301,L]
 
 # Force UTF-8 Encoding to fix character parsing issues
 AddDefaultCharset UTF-8

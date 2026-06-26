@@ -1,11 +1,75 @@
+<?php
+// Configurar zona horaria local de la Ciudad de México
+date_default_timezone_set('America/Mexico_City');
+
+// Lógica de lectura de variables de entorno y procesamiento POST
+if (!function_exists('env')) {
+    function env($key, $default = null) {
+        $value = getenv($key);
+        if ($value !== false) return $value;
+        if (isset($_ENV[$key])) return $_ENV[$key];
+        if (isset($_SERVER[$key])) return $_SERVER[$key];
+
+        static $env = null;
+        if ($env === null) {
+            $env = [];
+            $envPath = __DIR__ . '/.env';
+            if (file_exists($envPath)) {
+                $lines = file($envPath, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+                foreach ($lines as $line) {
+                    if (strpos(trim($line), '#') === 0) continue;
+                    $parts = explode('=', $line, 2);
+                    if (count($parts) === 2) {
+                        $name = trim($parts[0]);
+                        $val = trim($parts[1]);
+                        if (preg_match('/^"([^"]*)"$/', $val, $matches) || preg_match("/^'([^']*)'$/", $val, $matches)) {
+                            $val = $matches[1];
+                        }
+                        $env[$name] = $val;
+                    }
+                }
+            }
+        }
+        return isset($env[$key]) ? $env[$key] : $default;
+    }
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $email = isset($_POST['email']) ? trim($_POST['email']) : '';
+    if (!empty($email) && filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $email = filter_var($email, FILTER_SANITIZE_EMAIL);
+        
+        // Registro de prospecto (Lead) en base de datos local
+        /*
+        try {
+            $pdo = new PDO("mysql:host=" . env('DB_HOST', 'localhost') . ";dbname=" . env('DB_DATABASE', 'ongoing'), env('DB_USERNAME', 'root'), env('DB_PASSWORD', ''));
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $stmt = $pdo->prepare("INSERT INTO leads (email, created_at) VALUES (:email, NOW())");
+            $stmt->execute(['email' => $email]);
+        } catch (PDOException $e) {
+            error_log("Error al guardar lead en DB: " . $e->getMessage());
+        }
+        */
+
+        // Generación de token criptográfico temporal y redirección
+        $secret = env('ONGOING_DEMO_SECRET');
+        $timestamp = time();
+        $token = hash_hmac('sha256', (string)$timestamp, $secret);
+        $redirectUrl = "https://demo.ongoing2.mx/demo-login?timestamp={$timestamp}&token={$token}";
+
+        header("Location: " . $redirectUrl);
+        exit();
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ongoing - La evolución del ERP en México</title>
-    <meta name="description" content="OnGoing V2 es la evolución del ERP en México. Una plataforma en la nube impulsada por el asistente de IA KAI para gestionar tu CRM, inventario, proyectos y finanzas.">
+    <title>OnGoing | Software Todo en Uno: CRM, ERP y Gestión de Tareas con IA</title>
+    <meta name="description" content="Centraliza tus ventas, inventarios, proyectos y contabilidad en una sola plataforma en la nube. Deja de brincar entre aplicaciones y toma el control de tu empresa con el asistente de IA KAI.">
     <link rel="canonical" href="https://ongoing.mx/">
 
     <!-- Google tag (gtag.js) -->
@@ -217,28 +281,21 @@
                 </div>
 
                 <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.1] tracking-tight text-white">
-                    La evolución del ERP en México.<br>
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-action to-blue-400">Diseñado para Humanos,</span> Potenciado con IA.
+                    Gestiona tus clientes, finanzas y tareas <span class="text-transparent bg-clip-text bg-gradient-to-r from-action to-blue-400">desde un solo software</span>
                 </h1>
 
-                <p class="text-lg md:text-xl text-secondary max-w-lg leading-relaxed font-medium">
-                    Centraliza tus Finanzas, Clientes y Operaciones en una sola plataforma. Configurado en menos de 2 minutos. Potenciado por KAI.
+                <p class="text-lg md:text-xl text-secondary max-w-xl leading-relaxed font-medium">
+                    OnGoing combina el poder de un CRM, un ERP y un sistema de gestión de tareas con IA para que dejes de brincar entre aplicaciones y tomes el control total de tu empresa.
                 </p>
 
                 <!-- Botones Hero -->
                 <div class="flex flex-col sm:flex-row gap-4 mt-4 items-center sm:items-start max-w-md sm:max-w-none w-full">
                     <div class="flex flex-col gap-2 w-full sm:w-auto">
-                        <a href="https://ongoing2.mx"
+                        <a href="#demo-conversion"
                             class="bg-action text-primary font-bold py-4 px-8 rounded-full text-center hover:bg-opacity-90 transition-all block w-full shadow-[0_0_20px_rgba(0,192,255,0.4)] text-[16px]">
-                            Empieza Gratis
+                            Probar Demo Al Instante ⚡
                         </a>
-                        <span class="text-[11px] text-gray-400 text-center font-medium">Gratis para 1 usuario de por vida. Sin tarjeta de crédito.</span>
-                    </div>
-                    <div class="w-full sm:w-auto mt-2 sm:mt-0">
-                        <a href="#contacto"
-                            class="glass-panel text-white font-bold py-4 px-8 rounded-full text-center block hover:bg-white/10 transition-colors border border-white/30 w-full text-[16px]">
-                            Cotizar a la medida
-                        </a>
+                        <span class="text-[11px] text-gray-400 text-center font-medium">1 usuario gratis para siempre. Sin tarjeta de crédito.</span>
                     </div>
                 </div>
             </div>
@@ -377,519 +434,266 @@
         class="w-full h-px bg-gradient-to-r from-transparent via-blue-500/80 to-transparent shadow-[0_0_20px_rgba(59,130,246,0.5)]">
     </div>
 
-    <!-- C2. Bento Grid KAI -->
+    <!-- C2. Casos de Uso KAI IA -->
     <section class="py-24 relative z-20 fade-up overflow-hidden bg-light">
-        <!-- Imagen de Fondo General de la Sección -->
-        <div
-            class="absolute inset-0 bg-[url('img/bg_section2.webp')] bg-cover bg-center opacity-[0.05] pointer-events-none mix-blend-multiply">
-        </div>
+        <div class="absolute inset-0 bg-[url('img/bg_section2.webp')] bg-cover bg-center opacity-[0.03] pointer-events-none mix-blend-multiply"></div>
 
         <div class="container mx-auto px-6 max-w-7xl relative z-10">
             <!-- Header -->
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-primary tracking-tight">
-                    Pregúntale a Kai y transforma tu empresa. <br class="hidden md:block">
-                    <span
-                        class="inline-block mt-3 md:mt-4 text-transparent bg-clip-text bg-gradient-to-r from-action to-blue-400">AI
-                        Power Solution</span>
+            <div class="text-center mb-16 max-w-3xl mx-auto">
+                <div class="inline-flex items-center gap-2 text-action font-semibold text-xs bg-action/10 px-3.5 py-1.5 rounded-full w-fit border border-action/20 uppercase tracking-wider mb-4">
+                    KAI AI Assistant
+                </div>
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-primary tracking-tight mb-6">
+                    Conoce a KAI: La primera IA que no solo responde, sino que <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-action">hace el trabajo por ti</span>
                 </h2>
+                <p class="text-secondary text-base md:text-lg font-medium leading-relaxed">
+                    KAI es el asistente inteligente de OnGoing V2. No es un chat genérico; es un colaborador virtual que entiende tu lenguaje natural, consulta tu base de datos y ejecuta acciones reales en tus módulos de negocio.
+                </p>
             </div>
 
-            <!-- Bento Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-
-                <!-- Col 1 (2 cards stacked) -->
-                <div class="flex flex-col gap-6">
-                    <!-- Card 1: Intelligent Automation -->
-                    <div id="bento-kai-trigger-1"
-                        class="bg-gradient-to-br from-blue-900 via-primary to-blue-950 rounded-[2rem] p-8 relative overflow-hidden group h-[340px] flex flex-col justify-between border border-white/10 hover:border-action/40 transition-all duration-500 shadow-2xl cursor-pointer">
-                        <!-- Background Image -->
-                        <div
-                            class="absolute inset-0 bg-[url('img/cara.png')] bg-cover bg-[95%_50%] opacity-50 mix-blend-overlay group-hover:opacity-70 group-hover:scale-105 transition-all duration-700 pointer-events-none">
+            <!-- Grid de Casos de Uso -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Tarjeta 1: CRM (Ventas) -->
+                <div class="bg-white rounded-[2rem] p-8 border border-gray-100 shadow-xl hover:shadow-2xl hover:border-action/30 transition-all duration-300 flex flex-col justify-between group">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-blue-50 flex items-center justify-center mb-6 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
+                            <i data-lucide="users" class="w-6 h-6"></i>
                         </div>
-
-                        <div
-                            class="absolute -right-20 -top-20 w-80 h-80 bg-blue-500/30 rounded-full blur-[80px] group-hover:bg-blue-400/40 transition-colors duration-700 pointer-events-none">
-                        </div>
-                        <div
-                            class="absolute -left-10 bottom-0 w-40 h-40 bg-action/20 rounded-full blur-[50px] pointer-events-none">
-                        </div>
-
-                        <div
-                            class="relative z-10 w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center backdrop-blur-sm border border-white/20">
-                            <i data-lucide="cpu" class="w-6 h-6 text-white"></i>
-                        </div>
-                        <div class="relative z-10 mt-auto flex flex-col justify-end">
-                            <h3 class="text-2xl font-bold text-white max-w-[150px] leading-tight mb-2">Automatización
-                                Inteligente</h3>
-                            <p class="text-sm text-white/80 font-medium leading-relaxed max-w-[200px] pb-4">KAI no es un
-                                bot de soporte, es tu analista 24/7. Interpreta tu lenguaje natural y cruza los datos de
-                                toda tu empresa en segundos.</p>
-                            <div
-                                class="absolute bottom-8 right-8 w-12 h-12 rounded-full bg-white/5 backdrop-blur-md flex items-center justify-center border border-white/10 group-hover:bg-white/20 transition-all text-white">
-                                <i data-lucide="arrow-up-right" class="w-5 h-5"></i>
-                            </div>
+                        <span class="text-[11px] font-extrabold uppercase tracking-widest text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full">CRM (Ventas)</span>
+                        <div class="mt-6 bg-[#001953]/5 p-4 rounded-2xl border-l-4 border-blue-600 text-primary/90 italic text-sm font-medium leading-relaxed">
+                            "KAI, resume las notas de mi última llamada con el cliente X y agenda seguimiento."
                         </div>
                     </div>
-
-                    <!-- Card 2: OpenAI Powered by -->
-                    <div id="bento-kai-trigger-2"
-                        class="bg-[#0b1121] rounded-[2rem] p-8 relative overflow-hidden group flex-grow min-h-[160px] flex justify-center items-center border border-white/10 hover:border-action/40 transition-all duration-500 cursor-pointer">
-                        <div
-                            class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700">
-                        </div>
-
-                        <div class="relative z-10 flex flex-col items-center justify-center w-full text-center px-4">
-                            <i data-lucide="zap" class="w-6 h-6 text-action mb-2"></i>
-                            <h3 class="text-white font-bold text-[1.1rem] tracking-wide leading-snug">
-                                Potencia tus oportunidades de negocio con <span class="text-action">Kai</span>
-                            </h3>
-                        </div>
-                        <div
-                            class="absolute bottom-6 right-6 w-10 h-10 rounded-full bg-white/5 flex items-center justify-center border border-white/10 group-hover:bg-white/20 transition-all text-white">
-                            <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
-                        </div>
-                    </div>
+                    <p class="text-sm text-secondary font-medium leading-relaxed mt-6">
+                        Optimiza tu flujo comercial procesando interacciones en segundos y programando recordatorios automáticos sin llenar formularios.
+                    </p>
                 </div>
 
-                       <!-- Bottom Span Card (span 2) - Slider -->
-                <div
-                    class="md:col-span-2 rounded-[2rem] relative overflow-hidden min-h-[450px] md:h-[524px] w-full flex flex-col">
-
-                    <!-- Slider Wrapper -->
-                    <div id="ai-slider"
-                        class="flex transition-transform duration-700 ease-[cubic-bezier(0.87, 0, 0.13, 1)] h-full w-full">
-
-                        <!-- Slide 1: Cuentas por Cobrar -->
-                        <div class="min-w-full min-h-[300px] relative flex items-stretch justify-center">
-                            <div class="absolute inset-0 pointer-events-none">
-                                <div
-                                    class="absolute -left-10 top-0 w-80 h-[200%] bg-gradient-to-b from-blue-400/20 to-transparent skew-x-[-20deg] rounded-[100px] blur-xl">
-                                </div>
-                                <div
-                                    class="absolute left-[30%] top-0 w-80 h-[200%] bg-gradient-to-b from-action/20 to-transparent skew-x-[-20deg] rounded-[100px] blur-lg">
-                                </div>
-                            </div>
-
-                            <!-- Chat Mockup Widget (Full Width) -->
-                            <div
-                                class="relative w-full max-w-4xl bg-[#0b1329] rounded-[24px] p-6 md:p-8 border border-blue-900/40 shadow-2xl z-20 flex flex-col justify-start mb-8 md:mb-0">
-                                <!-- Header -->
-                                <div class="flex items-center gap-4 mb-6 pb-4 border-b border-white/5">
-                                    <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-[#00c0ff] to-blue-600 flex flex-shrink-0 items-center justify-center border border-white/10 shadow-[0_0_15px_rgba(0,192,255,0.3)]">
-                                        <span class="text-white font-extrabold text-lg tracking-wider">K</span>
-                                    </div>
-                                    <div>
-                                        <h3 class="font-extrabold text-white text-lg leading-tight mb-1">KAI Asistente de IA</h3>
-                                        <div
-                                            class="flex items-center gap-2 text-[11px] font-medium text-white/50 uppercase tracking-widest">
-                                            <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span> Online
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <!-- User Message -->
-                                <div class="flex justify-end mb-6">
-                                    <div
-                                        class="bg-[#2c3e66]/40 px-6 py-4 rounded-3xl rounded-tr-sm text-[15px] text-white/90 font-medium shadow-sm max-w-[85%] md:max-w-[70%] border border-white/5">
-                                        "¿Cuánto facturamos la semana pasada?"
-                                    </div>
-                                </div>
-
-                                <!-- KAI Message -->
-                                <div class="flex justify-start gap-4">
-                                    <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-[#00c0ff] to-blue-600 flex flex-shrink-0 items-center justify-center mt-1 shadow-[0_0_20px_rgba(0,192,255,0.5)] border border-white/20">
-                                        <span class="text-white font-extrabold text-lg tracking-wider">K</span>
-                                    </div>
-                                    <div
-                                        class="bg-blue-900/20 border border-blue-500/20 px-6 py-5 rounded-3xl rounded-tl-sm w-full text-[15px] shadow-sm relative overflow-hidden">
-                                        <p class="mb-6 text-white/90 font-medium leading-relaxed">Facturamos <strong
-                                                class="text-[#00c0ff] font-extrabold text-lg">$145,000 MXN</strong> (12%
-                                             más que la semana anterior).<br>Aquí tienes la gráfica del flujo de caja:</p>
-
-                                        <!-- Chart -->
-                                        <div
-                                            class="bg-[#080d1e] rounded-xl p-4 pt-6 border border-white/5 h-[120px] flex items-end justify-between gap-3 relative">
-                                            <div class="w-full bg-[#2a68a6] hover:bg-[#3480cc] transition-colors rounded-t-md"
-                                                style="height: 30%"></div>
-                                            <div class="w-full bg-[#2a68a6] hover:bg-[#3480cc] transition-colors rounded-t-md"
-                                                style="height: 40%"></div>
-
-                                            <!-- Highlighted Bar -->
-                                            <div class="w-full bg-[#369cf5] rounded-t-md relative" style="height: 90%">
-                                                <div
-                                                    class="absolute -top-7 left-1/2 -translate-x-1/2 text-xs text-[#369cf5] font-bold">
-                                                    145k</div>
-                                            </div>
-
-                                            <div class="w-full bg-[#2a68a6] hover:bg-[#3480cc] transition-colors rounded-t-md"
-                                                style="height: 60%"></div>
-                                            <div class="w-full bg-[#2a68a6] hover:bg-[#3480cc] transition-colors rounded-t-md"
-                                                style="height: 75%"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                <!-- Tarjeta 2: Tareas (Proyectos) -->
+                <div class="bg-white rounded-[2rem] p-8 border border-gray-100 shadow-xl hover:shadow-2xl hover:border-action/30 transition-all duration-300 flex flex-col justify-between group">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-emerald-50 flex items-center justify-center mb-6 text-emerald-600 group-hover:bg-emerald-600 group-hover:text-white transition-all duration-300">
+                            <i data-lucide="check-square" class="w-6 h-6"></i>
                         </div>
-
-                        <!-- Slide 2: Desviación de Tiempos -->
-                        <div class="min-w-full min-h-[300px] relative flex items-stretch justify-center">
-                            <div class="absolute inset-0 pointer-events-none">
-                                <div
-                                    class="absolute right-[10%] top-[-20%] w-80 h-[200%] bg-gradient-to-b from-red-500/20 to-transparent skew-x-[20deg] rounded-[100px] blur-xl">
-                                </div>
-                            </div>
-
-                            <!-- Chat Mockup Widget (Full Width) -->
-                            <div
-                                class="relative w-full max-w-4xl bg-[#0b1329] rounded-[24px] p-6 md:p-8 border border-red-900/30 shadow-2xl z-20 flex flex-col justify-start mb-8 md:mb-0">
-                                <!-- Header -->
-                                <div class="flex items-center gap-4 mb-6 pb-4 border-b border-white/5">
-                                    <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-[#00c0ff] to-blue-600 flex flex-shrink-0 items-center justify-center border border-white/10 shadow-[0_0_15px_rgba(0,192,255,0.3)]">
-                                        <span class="text-white font-extrabold text-lg tracking-wider">K</span>
-                                    </div>
-                                    <div>
-                                        <h3 class="font-extrabold text-white text-lg leading-tight mb-1">KAI Asistente de IA</h3>
-                                        <div
-                                            class="flex items-center gap-2 text-[11px] font-medium text-white/50 uppercase tracking-widest">
-                                            <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span> Online
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- User Message -->
-                                <div class="flex justify-end mb-6">
-                                    <div
-                                        class="bg-[#2c3e66]/40 px-6 py-4 rounded-3xl rounded-tr-sm text-[15px] text-white/90 font-medium shadow-sm max-w-[85%] border border-white/5">
-                                        "¿Tenemos alguna alerta en los tiempos de entrega de proyectos?"
-                                    </div>
-                                </div>
-
-                                <!-- KAI Message -->
-                                <div class="flex justify-start gap-4">
-                                    <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-[#00c0ff] to-blue-600 flex flex-shrink-0 items-center justify-center mt-1 shadow-[0_0_20px_rgba(0,192,255,0.5)] border border-white/20">
-                                        <span class="text-white font-extrabold text-lg tracking-wider">K</span>
-                                    </div>
-                                    <div
-                                        class="bg-blue-900/20 border border-blue-500/20 px-6 py-5 rounded-3xl rounded-tl-sm w-full shadow-sm relative overflow-hidden flex flex-col gap-4">
-                                        <p class="text-white/90 font-medium text-[15px] leading-relaxed">Sí, el análisis del pipeline reporta que el <strong class="text-red-400 font-extrabold">Proyecto Alpha</strong> presenta una desviación crítica.</p>
-
-                                        <!-- Alerta Card -->
-                                        <div
-                                            class="bg-[#1a0f1a]/80 rounded-2xl p-4 md:p-5 border border-red-500/20 flex items-center gap-4 w-full">
-                                            <div
-                                                class="w-12 h-12 rounded-full bg-red-950 flex flex-shrink-0 items-center justify-center border border-red-500/30 animate-pulse">
-                                                <i data-lucide="alert-triangle" class="text-red-400 w-6 h-6"></i>
-                                            </div>
-                                            <div class="flex flex-col animate-fadeIn">
-                                                <h4 class="text-red-400 font-extrabold text-[15px] leading-tight mb-1">Desviación del 15% en horas estimadas</h4>
-                                                <p class="text-white/70 text-xs mt-1">El proyecto 'Alpha' ha consumido 95h de las 80h presupuestadas. Recomiendo reasignar tareas de inmediato para proteger el margen.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <!-- Slider Controls -->
-                    <div class="absolute bottom-8 left-8 md:left-10 flex gap-2 z-30">
-                        <button aria-label="Slide 1"
-                            class="ai-slider-dot w-6 h-1.5 rounded-full bg-white transition-all duration-300"
-                            data-slide="0"></button>
-                        <button aria-label="Slide 2"
-                            class="ai-slider-dot w-2 h-1.5 rounded-full bg-white/30 hover:bg-white/60 transition-all duration-300"
-                            data-slide="1"></button>
-                    </div>
-
-                </div>
-
-
-                <!-- Col 2 (1 tall card con dashboard de finanzas) -->
-                <div
-                    class="bg-[rgb(37,99,234)]/50 rounded-[2rem] p-8 md:p-10 relative overflow-hidden group md:h-[524px] flex flex-col justify-end border border-white/10 hover:border-action/40 transition-all duration-500 backdrop-blur-lg shadow-2xl">
-
-                    <!-- Background Image -->
-                    <div
-                        class="absolute inset-0 bg-[url('img/procesamiento.png')] bg-cover bg-top opacity-50 scale-[1.2] group-hover:opacity-70 group-hover:scale-[1.3] transition-all duration-700 pointer-events-none">
-                    </div>
-
-                    <!-- Overlay de transparencia sólida, sin degradados -->
-                    <div
-                        class="absolute inset-0 bg-[rgb(37,99,234)]/60 transition-colors duration-700 group-hover:bg-[rgb(37,99,234)]/40 pointer-events-none">
-                    </div>
-
-                    <div class="relative z-10 mb-20 md:mb-32">
-                        <h3 class="text-[2rem] font-bold text-white mb-4 leading-tight">Procesamiento de Datos en Tiempo
-                            Real</h3>
-                        <p class="text-white/80 text-sm font-medium leading-relaxed max-w-[250px]">Extraemos información
-                            valiosa desde el centro de tu negocio de forma inmediata.</p>
-                    </div>
-
-                    <div
-                        class="absolute bottom-10 right-10 w-12 h-12 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/10 group-hover:bg-white/20 transition-all text-white">
-                        <i data-lucide="arrow-up-right" class="w-5 h-5"></i>
-                    </div>
-                </div>
-
-                <!-- Col 3 (1 tall card con lineas abstractas y mockup) -->
-                <div
-                    class="bg-[#111827] rounded-[2rem] p-8 md:p-10 relative overflow-hidden group md:h-[524px] flex flex-col border border-white/10 hover:border-action/40 transition-all duration-500 shadow-2xl">
-                    <!-- Background Image -->
-                    <div
-                        class="absolute inset-0 bg-[url('img/balance_ventas.webp')] bg-cover bg-center opacity-80 scale-[1.2] group-hover:opacity-100 group-hover:scale-[1.3] transition-all duration-700 pointer-events-none">
-                    </div>
-
-                    <!-- Dark Overlay for Text Readability -->
-                    <div
-                        class="absolute inset-0 bg-gradient-to-b from-[#0f172a]/90 via-[#0f172a]/50 to-[#0f172a]/80 pointer-events-none">
-                    </div>
-
-                    <div class="absolute w-[200%] h-[200%] -right-[50%] -bottom-[50%] opacity-20 group-hover:opacity-40 transition-opacity duration-1000 rotate-12 pointer-events-none"
-                        style="background: repeating-radial-gradient(circle at center, transparent, transparent 15px, rgba(0, 192, 255, 0.5) 16px, transparent 17px);">
-                    </div>
-
-                    <div class="relative z-10">
-                        <h3 class="text-[2rem] font-bold text-white mb-4 leading-tight">Sistemas de Recomendación</h3>
-                        <p class="text-white/70 text-sm font-medium leading-relaxed max-w-[240px]">Desarrollamos e
-                            implementamos modelos a la medida para predecir escenarios y guiar la toma de decisiones
-                            basada en datos históricos.</p>
-                    </div>
-
-                    <div
-                        class="absolute bottom-10 right-10 w-12 h-12 rounded-full bg-white/5 backdrop-blur-md flex items-center justify-center border border-white/10 group-hover:bg-white/20 transition-all text-white">
-                        <i data-lucide="arrow-up-right" class="w-5 h-5"></i>
-                    </div>
-                </div>
-
-                <!-- Bottom Right Card -->
-                <div
-                    class="bg-gray-100 rounded-[2rem] p-8 md:p-10 relative overflow-hidden group min-h-[300px] md:h-[524px] flex flex-col justify-between border border-transparent hover:border-gray-300 transition-all duration-500 shadow-xl">
-                    <div
-                        class="absolute inset-0 bg-[url('img/fondo_conversia.png')] bg-cover bg-center group-hover:scale-105 transition-transform duration-700">
-                    </div>
-
-                    <div class="relative z-10">
-                        <h3 class="text-[1.1rem] font-bold text-white leading-tight max-w-[90%]">Con Kai y Conversia AI
-                            Chatbot Brinda un mejor soporte para tus clientes de manera personalizada</h3>
-                    </div>
-
-                    <div class="relative z-10 mt-auto flex items-end justify-between">
-                        <div>
-                            <div
-                                class="text-[4rem] font-extrabold pb-0 text-white tracking-tighter leading-none mb-1 flex items-baseline z-10 relative">
-                                5K<span class="text-white text-[5rem]">+</span>
-                            </div>
-                            <p class="text-[10px] text-white/80 font-bold uppercase tracking-widest mt-2 z-10 relative">
-                                de usuarios cada día</p>
+                        <span class="text-[11px] font-extrabold uppercase tracking-widest text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-full">Tareas (Proyectos)</span>
+                        <div class="mt-6 bg-[#001953]/5 p-4 rounded-2xl border-l-4 border-emerald-600 text-primary/90 italic text-sm font-medium leading-relaxed">
+                            "KAI, ¿qué tareas están retrasadas en el proyecto de desarrollo y a quién pertenecen?"
                         </div>
                     </div>
-
-                    <div
-                        class="absolute bottom-10 right-10 w-12 h-12 rounded-full bg-black flex items-center justify-center group-hover:scale-110 transition-transform text-white shadow-2xl z-20">
-                        <i data-lucide="arrow-up-right" class="w-5 h-5"></i>
-                    </div>
+                    <p class="text-sm text-secondary font-medium leading-relaxed mt-6">
+                        Obtén visibilidad instantánea del progreso de tu equipo y detecta cuellos de botella sin necesidad de reuniones de estatus.
+                    </p>
                 </div>
 
+                <!-- Tarjeta 3: Inventario -->
+                <div class="bg-white rounded-[2rem] p-8 border border-gray-100 shadow-xl hover:shadow-2xl hover:border-action/30 transition-all duration-300 flex flex-col justify-between group">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-amber-50 flex items-center justify-center mb-6 text-amber-600 group-hover:bg-amber-600 group-hover:text-white transition-all duration-300">
+                            <i data-lucide="package" class="w-6 h-6"></i>
+                        </div>
+                        <span class="text-[11px] font-extrabold uppercase tracking-widest text-amber-600 bg-amber-50 px-2.5 py-1 rounded-full">Inventario</span>
+                        <div class="mt-6 bg-[#001953]/5 p-4 rounded-2xl border-l-4 border-amber-600 text-primary/90 italic text-sm font-medium leading-relaxed">
+                            "KAI, genera una orden de compra sugerida para los artículos que están por debajo del stock mínimo."
+                        </div>
+                    </div>
+                    <p class="text-sm text-secondary font-medium leading-relaxed mt-6">
+                        Mantén tus almacenes balanceados. KAI calcula faltantes, busca proveedores y genera borradores de compra de forma proactiva.
+                    </p>
+                </div>
+
+                <!-- Tarjeta 4: Finanzas -->
+                <div class="bg-white rounded-[2rem] p-8 border border-gray-100 shadow-xl hover:shadow-2xl hover:border-action/30 transition-all duration-300 flex flex-col justify-between group">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-purple-50 flex items-center justify-center mb-6 text-purple-600 group-hover:bg-purple-600 group-hover:text-white transition-all duration-300">
+                            <i data-lucide="dollar-sign" class="w-6 h-6"></i>
+                        </div>
+                        <span class="text-[11px] font-extrabold uppercase tracking-widest text-purple-600 bg-purple-50 px-2.5 py-1 rounded-full">Finanzas</span>
+                        <div class="mt-6 bg-[#001953]/5 p-4 rounded-2xl border-l-4 border-purple-600 text-primary/90 italic text-sm font-medium leading-relaxed">
+                            "KAI, muéstrame las facturas vencidas de esta semana y el flujo de caja proyectado."
+                        </div>
+                    </div>
+                    <p class="text-sm text-secondary font-medium leading-relaxed mt-6">
+                        Toma decisiones financieras con certidumbre. KAI proyecta cobros y pagos basándose en datos históricos e información en tiempo real.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Blockquote Destacado -->
+            <div class="bg-gradient-to-br from-primary via-[#0a1128] to-[#00123a] p-8 md:p-12 rounded-[2.5rem] text-white shadow-2xl relative overflow-hidden mt-16 border border-white/10">
+                <div class="absolute top-0 right-0 w-96 h-96 bg-action/10 blur-[100px] rounded-full pointer-events-none"></div>
+                <div class="relative z-10 flex flex-col md:flex-row gap-6 md:gap-8 items-start md:items-center">
+                    <div class="w-14 h-14 rounded-2xl bg-action/20 border border-action/30 flex items-center justify-center text-action shrink-0 shadow-[0_0_20px_rgba(0,192,255,0.2)]">
+                        <i data-lucide="sparkles" class="w-7 h-7 animate-pulse"></i>
+                    </div>
+                    <div class="flex-grow">
+                        <p class="text-base md:text-lg font-semibold leading-relaxed text-white/95">
+                            "KAI no es un chatbot pasivo. Antes de tomar una acción crítica (como emitir una orden de compra), te muestra los datos, verifica alternativas y te pide confirmación. Inteligencia activa y segura para tu negocio."
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-
-    <!-- D. Selector de Necesidades (Grid 2x2) -->
+    <!-- D. Módulos Integrados (11 Apps en Rediseño) -->
     <section class="py-24 bg-white text-primary fade-up relative z-20">
-        <div class="container mx-auto px-6 max-w-6xl">
-            <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-center mb-16 tracking-tight">¿Qué necesitas
-                resolver hoy?</h2>
-
-            <!-- TABS BAR -->
-            <div class="flex flex-nowrap md:justify-center items-end gap-x-12 md:gap-x-24 px-6 md:px-0 overflow-x-auto border-b border-gray-200 mb-16 pb-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']"
-                role="tablist">
-                <!-- Tab 1 -->
-                <button
-                    class="s3-tab-btn active flex flex-col items-center gap-3 pb-4 border-b-[3px] border-blue-600 text-blue-600 transition-colors shrink-0 outline-none"
-                    data-tab="tab-crm" role="tab">
-                    <i data-lucide="users" class="w-8 h-8 md:w-10 md:h-10"></i>
-                    <span class="font-bold text-[15px] md:text-[17px] tracking-tight">Clientes y Ventas</span>
-                </button>
-                <!-- Tab 2 -->
-                <button
-                    class="s3-tab-btn flex flex-col items-center gap-3 pb-4 border-b-[3px] border-transparent text-gray-500 hover:text-blue-600 transition-colors shrink-0 outline-none"
-                    data-tab="tab-proyectos" role="tab">
-                    <i data-lucide="bar-chart-3" class="w-8 h-8 md:w-10 md:h-10"></i>
-                    <span class="font-bold text-[15px] md:text-[17px] tracking-tight text-center leading-tight">Proyectos y Rentabilidad</span>
-                </button>
-                <!-- Tab 3 -->
-                <button
-                    class="s3-tab-btn flex flex-col items-center gap-3 pb-4 border-b-[3px] border-transparent text-gray-500 hover:text-blue-600 transition-colors shrink-0 outline-none"
-                    data-tab="tab-seguridad" role="tab">
-                    <i data-lucide="shield-check" class="w-8 h-8 md:w-10 md:h-10"></i>
-                    <span class="font-bold text-[15px] md:text-[17px] tracking-tight text-center leading-tight">Infraestructura Multi-Tenant</span>
-                </button>
+        <div class="container mx-auto px-6 max-w-7xl">
+            <!-- Header -->
+            <div class="text-center mb-16 max-w-3xl mx-auto">
+                <div class="inline-flex items-center gap-2 text-blue-600 font-semibold text-xs bg-blue-50 px-3.5 py-1.5 rounded-full w-fit border border-blue-100 uppercase tracking-wider mb-4">
+                    Ecosistema Integrado
+                </div>
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight">
+                    Una app para cada necesidad.<br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-action">Integradas en una sola plataforma.</span>
+                </h2>
             </div>
 
-            <!-- TABS CONTENT AREA -->
-            <div class="relative w-full min-h-[400px]" id="s3-tab-container">
-
-                <!-- Tab Panel 1: Clientes y Ventas -->
-                <div id="tab-crm" class="s3-tab-content active transition-opacity duration-500 opacity-100">
-                    <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
-                        <div class="rounded-[2rem] overflow-hidden shadow-2xl relative group bg-blue-50/50">
-                            <!-- Visual mock of CRM -->
-                            <div class="w-full h-auto aspect-[4/3] md:aspect-[5/4] bg-[#070d1e] p-6 border border-gray-200/10 rounded-[2rem] flex flex-col justify-between text-white">
-                                <div class="flex justify-between items-center pb-3 border-b border-white/5">
-                                    <span class="text-xs font-bold text-action">Pipeline Comercial</span>
-                                    <span class="text-[10px] bg-green-500/20 text-green-400 font-bold px-2 py-0.5 rounded-full">Sin Excel</span>
-                                </div>
-                                <div class="grid grid-cols-3 gap-3 my-4 flex-grow">
-                                    <div class="bg-white/5 p-2 rounded-lg flex flex-col gap-1.5">
-                                        <div class="text-[9px] text-gray-400 font-bold uppercase">Prospecto</div>
-                                        <div class="bg-[#0b1329] p-2 rounded border border-white/5 text-[10px]">Client A - $30k</div>
-                                        <div class="bg-[#0b1329] p-2 rounded border border-white/5 text-[10px]">Client B - $15k</div>
-                                    </div>
-                                    <div class="bg-white/5 p-2 rounded-lg flex flex-col gap-1.5">
-                                        <div class="text-[9px] text-gray-400 font-bold uppercase">Negociación</div>
-                                        <div class="bg-[#0b1329] p-2 rounded border border-white/5 text-[10px]">Client C - $50k</div>
-                                    </div>
-                                    <div class="bg-white/5 p-2 rounded-lg flex flex-col gap-1.5">
-                                        <div class="text-[9px] text-gray-400 font-bold uppercase">Ganados</div>
-                                        <div class="bg-green-500/10 p-2 rounded border border-green-500/20 text-[10px] text-green-400">Client D - $120k</div>
-                                    </div>
-                                </div>
-                                <div class="text-center text-xs text-gray-400">Erradica el caos del seguimiento comercial de una vez por todas.</div>
-                            </div>
+            <!-- Grid de 11 Módulos -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 1. CRM -->
+                <div class="bg-slate-50/50 p-8 rounded-[2rem] border border-gray-100 hover:border-blue-200 hover:bg-white hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-blue-50 flex items-center justify-center text-blue-600 mb-6 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
+                            <i data-lucide="users" class="w-6 h-6"></i>
                         </div>
-                        <div class="flex flex-col">
-                            <div
-                                class="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center mb-6 shadow-lg shadow-blue-600/30">
-                                <i data-lucide="users" class="w-6 h-6"></i>
-                            </div>
-                            <h3
-                                class="text-3xl md:text-[2.5rem] font-extrabold text-primary mb-6 leading-[1.15] tracking-tight">
-                                Erradica el caos de Excel y duplica tus ventas.</h3>
-                            <p class="text-gray-700 text-lg md:text-xl font-medium leading-relaxed mb-8">Centraliza tus prospectos, correos y cotizaciones en un pipeline visual e intuitivo que evita la pérdida de oportunidades.</p>
-                            <div class="flex items-center gap-3 text-gray-800 font-bold text-[15px] md:text-base">
-                                <div
-                                    class="w-6 h-6 rounded-full bg-blue-600 text-white flex items-center justify-center shrink-0">
-                                    <i data-lucide="check" class="w-3.5 h-3.5"></i>
-                                </div>
-                                Control absoluto del embudo de ventas en tiempo real
-                            </div>
-                            <div class="mt-8">
-                                <a href="lp/crm.html" class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3.5 px-8 rounded-full transition-all text-sm md:text-base shadow-lg shadow-blue-600/20 hover:-translate-y-0.5 active:translate-y-0">
-                                    Ver Detalle de CRM <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                                </a>
-                            </div>
-                        </div>
+                        <h3 class="font-extrabold text-xl text-primary mb-2">CRM</h3>
+                        <p class="text-sm text-secondary font-medium leading-relaxed">
+                            Pipeline Comercial en formato Kanban para gestionar oportunidades, contactos and empresas de forma transparente.
+                        </p>
                     </div>
                 </div>
 
-                <!-- Tab Panel 2: Proyectos y Rentabilidad -->
-                <div id="tab-proyectos"
-                    class="s3-tab-content hidden transition-opacity duration-500 opacity-0 absolute top-0 left-0 w-full">
-                    <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
-                        <div class="rounded-[2rem] overflow-hidden shadow-2xl relative group bg-blue-50/50">
-                            <!-- Visual mock of Projects -->
-                            <div class="w-full h-auto aspect-[4/3] md:aspect-[5/4] bg-[#070d1e] p-6 border border-gray-200/10 rounded-[2rem] flex flex-col justify-between text-white">
-                                <div class="flex justify-between items-center pb-3 border-b border-white/5">
-                                    <span class="text-xs font-bold text-red-400 flex items-center gap-1"><i data-lucide="alert-triangle" class="w-3.5 h-3.5"></i> Alerta de Rentabilidad</span>
-                                    <span class="text-[10px] bg-blue-500/20 text-blue-400 font-bold px-2 py-0.5 rounded-full">Proyecto 'Alpha'</span>
-                                </div>
-                                <div class="my-6 flex-grow flex flex-col justify-center gap-4">
-                                    <div class="flex flex-col gap-1">
-                                        <div class="flex justify-between text-[11px] font-bold">
-                                            <span>Proyecto Alpha (Desviación)</span>
-                                            <span class="text-red-400">95h / 80h</span>
-                                        </div>
-                                        <div class="w-full bg-white/5 rounded-full h-3 overflow-hidden border border-white/5">
-                                            <div class="bg-red-500 h-full rounded-full" style="width: 100%"></div>
-                                        </div>
-                                    </div>
-                                    <div class="flex flex-col gap-1">
-                                        <div class="flex justify-between text-[11px] font-bold">
-                                            <span>Proyecto Beta (Saludable)</span>
-                                            <span class="text-green-400">40h / 80h</span>
-                                        </div>
-                                        <div class="w-full bg-white/5 rounded-full h-3 overflow-hidden border border-white/5">
-                                            <div class="bg-green-500 h-full rounded-full" style="width: 50%"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="text-center text-xs text-gray-400">Monitorea horas presupuestadas contra horas reales de inmediato.</div>
-                            </div>
+                <!-- 2. Proyectos -->
+                <div class="bg-slate-50/50 p-8 rounded-[2rem] border border-gray-100 hover:border-blue-200 hover:bg-white hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-emerald-50 flex items-center justify-center text-emerald-600 mb-6 group-hover:bg-emerald-600 group-hover:text-white transition-all duration-300">
+                            <i data-lucide="briefcase" class="w-6 h-6"></i>
                         </div>
-                        <div class="flex flex-col">
-                            <div
-                                class="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center mb-6 shadow-lg shadow-blue-600/30">
-                                <i data-lucide="bar-chart-3" class="w-6 h-6"></i>
-                            </div>
-                            <h3
-                                class="text-3xl md:text-[2.5rem] font-extrabold text-primary mb-6 leading-[1.15] tracking-tight">
-                                Evita pérdidas de dinero por horas mal calculadas.</h3>
-                            <p class="text-gray-700 text-lg md:text-xl font-medium leading-relaxed mb-8">Mide las horas de tu equipo contra el presupuesto por cliente. Obtén visibilidad inmediata sobre la rentabilidad de cada proyecto.</p>
-                            <div class="flex items-center gap-3 text-gray-800 font-bold text-[15px] md:text-base">
-                                <div
-                                    class="w-6 h-6 rounded-full bg-blue-600 text-white flex items-center justify-center shrink-0">
-                                    <i data-lucide="check" class="w-3.5 h-3.5"></i>
-                                </div>
-                                Alertas automáticas de desviaciones de tiempos y costos
-                            </div>
-                            <div class="mt-8">
-                                <a href="lp/servicios.html" class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3.5 px-8 rounded-full transition-all text-sm md:text-base shadow-lg shadow-blue-600/20 hover:-translate-y-0.5 active:translate-y-0">
-                                    Ver Detalle de Gestión Operativa <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                                </a>
-                            </div>
-                        </div>
+                        <h3 class="font-extrabold text-xl text-primary mb-2">Proyectos</h3>
+                        <p class="text-sm text-secondary font-medium leading-relaxed">
+                            El núcleo de tu gestión operativa (PSA) dividido en hitos y tareas para un control total de entregables.
+                        </p>
                     </div>
                 </div>
 
-                <!-- Tab Panel 3: Infraestructura Multi-Tenant -->
-                <div id="tab-seguridad"
-                    class="s3-tab-content hidden transition-opacity duration-500 opacity-0 absolute top-0 left-0 w-full">
-                    <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
-                        <div class="rounded-[2rem] overflow-hidden shadow-2xl relative group bg-blue-50/50">
-                            <!-- Visual mock of Security -->
-                            <div class="w-full h-auto aspect-[4/3] md:aspect-[5/4] bg-[#070d1e] p-6 border border-gray-200/10 rounded-[2rem] flex flex-col justify-between text-white">
-                                <div class="flex justify-between items-center pb-3 border-b border-white/5">
-                                    <span class="text-xs font-bold text-action flex items-center gap-1"><i data-lucide="lock" class="w-3.5 h-3.5"></i> Seguridad Corporativa</span>
-                                    <span class="text-[10px] bg-green-500/20 text-green-400 font-bold px-2 py-0.5 rounded-full">Base de Datos Aislada</span>
-                                </div>
-                                <div class="my-6 flex-grow flex flex-col justify-center items-center gap-4 text-center">
-                                    <div class="w-16 h-16 rounded-full bg-action/10 flex items-center justify-center border border-action/30 animate-pulse">
-                                        <i data-lucide="shield" class="w-8 h-8 text-action"></i>
-                                    </div>
-                                    <div class="text-sm font-bold">Sesión Única Activa habilitada</div>
-                                    <p class="text-xs text-gray-400 max-w-[200px]">Si inicias sesión en el Dispositivo B, se cierra automáticamente en el Dispositivo A.</p>
-                                </div>
-                                <div class="text-center text-xs text-gray-400">Protección del 100% de los datos y bases de datos independientes.</div>
-                            </div>
+                <!-- 3. Registro de Horas -->
+                <div class="bg-slate-50/50 p-8 rounded-[2rem] border border-gray-100 hover:border-blue-200 hover:bg-white hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-violet-50 flex items-center justify-center text-violet-600 mb-6 group-hover:bg-violet-600 group-hover:text-white transition-all duration-300">
+                            <i data-lucide="clock" class="w-6 h-6"></i>
                         </div>
-                        <div class="flex flex-col">
-                            <div
-                                class="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center mb-6 shadow-lg shadow-blue-600/30">
-                                <i data-lucide="shield-check" class="w-6 h-6"></i>
-                            </div>
-                            <h3
-                                class="text-3xl md:text-[2.5rem] font-extrabold text-primary mb-6 leading-[1.15] tracking-tight">
-                                Infraestructura Multi-Tenant con seguridad activa.</h3>
-                            <p class="text-gray-700 text-lg md:text-xl font-medium leading-relaxed mb-8">Bases de datos independientes y físicamente aisladas por cliente. Control de sesión única activa para garantizar seguridad absoluta.</p>
-                            <div class="flex items-center gap-3 text-gray-800 font-bold text-[15px] md:text-base">
-                                <div
-                                    class="w-6 h-6 rounded-full bg-blue-600 text-white flex items-center justify-center shrink-0">
-                                    <i data-lucide="check" class="w-3.5 h-3.5"></i>
-                                </div>
-                                Aislamiento físico de bases de datos por cada tenant
-                            </div>
-                            <div class="mt-8">
-                                <a href="modulos/infraestructura-multitenant.html" class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3.5 px-8 rounded-full transition-all text-sm md:text-base shadow-lg shadow-blue-600/20 hover:-translate-y-0.5 active:translate-y-0">
-                                    Ver Detalle de Seguridad <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                                </a>
-                            </div>
-                        </div>
+                        <h3 class="font-extrabold text-xl text-primary mb-2">Registro de Horas</h3>
+                        <p class="text-sm text-secondary font-medium leading-relaxed">
+                            Time Tracking nativo integrado a tus proyectos para medir y proteger la rentabilidad de cada hora de trabajo.
+                        </p>
                     </div>
                 </div>
 
+                <!-- 4. Planeación -->
+                <div class="bg-slate-50/50 p-8 rounded-[2rem] border border-gray-100 hover:border-blue-200 hover:bg-white hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-cyan-50 flex items-center justify-center text-cyan-600 mb-6 group-hover:bg-cyan-600 group-hover:text-white transition-all duration-300">
+                            <i data-lucide="calendar" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="font-extrabold text-xl text-primary mb-2">Planeación</h3>
+                        <p class="text-sm text-secondary font-medium leading-relaxed">
+                            Vista de Workload integrada para equilibrar la carga de trabajo de tu equipo de manera eficiente.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 5. Inventario -->
+                <div class="bg-slate-50/50 p-8 rounded-[2rem] border border-gray-100 hover:border-blue-200 hover:bg-white hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-amber-50 flex items-center justify-center text-amber-600 mb-6 group-hover:bg-amber-600 group-hover:text-white transition-all duration-300">
+                            <i data-lucide="archive" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="font-extrabold text-xl text-primary mb-2">Inventario</h3>
+                        <p class="text-sm text-secondary font-medium leading-relaxed">
+                            Control multialmacén con historial de movimientos, ajustes de stock y kárdex automatizado en tiempo real.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 6. Artículos -->
+                <div class="bg-slate-50/50 p-8 rounded-[2rem] border border-gray-100 hover:border-blue-200 hover:bg-white hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-indigo-50 flex items-center justify-center text-indigo-600 mb-6 group-hover:bg-indigo-600 group-hover:text-white transition-all duration-300">
+                            <i data-lucide="layers" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="font-extrabold text-xl text-primary mb-2">Artículos</h3>
+                        <p class="text-sm text-secondary font-medium leading-relaxed">
+                            Catálogo base estructurado para la administración de productos físicos, servicios y activos de tu negocio.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 7. Compras -->
+                <div class="bg-slate-50/50 p-8 rounded-[2rem] border border-gray-100 hover:border-blue-200 hover:bg-white hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-red-50 flex items-center justify-center text-red-600 mb-6 group-hover:bg-red-600 group-hover:text-white transition-all duration-300">
+                            <i data-lucide="shopping-cart" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="font-extrabold text-xl text-primary mb-2">Compras</h3>
+                        <p class="text-sm text-secondary font-medium leading-relaxed">
+                            Ciclo de abastecimiento digital: emisión, validación y autorización de Órdenes de Compra con proveedores.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 8. Ventas -->
+                <div class="bg-slate-50/50 p-8 rounded-[2rem] border border-gray-100 hover:border-blue-200 hover:bg-white hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-rose-50 flex items-center justify-center text-rose-600 mb-6 group-hover:bg-rose-600 group-hover:text-white transition-all duration-300">
+                            <i data-lucide="trending-up" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="font-extrabold text-xl text-primary mb-2">Ventas</h3>
+                        <p class="text-sm text-secondary font-medium leading-relaxed">
+                            Ciclo comercial completo: presupuestos, cotizaciones en PDF, Sales Orders y facturación electrónica CFDI 4.0.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 9. Contabilidad -->
+                <div class="bg-slate-50/50 p-8 rounded-[2rem] border border-gray-100 hover:border-blue-200 hover:bg-white hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-purple-50 flex items-center justify-center text-purple-600 mb-6 group-hover:bg-purple-600 group-hover:text-white transition-all duration-300">
+                            <i data-lucide="credit-card" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="font-extrabold text-xl text-primary mb-2">Contabilidad</h3>
+                        <p class="text-sm text-secondary font-medium leading-relaxed">
+                            Administración financiera de cuentas por cobrar, cuentas por pagar y flujo de caja en tiempo real.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 10. IA (KAI) -->
+                <div class="bg-slate-50/50 p-8 rounded-[2rem] border border-gray-100 hover:border-blue-200 hover:bg-white hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-sky-50 flex items-center justify-center text-sky-600 mb-6 group-hover:bg-sky-600 group-hover:text-white transition-all duration-300">
+                            <i data-lucide="sparkles" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="font-extrabold text-xl text-primary mb-2">IA (KAI)</h3>
+                        <p class="text-sm text-secondary font-medium leading-relaxed">
+                            Asistente cognitivo inteligente (KAI) disponible en toda la plataforma para ejecutar comandos en lenguaje natural.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 11. Tablero -->
+                <div class="bg-slate-50/50 p-8 rounded-[2rem] border border-gray-100 hover:border-blue-200 hover:bg-white hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-[#001953]/5 flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                            <i data-lucide="pie-chart" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="font-extrabold text-xl text-primary mb-2">Tablero</h3>
+                        <p class="text-sm text-secondary font-medium leading-relaxed">
+                            Dashboard ejecutivo centralizado con gráficos financieros, indicadores de rendimiento de tu equipo y agenda de reuniones.
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -1050,37 +854,23 @@
     </section>
 
     <!-- Contact Form Section -->
-    <section id="contacto" class="py-24 bg-[#0a1128] border-t border-white/5 fade-up relative z-20">
+    <section id="demo-conversion" class="py-24 bg-[#0a1128] border-t border-white/5 fade-up relative z-20">
         <div class="container mx-auto px-6 max-w-4xl relative">
             <div class="absolute top-0 left-1/2 -translate-x-1/2 w-80 h-80 bg-action/10 blur-[100px] rounded-full pointer-events-none"></div>
             
             <div class="text-center mb-16 relative z-10">
-                <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-4 tracking-tight">Contáctanos</h2>
-                <p class="text-secondary text-lg md:text-xl font-medium max-w-2xl mx-auto">Déjanos tus datos y te contactaremos lo antes posible.</p>
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-4 tracking-tight">Interactúa con OnGoing en tiempo real</h2>
+                <p class="text-secondary text-lg md:text-xl font-medium max-w-2xl mx-auto">Entra a nuestra plataforma de prueba en tiempo real, pon a prueba a KAI (IA) y toma el control del sistema.</p>
             </div>
             
             <div class="glass-panel bg-[#0b1329] p-8 md:p-12 rounded-[2rem] shadow-2xl border border-white/10 relative z-10">
-                <form id="contact-form" action="#" method="POST" class="flex flex-col gap-6">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div class="flex flex-col gap-2">
-                            <label for="nombre" class="font-bold text-[13px] uppercase tracking-wider text-action">Nombre</label>
-                            <input type="text" id="nombre" name="nombre" required class="bg-white/5 px-5 py-3.5 rounded-xl border border-white/10 focus:outline-none focus:border-action focus:ring-2 focus:ring-action/20 transition-all text-white placeholder-white/30" placeholder="Tu nombre completo">
-                        </div>
-                        <div class="flex flex-col gap-2">
-                            <label for="telefono" class="font-bold text-[13px] uppercase tracking-wider text-action">Teléfono</label>
-                            <input type="tel" id="telefono" name="telefono" required class="bg-white/5 px-5 py-3.5 rounded-xl border border-white/10 focus:outline-none focus:border-action focus:ring-2 focus:ring-action/20 transition-all text-white placeholder-white/30" placeholder="Tu número de teléfono">
-                        </div>
-                    </div>
+                <form id="contact-form" action="" method="POST" class="flex flex-col gap-6">
                     <div class="flex flex-col gap-2">
-                        <label for="correo" class="font-bold text-[13px] uppercase tracking-wider text-action">Correo Electrónico</label>
-                        <input type="email" id="correo" name="correo" required class="bg-white/5 px-5 py-3.5 rounded-xl border border-white/10 focus:outline-none focus:border-action focus:ring-2 focus:ring-action/20 transition-all text-white placeholder-white/30" placeholder="tucorreo@ejemplo.com">
-                    </div>
-                    <div class="flex flex-col gap-2">
-                        <label for="mensaje" class="font-bold text-[13px] uppercase tracking-wider text-action">Mensaje</label>
-                        <textarea id="mensaje" name="mensaje" rows="4" required class="bg-white/5 px-5 py-3.5 rounded-xl border border-white/10 focus:outline-none focus:border-action focus:ring-2 focus:ring-action/20 transition-all text-white placeholder-white/30 resize-none" placeholder="¿En qué podemos ayudarte?"></textarea>
+                        <label for="correo" class="font-bold text-[13px] uppercase tracking-wider text-action">Correo Electrónico Empresarial</label>
+                        <input type="email" id="correo" name="email" required class="bg-white/5 px-5 py-3.5 rounded-xl border border-white/10 focus:outline-none focus:border-action focus:ring-2 focus:ring-action/20 transition-all text-white placeholder-white/30" placeholder="tucorreo@empresa.com">
                     </div>
                     <button type="submit" class="bg-action text-primary font-extrabold text-lg py-4 px-8 rounded-xl hover:bg-opacity-90 transition-all shadow-[0_10px_20px_rgba(0,192,255,0.2)] active:scale-[0.98] mt-4 w-full md:w-auto md:self-end flex items-center justify-center gap-2">
-                        Enviar Mensaje <i data-lucide="send" class="w-5 h-5"></i>
+                        Probar Demo Al Instante ⚡ <i data-lucide="send" class="w-5 h-5"></i>
                     </button>
                 </form>
             </div>
