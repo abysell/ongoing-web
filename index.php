@@ -270,39 +270,37 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </header>
 
     <!-- B. Hero Section -->
-    <section class="min-h-screen flex items-center pt-24 pb-12 relative overflow-hidden">
-        <div class="w-full px-6 md:px-10 lg:px-20 grid lg:grid-cols-2 gap-12 items-center">
+    <section class="min-h-screen flex items-center pt-28 pb-20 relative overflow-hidden">
+        <div class="w-full px-6 md:px-10 lg:px-20 flex flex-col items-center text-center gap-12 max-w-7xl mx-auto">
 
-            <!-- Texto Izquierda -->
-            <div class="flex flex-col gap-6 z-10 fade-up">
+            <!-- Texto Centro -->
+            <div class="flex flex-col items-center gap-6 z-10 fade-up max-w-5xl">
                 <div
-                    class="inline-flex items-center gap-2 text-action font-medium text-sm bg-action/10 px-3 py-1.5 rounded-full w-fit border border-action/20">
+                    class="inline-flex items-center gap-2 text-action font-medium text-sm bg-action/10 px-3.5 py-1.5 rounded-full w-fit border border-action/20 uppercase tracking-wider">
                     La evolución del ERP en México
                 </div>
 
-                <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.1] tracking-tight text-white">
+                <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black leading-tight tracking-tight text-white max-w-6xl text-center">
                     Gestiona tus clientes, finanzas y tareas <span class="text-transparent bg-clip-text bg-gradient-to-r from-action to-blue-400">desde un solo software</span>
                 </h1>
 
-                <p class="text-lg md:text-xl text-secondary max-w-xl leading-relaxed font-medium">
+                <p class="text-lg md:text-xl text-secondary max-w-3xl leading-relaxed font-medium text-center">
                     OnGoing combina el poder de un CRM, un ERP y un sistema de gestión de tareas con IA para que dejes de brincar entre aplicaciones y tomes el control total de tu empresa.
                 </p>
 
                 <!-- Botones Hero -->
-                <div class="flex flex-col sm:flex-row gap-4 mt-4 items-center sm:items-start max-w-md sm:max-w-none w-full">
-                    <div class="flex flex-col gap-2 w-full sm:w-auto">
-                        <a href="#demo-conversion"
-                            class="bg-action text-primary font-bold py-4 px-8 rounded-full text-center hover:bg-opacity-90 transition-all block w-full shadow-[0_0_20px_rgba(0,192,255,0.4)] text-[16px]">
-                            Probar Demo Al Instante ⚡
-                        </a>
-                        <span class="text-[11px] text-gray-400 text-center font-medium">1 usuario gratis para siempre. Sin tarjeta de crédito.</span>
-                    </div>
+                <div class="flex flex-col gap-2 mt-4 items-center max-w-sm w-full mx-auto">
+                    <a href="#demo-conversion"
+                        class="bg-action text-primary font-extrabold py-4 px-8 rounded-full text-center hover:bg-opacity-90 hover:scale-[1.03] transition-all block w-full shadow-[0_0_25px_rgba(0,192,255,0.4)] text-[17px] transform duration-300">
+                        Probar Demo Al Instante ⚡
+                    </a>
+                    <span class="text-[11px] text-gray-400 text-center font-medium">1 usuario gratis para siempre. Sin tarjeta de crédito.</span>
                 </div>
             </div>
 
-            <!-- Visual Derecha: Micro-Product App -->
-            <div class="relative z-10 fade-up flex justify-center items-center w-full lg:w-[120%] lg:-ml-12 mt-12 lg:mt-0">
-                <div class="w-full max-w-lg bg-[#070d1e]/90 rounded-[2rem] border border-white/10 shadow-[0_30px_60px_rgba(0,0,0,0.8)] overflow-hidden flex flex-col backdrop-blur-xl">
+            <!-- Visual Centro: Micro-Product App -->
+            <div class="relative z-10 fade-up flex justify-center items-center w-full max-w-5xl mt-8">
+                <div class="w-full bg-[#070d1e]/90 rounded-[2rem] border border-white/10 shadow-[0_30px_60px_rgba(0,0,0,0.8)] overflow-hidden flex flex-col backdrop-blur-xl">
                     <!-- App Title / Header Bar -->
                     <div class="flex items-center justify-between px-6 py-4 border-b border-white/5 bg-[#0a1329]">
                         <div class="flex items-center gap-2">
@@ -323,47 +321,47 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </div>
 
                     <!-- Panel Content -->
-                    <div class="p-6 h-[320px] relative overflow-hidden flex flex-col justify-between">
+                    <div class="p-6 min-h-[380px] relative overflow-hidden flex flex-col justify-between">
                         <!-- CRM View -->
                         <div id="hero-panel-crm" class="hero-panel active flex flex-col gap-4 h-full transition-opacity duration-300 w-full">
                             <div class="flex items-center justify-between">
-                                <span class="text-xs font-bold text-gray-400">Embudo de Ventas (Simulado con arrastrar/soltar)</span>
-                                <span class="text-[10px] bg-green-500/20 text-green-400 font-bold px-2 py-0.5 rounded-full">CRM Activo</span>
+                                <span class="text-sm font-bold text-gray-400">Embudo de Ventas (Simulado con arrastrar/soltar)</span>
+                                <span class="text-[11px] bg-green-500/20 text-green-400 font-bold px-3 py-1 rounded-full">CRM Activo</span>
                             </div>
                             <!-- Kanban Columns -->
-                            <div class="grid grid-cols-1 md:grid-cols-3 gap-3 flex-grow overflow-hidden pb-2">
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 flex-grow pb-2">
                                 <!-- Column 1: Prospectos -->
-                                <div class="bg-white/5 rounded-xl p-2.5 flex flex-col gap-2 min-h-[180px] border border-white/5" ondragover="allowDrop(event)" ondrop="dropCard(event, 'col-prospectos')">
-                                    <h4 class="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1">Prospectos</h4>
-                                    <div id="card-1" draggable="true" ondragstart="dragCard(event)" class="bg-[#0b1329] p-2.5 rounded-lg border border-white/10 cursor-grab active:cursor-grabbing hover:border-action/40 transition-colors shadow-md">
-                                        <p class="text-[11px] font-bold text-white mb-1">Alimentro S.A.</p>
-                                        <div class="flex justify-between items-center mt-2">
-                                            <span class="text-[9px] text-[#00c0ff] font-semibold">$35,000 MXN</span>
-                                            <i data-lucide="grab" class="w-3 h-3 text-gray-500"></i>
+                                <div class="bg-white/5 rounded-xl p-4 flex flex-col gap-3 min-h-[200px] border border-white/5" ondragover="allowDrop(event)" ondrop="dropCard(event, 'col-prospectos')">
+                                    <h4 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Prospectos</h4>
+                                    <div id="card-1" draggable="true" ondragstart="dragCard(event)" class="bg-[#0b1329] p-3.5 rounded-lg border border-white/10 cursor-grab active:cursor-grabbing hover:border-action/40 transition-colors shadow-md">
+                                        <p class="text-xs md:text-sm font-bold text-white mb-1">Alimentro S.A.</p>
+                                        <div class="flex justify-between items-center mt-2.5">
+                                            <span class="text-xs text-[#00c0ff] font-semibold">$35,000 MXN</span>
+                                            <i data-lucide="grab" class="w-4 h-4 text-gray-500"></i>
                                         </div>
                                     </div>
-                                    <div id="card-2" draggable="true" ondragstart="dragCard(event)" class="bg-[#0b1329] p-2.5 rounded-lg border border-white/10 cursor-grab active:cursor-grabbing hover:border-action/40 transition-colors shadow-md">
-                                        <p class="text-[11px] font-bold text-white mb-1">Macero Corp</p>
-                                        <div class="flex justify-between items-center mt-2">
-                                            <span class="text-[9px] text-[#00c0ff] font-semibold">$82,000 MXN</span>
-                                            <i data-lucide="grab" class="w-3 h-3 text-gray-500"></i>
+                                    <div id="card-2" draggable="true" ondragstart="dragCard(event)" class="bg-[#0b1329] p-3.5 rounded-lg border border-white/10 cursor-grab active:cursor-grabbing hover:border-action/40 transition-colors shadow-md">
+                                        <p class="text-xs md:text-sm font-bold text-white mb-1">Macero Corp</p>
+                                        <div class="flex justify-between items-center mt-2.5">
+                                            <span class="text-xs text-[#00c0ff] font-semibold">$82,000 MXN</span>
+                                            <i data-lucide="grab" class="w-4 h-4 text-gray-500"></i>
                                         </div>
                                     </div>
                                 </div>
                                 <!-- Column 2: Negociación -->
-                                <div class="bg-white/5 rounded-xl p-2.5 hidden md:flex flex-col gap-2 min-h-[180px] border border-white/5" ondragover="allowDrop(event)" ondrop="dropCard(event, 'col-negociacion')">
-                                    <h4 class="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1">Negociación</h4>
-                                    <div id="card-3" draggable="true" ondragstart="dragCard(event)" class="bg-[#0b1329] p-2.5 rounded-lg border border-white/10 cursor-grab active:cursor-grabbing hover:border-action/40 transition-colors shadow-md">
-                                        <p class="text-[11px] font-bold text-white mb-1">Apetit México</p>
-                                        <div class="flex justify-between items-center mt-2">
-                                            <span class="text-[9px] text-[#00c0ff] font-semibold">$54,000 MXN</span>
-                                            <i data-lucide="grab" class="w-3 h-3 text-gray-500"></i>
+                                <div class="bg-white/5 rounded-xl p-4 hidden md:flex flex-col gap-3 min-h-[200px] border border-white/5" ondragover="allowDrop(event)" ondrop="dropCard(event, 'col-negociacion')">
+                                    <h4 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Negociación</h4>
+                                    <div id="card-3" draggable="true" ondragstart="dragCard(event)" class="bg-[#0b1329] p-3.5 rounded-lg border border-white/10 cursor-grab active:cursor-grabbing hover:border-action/40 transition-colors shadow-md">
+                                        <p class="text-xs md:text-sm font-bold text-white mb-1">Apetit México</p>
+                                        <div class="flex justify-between items-center mt-2.5">
+                                            <span class="text-xs text-[#00c0ff] font-semibold">$54,000 MXN</span>
+                                            <i data-lucide="grab" class="w-4 h-4 text-gray-500"></i>
                                         </div>
                                     </div>
                                 </div>
                                 <!-- Column 3: Cerrado -->
-                                <div class="bg-white/5 rounded-xl p-2.5 hidden md:flex flex-col gap-2 min-h-[180px] border border-white/5" ondragover="allowDrop(event)" ondrop="dropCard(event, 'col-cerrado')">
-                                    <h4 class="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1">Cerrado</h4>
+                                <div class="bg-white/5 rounded-xl p-4 hidden md:flex flex-col gap-3 min-h-[200px] border border-white/5" ondragover="allowDrop(event)" ondrop="dropCard(event, 'col-cerrado')">
+                                    <h4 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Cerrado</h4>
                                 </div>
                             </div>
                         </div>
@@ -371,40 +369,40 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <!-- Proyectos View -->
                         <div id="hero-panel-proyectos" class="hero-panel hidden flex flex-col gap-4 h-full transition-opacity duration-300 opacity-0 w-full">
                             <div class="flex items-center justify-between">
-                                <span class="text-xs font-bold text-gray-400">Control de Proyectos y Tiempos de Entrega</span>
-                                <span class="text-[10px] bg-red-500/20 text-red-400 font-bold px-2 py-0.5 rounded-full flex items-center gap-1 animate-pulse"><i data-lucide="alert-triangle" class="w-3 h-3"></i> Alerta Activa</span>
+                                <span class="text-sm font-bold text-gray-400">Control de Proyectos y Tiempos de Entrega</span>
+                                <span class="text-[11px] bg-red-500/20 text-red-400 font-bold px-3 py-1 rounded-full flex items-center gap-1 animate-pulse"><i data-lucide="alert-triangle" class="w-3.5 h-3.5"></i> Alerta Activa</span>
                             </div>
                             
                             <!-- Project Graph Columns / Bars -->
-                            <div class="flex-grow flex flex-col gap-4 justify-center">
+                            <div class="flex-grow flex flex-col gap-5 justify-center py-4">
                                 <!-- Project Alpha (Alert) -->
-                                <div class="flex flex-col gap-1.5">
-                                    <div class="flex justify-between text-xs font-bold">
+                                <div class="flex flex-col gap-2">
+                                    <div class="flex justify-between text-sm font-bold">
                                         <span class="text-red-400 font-extrabold flex items-center gap-1">Proyecto Alpha (Desviación Detectada)</span>
                                         <span class="text-white">95h / 80h presupuesto</span>
                                     </div>
-                                    <div class="w-full bg-white/5 rounded-full h-3.5 overflow-hidden border border-white/10 relative">
+                                    <div class="w-full bg-white/5 rounded-full h-4 overflow-hidden border border-white/10 relative">
                                         <div class="bg-gradient-to-r from-red-600 to-red-400 h-full rounded-full animate-pulse shadow-[0_0_10px_rgba(239,68,68,0.5)]" style="width: 100%"></div>
                                     </div>
-                                    <p class="text-[10px] text-red-400 font-medium italic mt-0.5">⚠️ Desviación del 15% en horas estimadas. Riesgo de pérdida de rentabilidad.</p>
+                                    <p class="text-xs text-red-400 font-medium italic mt-0.5">⚠️ Desviación del 15% en horas estimadas. Riesgo de pérdida de rentabilidad.</p>
                                 </div>
                                 <!-- Project Beta (OK) -->
-                                <div class="flex-col gap-1.5 hidden md:flex">
-                                    <div class="flex justify-between text-xs font-bold">
+                                <div class="flex flex-col gap-2">
+                                    <div class="flex justify-between text-sm font-bold">
                                         <span class="text-gray-300">Proyecto Beta (Saludable)</span>
                                         <span class="text-white">40h / 80h presupuesto</span>
                                     </div>
-                                    <div class="w-full bg-white/5 rounded-full h-3.5 overflow-hidden border border-white/10">
+                                    <div class="w-full bg-white/5 rounded-full h-4 overflow-hidden border border-white/10">
                                         <div class="bg-gradient-to-r from-green-600 to-green-400 h-full rounded-full" style="width: 50%"></div>
                                     </div>
                                 </div>
                                 <!-- Project Gamma (OK) -->
-                                <div class="flex-col gap-1.5 hidden md:flex">
-                                    <div class="flex justify-between text-xs font-bold">
+                                <div class="flex flex-col gap-2">
+                                    <div class="flex justify-between text-sm font-bold">
                                         <span class="text-gray-300">Proyecto Gamma (Saludable)</span>
                                         <span class="text-white">15h / 50h presupuesto</span>
                                     </div>
-                                    <div class="w-full bg-white/5 rounded-full h-3.5 overflow-hidden border border-white/10">
+                                    <div class="w-full bg-white/5 rounded-full h-4 overflow-hidden border border-white/10">
                                         <div class="bg-gradient-to-r from-green-600 to-green-400 h-full rounded-full" style="width: 30%"></div>
                                     </div>
                                 </div>
@@ -433,6 +431,170 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div
         class="w-full h-px bg-gradient-to-r from-transparent via-blue-500/80 to-transparent shadow-[0_0_20px_rgba(59,130,246,0.5)]">
     </div>
+
+    <!-- D. Módulos Integrados — Ecosistema Integrado (Odoo-Style Grid) -->
+    <section id="ecosistema" class="py-24 bg-white text-primary fade-up relative z-20 overflow-hidden">
+
+        <!-- Subtle dot-grid background -->
+        <div class="absolute inset-0 pointer-events-none select-none" aria-hidden="true"
+            style="background-image: radial-gradient(circle, #dde4f0 1px, transparent 1px); background-size: 28px 28px; opacity: 0.55;"></div>
+
+        <div class="container mx-auto px-6 max-w-6xl relative z-10">
+
+            <!-- ── Header ── -->
+            <div class="text-center mb-14 max-w-3xl mx-auto">
+                <div class="inline-flex items-center gap-2 text-blue-600 font-semibold text-xs bg-blue-50 px-3.5 py-1.5 rounded-full w-fit border border-blue-100 uppercase tracking-wider mb-4">
+                    Ecosistema Integrado
+                </div>
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-primary mb-4">
+                    Una app para cada necesidad.<br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-action">Integradas en una sola plataforma.</span>
+                </h2>
+                <p class="text-secondary font-medium text-base md:text-lg leading-relaxed">
+                    11 módulos nativos. Un solo login. Los datos fluyen solos entre cada área de tu empresa.
+                </p>
+            </div>
+
+            <!-- ── Icon Grid (visual summary, hover para ver detalle) ── -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 lg:gap-4">
+
+                <!-- 1. CRM -->
+                <div class="eco-card group relative bg-white rounded-2xl p-4 shadow-sm border border-gray-100 hover:shadow-lg hover:border-blue-200 hover:-translate-y-0.5 transition-all duration-200 flex flex-col items-center gap-2.5 cursor-help">
+                    <div class="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center group-hover:bg-blue-500 transition-colors duration-200 shrink-0">
+                        <i data-lucide="users" class="w-6 h-6 text-blue-500 group-hover:text-white transition-colors duration-200"></i>
+                    </div>
+                    <span class="text-[11px] font-semibold text-gray-600 text-center leading-tight group-hover:text-blue-600 transition-colors">CRM</span>
+                    <div class="eco-tooltip pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-3 w-48 opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 transition-all duration-150 z-50">
+                        <div class="bg-primary text-white text-[11px] font-medium leading-snug rounded-lg px-3 py-2 shadow-xl text-center">Tu módulo de Pipeline Comercial (Deals, Companies, Contacts en formato Kanban).</div>
+                        <div class="w-2.5 h-2.5 bg-primary rotate-45 absolute left-1/2 -translate-x-1/2 -bottom-1"></div>
+                    </div>
+                </div>
+
+                <!-- 2. Proyectos -->
+                <div class="eco-card group relative bg-white rounded-2xl p-4 shadow-sm border border-gray-100 hover:shadow-lg hover:border-emerald-200 hover:-translate-y-0.5 transition-all duration-200 flex flex-col items-center gap-2.5 cursor-help">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-50 flex items-center justify-center group-hover:bg-emerald-500 transition-colors duration-200 shrink-0">
+                        <i data-lucide="briefcase" class="w-6 h-6 text-emerald-500 group-hover:text-white transition-colors duration-200"></i>
+                    </div>
+                    <span class="text-[11px] font-semibold text-gray-600 text-center leading-tight group-hover:text-emerald-600 transition-colors">Proyectos</span>
+                    <div class="eco-tooltip pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-3 w-48 opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 transition-all duration-150 z-50">
+                        <div class="bg-primary text-white text-[11px] font-medium leading-snug rounded-lg px-3 py-2 shadow-xl text-center">El núcleo de tu PSA (Estructura de proyectos divididos en hitos y tareas).</div>
+                        <div class="w-2.5 h-2.5 bg-primary rotate-45 absolute left-1/2 -translate-x-1/2 -bottom-1"></div>
+                    </div>
+                </div>
+
+                <!-- 3. Registro de Horas -->
+                <div class="eco-card group relative bg-white rounded-2xl p-4 shadow-sm border border-gray-100 hover:shadow-lg hover:border-violet-200 hover:-translate-y-0.5 transition-all duration-200 flex flex-col items-center gap-2.5 cursor-help">
+                    <div class="w-12 h-12 rounded-xl bg-violet-50 flex items-center justify-center group-hover:bg-violet-500 transition-colors duration-200 shrink-0">
+                        <i data-lucide="clock" class="w-6 h-6 text-violet-500 group-hover:text-white transition-colors duration-200"></i>
+                    </div>
+                    <span class="text-[11px] font-semibold text-gray-600 text-center leading-tight group-hover:text-violet-600 transition-colors">Registro de Horas</span>
+                    <div class="eco-tooltip pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-3 w-48 opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 transition-all duration-150 z-50">
+                        <div class="bg-primary text-white text-[11px] font-medium leading-snug rounded-lg px-3 py-2 shadow-xl text-center">Tu herramienta de Time Tracking integrada en el PSA para medir rentabilidad.</div>
+                        <div class="w-2.5 h-2.5 bg-primary rotate-45 absolute left-1/2 -translate-x-1/2 -bottom-1"></div>
+                    </div>
+                </div>
+
+                <!-- 4. Planeación -->
+                <div class="eco-card group relative bg-white rounded-2xl p-4 shadow-sm border border-gray-100 hover:shadow-lg hover:border-cyan-200 hover:-translate-y-0.5 transition-all duration-200 flex flex-col items-center gap-2.5 cursor-help">
+                    <div class="w-12 h-12 rounded-xl bg-cyan-50 flex items-center justify-center group-hover:bg-cyan-500 transition-colors duration-200 shrink-0">
+                        <i data-lucide="calendar" class="w-6 h-6 text-cyan-500 group-hover:text-white transition-colors duration-200"></i>
+                    </div>
+                    <span class="text-[11px] font-semibold text-gray-600 text-center leading-tight group-hover:text-cyan-600 transition-colors">Planeación</span>
+                    <div class="eco-tooltip pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-3 w-48 opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 transition-all duration-150 z-50">
+                        <div class="bg-primary text-white text-[11px] font-medium leading-snug rounded-lg px-3 py-2 shadow-xl text-center">Tu vista de Workload (carga de trabajo del equipo para asignación balanceada).</div>
+                        <div class="w-2.5 h-2.5 bg-primary rotate-45 absolute left-1/2 -translate-x-1/2 -bottom-1"></div>
+                    </div>
+                </div>
+
+                <!-- 5. Inventario -->
+                <div class="eco-card group relative bg-white rounded-2xl p-4 shadow-sm border border-gray-100 hover:shadow-lg hover:border-amber-200 hover:-translate-y-0.5 transition-all duration-200 flex flex-col items-center gap-2.5 cursor-help">
+                    <div class="w-12 h-12 rounded-xl bg-amber-50 flex items-center justify-center group-hover:bg-amber-500 transition-colors duration-200 shrink-0">
+                        <i data-lucide="archive" class="w-6 h-6 text-amber-500 group-hover:text-white transition-colors duration-200"></i>
+                    </div>
+                    <span class="text-[11px] font-semibold text-gray-600 text-center leading-tight group-hover:text-amber-600 transition-colors">Inventario</span>
+                    <div class="eco-tooltip pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-3 w-48 opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 transition-all duration-150 z-50">
+                        <div class="bg-primary text-white text-[11px] font-medium leading-snug rounded-lg px-3 py-2 shadow-xl text-center">Control de múltiples almacenes, ajustes de stock y la bitácora del Kárdex.</div>
+                        <div class="w-2.5 h-2.5 bg-primary rotate-45 absolute left-1/2 -translate-x-1/2 -bottom-1"></div>
+                    </div>
+                </div>
+
+                <!-- 6. Artículos -->
+                <div class="eco-card group relative bg-white rounded-2xl p-4 shadow-sm border border-gray-100 hover:shadow-lg hover:border-indigo-200 hover:-translate-y-0.5 transition-all duration-200 flex flex-col items-center gap-2.5 cursor-help">
+                    <div class="w-12 h-12 rounded-xl bg-indigo-50 flex items-center justify-center group-hover:bg-indigo-500 transition-colors duration-200 shrink-0">
+                        <i data-lucide="layers" class="w-6 h-6 text-indigo-500 group-hover:text-white transition-colors duration-200"></i>
+                    </div>
+                    <span class="text-[11px] font-semibold text-gray-600 text-center leading-tight group-hover:text-indigo-600 transition-colors">Artículos</span>
+                    <div class="eco-tooltip pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-3 w-48 opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 transition-all duration-150 z-50">
+                        <div class="bg-primary text-white text-[11px] font-medium leading-snug rounded-lg px-3 py-2 shadow-xl text-center">Tu catálogo base de productos físicos y activos indispensables para el inventario y ventas.</div>
+                        <div class="w-2.5 h-2.5 bg-primary rotate-45 absolute left-1/2 -translate-x-1/2 -bottom-1"></div>
+                    </div>
+                </div>
+
+                <!-- 7. Compras -->
+                <div class="eco-card group relative bg-white rounded-2xl p-4 shadow-sm border border-gray-100 hover:shadow-lg hover:border-red-200 hover:-translate-y-0.5 transition-all duration-200 flex flex-col items-center gap-2.5 cursor-help">
+                    <div class="w-12 h-12 rounded-xl bg-red-50 flex items-center justify-center group-hover:bg-red-500 transition-colors duration-200 shrink-0">
+                        <i data-lucide="shopping-cart" class="w-6 h-6 text-red-500 group-hover:text-white transition-colors duration-200"></i>
+                    </div>
+                    <span class="text-[11px] font-semibold text-gray-600 text-center leading-tight group-hover:text-red-600 transition-colors">Compras</span>
+                    <div class="eco-tooltip pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-3 w-48 opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 transition-all duration-150 z-50">
+                        <div class="bg-primary text-white text-[11px] font-medium leading-snug rounded-lg px-3 py-2 shadow-xl text-center">Emisión y autorización de Órdenes de Compra (Purchase Orders) e impuestos.</div>
+                        <div class="w-2.5 h-2.5 bg-primary rotate-45 absolute left-1/2 -translate-x-1/2 -bottom-1"></div>
+                    </div>
+                </div>
+
+                <!-- 8. Ventas -->
+                <div class="eco-card group relative bg-white rounded-2xl p-4 shadow-sm border border-gray-100 hover:shadow-lg hover:border-rose-200 hover:-translate-y-0.5 transition-all duration-200 flex flex-col items-center gap-2.5 cursor-help">
+                    <div class="w-12 h-12 rounded-xl bg-rose-50 flex items-center justify-center group-hover:bg-rose-500 transition-colors duration-200 shrink-0">
+                        <i data-lucide="trending-up" class="w-6 h-6 text-rose-500 group-hover:text-white transition-colors duration-200"></i>
+                    </div>
+                    <span class="text-[11px] font-semibold text-gray-600 text-center leading-tight group-hover:text-rose-600 transition-colors">Ventas</span>
+                    <div class="eco-tooltip pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-3 w-48 opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 transition-all duration-150 z-50">
+                        <div class="bg-primary text-white text-[11px] font-medium leading-snug rounded-lg px-3 py-2 shadow-xl text-center">Tu ciclo comercial (Sales Orders) y generación de presupuestos/cotizaciones en PDF.</div>
+                        <div class="w-2.5 h-2.5 bg-primary rotate-45 absolute left-1/2 -translate-x-1/2 -bottom-1"></div>
+                    </div>
+                </div>
+
+                <!-- 9. Contabilidad -->
+                <div class="eco-card group relative bg-white rounded-2xl p-4 shadow-sm border border-gray-100 hover:shadow-lg hover:border-purple-200 hover:-translate-y-0.5 transition-all duration-200 flex flex-col items-center gap-2.5 cursor-help">
+                    <div class="w-12 h-12 rounded-xl bg-purple-50 flex items-center justify-center group-hover:bg-purple-500 transition-colors duration-200 shrink-0">
+                        <i data-lucide="credit-card" class="w-6 h-6 text-purple-500 group-hover:text-white transition-colors duration-200"></i>
+                    </div>
+                    <span class="text-[11px] font-semibold text-gray-600 text-center leading-tight group-hover:text-purple-600 transition-colors">Contabilidad</span>
+                    <div class="eco-tooltip pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-3 w-48 opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 transition-all duration-150 z-50">
+                        <div class="bg-primary text-white text-[11px] font-medium leading-snug rounded-lg px-3 py-2 shadow-xl text-center">Tu módulo de Finanzas (Facturas emitidas, saldos vencidos, pagos y flujo de caja).</div>
+                        <div class="w-2.5 h-2.5 bg-primary rotate-45 absolute left-1/2 -translate-x-1/2 -bottom-1"></div>
+                    </div>
+                </div>
+
+                <!-- 10. IA (KAI) -->
+                <div class="eco-card group relative bg-white rounded-2xl p-4 shadow-sm border border-gray-100 hover:shadow-lg hover:border-[#00c0ff]/40 hover:-translate-y-0.5 transition-all duration-200 flex flex-col items-center gap-2.5 cursor-help">
+                    <div class="w-12 h-12 rounded-xl bg-[#00c0ff]/10 flex items-center justify-center group-hover:bg-[#00c0ff] transition-colors duration-200 shrink-0">
+                        <i data-lucide="sparkles" class="w-6 h-6 text-[#00c0ff] group-hover:text-white transition-colors duration-200"></i>
+                    </div>
+                    <span class="text-[11px] font-semibold text-gray-600 text-center leading-tight group-hover:text-[#00c0ff] transition-colors">IA (KAI)</span>
+                    <div class="eco-tooltip pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-3 w-48 opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 transition-all duration-150 z-50">
+                        <div class="bg-primary text-white text-[11px] font-medium leading-snug rounded-lg px-3 py-2 shadow-xl text-center">Tu asistente cognitivo KAI, el widget flotante de inteligencia artificial con lenguaje natural.</div>
+                        <div class="w-2.5 h-2.5 bg-primary rotate-45 absolute left-1/2 -translate-x-1/2 -bottom-1"></div>
+                    </div>
+                </div>
+
+                <!-- 11. Tablero -->
+                <div class="eco-card group relative bg-white rounded-2xl p-4 shadow-sm border border-gray-100 hover:shadow-lg hover:border-sky-200 hover:-translate-y-0.5 transition-all duration-200 flex flex-col items-center gap-2.5 cursor-help">
+                    <div class="w-12 h-12 rounded-xl bg-sky-50 flex items-center justify-center group-hover:bg-sky-500 transition-colors duration-200 shrink-0">
+                        <i data-lucide="pie-chart" class="w-6 h-6 text-sky-500 group-hover:text-white transition-colors duration-200"></i>
+                    </div>
+                    <span class="text-[11px] font-semibold text-gray-600 text-center leading-tight group-hover:text-sky-600 transition-colors">Tablero</span>
+                    <div class="eco-tooltip pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-3 w-48 opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 transition-all duration-150 z-50">
+                        <div class="bg-primary text-white text-[11px] font-medium leading-snug rounded-lg px-3 py-2 shadow-xl text-center">Tu Tablero Directivo (Dashboard) con gráficos de flujo de caja, KPIs y reuniones.</div>
+                        <div class="w-2.5 h-2.5 bg-primary rotate-45 absolute left-1/2 -translate-x-1/2 -bottom-1"></div>
+                    </div>
+                </div>
+
+            </div><!-- /grid -->
+
+        </div><!-- /container -->
+
+    </section>
 
     <!-- C2. Casos de Uso KAI IA -->
     <section class="py-24 relative z-20 fade-up overflow-hidden bg-light">
@@ -529,168 +691,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <div class="flex-grow">
                         <p class="text-base md:text-lg font-semibold leading-relaxed text-white/95">
                             "KAI no es un chatbot pasivo. Antes de tomar una acción crítica (como emitir una orden de compra), te muestra los datos, verifica alternativas y te pide confirmación. Inteligencia activa y segura para tu negocio."
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- D. Módulos Integrados (11 Apps en Rediseño) -->
-    <section class="py-24 bg-white text-primary fade-up relative z-20">
-        <div class="container mx-auto px-6 max-w-7xl">
-            <!-- Header -->
-            <div class="text-center mb-16 max-w-3xl mx-auto">
-                <div class="inline-flex items-center gap-2 text-blue-600 font-semibold text-xs bg-blue-50 px-3.5 py-1.5 rounded-full w-fit border border-blue-100 uppercase tracking-wider mb-4">
-                    Ecosistema Integrado
-                </div>
-                <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight">
-                    Una app para cada necesidad.<br>
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-action">Integradas en una sola plataforma.</span>
-                </h2>
-            </div>
-
-            <!-- Grid de 11 Módulos -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- 1. CRM -->
-                <div class="bg-slate-50/50 p-8 rounded-[2rem] border border-gray-100 hover:border-blue-200 hover:bg-white hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
-                    <div>
-                        <div class="w-12 h-12 rounded-2xl bg-blue-50 flex items-center justify-center text-blue-600 mb-6 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
-                            <i data-lucide="users" class="w-6 h-6"></i>
-                        </div>
-                        <h3 class="font-extrabold text-xl text-primary mb-2">CRM</h3>
-                        <p class="text-sm text-secondary font-medium leading-relaxed">
-                            Pipeline Comercial en formato Kanban para gestionar oportunidades, contactos and empresas de forma transparente.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- 2. Proyectos -->
-                <div class="bg-slate-50/50 p-8 rounded-[2rem] border border-gray-100 hover:border-blue-200 hover:bg-white hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
-                    <div>
-                        <div class="w-12 h-12 rounded-2xl bg-emerald-50 flex items-center justify-center text-emerald-600 mb-6 group-hover:bg-emerald-600 group-hover:text-white transition-all duration-300">
-                            <i data-lucide="briefcase" class="w-6 h-6"></i>
-                        </div>
-                        <h3 class="font-extrabold text-xl text-primary mb-2">Proyectos</h3>
-                        <p class="text-sm text-secondary font-medium leading-relaxed">
-                            El núcleo de tu gestión operativa (PSA) dividido en hitos y tareas para un control total de entregables.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- 3. Registro de Horas -->
-                <div class="bg-slate-50/50 p-8 rounded-[2rem] border border-gray-100 hover:border-blue-200 hover:bg-white hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
-                    <div>
-                        <div class="w-12 h-12 rounded-2xl bg-violet-50 flex items-center justify-center text-violet-600 mb-6 group-hover:bg-violet-600 group-hover:text-white transition-all duration-300">
-                            <i data-lucide="clock" class="w-6 h-6"></i>
-                        </div>
-                        <h3 class="font-extrabold text-xl text-primary mb-2">Registro de Horas</h3>
-                        <p class="text-sm text-secondary font-medium leading-relaxed">
-                            Time Tracking nativo integrado a tus proyectos para medir y proteger la rentabilidad de cada hora de trabajo.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- 4. Planeación -->
-                <div class="bg-slate-50/50 p-8 rounded-[2rem] border border-gray-100 hover:border-blue-200 hover:bg-white hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
-                    <div>
-                        <div class="w-12 h-12 rounded-2xl bg-cyan-50 flex items-center justify-center text-cyan-600 mb-6 group-hover:bg-cyan-600 group-hover:text-white transition-all duration-300">
-                            <i data-lucide="calendar" class="w-6 h-6"></i>
-                        </div>
-                        <h3 class="font-extrabold text-xl text-primary mb-2">Planeación</h3>
-                        <p class="text-sm text-secondary font-medium leading-relaxed">
-                            Vista de Workload integrada para equilibrar la carga de trabajo de tu equipo de manera eficiente.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- 5. Inventario -->
-                <div class="bg-slate-50/50 p-8 rounded-[2rem] border border-gray-100 hover:border-blue-200 hover:bg-white hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
-                    <div>
-                        <div class="w-12 h-12 rounded-2xl bg-amber-50 flex items-center justify-center text-amber-600 mb-6 group-hover:bg-amber-600 group-hover:text-white transition-all duration-300">
-                            <i data-lucide="archive" class="w-6 h-6"></i>
-                        </div>
-                        <h3 class="font-extrabold text-xl text-primary mb-2">Inventario</h3>
-                        <p class="text-sm text-secondary font-medium leading-relaxed">
-                            Control multialmacén con historial de movimientos, ajustes de stock y kárdex automatizado en tiempo real.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- 6. Artículos -->
-                <div class="bg-slate-50/50 p-8 rounded-[2rem] border border-gray-100 hover:border-blue-200 hover:bg-white hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
-                    <div>
-                        <div class="w-12 h-12 rounded-2xl bg-indigo-50 flex items-center justify-center text-indigo-600 mb-6 group-hover:bg-indigo-600 group-hover:text-white transition-all duration-300">
-                            <i data-lucide="layers" class="w-6 h-6"></i>
-                        </div>
-                        <h3 class="font-extrabold text-xl text-primary mb-2">Artículos</h3>
-                        <p class="text-sm text-secondary font-medium leading-relaxed">
-                            Catálogo base estructurado para la administración de productos físicos, servicios y activos de tu negocio.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- 7. Compras -->
-                <div class="bg-slate-50/50 p-8 rounded-[2rem] border border-gray-100 hover:border-blue-200 hover:bg-white hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
-                    <div>
-                        <div class="w-12 h-12 rounded-2xl bg-red-50 flex items-center justify-center text-red-600 mb-6 group-hover:bg-red-600 group-hover:text-white transition-all duration-300">
-                            <i data-lucide="shopping-cart" class="w-6 h-6"></i>
-                        </div>
-                        <h3 class="font-extrabold text-xl text-primary mb-2">Compras</h3>
-                        <p class="text-sm text-secondary font-medium leading-relaxed">
-                            Ciclo de abastecimiento digital: emisión, validación y autorización de Órdenes de Compra con proveedores.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- 8. Ventas -->
-                <div class="bg-slate-50/50 p-8 rounded-[2rem] border border-gray-100 hover:border-blue-200 hover:bg-white hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
-                    <div>
-                        <div class="w-12 h-12 rounded-2xl bg-rose-50 flex items-center justify-center text-rose-600 mb-6 group-hover:bg-rose-600 group-hover:text-white transition-all duration-300">
-                            <i data-lucide="trending-up" class="w-6 h-6"></i>
-                        </div>
-                        <h3 class="font-extrabold text-xl text-primary mb-2">Ventas</h3>
-                        <p class="text-sm text-secondary font-medium leading-relaxed">
-                            Ciclo comercial completo: presupuestos, cotizaciones en PDF, Sales Orders y facturación electrónica CFDI 4.0.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- 9. Contabilidad -->
-                <div class="bg-slate-50/50 p-8 rounded-[2rem] border border-gray-100 hover:border-blue-200 hover:bg-white hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
-                    <div>
-                        <div class="w-12 h-12 rounded-2xl bg-purple-50 flex items-center justify-center text-purple-600 mb-6 group-hover:bg-purple-600 group-hover:text-white transition-all duration-300">
-                            <i data-lucide="credit-card" class="w-6 h-6"></i>
-                        </div>
-                        <h3 class="font-extrabold text-xl text-primary mb-2">Contabilidad</h3>
-                        <p class="text-sm text-secondary font-medium leading-relaxed">
-                            Administración financiera de cuentas por cobrar, cuentas por pagar y flujo de caja en tiempo real.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- 10. IA (KAI) -->
-                <div class="bg-slate-50/50 p-8 rounded-[2rem] border border-gray-100 hover:border-blue-200 hover:bg-white hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
-                    <div>
-                        <div class="w-12 h-12 rounded-2xl bg-sky-50 flex items-center justify-center text-sky-600 mb-6 group-hover:bg-sky-600 group-hover:text-white transition-all duration-300">
-                            <i data-lucide="sparkles" class="w-6 h-6"></i>
-                        </div>
-                        <h3 class="font-extrabold text-xl text-primary mb-2">IA (KAI)</h3>
-                        <p class="text-sm text-secondary font-medium leading-relaxed">
-                            Asistente cognitivo inteligente (KAI) disponible en toda la plataforma para ejecutar comandos en lenguaje natural.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- 11. Tablero -->
-                <div class="bg-slate-50/50 p-8 rounded-[2rem] border border-gray-100 hover:border-blue-200 hover:bg-white hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
-                    <div>
-                        <div class="w-12 h-12 rounded-2xl bg-[#001953]/5 flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white transition-all duration-300">
-                            <i data-lucide="pie-chart" class="w-6 h-6"></i>
-                        </div>
-                        <h3 class="font-extrabold text-xl text-primary mb-2">Tablero</h3>
-                        <p class="text-sm text-secondary font-medium leading-relaxed">
-                            Dashboard ejecutivo centralizado con gráficos financieros, indicadores de rendimiento de tu equipo y agenda de reuniones.
                         </p>
                     </div>
                 </div>
